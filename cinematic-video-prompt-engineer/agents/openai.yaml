@@ -1,0 +1,7 @@
+interface:
+  display_name: "电影感视频提示词工程师"
+  short_description: "先诊断剧情，再生成电影感 AI 视频提示词。"
+  default_prompt: "Use $cinematic-video-prompt-engineer to diagnose this plot summary and rewrite it into a cinematic AI video prompt."
+
+policy:
+  allow_implicit_invocation: true
