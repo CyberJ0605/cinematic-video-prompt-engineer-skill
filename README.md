@@ -91,6 +91,18 @@ $cinematic-video-prompt-engineer
 
 如果用户只想要最终提示词，可以明确说“只给最终提示词”。
 
+## 非 Codex 用户
+
+Claude、ChatGPT、DeepSeek、Kimi、通义、豆包等工具一般不能直接安装 Codex skill，但可以使用通用提示词版本。
+
+复制下面文件中的内容给对应 AI：
+
+```text
+PROMPT_VERSION.md
+```
+
+然后让它按规则扮演“电影感视频提示词工程师”即可。
+
 ## 项目文档
 
 维护与交接说明见：
@@ -98,4 +110,3 @@ $cinematic-video-prompt-engineer
 ```text
 docs/PROJECT_HANDOFF.md
 ```
-
