@@ -91,6 +91,66 @@ $cinematic-video-prompt-engineer
 
 如果用户只想要最终提示词，可以明确说“只给最终提示词”。
 
+## 案例展示
+
+以下视频由本 skill 输出的提示词生成，用于展示不同类型剧情的可控效果。
+
+### 案例 1：情绪特写，古风女子从笑到哭
+
+**原始剧情**
+
+保持同一位古代宫廷女子不变，用超近面部长镜头表现她从强撑微笑到彻底破防落泪。
+
+**调用方式**
+
+```text
+请用 $cinematic-video-prompt-engineer 写一段古代宫廷女子从笑到哭的超近面部长镜头情绪戏，保持人物、服装、烛光宫殿背景不变，全程无台词。
+```
+
+**生成视频**
+
+<video src="./assets/demos/emotional-closeup.mp4" controls width="720"></video>
+
+[查看视频文件](./assets/demos/emotional-closeup.mp4)
+
+### 案例 2：悬疑，独居女孩发现陌生钥匙
+
+**原始剧情**
+
+深夜独居女孩回到家，发现玄关鞋柜上多了一把不属于自己的钥匙。她以为是自己记错了，走进客厅后，听见卧室里传来很轻的手机震动声。
+
+**调用方式**
+
+```text
+请用 $cinematic-video-prompt-engineer 处理这个剧情：
+深夜独居女孩回到家，发现玄关鞋柜上多了一把不属于自己的钥匙。她以为是自己记错了，走进客厅后，听见卧室里传来很轻的手机震动声。
+```
+
+**生成视频**
+
+<video src="./assets/demos/suspense-key.mp4" controls width="720"></video>
+
+[查看视频文件](./assets/demos/suspense-key.mp4)
+
+### 案例 3：多人对话戏，除夕饭桌冲突
+
+**原始剧情**
+
+除夕夜饭桌上，一家三口吃饭。父亲突然宣布要把家里的老房子卖掉，母亲假装夹菜不说话，女儿停下筷子问为什么。父亲说这是为了她以后好，女儿意识到父母其实早就决定了，气氛变得很冷。
+
+**调用方式**
+
+```text
+请用 $cinematic-video-prompt-engineer 处理这个剧情：
+除夕夜饭桌上，一家三口吃饭。父亲突然宣布要把家里的老房子卖掉，母亲假装夹菜不说话，女儿停下筷子问为什么。父亲说这是为了她以后好，女儿意识到父母其实早就决定了，气氛变得很冷。
+```
+
+**生成视频**
+
+<video src="./assets/demos/dialogue-scene.mp4" controls width="720"></video>
+
+[查看视频文件](./assets/demos/dialogue-scene.mp4)
+
 ## 非 Codex 用户
 
 Claude、ChatGPT、DeepSeek、Kimi、通义、豆包等工具一般不能直接安装 Codex skill，但可以使用通用提示词版本。
