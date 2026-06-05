@@ -156,6 +156,47 @@ Use this arc carefully:
 - Add quality constraints for face stability when needed: face stable, clear features, natural motion, no blur, no flicker, no shake.
 - If the scene is not romance, adapt the same structure: sudden recognition -> emotional leak -> concealment -> renewed courage.
 
+#### Exhausted Silent Collapse Arc
+
+Use when a character has already endured too much and finally collapses inward without dramatic crying. Best for emotional exhaustion, quiet despair, grief after long restraint, hopeless acceptance, powerless love, or a character realizing they cannot change the outcome.
+
+Core setup:
+
+```text
+竖屏近景/超近面部特写，固定镜头或极轻微慢推，电影感真实人物表演。人物脸部占画面主体，头上被柔和半透明白纱或浅色衣料轻轻遮挡，服饰有真实褶皱和湿润质感，皮肤带自然油光与细小泪痕，眼眶泛红，睫毛被泪水打湿。下眼睑有明显泪光。整段无夸张动作，无台词，靠眼神、嘴唇、呼吸、眼泪和头部下垂表达情绪耗尽。
+```
+
+Emotional logic:
+
+```text
+不是嚎啕大哭，而是压抑、无声、心碎、委屈、失望、逐渐失力的哭泣。人物像刚经历了极大的伤害，心理还有一丝硬撑，情绪从无力、深度悲伤、命运感到空洞崩溃。最终不是爆发，而是安静地垮下来。
+```
+
+Emotional waveform:
+
+```text
+0-1s：人物微微抬着脸，三分之一侧脸靠近镜头，眼睛湿润发红，眼神空洞又受伤，像在看着某个人。下眼睑含满泪水，嘴唇轻轻抿住，肩颈轻微绷紧，呼吸很轻。
+1-3s：视线慢慢从前方垂落到下方，眼皮变沉，眼神从看向某人变成向内坠落。泪水沿脸颊无声滑落，嘴角轻轻下压，唇部放松，表情从委屈转成失望，像心里最后一点希望正在慢慢熄灭。
+3-5s：她缓缓低头，静默和肩膀失力增加，头部一点点垂下，眼睛不再看镜头。眼神藏到下方，眉头从紧绷变成疲惫，嘴唇轻轻闭合又微微松开，仿佛把哭声吞回去。脸上的泪痕持续变亮，但没有大哭、没有喊叫，只有无声崩溃。
+5-8/9s：头彻底低下，自然和旁边衣料靠近，眼睛几乎看不见。整个人安静下来，情绪不是爆发，而是耗尽后的空白。肩膀轻微下沉，呼吸很浅，最后保持微垂姿态，像已经没有力气再哭。
+```
+
+Negative requirements:
+
+- no exaggerated body movement
+- no dramatic sobbing
+- no screaming or visible shouting
+- no sudden emotional jump
+- no beauty-filter plastic skin
+- keep face stable and realistic
+- keep tears subtle, natural, and physically plausible
+
+Useful tags:
+
+```text
+silent crying, restrained sobbing, fearful hollow eyes, downcast gaze, broken but quiet sadness, emotionally exhausted, quiet collapse
+```
+
 ## Micro-Expression Action Library
 
 Use these as modular facial-performance beats. Select only the beats that fit the story; do not stack too many expressions in one shot. For a 6-8s close-up, 3-5 beats are usually enough.
@@ -788,6 +829,82 @@ Constraints:
 - Tilt up when a body is lifted; fast tilt down or snap pan on controlled landing.
 - Avoid excessive blur. Action should be fast but readable.
 
+### Fight Scene Cinematography Rhythm
+
+Use action-film camera techniques to create immediacy, but apply them at specific beats. Do not make the whole scene shaky or tilted.
+
+**Handheld physical shake**
+
+- Use light handheld breathing throughout close combat for realism.
+- Use short, sharp shake only on impact beats: punch lands, weapon clash, body hits table, door slams, foot lands after jump.
+- Avoid continuous violent shake; it hides choreography.
+
+Useful phrase:
+
+```text
+手持摄影带轻微物理呼吸感，击中瞬间产生短促震动，随后迅速稳住，让动作接触点保持清晰。
+```
+
+**Dutch angle / 荷兰角**
+
+- Use for imbalance, panic, losing footing, being surrounded, or a power shift.
+- Best in brief shots, not as the default framing.
+- Works well before a reversal: the frame tilts as the defender loses balance, then returns level when they regain control.
+
+Useful phrase:
+
+```text
+镜头短暂转为轻微荷兰角，强化角色失衡和空间压迫；反击成功后构图重新回正。
+```
+
+**Overcranking / 升格慢动作**
+
+- Use for one key moment only: flying kick, weapon crossing near the face, body lifted, glass/wood dust exploding, a decisive dodge.
+- Keep the setup and recovery at normal speed, so the slow motion feels earned.
+- Pair slow motion with clear sound change: impact sound drops low, breath or cloth movement becomes sharp, then real-time sound snaps back.
+
+Useful phrase:
+
+```text
+关键击中瞬间进入短暂升格慢动作，灰尘和衣料在逆光中展开；落地后立刻回到实时速度，声音猛地恢复。
+```
+
+**Speed ramp / 快慢结合**
+
+- Good rhythm: real-time rush -> brief slow-motion impact -> snap back to fast recovery.
+- Use for sprint-then-kick, dodge-then-counter, leap-then-land, throw-then-ground impact.
+- Do not speed-ramp every action; choose the emotional or physical peak.
+
+Useful phrase:
+
+```text
+动作节奏采用快慢结合：助跑与抢进保持实时高速，击中瞬间短暂升格，落地和反应立即切回实时速度。
+```
+
+**Special composition**
+
+- Diagonal composition: useful for protector and protected character, two fighters facing off, or long weapon lines.
+- Foreground obstruction: use pillars, door frames, hanging cloth, railings, classroom desks to add depth and danger.
+- Low-angle wide shot: useful for heroic entrance, spear sweep, shield charge, or surrounded protagonist.
+- Top shot or high angle: use sparingly for geography in crowd fights.
+
+### Fight Rhythm Planning
+
+A strong 10-15s fight should usually have a rhythm arc:
+
+```text
+0-3s：建立站位与第一击，实时速度，空间清楚。
+3-7s：连续攻防，手持近身，短促震动，动作接触点明确。
+7-10s：短暂停顿或失衡，荷兰角/呼吸/对视制造节奏变化。
+10-13s：爆发动作，冲刺、腾空、摔投或武器反击。
+13-15s：升格冲击后回到实时，留半秒到一秒余韵。
+```
+
+For 30s split into two 15s prompts:
+
+- Segment 1: pressure, first exchange, incomplete reversal, tail-frame danger.
+- Segment 2: continuation from tail frame, tactical reversal, finishing impact, aftermath.
+
 ### Safety and Negative Constraints
 
 Use explicit constraints:
@@ -803,6 +920,130 @@ Use explicit constraints:
 - If spatial direction is unclear, anchor the fighters: `A在画面左侧，B在画面右侧`, then maintain screen direction.
 - If impact lacks weight, add stance, momentum transfer, floor reaction, dust, cloth movement, and a short camera shake.
 - If the crowd distracts, describe them as dark silhouettes forming a fixed semicircle.
+
+### Suppression Burst -> Dead Pause -> Finishing Stunt Rhythm
+
+Use this pattern for an intense staged fight where one character overwhelms another, then the scene breathes for a moment before a final cinematic stunt impact. Best for abandoned classroom, warehouse, underground ring, hallway, locker room, train carriage, or other confined spaces with breakable environment.
+
+This pattern is different from exchange-based choreography. It has three dramatic phases:
+
+1. **压制连击 / Suppression burst**: one fighter pins or restricts the other and delivers rapid close-range stunt strikes.
+2. **死寂停顿 / Dead pause**: the aggressor releases, steps back, both breathe, and the space becomes tense.
+3. **终结式特技冲击 / Finishing stunt impact**: the aggressor sprints, jumps, kicks, throws, tackles, or slams the opponent into a controlled breakaway environment.
+
+Recommended structure:
+
+```text
+镜头一（00:00-00:05）
+主体：A在画面左侧，B在画面右侧，B被压制在{家具/墙面/擂台边/车厢座椅}前。
+动作：
+00:00-00:01：A用{手/前臂/衣领抓握/肩膀顶压}限制B的移动。
+00:01-00:04：A连续打出近距离快速电影特技拳击/肘击/膝击；B后仰、防守、承受冲击，身体被环境限制。
+00:04-00:05：连击节奏达到顶点，镜头随每次击打产生短促震动。
+摄影机：中景手持，机位基本固定，每次打击短促剧烈震动，可使用轻微鱼眼暗角制造幽闭压迫。
+
+镜头二（00:05-00:08）
+主体：A松开B，B靠在即将倒塌的支撑物旁。
+动作：
+00:05-00:06：A后退半步或一步，双臂下垂，急促喘息，眼神仍锁定B。
+00:06-00:08：B失去支撑，靠住{椅背/墙面/栏杆/桌沿}，神情涣散但仍努力站立。
+摄影机：中景轻微拉远，手持微动，节奏从剧烈转为压抑停顿。
+
+镜头三（00:08-00:15）
+主体：A从一侧快速冲刺，B在破败环境前摇晃站立。
+动作：
+00:08-00:10：A突然助跑，头发、衣摆、外套随动作扬起。
+00:10-00:12：A腾空跃起或爆发前冲，做出高位特技飞踢/肩撞/膝撞/过肩摔，攻击目标为上胸、肩部、躯干等非致命区域；动作可进入明显慢镜头。
+00:12-00:13：击中瞬间摄影机几乎定格，环境道具爆裂倒塌，木屑、灰尘、碎片在逆光中扬起；B以受控特技动作向后倒飞或摔落。
+00:13-00:15：B落地后昏沉失力但仍存活，A落地停在前景急促喘息，最终画面停在一片狼藉的全景。
+摄影机：全景快速平移跟随助跑；飞踢或撞击瞬间切入动作特写和慢动作；随后镜头下摇或横移跟随倒飞/落地，最终停在环境破坏后的全景。
+```
+
+Key writing points:
+
+- Make the initial restriction clear: collar grip, shoulder pin, forearm press, wall pin, chair/table limit, cage edge.
+- Rapid strikes should remain staged and non-lethal. Avoid detailed gore; use impact, breath, recoil, furniture vibration, dust.
+- The pause is essential. It gives the viewer time to feel the previous impact and prepares the final burst.
+- The finishing stunt should target non-lethal areas such as upper chest, shoulder, torso, midline, or controlled side impact.
+- Environmental breakaway must be readable: stacked desks, broken chairs, wooden crates, cardboard boxes, padded railing, breakaway wall panels.
+- Use lighting particles to sell impact: dust in side backlight, wood chips in cold light, fabric and hair movement.
+- Keep identities stable during fast movement: repeat hair color, hairstyle, clothing, and visual anchors in every shot.
+
+Useful style phrases:
+
+- `压迫、暴烈、幽闭，冷灰蓝色调，高频打击震动`
+- `爆发前的短暂死寂，窒息般的对峙感`
+- `高冲击电影动作特技，强烈光影反差，高潮后归于残酷死寂`
+- `鱼眼镜头暗角与轻微畸变，手持摄影的物理震动感`
+- `百叶窗强烈侧逆光，光柱中漂浮灰尘颗粒`
+
+Safety constraints for this rhythm:
+
+```text
+仅表现电影特技打斗，非致命，无血腥、无死亡、无骨折、无颈部折断、无开放伤口、无明确重伤；角色落地为受控特技动作，仍然存活；保持角色脸部、发色、身材、服装一致。
+```
+
+### Epic Crowd Fight / Protector Entrance
+
+Use this pattern for cinematic crowd fights where a central character is surrounded and a protector or hero enters to break the siege: palace coups, throne hall sieges, bodyguard rescues, battlefield entrances, gang encirclement, spear/sword heroics, and multi-segment continuation using previous final frames.
+
+This pattern is about action staging, character hierarchy, continuity, and camera movement. Do not force a 3D animation style unless the user explicitly requests it.
+
+Core cinematic intent:
+
+```text
+电影感史诗群战，主角被层层包围，护卫/将军/英雄作为动作锚点强势入场，利用长兵器横扫、飞踢、冲刺、慢动作冲击和高速跟拍打破围困。画面强调人物站位、群体压力、角色连续性、空间层级和强烈冲击感。
+```
+
+Continuity rules:
+
+- Preserve the same visual style across all segments, but let the style follow the user's requested medium: live-action cinematic, realistic period drama, stylized fantasy, 3D animation, etc.
+- State that character faces, costumes, hairstyles, weapons, soldier designs, and location remain consistent with previous segment/reference material.
+- If continuing, start with `生成上个视频最后一帧画面衔接后续剧情` or `开头延续上一条尾帧`.
+- Use material references explicitly when present, e.g. `公主和古代士兵们站位参考素材1`, `上个视频最后一帧参考素材2`.
+- Keep the location name consistent, such as `金銮殿`, `废弃教室`, `地下擂台`, `宫门台阶`, or the user's exact scene label.
+
+Recommended segment structures:
+
+**1. Encirclement setup, 5-8s**
+
+```text
+画面一：低角度侧面跟拍核心人物走向权力中心或空间中心，镜头缓慢上移推进到侧脸特写；人物眼神一横，单臂发力甩袖/拔剑/抬手，衣袍或武器在空中划出巨大弧度。动作同步瞬间镜头拉远至全景，核心人物被士兵/敌人近距离团团围住。
+画面二：切到多位敌人面部近景，敌人高举武器准备进攻，齐声怒喝关键台词。禁止背景音乐，仅保留环境音效和人声，禁止字幕。
+```
+
+**2. Protector entrance and crowd fight, 12-15s**
+
+```text
+画面一：保护者从高处落下或从人群外高速切入，落在被保护者正前方，挥动长枪/长刀/剑鞘/盾牌横扫重击击倒前排数名敌人；如有台词，语气冰冷狠厉。随后切到对角线构图，左右分别为保护者与被保护者面部特写，表情贴合身份。
+画面二：镜头紧跟保护者继续在人群中打斗，长兵器横扫、短促飞踢、肩撞、转身回击，多段分镜切换，环绕高速跟拍、慢动作、面部特写、高速摄影跟拍交替使用。敌人密集簇拥、层层包围，保护者重击多个敌人，动作一气呵成，画面冲击力强。
+```
+
+**3. Tail-frame continuation, 5-8s**
+
+```text
+画面一：生成上个视频最后一帧画面衔接后续剧情，镜头拉远到中远景，保护者与被保护者相互靠近或并肩站立，合力御敌。无台词，仅生成打斗音效和环境音效，不配背景音乐，禁止字幕。
+```
+
+Action design rules:
+
+- For mass fights, do not ask every enemy to perform unique actions. Use `前排数名敌人`, `叛军层层包围`, `敌人密集簇拥`, and keep one hero action as the visual anchor.
+- Hero action can be heightened but should match the requested tone: falling from above, spear sweep, flying kick, shield charge, high-speed tracking, slow motion impact.
+- Maintain readable hierarchy: protected character as emotional center, protector as action anchor, soldiers/enemies as surrounding pressure.
+- Combine fast action with one or two hero close-ups to preserve character emotion and identity.
+- If the scene is very crowded, use wide shots for geography and close-ups for identity, not medium shots full of indistinct bodies.
+
+Sound and text constraints:
+
+```text
+禁止配背景音乐，仅生成打斗音效、环境音效、怒喝声、兵器碰撞声、脚步声、衣袍破风声。禁止画面生成字幕。
+```
+
+Negative constraints:
+
+```text
+保持角色外貌、服装、发型、武器和敌方造型一致，不要风格漂移，不要字幕水印，不要角色脸部变形，不要服装发型跳变，不要敌人数量失控导致主体丢失，不要武器变形，不要动作穿模。
+```
 
 ## Dialogue and Offscreen Lines
 
