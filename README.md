@@ -24,6 +24,36 @@
 - 依赖大量屏幕文字、字幕、UI 内容才能理解的画面
 - 露骨性内容、未成年人性化、非自愿性内容、过度血腥内容
 
+## 更新日志
+
+后续每次更新 skill 规则、参考库、案例或通用提示词版本时，请同步维护本节。
+
+### v0.3.0 - 电影化规则增强
+
+- 完善超近面部长镜头情绪弧系统，不再只服务哭戏，可扩展到羞怯、爱意、黑化、决绝、愧疚、恐惧等情绪。
+- 新增格斗动作编排规则，强调攻击路线、防守反应、接触点、重心变化、摄影机响应和安全约束。
+- 优化剧情续写、参考图提示词和质量自检逻辑，让多段视频生成更容易保持人物、场景和关键道具一致。
+
+### v0.2.0 - 案例展示增强
+
+- README 新增三个视频案例：情绪特写、悬疑、多人对话戏。
+- 每个案例增加原始剧情、调用方式、生成视频和可展开的 skill 输出内容。
+- 增加 `assets/demos/` 示例视频目录，方便用户直观看到提示词效果。
+
+### v0.1.0 - 通用发布版
+
+- 整理发布版目录结构，保留可安装的 `cinematic-video-prompt-engineer/` skill 文件夹。
+- 新增 `PROMPT_VERSION.md`，支持 Claude、ChatGPT、DeepSeek、Kimi、通义、豆包等非 Codex 工具复制使用。
+- 新增 `docs/PROJECT_HANDOFF.md`，记录项目定位、适用范围、维护规则和后续完善方向。
+
+## 作者
+
+赛博杰尼
+
+- 抖音：[https://v.douyin.com/xWmvnWdJUS8/](https://v.douyin.com/xWmvnWdJUS8/)
+- X：[https://x.com/Merak1990](https://x.com/Merak1990)
+- 公众号：Newshare
+
 ## 安装
 
 把仓库里的 `cinematic-video-prompt-engineer` 文件夹复制到你的 Codex skills 目录。
