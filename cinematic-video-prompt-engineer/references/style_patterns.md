@@ -538,6 +538,9 @@ Sound should shape emotion and structure. Prefer concrete diegetic sound over ge
 
 ### General Sound Rules
 
+- Default to no background music unless the user explicitly asks for music or the scene specifically requires source music. Write `无配乐/不要背景音乐，只保留必要台词人声、环境声、动作音效和物体声`.
+- Keep sound grounded in the scene: dialogue/voice, breath, footsteps, cloth, props, impacts, machinery, room tone, weather, crowd texture, and environmental sound.
+- Avoid generic score words such as `dramatic music`, `epic BGM`, `sad piano`, or `tense soundtrack` unless music is explicitly requested.
 - Use sound to mark turns: a phone vibration, cup click, door lock, monitor beep, thunder, or engine start can carry the story beat.
 - Let key dialogue breathe. Do not bury it under music or loud ambience.
 - Use sound reduction when shock happens: environment becomes muffled, then one small sound becomes sharp.
@@ -921,6 +924,73 @@ Use explicit constraints:
 - If impact lacks weight, add stance, momentum transfer, floor reaction, dust, cloth movement, and a short camera shake.
 - If the crowd distracts, describe them as dark silhouettes forming a fixed semicircle.
 
+## Tavern Brawl / Environmental Fight Pattern
+
+Use this for messy but readable fights in taverns, inns, warehouses, gambling rooms, markets, docks, alleys, or any place where the environment is part of the choreography. This pattern differs from clean ring combat: the scene should use furniture, bottles, pillars, stairs, railings, walls, lamps, dust, and bystanders as action texture.
+
+### Environmental Action Logic
+
+- Start each beat with a clear spatial anchor: who is near the table, pillar, stairs, counter, door, wall, or crowd.
+- Make the environment react to impact: table legs scrape, stool flips, wine jars shatter, dust bursts, wooden planks crack, lamps swing, crowd backs away.
+- Use objects as temporary obstacles, shields, or impact surfaces, not random decoration.
+- Keep one active action per beat. If a fighter kicks a stool, the stool's path and effect should be clear.
+- Write the cause-and-effect chain: body movement -> object contact -> object reaction -> opponent reaction -> camera reaction.
+- Use short environmental aftermath to sell weight: broken wood settles, liquid spreads, dust hangs in light, bystanders freeze or step back.
+
+### Body and Object Contact Points
+
+Useful contact points:
+
+- palm hits table edge
+- shoulder drives opponent into pillar
+- boot hooks stool leg
+- elbow knocks wine jar aside
+- forearm blocks bottle swing
+- knee pins opponent against table
+- back slams into wooden wall
+- hand grabs collar or belt before throw
+- opponent rolls across tabletop and knocks bowls aside
+
+Typical phrase:
+
+```text
+他右肩压低撞进对手胸口，对手后背重重撞上木柱，柱上的油灯剧烈晃动，桌边酒碗被震得跳起半寸，镜头跟着冲击短促一震。
+```
+
+### Camera Switching for Environmental Fights
+
+- Establishing shot first: show room layout, fighters, crowd, tables, door, stairs, or counter.
+- Medium handheld tracking for body movement through space.
+- Low-angle close shot for kicks, stool sweeps, feet sliding, and floor impact.
+- Over-shoulder shot for an incoming object or surprise attack.
+- Fast pan or whip pan only when following a thrown body/object; keep the landing clear.
+- Short impact shake on collision with table, pillar, wall, or floor.
+- Cut to close-up of object reaction only if it helps clarity: cracking tabletop, spinning bottle, dust burst, blade or fist stopping short.
+- After a big impact, hold half a beat so the viewer understands the result before the next attack.
+
+### Shot Beat Template
+
+```text
+SHOT X（00:00-00:04）
+Subject:
+A在木桌左侧，B在柜台前，围观者贴墙后退，桌椅形成狭窄通道。
+
+Action:
+-00:01：A侧身避开B挥来的酒坛，酒坛擦过肩侧砸上木柱。
+-00:02：A左手按住桌沿，右脚勾起地上的木凳踢向B膝前，迫使B后撤。
+-00:03：B抬臂挡开木凳，碎木和灰尘飞起；A借遮挡抢进半步，用肩膀顶向B胸口。
+-00:04：B后背撞上柜台，柜台上的酒碗连串震落，围观者惊呼散开。
+
+Camera:
+手持中景横移跟拍，木凳飞过镜头前方时短促模糊；撞上柜台瞬间镜头轻震，随后停半拍确认结果。
+```
+
+### Tavern Brawl Negative Constraints
+
+```text
+不要人群冲入打斗，不要道具随机漂浮，不要桌椅位置跳变，不要动作穿模，不要多余肢体，不要过度动态模糊，不要血腥伤害。
+```
+
 ### Suppression Burst -> Dead Pause -> Finishing Stunt Rhythm
 
 Use this pattern for an intense staged fight where one character overwhelms another, then the scene breathes for a moment before a final cinematic stunt impact. Best for abandoned classroom, warehouse, underground ring, hallway, locker room, train carriage, or other confined spaces with breakable environment.
@@ -1131,6 +1201,107 @@ Examples:
 - Do not write large crowd scenes without a visual anchor.
 - Do not write long dialogue at the final second. Give reaction and aftertaste.
 
+## Director-Level Shot Continuity Rules
+
+Use these rules when writing multi-shot prompts. They make the prompt feel directed and editable, not just visually descriptive.
+
+### Shot Size Progression
+
+Avoid cutting between two adjacent shot sizes that are too close, because it can feel like a jump cut rather than an intentional edit.
+
+Avoid:
+
+- 全景 -> 中景
+- 中景 -> 近景
+- 近景 -> 特写
+- 特写 -> 大特写
+
+Prefer stronger size contrast or a motivated bridge:
+
+- 全景 -> 近景 / 特写
+- 中景 -> 特写 / 大特写
+- 特写 -> 中景 / 全景
+- 全景 -> 环境道具插入 -> 特写
+
+If adjacent shot sizes are necessary, motivate the cut with action, sound, eyeline, object movement, or a clear emotional turn.
+
+### Camera Angle Change
+
+When cutting between shots of the same subject or same interaction, change the camera's horizontal angle by at least 30 degrees. This prevents awkward jump cuts and gives the edit a real perspective shift.
+
+Examples:
+
+- Shot 1: front-left 3/4 angle.
+- Shot 2: side angle over the other character's shoulder, at least 30 degrees away.
+- Shot 3: reverse angle or object insert.
+
+Do not write repeated same-angle close-ups unless the scene intentionally uses a locked-off long take.
+
+### Insert / Transitional Shots
+
+Use insert shots when the scene needs breathing room or when long dialogue needs visual punctuation.
+
+Good inserts:
+
+- a hand tightening around a cup
+- rain running down a car window
+- a phone screen going dark
+- chopsticks stopping above a bowl
+- a candle flame shaking
+- a ring, letter, key, cup, sword, music box, or old sweater
+- empty chair, doorway, hallway, window reflection
+
+Use inserts to:
+
+- break long dialogue without losing tension
+- show what a character avoids saying
+- create a pause before a reveal
+- bridge between two similar shot sizes
+- give the editor a cutaway
+
+Do not overuse inserts. In a 10-15s prompt, 1-2 inserts are usually enough.
+
+### Ending Breath
+
+Do not end the video on a line delivery, sudden facial expression, or unfinished action unless the user explicitly wants an abrupt cut. Leave 1-2 seconds for:
+
+- a silent reaction
+- breath settling
+- eye contact holding
+- sound tail
+- the object after the action
+- a character choosing not to speak
+- a held frame for the next segment's tail-frame reference
+
+This is especially important for dialogue, crying, confession, shock, and confrontation scenes.
+
+### Match-on-Action Editing
+
+When one action is important, split it across two different shot sizes or angles so the edit feels intentional.
+
+Pattern:
+
+```text
+镜头01：中景，角色抬手伸向门把手，动作开始。
+镜头02：特写，手指握住门把手并缓慢转动，延续同一动作。
+```
+
+Good match actions:
+
+- reaching for a cup, ring, key, letter, sword, phone, door handle
+- turning the head to look back
+- raising a hand to wipe tears
+- sitting down, standing up, stepping forward
+- drawing a blade or pushing it back into the sheath
+- starting a punch in medium shot, landing/parrying in close shot
+
+Rules:
+
+- The second shot should continue the same action, not restart it.
+- Change shot size and horizontal camera angle.
+- Keep object hand/side continuity clear.
+- Use this to make simple actions feel cinematic without adding extra plot.
+
 ## Continuation and Tail-Frame Workflow
 
 Use when the user says `继续`, `接着往下写`, `下一段`, `下一镜`, `延续上一条`, or wants to use the previous video's tail frame as reference.
@@ -1309,6 +1480,7 @@ Use negative constraints only when they prevent likely generation failure:
 
 - 不要卡通感，不要塑料皮肤，不要过度磨皮。
 - 不要错误文字、水印、字幕。
+- 不要背景音乐，不要额外配乐；只保留必要台词人声、环境声、动作音效、物体声。
 - 不要多余肢体、脸部畸变、动作穿模。
 - 不要过度快剪 if continuity matters.
 
@@ -1319,7 +1491,7 @@ Pick the smallest useful set for the scene. Avoid bloated lists that repeat ever
 **Universal core**
 
 ```text
-负面约束：不要字幕水印，不要脸部畸变，不要多余手指或肢体，不要卡通感。
+负面约束：不要字幕水印，不要背景音乐，不要脸部畸变，不要多余手指或肢体，不要卡通感。
 ```
 
 When the scene has no visible hands or full body, omit hand/body constraints.
@@ -1435,7 +1607,7 @@ Omit or shorten them when:
 Minimum fallback:
 
 ```text
-负面约束：不要字幕水印，不要脸部畸变，不要风格跑偏。
+负面约束：不要字幕水印，不要背景音乐，不要脸部畸变，不要风格跑偏。
 ```
 
 ## Quality Self-Check
@@ -1474,6 +1646,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Are phone calls, doctor/police notices, confessions, breakups, voice messages, or offscreen lines concrete?
 - Is key dialogue short enough for the time block?
 - Does sound design include concrete diegetic sound rather than generic music?
+- Does the prompt avoid background music by default and keep only necessary dialogue/voice, ambient sound, Foley, movement, object, and action sound effects?
 - Is silence or sound reduction used when it would strengthen shock, tension, or aftermath?
 
 ### Character Performance
@@ -1492,6 +1665,11 @@ Run this silently before giving the final answer. Do not print it unless the use
 - For large scenes, is there one visual anchor the model can follow?
 - For product/person texture scenes, are materials, tactile details, and light concrete?
 - For memory/dream scenes, is there a transition anchor such as sound, object, gesture, or match cut?
+- In multi-shot prompts, do adjacent shots avoid overly similar shot sizes unless motivated?
+- When cutting between shots of the same subject, does the camera angle change by at least 30 degrees?
+- Are insert shots used when long dialogue or emotional pauses need breathing room?
+- Does the ending leave a 1-2s performance pause or visual/sound tail?
+- If one action is split across shots, does the second shot continue the same action with match-on-action continuity?
 
 ### Negative Constraints
 
