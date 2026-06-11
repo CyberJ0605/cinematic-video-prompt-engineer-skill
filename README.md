@@ -51,7 +51,7 @@
 赛博杰尼
 
 - 抖音：[https://v.douyin.com/xWmvnWdJUS8/](https://v.douyin.com/xWmvnWdJUS8/)
-- X：[https://x.com/Merak1990](https://x.com/Merak1990)
+- X：[https://x.com/CyberJ0605](https://x.com/CyberJ0605)
 - 公众号：Newshare
 
 ## 安装
