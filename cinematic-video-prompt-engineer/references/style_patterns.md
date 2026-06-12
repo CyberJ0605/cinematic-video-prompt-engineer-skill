@@ -58,6 +58,96 @@ Write emotions as body evidence:
 - 决绝: still gaze, no blinking, body leans forward before action, breath stops then releases.
 - 自由: posture opens, hair and clothes catch wind, eyes lock onto distant light, a small fearless smile.
 
+## Intense Emotional Scene Director Chain
+
+Use this for emotional confrontation, restraint breaking, confession, betrayal, reunion, intimacy, or any scene where an internal conflict becomes a decisive physical action.
+
+### Performance Chain
+
+Build the scene in this order:
+
+```text
+内在冲突 -> 生理反应 -> 微表情 -> 贯穿动作锚点 -> 决定性行为
+```
+
+Example logic:
+
+```text
+角色内心渴望靠近，却表面死守边界；因此眼睑颤动、咬肌绷紧、喉结干咽；手指持续绞紧衣料；当防线崩塌时，手先松开、悬停，最后才完成靠近或触碰。
+```
+
+### Recurring Action Anchor
+
+Choose one small action or prop to carry the emotional continuity:
+
+- gripping and releasing a bedsheet, sleeve, cup, letter, ring, door handle, phone, sword hilt, or chair edge
+- a hand reaching halfway, freezing, withdrawing, then finally completing the action
+- breath repeatedly stopping and restarting
+- gaze avoiding, returning, then locking onto the other person
+
+The anchor must evolve with the emotion. Do not reset the hand, prop, or posture between time blocks.
+
+### Physical Space Before Large Movement
+
+If the scene moves from ECU/CU into a large body action, prepare the frame first:
+
+```text
+大动作前 -> 镜头拉开或快速后撤 -> 留出身体运动空间 -> 跟随动作改变机位/构图
+```
+
+Use this before:
+
+- standing, falling, turning over, embracing, pushing away
+- full-body confrontation or physical struggle
+- throws, tackles, large costume movement
+
+Avoid asking an ECU shot to suddenly show a complex full-body action without a framing transition.
+
+### Action-Motivated Camera
+
+Camera movement should be caused by performance:
+
+- gaze shift -> slight pan
+- head lowering/raising -> tilt down/up
+- emotional approach -> slow push-in
+- sudden full-body movement -> snap pull-back or wider reframing
+- fall or drop -> controlled tilt down
+- retreat -> backward tracking
+
+Do not add camera movement only to make the prompt sound cinematic.
+
+### Action-Light-Sound Binding
+
+Bind the same action to visual and sonic consequences:
+
+- body crosses blinds -> light stripes break and move across skin
+- hand releases fabric -> cloth tension and friction sound change
+- turn or fall on bed/floor -> mattress, sheet, floor, dust, or furniture reacts
+- object contact -> one clear impact sound and a visible environmental response
+
+This creates one readable event instead of three unrelated descriptions.
+
+### Internal Beats in a Single Take
+
+A one-take scene still needs internal dramatic sections. Use 2-4 beats such as:
+
+```text
+压抑建立 -> 关系刺激 -> 防线松动 -> 决定性行为 -> 余韵
+```
+
+Keep camera continuity, but let framing, distance, gaze, action anchor, light, and sound evolve at each beat.
+
+### Dialogue Performance Conditions
+
+When dialogue is important, attach it to performance conditions:
+
+- exact action moment when the line begins
+- voice volume, breath, pace, and vocal texture
+- physiological state such as swallowing, broken breath, clenched jaw
+- listener's immediate reaction
+
+Keep the line short enough for the assigned time.
+
 ## Long Facial Close-Up Micro-Expression Timeline
 
 Use this pattern when a long head or face close-up must carry the emotion. It is especially useful for quiet grief, restraint, guilt, disappointment, shock, or emotional freezing. The goal is natural transition, not sudden expression jumps.
@@ -777,6 +867,35 @@ Use this for staged combat, close-quarters fighting, underground ring scenes, wu
 - Camera should respond to the action: handheld follow, low-angle tracking, short shake on near impact, tilt up during lift, snap tilt down on landing.
 - Surrounding crowd should be background pressure only, not extra fighters unless the user asks.
 - Keep safety and taste clear: staged, non-lethal, no gore, no real injury emphasis.
+
+### Fight Prompt Length Budget
+
+The copy-ready fight prompt must stay under 2000 Chinese characters. This excludes `剧情诊断`, `电影化改写策略`, and optional reference-image prompts.
+
+Recommended budget for a 10-15s fight:
+
+- 1300-1800 Chinese characters total.
+- 2-3 shots maximum.
+- 6-10 timed action beats total.
+- 2-4 active actions per shot.
+- One short line each for environment, camera, style, and constraints; merge repeated information into the opening summary.
+
+Compression rules:
+
+- State character appearance and wardrobe once; do not repeat them in every shot.
+- State the location and overall light once; each shot only mentions new environmental reactions.
+- Combine attack route, defense, and contact point into one concise beat.
+- Do not repeat `真实重量感`, `手持摄影`, `无血腥`, or continuity constraints under every shot.
+- Keep only action details that affect readability, physics, continuity, camera response, or model stability.
+- If more than 10 action beats are needed, split into two consecutive prompts and use the first segment's tail frame as reference.
+
+Compact action beat example:
+
+```text
+-00:03：A右直拳攻向面门；B左脚后撤侧闪，以前臂向外格开拳腕，顺势横移出拳线。
+```
+
+Avoid expanding one beat into separate lines for intention, movement, contact, and result unless the action would otherwise be ambiguous.
 
 ### Recommended Structure
 
@@ -1625,6 +1744,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 ### Prompt Usability
 
 - Is the final prompt copy-ready and under 2000 Chinese characters when possible?
+- For fight prompts, has the copy-ready final prompt been kept strictly under 2000 Chinese characters, preferably 1300-1800, with no more than 2-3 shots and 6-10 action beats?
 - Is there no empty boilerplate such as `视频模型：通用 AI 视频模型`?
 - Does the first summary line include duration and structure?
 - Are technical terms useful rather than decorative?
@@ -1652,6 +1772,8 @@ Run this silently before giving the final answer. Do not print it unless the use
 ### Character Performance
 
 - Are emotions expressed through eyes, lips, jaw, breath, hands, posture, and timing?
+- For intense emotional scenes, is there a continuous chain from inner conflict to physiological reaction, micro-expression, action anchor, and decisive behavior?
+- Does the recurring hand/prop/posture anchor evolve continuously instead of resetting between beats?
 - For long close-ups, is there a smooth micro-expression timeline with no sudden jump?
 - Are 3-5 micro-expression beats chosen instead of an overloaded facial-action list?
 - Is the performance natural for the character's situation, age, status, and relationship?
@@ -1660,6 +1782,8 @@ Run this silently before giving the final answer. Do not print it unless the use
 ### Camera and Visual Logic
 
 - Is the camera movement physically plausible?
+- Is camera movement motivated by gaze, body movement, emotional distance, or object interaction rather than decoration?
+- Before a large body action, does the framing create enough physical space to show it clearly?
 - Does each shot have a clear subject and composition?
 - For action or crowd scenes, is spatial direction clear?
 - For large scenes, is there one visual anchor the model can follow?
@@ -1670,6 +1794,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Are insert shots used when long dialogue or emotional pauses need breathing room?
 - Does the ending leave a 1-2s performance pause or visual/sound tail?
 - If one action is split across shots, does the second shot continue the same action with match-on-action continuity?
+- Are action, light change, environmental reaction, and sound effect bound to the same readable event where appropriate?
 
 ### Negative Constraints
 

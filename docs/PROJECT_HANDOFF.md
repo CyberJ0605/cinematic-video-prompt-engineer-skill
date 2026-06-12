@@ -445,3 +445,13 @@ cinematic-video-prompt-engineer/
 - 新样本先归纳成规则，再加入参考库
 - 不确定是否通用的写法，先作为“实验模板”保留，不立刻变成硬规则
 
+## 发布检查清单
+
+每次向 GitHub 发布新版本时，必须同步完成：
+
+1. 将工作区最新版 `SKILL.md` 和 `references/style_patterns.md` 同步到发布仓库中的 skill 目录。
+2. 如果核心规则有变化，同步更新 `PROMPT_VERSION.md`，确保非 Codex 用户使用的通用版本不过期。
+3. 在 `README.md` 的“更新日志”顶部新增版本条目，写明版本号、日期和本次主要变化。
+4. 检查 README 案例、安装说明、作者信息和适用范围是否仍然准确。
+5. 查看 `git diff --stat` 和 `git status`，确认没有遗漏或误提交文件。
+6. 提交后推送到 GitHub，并确认本地分支不再显示 `ahead`。
