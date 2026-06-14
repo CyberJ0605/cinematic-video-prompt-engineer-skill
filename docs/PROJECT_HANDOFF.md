@@ -377,10 +377,22 @@ skill 已支持剧情续写。
 
 - 武侠 / 打戏 / 动作设计规则库
 - 更强的身体运动链写法：步法、重心、攻击方向、接触点、反制逻辑
-- 不同视频模型的适配差异，如 Kling、Seedance、Veo、Runway
 - 更多非悲伤情绪的超近面部长镜头模板
 - 更多商业产品场景和品牌质感提示词
 - 更系统的分享说明或 GitHub 发布结构
+
+已新增但需要持续回归测试：
+
+- 180 度轴线、视线匹配、出入画方向、持物手和状态连续性
+- 台词时长估算与说话前后反应预算
+- 正式评测集 `references/evaluation_cases.md`
+- 自动压缩阶梯：先删重复与装饰，再合并动作，最后才拆分
+- 人物一致性档案与多人关系档案
+- 场景空间连续性档案与逐镜头状态变化记录
+- 参考图按身份、双人关系、纯场景、关键道具、首帧、尾帧分类选择
+- 精简模式、打磨模式、连续短片模式
+
+模型策略：暂不建立不同模型的适配分支；用户未指定模型时，默认按 Seedance 2.0 / Kling 3.0 级别的高能力模型设计，同时不输出无意义的通用模型字段。
 
 ## 安装与路径状态
 
@@ -449,9 +461,10 @@ cinematic-video-prompt-engineer/
 
 每次向 GitHub 发布新版本时，必须同步完成：
 
-1. 将工作区最新版 `SKILL.md` 和 `references/style_patterns.md` 同步到发布仓库中的 skill 目录。
+1. 将工作区最新版 `SKILL.md`、`agents/openai.yaml`、`references/style_patterns.md` 和评测文件同步到发布仓库中的 skill 目录。
 2. 如果核心规则有变化，同步更新 `PROMPT_VERSION.md`，确保非 Codex 用户使用的通用版本不过期。
 3. 在 `README.md` 的“更新日志”顶部新增版本条目，写明版本号、日期和本次主要变化。
 4. 检查 README 案例、安装说明、作者信息和适用范围是否仍然准确。
-5. 查看 `git diff --stat` 和 `git status`，确认没有遗漏或误提交文件。
-6. 提交后推送到 GitHub，并确认本地分支不再显示 `ahead`。
+5. 同步更新 `D:\Codex\skills\cinematic-video-prompt-engineer` 中的本机安装版本。
+6. 查看 `git diff --stat` 和 `git status`，确认没有遗漏或误提交文件。
+7. 提交后推送到 GitHub，并确认本地分支不再显示 `ahead`。

@@ -1250,6 +1250,55 @@ Examples:
 医生摘下口罩，低声说："我们尽力了，但她没能撑过来。"
 ```
 
+### Dialogue Timing Budget
+
+Estimate delivery time before assigning dialogue to a shot. Count Chinese characters without punctuation as a practical approximation.
+
+Suggested Mandarin delivery rates:
+
+- 2-3 Chinese characters/second: whisper, grief, hesitation, restrained confession, breath-broken speech.
+- 3-4 Chinese characters/second: natural dramatic conversation.
+- 4-5 Chinese characters/second: urgent command, argument, panic; use sparingly because clarity and lip-sync become less stable.
+
+Suggested English delivery rates:
+
+- 1.5-2 words/second: whisper, emotional hesitation.
+- 2-3 words/second: natural dramatic speech.
+- 3-4 words/second: urgent speech; avoid long lines at this speed.
+
+Add time beyond spoken words:
+
+- 0.3-0.8s before a difficult line for breath, eye contact, or hesitation.
+- 0.3-0.8s for a meaningful pause inside the line.
+- 0.5-1.5s after the line for the listener's reaction.
+- 1-2s at the end of the video for performance or editing room.
+
+Practical formula:
+
+```text
+镜头所需时长 = 台词口播时间 + 说话前动作/停顿 + 对方反应 + 运镜完成时间
+```
+
+Examples:
+
+```text
+“我们尽力了，但她没能撑过来。”约14个汉字。
+克制、缓慢通知按2.5字/秒估算，纯口播约5.5秒；若镜头只有4秒，应缩短台词或拆分反应，不应强塞。
+```
+
+```text
+“所以你们只是通知我。”约10个汉字。
+自然压抑语速按3字/秒约3.3秒，再留1秒沉默反应，镜头至少约4.3秒。
+```
+
+Rules:
+
+- Do not assign two substantial lines plus a complex body action to a 2-3s shot.
+- If dialogue runs long, shorten the line before speeding up delivery.
+- Important lines should finish before the final 1-2s ending breath.
+- Offscreen dialogue still consumes time and must be budgeted.
+- Simultaneous overlapping lines should be short and intentionally motivated.
+
 ## Light and Atmosphere
 
 Make atmosphere physical:
@@ -1262,6 +1311,81 @@ Make atmosphere physical:
 - Engine vibration, cloth friction, footsteps on wood, room tone, breath, sudden silence.
 
 Prefer dynamic light over static adjectives. Say what the light does to the face, object, or space.
+
+## Output Modes
+
+Select the lightest mode that satisfies the user's workflow.
+
+### 精简模式 / Compact Mode
+
+Trigger examples: `直接给提示词`, `不要分析`, `只要成品`, `精简版`.
+
+Output:
+
+```text
+【最终视频提示词】
+...
+```
+
+Rules:
+
+- No visible diagnosis or strategy.
+- Omit references unless requested or essential.
+- Keep the final prompt compact and copy-ready.
+- Still run all diagnosis, timing, continuity, compression, and safety checks internally.
+
+### 打磨模式 / Workshop Mode
+
+Default for ordinary requests and iterative revision.
+
+Output:
+
+```text
+【剧情诊断】
+【电影化改写策略】
+【建议先生成的参考图】
+【最终视频提示词】
+```
+
+Rules:
+
+- Keep diagnosis and strategy concise and correctable.
+- Output only references that improve control.
+- The 2000-character ceiling applies only to the final video prompt.
+
+### 连续短片模式 / Continuous Short-Film Mode
+
+Use for long-story splits, repeated `继续`, multi-part episodes, or projects requiring stable recurring characters and locations.
+
+Output:
+
+```text
+【连续性摘要】
+角色档案：
+场景档案：
+上一段尾帧状态：
+本段推进：
+
+【参考资产】
+沿用：
+新增：
+更新状态：
+
+【本段最终视频提示词】
+...
+
+【下一段衔接锚点】
+尾帧构图：
+人物/道具状态：
+```
+
+Rules:
+
+- Keep canonical character and scene records stable across segments.
+- Each segment advances one main event or emotional turn.
+- Reuse previous tail frame by default.
+- Add reference prompts only for new visual anchors or meaningful state updates.
+- Each segment remains under 15s and its final prompt under 2000 characters.
 
 ## Structure Selection
 
@@ -1355,6 +1479,60 @@ Examples:
 - Shot 3: reverse angle or object insert.
 
 Do not write repeated same-angle close-ups unless the scene intentionally uses a locked-off long take.
+
+### 180-Degree Axis and Eyeline
+
+Establish an imaginary axis through the interacting characters or along the main direction of movement. Keep the camera on one side of that axis so screen positions and gaze directions remain understandable.
+
+For two-person dialogue:
+
+- If A is established on screen-left looking right, keep A looking right in later close-ups.
+- B should remain on screen-right looking left.
+- Over-the-shoulder reverse shots must preserve these eyelines.
+
+Cross the axis only when motivated by one of these methods:
+
+- show the camera physically moving across the axis
+- use a neutral shot directly on the axis
+- insert a clear re-establishing wide shot after the crossing
+- let a character visibly move across the axis and create a new spatial relationship
+
+Do not silently flip character positions between adjacent shots.
+
+### Screen Direction and Entry/Exit
+
+- A character exiting frame-right should normally enter the next connected space from frame-left, continuing the same travel direction.
+- In a chase, maintain pursuer and target screen direction unless the turn is shown.
+- In a fight, keep A/B screen positions stable until a visible pivot, pass, throw, or camera move changes them.
+- Vehicles, running characters, thrown objects, and gaze direction should preserve momentum across cuts.
+
+### Handedness, Props, Costume, and Body State
+
+Track continuity details across shots:
+
+- which hand holds the phone, cup, letter, sword, gun, ring, or bag
+- where the prop is placed after release
+- whether clothing is buttoned, wet, torn, dusty, or displaced
+- hair position, makeup tears, sweat, blood-free injury state, and visible marks
+- which cheek has a tear track or which sleeve is damaged
+- whether a character is standing, kneeling, seated, leaning, or facing a particular direction
+
+If a continuity state changes, show the action that changes it.
+
+### Spatial Continuity Record
+
+For dialogue, action, continuation, or multi-part scenes, internally track:
+
+```text
+人物A：画面位置 / 朝向 / 持物手 / 姿态
+人物B：画面位置 / 朝向 / 持物手 / 姿态
+关键道具：位置 / 状态
+主光源：方向 / 色温
+出入口：位置
+运动方向：左至右 / 右至左 / 向镜头 / 远离镜头
+```
+
+Do not print this record unless the user asks for a continuity sheet, but use it when writing the prompt.
 
 ### Insert / Transitional Shots
 
@@ -1502,9 +1680,187 @@ If the prompt exceeds 1300 characters, each extra detail must improve generation
 - Remove generic praise words like "高级", "震撼", "大片感" unless replaced by concrete light, motion, sound, or performance.
 - If more detail is required, split into multiple prompts instead of overloading one.
 
+### Automatic Compression Ladder
+
+When a final prompt is too long, compress in this order. Preserve story causality, action clarity, dialogue, continuity, and ending breath as long as possible.
+
+1. Remove repeated style adjectives and duplicate quality terms.
+2. Merge global setting, lighting, sound, and continuity details into the opening summary.
+3. Delete decorative details that do not change action, emotion, composition, or generation stability.
+4. Combine adjacent micro-expression beats that express the same emotional change.
+5. Combine attack, defense, contact point, and result into one concise action beat.
+6. Shorten dialogue while preserving the plot-changing meaning.
+7. Reduce insert shots and secondary crowd/environment reactions.
+8. Shorten negative constraints to the scene-specific minimum.
+9. Reduce shot count or action beat count.
+10. If the scene still cannot fit under 2000 characters or 15 seconds, split it at an emotional/action turning point.
+
+Never remove first:
+
+- the core plot turn
+- key spoken information
+- spatial direction and continuity anchors
+- attack-defense causality in fight scenes
+- the emotional reaction after the turning point
+- the final 1-2s breathing room
+
+Compressed formatting rules:
+
+- Prefer semicolon-separated action chains over repeated labels.
+- State lens/camera only when it changes or materially affects the shot.
+- Do not repeat `无配乐、无字幕、角色一致` under every shot; place them once in the summary or final constraints.
+- Replace long literary metaphors with visible behavior.
+
+### Compression Audit
+
+After compression, verify:
+
+- no missing cause-and-effect step
+- dialogue still fits its time
+- character/prop positions remain clear
+- ending breath remains
+- final prompt stays readable rather than becoming telegraphic fragments
+
+## Character Consistency Bible
+
+Use for recurring characters, reference-image workflows, long-story splits, and continuation. Keep one canonical profile per character and derive all image/video prompts from it.
+
+### Canonical Character Record
+
+```text
+角色ID/姓名：
+身份与时代：
+成年年龄：
+身高与体型：
+脸型与骨相：
+眼睛/眉毛/鼻唇特征：
+肤色与皮肤质感：
+发型/发色/发饰：
+基础妆容：
+主服装与材质：
+鞋履/配饰：
+习惯动作或姿态：
+声音基线：
+性格与情绪基线：
+不可变化项：
+可随剧情变化项：汗、泪、灰尘、伤痕、衣物状态等
+```
+
+Rules:
+
+- Keep identity traits stable; do not rewrite facial features with new synonyms that may drift the character.
+- Separate permanent traits from temporary state.
+- Use adult ages explicitly when romance, intimacy, combat, or nightlife is involved.
+- Keep one primary costume per continuous scene. Show any costume change on screen or state a time/location transition.
+- Track visible temporary state: wet hair, loosened hairpin, tear track, dusty sleeve, torn cuff, bruising, missing accessory.
+- In continuation, repeat only the identity anchors needed by the model, not the entire bible.
+
+### Multi-Character Relationship Record
+
+```text
+人物关系：
+身高/体型对比：
+权力关系：
+彼此称呼：
+基础距离感：
+谁主动/谁回避：
+对视与触碰边界：
+当前未解决冲突：
+```
+
+Use this to keep dialogue, blocking, intimacy, and confrontation consistent.
+
+## Scene Spatial Continuity Bible
+
+Use for multi-shot dialogue, action, continuation, and any location revisited across clips.
+
+### Canonical Scene Record
+
+```text
+场景ID/地点：
+时代与时间：
+天气：
+空间形状与尺度：
+前景：
+中景：
+背景：
+门窗/出入口位置：
+关键家具/障碍物：
+关键道具初始位置：
+主光源方向/色温：
+辅助光与实景光源：
+环境声床：
+主运动轴线：
+安全活动区/动作路径：
+不可变化项：
+可变化项：破损、烟尘、积水、灯光状态等
+```
+
+### Per-Shot Continuity Delta
+
+Do not rewrite the whole scene for every shot. Track only changes:
+
+```text
+镜头前状态：人物与道具位置
+本镜头动作：谁移动/拿起/放下/破坏什么
+镜头后状态：新的位置、朝向、持物手、物体状态
+```
+
+Rules:
+
+- A prop remains where it was placed until a visible action moves it.
+- Doors, windows, lights, chairs, vehicles, and breakable objects keep state across cuts.
+- Damage accumulates; broken glass, spilled water, dust, torn clothing, and extinguished lights do not reset.
+- For continuation, the tail frame becomes the next segment's initial scene state.
+- If moving into a new room or zone, show or clearly motivate the spatial transition.
+
 ## Visual Reference Image Prompt Patterns
 
 Use these optional text-to-image prompts as visual anchors before video generation. They are not the final video prompt. Keep them consistent with the final prompt. The user may generate these references first for more control, or skip them and generate video directly.
+
+### Reference Output Decision Strategy
+
+Choose references by the production problem being solved:
+
+| Need | Recommended Reference | Notes |
+|---|---|---|
+| Stable single character identity | Character identity reference | Neutral emotional baseline, clear face/hair/costume |
+| Two-character height, distance, or chemistry | Relationship/two-shot reference | Use only when blocking or physical relationship matters |
+| Stable room/location layout | Clean scene plate | No people; show entrances, depth, light sources, action path |
+| Story-critical object/product | Key prop/product reference | Only if its design must remain stable or readable |
+| Exact opening composition | First-frame reference | Match the first shot's framing and initial body state |
+| Continuation between clips | Previous tail frame | Preferred over regenerating the same scene |
+| New character in existing scene | New character reference only | Reuse existing scene and previous tail frame |
+| New location in continuation | New clean scene plate | Add only when the story actually enters the new location |
+
+Priority order:
+
+1. Previous tail frame, when continuing.
+2. Character identity reference, when faces must remain stable.
+3. Clean scene plate, when spatial layout matters.
+4. Relationship/two-shot reference, when blocking/chemistry matters.
+5. Key prop/product reference, only when central.
+
+Do not provide redundant references. A simple face close-up usually needs only one character reference. A complex period dialogue may need two character references plus one clean scene plate.
+
+### First-Frame vs Identity Reference
+
+- Identity reference: neutral or baseline expression, readable face/hair/costume; used to preserve who the character is.
+- First-frame reference: exact pose, framing, gaze, prop position, and scene state at video start; used to control how the shot begins.
+- Do not confuse them. A stylized portrait may preserve identity but be a poor first-frame reference.
+
+### Relationship / Two-Shot Reference
+
+Use when the video depends on height difference, seating positions, intimate distance, confrontation geometry, or who occupies visual power.
+
+Include:
+
+- both adult characters' identity anchors
+- screen-left/screen-right positions
+- body distance and eyelines
+- costume and height/体型 contrast
+- scene light and camera height
+- no complex action; this is a blocking reference
 
 ### Character Reference
 
@@ -1576,6 +1932,9 @@ Template:
 - Use 2 references for most scenes: character + scene.
 - Use 3 references only when a prop/product is central or the scene is historically/stylistically demanding.
 - Avoid giving separate reference prompts for every minor object.
+- In compact mode, omit reference prompts unless explicitly requested or essential for control.
+- In workshop mode, output only the recommended references and state that they are optional.
+- In continuous-short-film mode, maintain references as a reusable asset list and mark each as `沿用`, `新增`, or `更新状态`.
 
 ### Continuation References
 
@@ -1744,12 +2103,16 @@ Run this silently before giving the final answer. Do not print it unless the use
 ### Prompt Usability
 
 - Is the final prompt copy-ready and under 2000 Chinese characters when possible?
+- Is the chosen output mode appropriate to the user's request: compact, workshop, or continuous-short-film?
+- If the draft was too long, was the automatic compression ladder applied before splitting?
 - For fight prompts, has the copy-ready final prompt been kept strictly under 2000 Chinese characters, preferably 1300-1800, with no more than 2-3 shots and 6-10 action beats?
 - Is there no empty boilerplate such as `视频模型：通用 AI 视频模型`?
 - Does the first summary line include duration and structure?
 - Are technical terms useful rather than decorative?
 - Are abstract words translated into visible action, light, sound, object, or performance?
 - If reference-image prompts are included, are they optional, concise, and consistent with the final video prompt?
+- Are reference types selected by production need rather than outputting character, scene, and prop prompts mechanically?
+- Is an identity reference distinguished from an exact first-frame reference?
 - For continuation, does the next prompt start from the previous ending and preserve identity, scene, lighting, sound bed, and key props?
 
 ### Time and Rhythm
@@ -1765,6 +2128,8 @@ Run this silently before giving the final answer. Do not print it unless the use
 - If the plot implies a key spoken line, is the actual line written?
 - Are phone calls, doctor/police notices, confessions, breakups, voice messages, or offscreen lines concrete?
 - Is key dialogue short enough for the time block?
+- Has dialogue delivery time been estimated using an appropriate speech rate, including pauses and listener reaction?
+- Does the shot have enough time for dialogue, physical action, camera movement, and reaction without rushing?
 - Does sound design include concrete diegetic sound rather than generic music?
 - Does the prompt avoid background music by default and keep only necessary dialogue/voice, ambient sound, Foley, movement, object, and action sound effects?
 - Is silence or sound reduction used when it would strengthen shock, tension, or aftermath?
@@ -1778,6 +2143,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Are 3-5 micro-expression beats chosen instead of an overloaded facial-action list?
 - Is the performance natural for the character's situation, age, status, and relationship?
 - Are tears, crying, anger, or fear restrained unless the story specifically needs a large outburst?
+- For recurring characters, are permanent identity traits separated from temporary state such as tears, sweat, dust, injury, or costume damage?
 
 ### Camera and Visual Logic
 
@@ -1791,6 +2157,12 @@ Run this silently before giving the final answer. Do not print it unless the use
 - For memory/dream scenes, is there a transition anchor such as sound, object, gesture, or match cut?
 - In multi-shot prompts, do adjacent shots avoid overly similar shot sizes unless motivated?
 - When cutting between shots of the same subject, does the camera angle change by at least 30 degrees?
+- Is the 180-degree axis preserved, or is any axis crossing visibly motivated?
+- Do dialogue eyelines remain matched across reverse shots?
+- Are entry/exit and travel directions continuous across connected spaces?
+- Are handedness, prop position, costume state, tears/injury marks, and body posture continuous?
+- For recurring scenes, are doors, furniture, lights, damage, props, entrances, and action paths consistent with the scene bible?
+- In continuation, does the previous tail frame define the next initial state?
 - Are insert shots used when long dialogue or emotional pauses need breathing room?
 - Does the ending leave a 1-2s performance pause or visual/sound tail?
 - If one action is split across shots, does the second shot continue the same action with match-on-action continuity?

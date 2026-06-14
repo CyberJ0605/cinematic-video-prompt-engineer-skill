@@ -11,9 +11,15 @@ It can also continue a previous generated segment. When the user asks to continu
 
 ## Default Workflow
 
-Use two stages unless the user asks for only the final prompt.
+Choose an output mode from the user's intent. Default to workshop mode.
 
 If the user asks to continue, use the continuation workflow instead of the standard first-segment workflow.
+
+Output modes:
+
+- `精简模式`: final video prompt only; use when the user says `直接给提示词`, `不要分析`, or requests a compact result.
+- `打磨模式`: diagnosis, strategy, optional references, final prompt; default for ordinary creation and revision.
+- `连续短片模式`: continuity summary, character bible, scene continuity sheet, references, segmented/continued prompts, and tail-frame instructions; use for multi-part stories or repeated continuation.
 
 1. **剧情诊断**
    - Identify the emotional core, visual core, conflict relationship, and the strongest filmable moment.
@@ -36,8 +42,11 @@ If the user asks to continue, use the continuation workflow instead of the stand
    - Output one directly usable prompt.
    - Keep only the final prompt under 2000 Chinese characters when possible. This limit does not include the user's original plot, `剧情诊断`, or `电影化改写策略`. Do not treat 2000 characters as a target length.
    - Default final-prompt target: 800-1300 Chinese characters. Use 500-800 characters for simple one-person or one-action scenes. Use 1300-2000 characters only for complex scenes such as multi-person dialogue, large-scene compression, montage, long-story splits, or spatial action.
+   - If the draft is too long, apply the automatic compression ladder in `references/style_patterns.md` before recommending a split.
    - Use Chinese as the main language. Keep useful film terms in English when they clarify generation: `CU`, `MCU`, `LS`, `35mm`, `50mm`, `Push in`, `Tilt down`, `Handheld`, `Chiaroscuro`, `Lens Flare`, `Smash Cut to Black`.
    - Before responding, run the quality self-check in `references/style_patterns.md`. Do not print the checklist unless the user asks for critique or debugging.
+
+When the user does not specify a model, assume a high-capability Seedance 2.0 / Kling 3.0 class video model. Do not add a separate generic model field. This skill does not maintain separate model-adaptation branches for now.
 
 ## Duration Rules
 
@@ -93,12 +102,15 @@ Rules:
 - Emotion should progress, not restart. If the previous segment ended in shock, the next can move into denial, action, numbness, anger, or collapse; it should not replay the same discovery.
 - Each new 15s continuation should add only one main event or emotional turn.
 - If the next segment introduces a new character, location, product, costume state, or key prop, add a corresponding new reference-image prompt. If no new visual anchor appears, say to reuse the previous tail frame and existing references.
+- In continuous-short-film mode, maintain an internal character bible and scene continuity sheet. Print compact versions when they help the user generate multiple segments consistently.
 - If the user provides a new direction for the continuation, follow it. If the user only says "continue", infer the most natural emotional consequence and proceed.
 - Keep the next final prompt under the normal length targets and 15s maximum.
 
 ## Output Format
 
 Default format is workshop mode. Keep diagnosis and strategy visible so the user can correct the interpretation before reusing the final prompt. Keep these sections concise; the copy-ready final prompt is the main deliverable. Include optional visual reference prompts when they improve control.
+
+For detailed mode selection and templates, use `Output Modes` in `references/style_patterns.md`.
 
 ```text
 【剧情诊断】
@@ -150,6 +162,7 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 - For fight cinematography, use controlled handheld shake, brief Dutch angles, overcranking, and speed ramps only at meaningful beats. Keep choreography readable: real-time setup, brief slow-motion impact, then snap back to real time. See `Fight Scene Cinematography Rhythm` in `references/style_patterns.md`.
 - For cinematic crowd fights or protector-entrance action scenes, use the `Epic Crowd Fight / Protector Entrance` pattern in `references/style_patterns.md`. Preserve character/scene continuity across segments, use previous tail frames or material references when provided, keep one hero as the action anchor, and explicitly ban subtitles/background music if requested.
 - Use director-level shot continuity rules from `references/style_patterns.md`: avoid adjacent shot sizes that are too similar, change camera horizontal angle by at least 30 degrees when cutting, use insert shots when dialogue needs breathing room, leave ending breath, and use match-on-action when splitting one action across two shots.
+- Preserve 180-degree axis, eyeline, screen direction, handedness, prop position, costume/injury state, and entrance/exit continuity. Cross the axis only through a visible camera move, a neutral-axis shot, or a motivated re-establishing shot.
 - Convert feelings into behavior: eyes, breath, jaw, hands, posture, hesitation, stillness, impact, recovery.
 - Use the emotion-to-micro-expression map in `references/style_patterns.md` when the user names an emotion directly, such as shame, guilt, jealousy, relief, love, fear, grief, anger, revenge, numbness, or resolve. Translate the named emotion into 3-5 visible beats instead of using abstract labels.
 - Convert themes into physical motifs: wind, dust, glass reflection, streetlight stripes, rain on a window, paper trembling, cloth friction, engine vibration.
@@ -164,6 +177,7 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 - Sound is part of the shot: include environmental sound, breath, cloth, footsteps, machinery, silence, voiceover, or hard cuts when they shape the emotion.
 - Use the sound design library in `references/style_patterns.md` to choose scene-specific sound anchors. Default to no background music: keep only necessary dialogue/voice, ambient sound, room tone, Foley, movement, impact, object, and action sound effects. Prefer concrete diegetic sound over generic music: rain on glass, fluorescent hum, cloth friction, phone vibration, chair scraping, breath, footsteps, engine idle, distant broadcast, room tone, sudden silence.
 - If the plot implies a key spoken line, write the actual line in the final prompt. Do not hide important story beats behind vague phrases like "the doctor says the bad news" or "the caller tells her what happened." This includes phone calls, medical notices, police notices, confessions, breakups, voice messages, inner monologue, and offscreen dialogue. Keep dialogue short, natural, and timed to the shot.
+- Estimate dialogue delivery time before assigning shot duration. Use the dialogue timing budget in `references/style_patterns.md`; include pauses, breath, action, listener reaction, and 1-2s ending room rather than fitting words to the absolute limit.
 - For long head or face close-ups that carry emotion, use a micro-expression timeline: start from neutral expression, then gradually change eyes, lips, mouth corners, brow, breath, wet eyes, and tears. Avoid sudden expression jumps and exaggerated crying. See `references/style_patterns.md` for the long close-up pattern.
 - For ultra-close face long takes with dense emotion, use the `Ultra-Close Face Long Take: Emotional Arc System` in `references/style_patterns.md`. It is not only for crying scenes; adapt it to grief, shy love, guilt, fear, blackening, resolve, or other emotions. The key is a clear facial emotional waveform with stable camera, smooth transitions, and minimal body action.
 - For quiet emotional exhaustion, powerless grief, downcast silent crying, or a character collapsing inward after long restraint, use the `Exhausted Silent Collapse Arc` under that system.
@@ -180,6 +194,7 @@ Offer optional reference-image prompts when they help control identity, setting,
 - Key prop references should be used only when the object drives the story: old sweater, music box, letter, phone, car, sword, cup, ring.
 - Do not create too many references. Most scenes need 1-2. Complex historical, product, or large-scene prompts may need 2-3.
 - Keep all references consistent with the final video prompt.
+- Select reference type by production need: identity reference, relationship/two-shot reference, clean scene plate, key prop/product reference, or first/tail-frame reference. Do not output every type by default.
 
 Recommended counts:
 
@@ -200,3 +215,5 @@ Recommended counts:
 ## Style Reference
 
 When more guidance is needed, read `references/style_patterns.md`. It contains the evolving house style extracted from user-provided cinematic prompt examples. Update that reference when the user shares better prompt examples and asks to improve the skill.
+
+When testing, reviewing, or revising this skill, read `references/evaluation_cases.md` and run the relevant cases. Do not load the evaluation set during ordinary prompt generation.
