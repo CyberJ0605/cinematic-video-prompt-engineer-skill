@@ -1599,6 +1599,114 @@ Rules:
 - Keep object hand/side continuity clear.
 - Use this to make simple actions feel cinematic without adding extra plot.
 
+## Novel Excerpt to Cinematic Prompt
+
+Use this pattern when the user provides a novel paragraph, web-fiction excerpt, prose scene, or heavily internalized narrative.
+
+### Adaptation Principle
+
+Do not translate the prose sentence by sentence. A video prompt should preserve the dramatic intention and emotional turn, then rebuild it as a short playable scene.
+
+Priority order:
+
+1. Preserve the core relationship and conflict.
+2. Preserve the visible emotional turn.
+3. Preserve the key spoken line if it drives the plot.
+4. Preserve the most cinematic object, gesture, or environment motif.
+5. Compress or omit backstory, explanation, repeated description, and decorative metaphor.
+
+### Novel Text-Length Tiers
+
+Use length tiers before deciding whether to generate a final video prompt.
+
+- Under roughly 1500 Chinese characters: direct adaptation is usually allowed. Still select one clear event or emotional turn, then generate one 6-15s prompt.
+- Roughly 1500-3000 Chinese characters: do not adapt the whole passage. First diagnose the passage, identify the strongest filmable scene, state what will be covered and what will become context or later material, then generate only one prompt for that selected scene.
+- Over roughly 3000 Chinese characters or a full chapter: do not generate final prompts immediately. First judge or ask whether the user wants `片段拆选` or `连续短片结构`.
+  - If the user wants a strong single video moment, test case, highlight, or does not specify full coverage, output a `影视化片段拆选表`: list 3-6 candidate scenes with emotional core, visual hook, suggested duration, and reason to adapt. This table does not need to cover every plot beat.
+  - If the user asks for complete adaptation, full coverage, a short film, a mini-drama, serialized generation, or turning the whole novel excerpt into videos, output a `连续短片总结构表`: cover the main story spine in order, preserve cause and effect between segments, note recurring characters/scenes/props, and do not output final video prompts yet.
+
+Do not mechanically split long prose into one prompt per 15 seconds. That creates bloated, low-control output. Use scene selection or a continuous structure table first, and enter detailed multi-segment prompt generation only after the user confirms a segment, episode range, or full continuous-short-film plan.
+
+### Long Novel Entry Decision
+
+When a long novel input arrives, decide the entry path before writing final prompts:
+
+```text
+如果用户想要单条爆点视频：输出【影视化片段拆选表】
+如果用户想要完整改写/覆盖全文/短片/短剧/连续视频：输出【连续短片总结构表】
+如果用户意图不明确：先简短说明两种选择，并默认给出片段拆选表，或询问用户要哪一种
+```
+
+`影视化片段拆选表` is for choosing the strongest filmable moments. It is selective and does not guarantee full coverage.
+
+`连续短片总结构表` is for full-story adaptation. It should include:
+
+- segment number and suggested duration
+- covered plot beat
+- emotional turn
+- key characters on screen
+- location and continuity state
+- key props or new visual references needed
+- tail-frame purpose for the next segment
+
+After outputting a continuous short-film structure table, wait for the user to choose a segment or ask to start generating prompts. Do not output all final prompts in the same response unless the user explicitly requests it and the scope is small enough.
+
+### Diagnosis Fields for Novel Inputs
+
+Use these fields in workshop mode when they help the user see the adaptation decision:
+
+```text
+原文核心冲突：
+可视化主事件：
+不可直接拍摄的心理描写：
+建议保留：
+建议压缩或外化：
+本条提示词覆盖范围：
+```
+
+Keep this section concise. It is for adaptation clarity, not literary analysis.
+
+### Prose-to-Image Translation Map
+
+- Inner monologue -> eyes avoiding contact, breath change, hand tension, delayed response, repeated gesture, brief voiceover only when necessary.
+- Backstory -> one prop, photo, scar, letter, phone screen, room detail, costume state, or a short line.
+- Metaphor -> light, weather, reflection, shadow, sound, physical motif, or actor behavior.
+- Authorial explanation -> blocking, distance between characters, who initiates/retreats, who occupies power position in frame.
+- Long emotional paragraph -> 3-5 micro-expression beats with time marks.
+- Memory or flashback -> object insert, reflection, sound bridge, short montage, or split into another segment if important.
+- Worldbuilding -> one clear establishing shot or scene reference prompt, not a full encyclopedia.
+
+### Compression Rules for Novel Inputs
+
+- If one excerpt contains setup, reveal, argument, collapse, and aftermath, choose only one main turn for a single 15s prompt and recommend splitting the rest.
+- For 1500-3000 character excerpts, state the selected scene explicitly before the final prompt. Treat all other material as context unless the user asks for a full sequence.
+- For 3000+ character excerpts, output a scene-selection list first. Do not output a long chain of final prompts unless requested.
+- If the original has many adjectives, keep only those that change lighting, costume, texture, performance, or mood.
+- If the original contains multiple named characters, keep only the characters who affect this moment on screen.
+- If the original dialogue is too long, rewrite it into 1-2 short playable lines while preserving meaning and emotional subtext.
+- If the original depends on private thought, create an external action anchor: cup, sleeve, ring, phone, letter, door, blade, window, cigarette, bed sheet, scarf, or another story-specific object.
+
+### Final Prompt Requirements for Novel Inputs
+
+- The final prompt must read like a shootable scene, not a synopsis.
+- Include concrete time allocation, physical action, camera behavior, performance detail, sound, and ending breath.
+- Do not include literary commentary such as "象征着", "暗示了", or "表现了" unless immediately tied to a visible action.
+- When preserving prose language as voiceover, keep it short and timed; avoid turning the whole scene into narration.
+- If the scene is part of a longer chapter, mention what this 15s prompt covers and what should continue in later segments.
+
+### Continuous Novel Adaptation Continuity
+
+When adapting a novel into multiple consecutive video prompts, keep a compact continuity record and avoid redundant restatement.
+
+- If two consecutive segments use the same characters, same costumes, same location, same lighting, and same key props, do not repeat the full character and scene descriptions. Use phrases such as `延续上一段尾帧`, `沿用苏敏的同一服装与疲惫妆容`, or `保持同一书房夜晚冷暖光`.
+- Still repeat the minimum anchors needed for model stability: character name, approximate age, current emotional residue, current costume state, location, and the key prop currently in hand or in frame.
+- If a new character appears, add a concise character description and optional new character reference prompt.
+- If the story enters a new location, add a concise scene layout and optional clean scene plate prompt.
+- If a character changes clothing, makeup, injury, wet/dusty state, or hairstyle, describe the change and treat it as the new continuity state.
+- If a new key prop becomes narratively important, describe its appearance, initial position, and who holds or moves it. Track where it ends after the segment.
+- If the only change is emotional progression, do not regenerate identity or scene descriptions; describe the emotional residue from the previous segment and the new emotional turn.
+- Use the previous tail frame as the preferred continuity anchor between adjacent prompts.
+
 ## Continuation and Tail-Frame Workflow
 
 Use when the user says `继续`, `接着往下写`, `下一段`, `下一镜`, `延续上一条`, or wants to use the previous video's tail frame as reference.

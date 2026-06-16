@@ -5,7 +5,7 @@ description: Use when the user provides a plot summary, scene idea, character re
 
 # Cinematic Video Prompt Engineer
 
-This skill turns a user's plot summary into a cinematic AI video prompt. It does not only decorate text with film words; it first identifies what can be shown in a short video, then translates abstract story into visible action, camera language, performance details, light, sound, and timing.
+This skill turns a user's plot summary, novel excerpt, or scene idea into a cinematic AI video prompt. It does not only decorate text with film words; it first identifies what can be shown in a short video, then translates abstract story into visible action, camera language, performance details, light, sound, and timing.
 
 It can also continue a previous generated segment. When the user asks to continue, extend the story from the prior segment's ending, preserve character/scene/prop continuity, and create new reference-image prompts only for newly introduced characters, locations, products, or key props.
 
@@ -23,6 +23,7 @@ Output modes:
 
 1. **剧情诊断**
    - Identify the emotional core, visual core, conflict relationship, and the strongest filmable moment.
+   - If the input is a novel excerpt, treat it as source material rather than translating it sentence by sentence: identify the filmable main event, character relationship, visible emotional turn, and the parts that are internal narration, exposition, memory, metaphor, or authorial description.
    - Decide the duration needed for the prompt. Do not default to 15 seconds.
    - Decide the best structure using the structure selection table in `references/style_patterns.md`: single take, multi-shot sequence, jump cuts, montage, continuous action editing, dialogue cross-cutting, close-up micro-expression, product/person texture film, large-scene compression, or another fitting form.
    - Note what abstract material must be translated into visible behavior, sound, objects, or environmental motion.
@@ -30,6 +31,7 @@ Output modes:
 
 2. **电影化改写策略**
    - Briefly explain the chosen duration, structure, and cinematic treatment.
+   - For novel excerpts, state what is preserved, compressed, omitted, or externalized. Preserve the dramatic intention, not the original sentence order.
    - Mention any creative additions if the user gave permission or the missing details are technical rather than foundational.
 
 3. **建议先生成的参考图**
@@ -53,6 +55,7 @@ When the user does not specify a model, assume a high-capability Seedance 2.0 / 
 - Choose the duration from the story content. Maximum single prompt duration is 15 seconds.
 - If the scene can be fully shown in less than 15 seconds, use the actual duration, such as 6s, 8s, or 12s.
 - If the story exceeds what 15 seconds can carry, do not cram everything in. Explain the selection, suggest splitting, and produce the strongest single prompt for one segment.
+- For novel excerpts, use text-length tiers before adapting: under roughly 1500 Chinese characters can usually be adapted directly into one prompt; 1500-3000 characters should first be reduced to the strongest filmable scene or emotional turn; over 3000 characters should not go straight to final prompts. First judge or ask whether the user wants `片段拆选` or `连续短片结构`. If the user asks for complete adaptation, full coverage, a short film, a mini-drama, or serialized generation, output a continuous short-film structure table first, not final prompts. If the user only wants a strong single video moment or does not specify full coverage, default to a cinematic scene-selection list. Do not mechanically split long prose into consecutive 15s prompts unless the user explicitly asks for a continuous short-film breakdown.
 - If a complete treatment would require more than 2000 characters, recommend splitting into multiple prompts; each prompt should still stay under 2000 characters.
 - If a final prompt exceeds 1300 characters, every extra detail should improve generation stability, emotional clarity, spatial continuity, or model failure prevention. Remove decorative detail that does not help the video render.
 - Leave enough time for reaction and ending breath. Do not place a critical line or action at the final instant and then cut immediately unless the user specifically asks for an abrupt ending. Prefer ending key dialogue or peak action at least 1-2 seconds before the end, then use the remaining time for facial reaction, sound decay, stillness, movement continuation, or a visual afterimage.
@@ -99,6 +102,7 @@ Rules:
 - Preserve identity: same character age, face, hairstyle, clothing, injury/makeup state, emotional residue, and body position when relevant.
 - Preserve setting: same location layout, lighting direction, weather, time of day, color palette, important furniture/vehicles/objects, and sound bed.
 - Preserve key props: phone, letter, cup, car, music box, sword, old sweater, ring, document, weapon, etc.
+- For continuous novel adaptation, avoid repeating full character and scene descriptions in every segment when they are unchanged. Instead, state that the prompt continues from the previous tail frame and only restate the identity, costume, setting, and prop anchors needed for stability. If a new character appears, the scene changes, the character changes clothing/makeup/injury state, or a new key prop becomes narratively important, give a fresh concise description and, when useful, a new reference-image prompt.
 - Emotion should progress, not restart. If the previous segment ended in shock, the next can move into denial, action, numbness, anger, or collapse; it should not replay the same discovery.
 - Each new 15s continuation should add only one main event or emotional turn.
 - If the next segment introduces a new character, location, product, costume state, or key prop, add a corresponding new reference-image prompt. If no new visual anchor appears, say to reuse the previous tail frame and existing references.
@@ -157,6 +161,7 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 ## Cinematic Translation Rules
 
 - Choose structure before writing shot details. In the diagnosis, name the chosen structure and state why it fits this story. If the scene combines structures, identify the primary structure and the secondary support, such as `主结构：多人对话交叉剪辑；辅助：微表情特写`.
+- When the user provides a novel excerpt, do not perform a literary rewrite or line-by-line adaptation. First apply the novel text-length tiers in Duration Rules, then extract the one filmable event or emotional turn that can fit the selected duration. Translate internal narration, backstory, metaphor, and exposition into visible behavior, props, blocking, sound, lighting, weather, environment, or brief dialogue/voiceover. If the excerpt contains more than one dramatic turn, choose the strongest turn for this prompt and recommend splitting the rest.
 - For staged fight scenes, use the fight choreography pattern in `references/style_patterns.md`. Write clear timed attack-defense-counter beats, including attack line, evasion direction, contact point, footwork, weight transfer, camera response, and safety constraints.
 - Fight prompts must remain under 2000 Chinese characters for the copy-ready final prompt. Target 1300-1800 characters for a 10-15s fight; use 2-3 shots and 6-10 total action beats. If clarity requires more, split the fight into consecutive clips instead of exceeding the limit.
 - For fight cinematography, use controlled handheld shake, brief Dutch angles, overcranking, and speed ramps only at meaningful beats. Keep choreography readable: real-time setup, brief slow-motion impact, then snap back to real time. See `Fight Scene Cinematography Rhythm` in `references/style_patterns.md`.
