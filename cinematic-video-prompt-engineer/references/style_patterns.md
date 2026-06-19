@@ -20,6 +20,16 @@ The best prompts usually follow this order:
 
 Use time only when it improves generation clarity.
 
+- Estimate duration by playable screen content, not by source text length. Before deciding one prompt vs split prompts, count:
+  - plot beats or reversals
+  - dialogue delivery time plus pauses and listener reactions
+  - physical actions, travel, fights, embraces, falls, object handling, or reveals
+  - emotional transitions and micro-expression settling time
+  - scene/location/time changes
+  - camera moves and reframing needed for large body action
+  - final 1-2s breath, sound tail, or tail-frame hold
+- A short synopsis can still exceed 15s if it contains multiple beats that need to be shown clearly.
+- If the full content cannot breathe within 15s, split by emotional turning point, action phase, location change, or reveal/aftermath boundary. Do not compress by simply speeding up action or removing reaction time.
 - For one continuous emotional beat: `0-3s / 3-8s / 8-12s`.
 - For multi-shot prompts: `镜头 01`, `镜头 02`, etc.
 - Each time block should contain a visible change: action, gaze, light, spatial relation, or sound.
@@ -32,12 +42,230 @@ Use time only when it improves generation clarity.
 
 Prefer specific but generation-friendly terms:
 
-- 景别: `ECU`, `CU`, `MCU`, `MS`, `LS`.
+- Use standardized English abbreviations for shot size and camera movement in storyboard prompts. Chinese explanations can appear in diagnosis, but the final shot labels should use the abbreviations when professional terms are needed.
+- Character shot sizes: `ECU` Detail Shot (only a facial detail), `VCU` Face Shot (forehead to chin), `BCU` Big Close-Up (full head including face), `CU` Close-Up (head and shoulders), `MCU` Chest Shot (head to below chest), `WS` Waist Shot (head to waist), `KS` Knee Shot (head to knees), `FLS` Full Length Shot (full body with head/foot room), `LS` Long Shot (person occupies about 3/4 of frame), `ELS` Extra Long Shot (person far away).
+- Object/scenery shot sizes: `CU` Close-Up (local detail), `MCU` Medium Close-Up (about 1/4 of subject), `MS` Medium Shot (about 1/2 of subject), `MLS` Medium Long Shot (whole subject plus some surroundings), `LS` Long Shot (subject occupies about 3/4 to 1/3 of frame), `ELS` Extra Long Shot (farther than long shot).
+- Camera movement: `Dolly In/Out` or `Track In/Out` for camera physically moving forward/backward; `Pan Right/Left` for horizontal lens/head rotation; `Ped Up/Down` for camera moving vertically; `Tilt Up/Down` for vertical lens/head rotation; `Track Right/Left` or `Crab Right/Left` for camera moving sideways; `Zoom In/Out` for focal length change while camera stays physically still.
 - 焦段: `24mm`, `35mm`, `50mm`, `85mm`, `100mm macro`, `200mm`.
-- 运镜: `Slow Push in`, `Track-in`, `Handheld Backward Tracking`, `Tilt down`, `Tilt up`, `Pan`, `Snap Pull Back`.
+- 运镜: prefer the standardized movement terms above; phrases such as `Slow Push in`, `Handheld Backward Tracking`, or `Snap Pull Back` are allowed when they describe the desired feel more clearly.
 - Lens texture: shallow depth of field, anamorphic flare, bokeh, Chiaroscuro, hard side light, backlight, practical light.
 
 Do not pile up terms. Use the terms that directly serve the scene's emotion.
+
+When a term has possible ambiguity, disambiguate by context. For example, `MCU` in a character shot means Chest Shot, while `MCU` in an object/scenery shot means Medium Close-Up. If needed, write `MCU Chest Shot` or `MCU object detail` once, then use the abbreviation consistently.
+
+## Cinematic Lighting as Dramatic Design
+
+Do not use `电影感布光` as a vague magic phrase. Cinematic lighting should create dramatic tension, emotional direction, visual hierarchy, and story meaning. It is not only illumination.
+
+Do not over-describe lighting by default. Lighting language should be proportional to the scene: it must support performance, action, and story, not replace them. If the scene is mainly about dialogue, suspense movement, a fight, or a micro-expression, keep lighting concise unless the light itself is the dramatic engine.
+
+### Lighting Detail Budget
+
+Choose one level before writing the final prompt:
+
+1. **Minimal / one phrase**: use for ordinary rooms, fast action, phone calls, domestic suspense, short emotional beats. Example: `低照度小黑屋，门缝冷光和手机屏光只勾出脸部轮廓，背景保留暗部细节。`
+2. **Standard / one compact sentence**: use when light helps mood but is not the main subject. Mention source, direction, what is readable, and shadow mood in one sentence.
+3. **Detailed / lighting design paragraph**: use only when lighting is the core test, the user asks to check lighting, or the scene is built around authority, ritual, judgment, noir pressure, product texture, stage-like composition, or a strong visual concept.
+
+Do not repeat full Key/Fill/Rim/Volumetric descriptions in every shot. Put stable lighting once in the opening summary or first shot, then only mention changes: door opens, lamp switches off, phone screen lights a face, flashlight sweeps, neon flickers, etc.
+
+### Motivated Light Source
+
+Every strong light must have a believable source inside or just outside the scene: window, high window, door slit, bare bulb, table lamp, fluorescent tube, candle, TV, phone screen, police light, neon sign, car headlight, flashlight, skylight, firelight, or reflected light from table/floor/wall.
+
+Match the light quality to the source:
+
+- hard side-top light needs a plausible high, small, directional source and a story reason for harshness.
+- soft front fill can come from weak bounce on a table, wall, floor, curtain, screen, or window diffusion.
+- volumetric beams need dust, smoke, mist, rain, steam, or haze.
+- rim light and strong edge highlights should not appear without a credible back/side source.
+
+If the location does not support `Hard side-top Key Light` or `右上方硬质侧顶光`, do not force it. In a small black room, domestic interior, cramped apartment, or ordinary office, prefer motivated practical light such as a door crack, exposed bulb, desk lamp, phone screen, TV spill, window slit, corridor light, or weak ambient bounce. Hard side-top light is a specialty pattern, not the default cinematic look.
+
+### Dynamic Light Interaction
+
+Use this when the character, vehicle, train, curtain, door, window, flashlight, or weather is moving. The light should not sit still as decoration; it should interact with motion.
+
+Good dynamic lighting links:
+
+- repeated window light cuts across a running character's face and body
+- a moving train/car causes sunlight and shadow to alternate rhythmically
+- a door opening or closing changes both light level and sound bed
+- a headlight, flashlight, phone screen, or TV flare reveals dust, smoke, rain, grass, fabric, or breath
+- clouds, branches, curtains, rain, or passing streetlights make shadows move across walls, seats, floorboards, glass, or skin
+- a character moves toward a fixed light source, making the light feel like a destination or temptation
+
+Prompt phrases:
+
+```text
+动态光影：人物向车门/窗边/走廊尽头移动时，实景光源保持固定，身体穿过一段段明暗交替；光斑掠过脸、手、衣料和地面，阴影被拉长、压缩、再向前跃动，光影节奏与脚步和呼吸同步。
+```
+
+```text
+环境颗粒：逆光只照出空气中的尘埃、雨雾、草屑、衣料纤维或呼出的白气，让空间有真实厚度；不要无来源的泛光或装饰性光晕。
+```
+
+Use dynamic light sparingly. One strong interaction is usually enough for a 15s prompt.
+
+### Light as Emotional Direction
+
+Light can function as a story direction, not only a look. A fixed light source can represent exit, freedom, danger, judgment, exposure, temptation, memory, or an irreversible choice.
+
+Common use:
+
+- shadowed foreground frames a trapped character; distant light marks the only exit
+- a child or adult runs toward a doorway/window/headlight, turning light into a physical destination
+- warm exterior light contrasts with cold interior shadow to show escape from control
+- a bright screen, document lamp, or phone glow exposes a secret
+- a car door closing cuts off exterior light and wind, turning the scene inward and silent
+
+Keep the description concrete: name the source, where it falls, what it hides, and what action changes it.
+
+When lighting is truly important, describe the lighting system in this order:
+
+1. **Key Light / 主光**: direction, height, hardness/softness, color temperature, beam shape, and what it actually hits.
+2. **Fill Light / 辅光**: strength and purpose. Often very weak, only keeping minimum texture instead of flattening the face.
+3. **Rim Light / 轮廓光**: where it catches shoulders, ears, hair, objects, statues, weapons, or furniture edges to separate subject from darkness.
+4. **Background / Volumetric Light / 背景光 / 体积光**: light hitting dust, smoke, mist, rain, curtains, windows, statues, walls, or architectural depth.
+5. **Narrative meaning / 布光意图**: what the light/shadow relationship says about power, secrecy, guilt, judgment, hope, danger, intimacy, or ambiguity.
+
+### Light Must Touch Concrete Surfaces
+
+Avoid generic phrases like `dramatic lighting` or `cinematic lighting`. Write what the light does:
+
+- hard side-back Key Light cuts across face, hand, table edge, and a statue
+- left half of the room falls into near-black shadow
+- weak ambient Fill Light keeps only a faint fabric outline
+- Rim Light catches right shoulder, ear edge, hairline, and object contour
+- Volumetric Light becomes visible through dust, smoke, rain mist, or thin fog
+- practical light, window slit, doorway spill, police light, candle, TV, phone screen, neon, or car headlight creates motivated light
+
+### High-Contrast Judgment / Courtroom Pattern
+
+Use this for courtrooms, interrogations, offices of power, temples, throne rooms, police rooms, confession spaces, or any scene where authority and moral ambiguity matter.
+
+```text
+布光设计：强方向性 Key Light 来自画面右后方，偏硬，形成清晰光束，不均匀照亮人物，只切到脸的一侧、手、桌面和背景雕像/权力物件；左侧空间大面积沉入暗部，形成 Chiaroscuro 明暗秩序。Fill Light 极弱，只保留衣料和面部少量暗部层次，不把阴影填平。Rim Light 擦过右肩、耳朵、发缘和雕像边缘，把人物从黑色背景中分离。背景有尘埃/薄雾中的 Volumetric Light，光束本身成为画面的一部分。布光意图：人物处在光与暗的交界处，表达权力、法律、秘密或道德判断并不纯粹，庄严中带暧昧和压迫。
+```
+
+### Lighting Prompt Template
+
+Use a compact version inside final prompts:
+
+```text
+光影：Key Light 从{方向}以{硬/软}光切入，只照到{脸/手/桌面/道具/背景物}；Fill Light 极弱，保留{衣料/暗部轮廓}，不填平阴影；Rim Light 勾出{肩膀/耳朵/发缘/道具边缘}；背景{烟雾/尘埃/雨雾/窗帘}里有 Volumetric Light，形成可见光束。整体明暗关系服务{审判/秘密/压迫/孤独/暧昧/希望}。
+```
+
+### Common Lighting Failures
+
+- Only writing `电影感布光`, `高级光影`, or `氛围感强` without direction, object, shadow, or meaning.
+- Turning every shot into a full lighting lecture when the scene only needs a compact practical-light cue.
+- Forcing `Hard side-top Key Light` or `右上方硬质侧顶光` into environments where no believable high hard source exists.
+- Lighting everything evenly so the image loses visual hierarchy.
+- Adding too many light sources with no motivation.
+- Using rim light, fog, lens flare, and glow everywhere without story reason.
+- Describing light color but not what it hits or hides.
+- Forgetting that shadow is part of the lighting design; decide what should fall into darkness.
+
+### Off-Frame High Side-Back Light + Soft Front Fill
+
+Use this for courtrooms, public hearings, institutional interiors, ceremonial halls, stage-like dialogue scenes, or character tableaux where the space needs scale and atmosphere but the face must remain readable.
+
+Core pattern:
+
+```text
+Off-frame high side-back light 从人物身后偏高处斜射进入画面，通常来自画面外窗光、天窗、门缝或高处实景光。光线穿过烟雾、尘埃、雨雾或薄雾形成 Volumetric Beams，把背景人群、空间纵深和前景主体分层。人物脸部不做强烈阴影切割，而用 Soft Front Fill 或桌面/地面/墙面反弹的弱环境光轻轻补亮，让表情清楚，情绪不变成恐怖阴森，而是可以更坦然、荒诞、克制或自嘲。
+```
+
+Use this distinction:
+
+- `Rim Light`: deliberate, more defined contour light, often commercial or stylized, clearly separating the outline.
+- `Soft edge highlight`: softer edge lift created by high side-back light catching hair top, ear, shoulder, cheek edge, or clothing folds. It is not a strong commercial rim light.
+
+Prompt phrase:
+
+```text
+光影：画面外高位侧逆光 Off-frame high side-back light 从左上/右上斜射进来，穿过薄雾形成大面积 Volumetric Beams，拉开前景人物、背景人群和空间深度；人物脸部由 Soft Front Fill 或桌面反弹光轻轻补亮，保留表情可读性；头发顶部、耳朵和肩膀只有 Soft edge highlight，不是强商业 Rim Light。
+```
+
+### Color Temperature as Story
+
+Color temperature contrast should express story, not decorate the frame.
+
+- Cold white light can suggest system, reason, distance, institution, loneliness, or emotional detachment.
+- Warm white light can suggest humanity, memory, body temperature, fate, intimacy, or moral ambiguity.
+- In symmetrical compositions, color contrast can make an apparently balanced frame emotionally unstable.
+
+Prompt phrase:
+
+```text
+中心对称构图带来秩序和平衡感；左侧冷白光代表制度、理性和距离，右侧暖白光代表人性、温度和命运，两种色温在人物周围并置，让画面同时有公平感和复杂情绪。
+```
+
+### Low-key High Contrast Tonal Structure
+
+`Low-key High Contrast` is a tonal structure, not a filter. Tonality is the planned distribution of dark values, midtones, highlights, black point, and shadow detail before the shot is generated. If the tonal base is wrong, post-filter words cannot reliably create the style.
+
+Use `Low-key High Contrast` when the scene needs pressure, mystery, premium texture, crime atmosphere, interrogation, noir, restrained luxury, or dark psychological weight.
+
+Characteristics:
+
+- dark areas dominate the frame
+- clean black point, not muddy gray
+- concentrated local highlights
+- wide range from deep black to controlled bright spots
+- shadow detail remains visible
+- subject is cut out by local light
+- background is suppressed but not dead black
+- light comes from motivated sources such as table lamp, flashlight, window slit, fluorescent tube, neon, candle, car headlight, phone screen, or product edge light
+
+Prompt phrase for crime/interrogation:
+
+```text
+影调：Low-key High Contrast，暗部作为画面基底，黑位干净但保留暗部细节；审讯室桌面一盏台灯形成小面积硬质光池，只照亮人物脸部一侧、双手和桌面文件，背景压入深阴影但不是死黑，人物从黑暗中被局部光切出来。
+```
+
+Prompt phrase for product/luxury:
+
+```text
+影调：Low-key High Contrast，高端广告质感，深色极简背景压暗但保留层次；产品边缘有精致窄轮廓光，玻璃/金属表面出现可控镜面高光，主体被局部光切出，暗部不脏不死黑。
+```
+
+Common tonal failures:
+
+- calling it a filter instead of designing the light and tonal range
+- making the whole image underexposed without highlight structure
+- crushing shadows into dead black with no object separation
+- using bright fill that destroys the low-key base
+- adding random glow instead of concentrated motivated highlights
+
+### Hard Side-Top Light for Rough Dangerous Characters
+
+Use this for rough male characters, criminals, violent patriarchs, dirty antiheroes, exhausted interrogators, underground fighters, or any role that needs danger, anger, pressure, and tactile skin texture. Keep the subject adult when violence, intimidation, or criminal atmosphere is involved.
+
+Use it only when the set can justify a high hard source: bare overhead bulb, high window, inspection lamp, ceiling practical, industrial fixture, interrogation lamp angled upward/sideward, doorway slit from above, car headlight from a raised angle, or similar motivated light. If the scene is a cramped domestic room, small black room, ordinary apartment, or soft emotional space, do not default to this pattern; use weaker motivated practical light instead.
+
+Core logic:
+
+- **Hard side-top Key Light**: usually from upper right or upper left, cutting downward across the face and fists. It creates hard highlights on forehead wrinkles, nose bridge, nose tip, cheekbone, knuckles, leather, sweat, grime, and worn fabric.
+- **Deep shadow zones**: eye sockets, opposite cheek, beard depth, under brow, neck folds, and jacket gaps fall into dense shadow. This makes the character less predictable and more oppressive.
+- **Weak front fill**: very low Soft Front Fill keeps minimal readable detail on the shadow side of face, fist, and clothing. It prevents dead black but must not erase the high-contrast shadow design.
+- **Rough edge highlight**: high side/back light catches hair, shoulder, forearm, leather jacket edge, and hand outline. It should feel dirty, hard, and textured, not glossy commercial Rim Light.
+- **Texture purpose**: the light is designed to reveal rough skin, pores, wrinkles, sweat, dust, stubble, scars, old leather, and dirty fabric. It should make the character feel coarse, angry, dangerous, or physically heavy.
+
+Prompt phrase:
+
+```text
+光影：右上方硬质侧顶 Key Light 斜切人物，强高光落在额头皱纹、鼻梁、鼻头、左侧脸颊、拳头和旧皮衣边缘；眼窝、右脸、胡须深处和颈部压入浓重阴影，形成 Low-key High Contrast 的压迫感。Soft Front Fill 极弱，只保留右侧脸、拳头和衣服暗部的最低细节，避免死黑但不削弱阴影。高位侧后光在头发、肩膀、手臂和皮衣边缘形成粗糙 Soft edge highlight，使人物从昏暗背景里分离，突出脏、硬、粗粝、危险的质感。
+```
+
+Avoid:
+
+- beauty lighting, smooth skin, clean fashion portrait texture
+- bright front fill that makes the face friendly or flat
+- pure black shadow with no beard, fist, or clothing detail
+- over-polished commercial rim light if the character should feel dirty and dangerous
 
 ## Performance Writing
 
@@ -1043,6 +1271,82 @@ Use explicit constraints:
 - If impact lacks weight, add stance, momentum transfer, floor reaction, dust, cloth movement, and a short camera shake.
 - If the crowd distracts, describe them as dark silhouettes forming a fixed semicircle.
 
+## Hong Kong Crime Long-Take Close-Quarters Fight
+
+Use this for 1990s Hong Kong crime action, rain-soaked alley fights, car-side brawls, gangland chases, and brutal close-quarters 1v1 scenes where the user wants an unbroken handheld long take. Abstract the reference into transferable action design; do not depend on naming or imitating a specific living choreographer.
+
+### Core Feel
+
+- Style: gritty Hong Kong crime realism, wet neon, narrow alley, handheld 35mm film grain, practical tungsten/neon light, rain mist, steam, wet asphalt.
+- Camera: one continuous handheld take unless the user asks for cuts; full-body readability comes first, then close body texture.
+- Action: no posing, no decorative martial-arts display, no impossible fantasy movement. Favor boxing, elbows, knees, clinch, wrestling, wall/car impact, ground control, neck escape, and short-range survival movement.
+- Physics: every attack needs stance, momentum, contact point, recoil, environmental reaction, and pain/breath feedback.
+- Safety/taste: staged movie fight, adult performers, non-graphic injury only. Use rain/sweat/minor blood spray sparingly; no gore, no fetishized damage.
+
+### One-Take Action Chain
+
+Write the fight as an uninterrupted cause-and-effect chain:
+
+```text
+spatial anchor -> weapon/object threat -> evasion -> entry -> takedown/clinch -> environment impact -> ground control -> reversal/lock -> body shot -> escape -> counter elbow/knee/punch -> camera orbit/reframe -> finishing impact -> breath/aftermath close-up
+```
+
+Keep one dominant direction at a time. The camera may orbit, but the fighters' positions, distance to walls/cars/doorways, and screen direction must remain understandable.
+
+### Useful Beat Library
+
+- opponent grabs pipe/bottle/brick and swings horizontally
+- protagonist ducks under the swing and shoots forward into a waist/body lock
+- both bodies crash into a parked car, shutter door, wall, trash bins, or wet pavement
+- camera stays close to torsos during the scramble, then widens just enough to keep limbs readable
+- mounted position with short staged punches; defender covers, bridges, turns the hips, and reverses
+- clinch against car hood or wall; knee to ribs or thigh; elbow to jaw/shoulder line
+- rear headlock/neck control, followed by hand fighting, chin tuck, hip turn, and escape
+- final controlled slam into a car hood, shutter, padded wall, stacked boxes, or breakaway surface
+- final breath: both bodies stop for 1-2s, rain and engine metal sound continue, camera pushes to wet face close-up
+
+### Camera and Spatial Continuity
+
+- Start with a strong alley geography: wall on one side, parked car or shutter on the other, wet ground, exit direction, neon source.
+- Use handheld lateral tracking as the fight starts; avoid random shake before impact.
+- Keep both fighters' full bodies visible during throws, takedowns, and reversals.
+- Go close only for grounded scrambling, clinch pressure, breath, hands fighting for grip, or facial aftermath.
+- A 180-degree camera orbit is allowed inside a one-take fight only if the orbit is visible and motivated by the fighters rotating or colliding through space.
+- If the camera must come very close, immediately re-open the frame before the next large body action.
+- Do not hide contact with excessive blur, foreground obstruction, or chaotic whip pans.
+
+### Environment and Sound Feedback
+
+Bind each heavy action to visible and audible consequences:
+
+- pipe swing cuts through rain -> water beads scatter past lens
+- shoulder drive into car -> metal panel booms, rainwater jumps, alarm chirps or hood dents slightly
+- body hits wet ground -> splash, clothing sticks, breath knocks out
+- elbow or knee lands -> short grunt, head/torso recoil, handheld jolt
+- clinch scrapes along shutter -> metal rattle
+- final car-hood impact -> controlled dent, rainwater sprays, then breath and rain dominate
+
+Use diegetic sound only: rain, footsteps splashing, metal impact, cloth friction, breath, grunts, pipe scraping, car alarm chirp, distant city hum. No background music by default.
+
+### Prompt Template
+
+```text
+基础概括：10-15秒一镜到底港式犯罪动作长镜头，{地点与时代氛围}，两名成年角色近身缠斗。手持摄影连续跟随，全程保持空间连续性和全身动作可读性，无配乐。
+
+动作链：
+0-2s：{空间锚点}，对手从{方向}抓起{物件}横扫，攻击线指向{头部/上身非致命区域}；主角{俯身/侧闪/后撤}避开，镜头侧向跟进。
+2-5s：主角压低重心切入，{抱腰/肩撞/双腿控制}，借前冲惯性把对手撞向{汽车/墙/卷帘门}，环境产生{金属声/水花/震动}。
+5-8s：两人在{车旁/地面/墙边}翻滚或缠斗，主角短促控制，对手{格挡/桥翻/锁颈/反抱}完成反转，镜头贴近身体但保持肢体关系清楚。
+8-12s：主角通过{手部解锁/转髋/膝撞/反肘}挣脱并反击，雨水、汗水和少量非血腥擦伤痕迹飞散；摄影机随两人旋转半圈或180度可见环绕。
+12-15s：主角完成一个受控终结动作，把对手撞向{可承受表面}，环境明确变形或震动；最后留1-2秒喘息，镜头缓慢推进到雨水覆盖的面部特写。
+
+约束：成年演员，电影特技打斗，非血腥；真实人体力学，动作链连续，没有摆拍，没有飞天或夸张武术，不遮挡关键接触点，不要肢体穿模，不要过度动态模糊，不要背景音乐和字幕。
+```
+
+### Compression Notes
+
+For final prompts under 2000 Chinese characters, compress this pattern by keeping location and one-take structure, 6-8 action beats, environment feedback for major impacts, camera continuity/readability rules, diegetic sound, and negative constraints. Cut repeated style tags first. Do not cut attack-defense causality or final breathing room.
+
 ## Tavern Brawl / Environmental Fight Pattern
 
 Use this for messy but readable fights in taverns, inns, warehouses, gambling rooms, markets, docks, alleys, or any place where the environment is part of the choreography. This pattern differs from clean ring combat: the scene should use furniture, bottles, pillars, stairs, railings, walls, lamps, dust, and bystanders as action texture.
@@ -1405,7 +1709,7 @@ Choose structure before writing shot details. Always state the chosen structure 
 | **长特写微表情 / Close-Up Micro-Expression** | Emotion is carried mainly by face/head with minimal action | shock, suppressed crying, shame, hidden love, inner collapse | plot needs many events or spatial movement | Use ECU/CU, stable or slow push, timed facial-muscle progression |
 | **产品/人物质感片 / Product-Person Texture Film** | Product, place, or persona matters as much as plot | car, watch, founder, artist, venue, premium object | story requires many dramatic turns | Use tactile details, material, light, sound, controlled gesture, brand-like restraint |
 | **大场面压缩 / Large-Scene Compression** | Crowd, disaster, ceremony, battlefield, launch, courtroom, banquet | chaos with one human anchor, public pressure, group reaction | no clear protagonist or visual anchor | Pick one visual anchor; show crowd as pressure; use 4-5 clear nodes |
-| **长剧情拆分 / Sequential Prompt Split** | Story exceeds 15s or final prompt would exceed 2000 chars | reunion, investigation, travel, multi-stage emotional arc | one small moment already fits under 15s | Split by emotional turning points; make each ending a usable tail-frame reference |
+| **长剧情拆分 / Sequential Prompt Split** | Playable content exceeds 15s or final prompt would exceed 2000 chars, even if the user's text is short | reunion, investigation, travel, multi-stage emotional arc, multiple actions or location changes | one small moment already fits under 15s | Split by emotional turning points; make each ending a usable tail-frame reference |
 | **剧情续写 / Continuation Segment** | User approves a segment and asks to continue | short-film sequences, tail-frame workflows, multi-part emotional arcs | no prior segment context exists | Begin from previous ending, preserve identity/scene/props, add only one new event |
 | **主观镜头 / POV or Subjective Camera** | User needs immersion into a character's perception | fear, dizziness, memory trigger, entering unknown space | multi-character dialogue needs facial reactions | Use breath, hand edges, focus shifts, sound distortion; keep POV coherent |
 | **匹配剪辑 / Match Cut Structure** | Two times/places/actions mirror each other | past vs present, childhood/adulthood, before/after identity | simple linear action is clearer | Match hand, object, gaze, light, or sound across cuts |
@@ -1420,7 +1724,7 @@ Choose structure before writing shot details. Always state the chosen structure 
 - If the core is **a process compressed into moments**, choose `跳剪压缩`.
 - If the core is **a product/person/place aura**, choose `产品/人物质感片`.
 - If the core is **large chaos but one person matters most**, choose `大场面压缩`.
-- If the story cannot breathe within 15s, choose `长剧情拆分`.
+- If the playable content cannot breathe within 15s, choose `长剧情拆分` even when the user's written description is short.
 - If the user asks to continue from an approved prompt, choose `剧情续写`.
 
 ### Hybrid Structures
@@ -1470,7 +1774,9 @@ If adjacent shot sizes are necessary, motivate the cut with action, sound, eyeli
 
 ### Camera Angle Change
 
-When cutting between shots of the same subject or same interaction, change the camera's horizontal angle by at least 30 degrees. This prevents awkward jump cuts and gives the edit a real perspective shift.
+When cutting between different camera angles within the same scene, and especially between shots of the same subject or same interaction, change the camera's horizontal angle by at least 30 degrees. This prevents awkward jump cuts and gives the edit a real perspective shift.
+
+This rule applies only inside the same scene or continuous spatial relationship. When cutting to a new scene, new location, new time, or a clearly different spatial setup, do not force a 30-degree angle change; prioritize the new scene's geography, mood, and opening composition.
 
 Examples:
 
@@ -1478,7 +1784,7 @@ Examples:
 - Shot 2: side angle over the other character's shoulder, at least 30 degrees away.
 - Shot 3: reverse angle or object insert.
 
-Do not write repeated same-angle close-ups unless the scene intentionally uses a locked-off long take.
+Do not write repeated same-angle close-ups inside the same scene unless the scene intentionally uses a locked-off long take.
 
 ### 180-Degree Axis and Eyeline
 
@@ -2205,6 +2511,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Does the diagnosis name the emotional core and visual core?
 - Is the chosen structure explicitly stated and justified?
 - Does the duration fit the content instead of defaulting to 15s?
+- Was duration/splitting judged by playable content rather than source text length alone, including event count, dialogue time, actions, emotional reactions, scene changes, camera moves, and ending breath?
 - If the story exceeds 15s or 2000 characters, does the answer recommend splitting and clearly state what this prompt covers?
 - If this is a split prompt, does the first segment end on a usable tail-frame reference and the next segment continue from it?
 
@@ -2217,6 +2524,11 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Is there no empty boilerplate such as `视频模型：通用 AI 视频模型`?
 - Does the first summary line include duration and structure?
 - Are technical terms useful rather than decorative?
+- Are professional shot-size and camera-movement terms written with standardized English abbreviations where appropriate, such as `ECU`, `VCU`, `BCU`, `CU`, `MCU`, `WS`, `KS`, `FLS`, `LS`, `ELS`, `MS`, `MLS`, `Dolly In/Out`, `Pan Right/Left`, `Tilt Up/Down`, `Track Right/Left`, and `Zoom In/Out`?
+- If the prompt uses cinematic lighting, is the amount of lighting detail proportional to the scene? For ordinary scenes, is lighting kept to one compact motivated phrase instead of a full breakdown?
+- If the prompt uses detailed cinematic lighting, does it specify Key Light, Fill Light, Rim Light or Soft edge highlight, Background/Volumetric Light, concrete surfaces touched or hidden by light, tonal structure such as `Low-key High Contrast` when relevant, color-temperature meaning when relevant, and the emotional/story meaning of the light-shadow design?
+- If `Hard side-top Key Light` or `右上方硬质侧顶光` appears, is there a believable source in the environment and a story reason for such hard light?
+- If the scene has movement, does light interact with the movement through passing windows, doors, headlights, screens, weather, dust, fabric, breath, or moving shadows instead of remaining a static adjective?
 - Are abstract words translated into visible action, light, sound, object, or performance?
 - If reference-image prompts are included, are they optional, concise, and consistent with the final video prompt?
 - Are reference types selected by production need rather than outputting character, scene, and prop prompts mechanically?
@@ -2226,6 +2538,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 ### Time and Rhythm
 
 - Are time blocks playable, with enough duration for action, camera movement, line delivery, and reaction?
+- If the user gave a short but content-dense plot, has it been split or narrowed instead of crammed into one 15s prompt?
 - Is key dialogue or peak action not placed at the final instant?
 - Does the ending leave 1-2 seconds for breath, reaction, sound tail, or visual afterimage?
 - Are there too many events for the duration? If yes, remove details or split.
@@ -2264,7 +2577,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 - For product/person texture scenes, are materials, tactile details, and light concrete?
 - For memory/dream scenes, is there a transition anchor such as sound, object, gesture, or match cut?
 - In multi-shot prompts, do adjacent shots avoid overly similar shot sizes unless motivated?
-- When cutting between shots of the same subject, does the camera angle change by at least 30 degrees?
+- When cutting between shots of the same subject or interaction inside the same scene, does the camera angle change by at least 30 degrees? If cutting to a new scene or location, is the new opening composition clear instead of forcing the 30-degree rule?
 - Is the 180-degree axis preserved, or is any axis crossing visibly motivated?
 - Do dialogue eyelines remain matched across reverse shots?
 - Are entry/exit and travel directions continuous across connected spaces?
