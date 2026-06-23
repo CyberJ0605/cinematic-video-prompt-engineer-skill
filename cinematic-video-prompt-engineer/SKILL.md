@@ -19,7 +19,7 @@ Output modes:
 
 - `精简模式`: final video prompt only; use when the user says `直接给提示词`, `不要分析`, or requests a compact result.
 - `打磨模式`: diagnosis, strategy, optional references, final prompt; default for ordinary creation and revision.
-- `连续短片模式`: continuity summary, character bible, scene continuity sheet, references, segmented/continued prompts, and tail-frame instructions; use for multi-part stories or repeated continuation.
+- `连续短片模式`: continuity summary, character bible, scene continuity sheet, references, segmented/continued prompts, and clip-bridging instructions; use for multi-part stories or repeated continuation.
 
 1. **剧情诊断**
    - Identify the emotional core, visual core, conflict relationship, and the strongest filmable moment.
@@ -39,6 +39,8 @@ Output modes:
    - State that the user may generate these reference images first, or skip them and use the video prompt directly.
    - Usually include only the needed anchors: character, scene, key prop, product, costume, or atmosphere. Do not force all categories.
    - Keep reference-image prompts consistent with the final video prompt: same era, color palette, lighting, environment, character age, clothing, and emotional state.
+   - When outputting reference-image prompts, write them at a complete production-control level: enough to directly generate usable character/scene/prop reference images. Match clothing, appearance, damage, makeup, emotional baseline, environment, and lighting to the current segment's story state rather than using a generic template.
+   - For a single-character reference, describe only that one character. Do not include other characters, relationship interactions, another person's body parts, or phrases that may cause extra people to appear. Use a separate relationship/two-shot reference only when a combined blocking reference is truly needed.
 
 4. **最终视频提示词**
    - Output one directly usable prompt.
@@ -87,7 +89,8 @@ Default continuation format:
 连续性注意：
 
 【建议先生成的参考图】
-沿用上一段尾帧/已有参考图：
+沿用上一段人物/场景/道具参考：
+本段衔接方式：
 新增人物参考图：
 新增场景参考图：
 新增关键道具参考图：
@@ -99,14 +102,14 @@ Default continuation format:
 
 Rules:
 
-- Start from the previous segment's final visual state or tail-frame reference. Do not reset the scene unless the user asks for a time jump or location change.
+- Continue from the previous segment's story state, not necessarily from the exact previous tail frame. Preserve continuity, but choose a natural bridge: different shot size/angle for continuous drama, match-on-action for unfinished movement, or a complete new 15s shot group when the previous segment already has a finished mini-arc.
 - Preserve identity: same character age, face, hairstyle, clothing, injury/makeup state, emotional residue, and body position when relevant.
 - Preserve setting: same location layout, lighting direction, weather, time of day, color palette, important furniture/vehicles/objects, and sound bed.
 - Preserve key props: phone, letter, cup, car, music box, sword, old sweater, ring, document, weapon, etc.
-- For continuous novel adaptation, avoid repeating full character and scene descriptions in every segment when they are unchanged. Instead, state that the prompt continues from the previous tail frame and only restate the identity, costume, setting, and prop anchors needed for stability. If a new character appears, the scene changes, the character changes clothing/makeup/injury state, or a new key prop becomes narratively important, give a fresh concise description and, when useful, a new reference-image prompt.
+- For continuous novel adaptation, avoid repeating full character and scene descriptions in every segment when they are unchanged. Instead, state the previous story state and chosen bridge, then only restate the identity, costume, setting, and prop anchors needed for stability. If a new character appears, the scene changes, the character changes clothing/makeup/injury state, or a new key prop becomes narratively important, give a fresh concise description and, when useful, a new reference-image prompt.
 - Emotion should progress, not restart. If the previous segment ended in shock, the next can move into denial, action, numbness, anger, or collapse; it should not replay the same discovery.
 - Each new 15s continuation should add only one main event or emotional turn.
-- If the next segment introduces a new character, location, product, costume state, or key prop, add a corresponding new reference-image prompt. If no new visual anchor appears, say to reuse the previous tail frame and existing references.
+- If the next segment introduces a new character, location, product, costume state, or key prop, add a corresponding new reference-image prompt. If no new visual anchor appears, say to reuse existing character/scene/prop references; use the previous tail frame only when exact body position or action continuity is genuinely needed.
 - In continuous-short-film mode, maintain an internal character bible and scene continuity sheet. Print compact versions when they help the user generate multiple segments consistently.
 - If the user provides a new direction for the continuation, follow it. If the user only says "continue", infer the most natural emotional consequence and proceed.
 - Keep the next final prompt under the normal length targets and 15s maximum.
@@ -167,7 +170,7 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 - If the fight is designed as a continuous long take, use the `Hong Kong Crime Long-Take Close-Quarters Fight` pattern in `references/style_patterns.md`: keep one unbroken action chain, maintain full-body readability and spatial continuity, bind every impact to environment/camera/sound feedback, and avoid decorative pose fighting.
 - Fight prompts must remain under 2000 Chinese characters for the copy-ready final prompt. Target 1300-1800 characters for a 10-15s fight; use 2-3 shots and 6-10 total action beats. If clarity requires more, split the fight into consecutive clips instead of exceeding the limit.
 - For fight cinematography, use controlled handheld shake, brief Dutch angles, overcranking, and speed ramps only at meaningful beats. Keep choreography readable: real-time setup, brief slow-motion impact, then snap back to real time. See `Fight Scene Cinematography Rhythm` in `references/style_patterns.md`.
-- For cinematic crowd fights or protector-entrance action scenes, use the `Epic Crowd Fight / Protector Entrance` pattern in `references/style_patterns.md`. Preserve character/scene continuity across segments, use previous tail frames or material references when provided, keep one hero as the action anchor, and explicitly ban subtitles/background music if requested.
+- For cinematic crowd fights or protector-entrance action scenes, use the `Epic Crowd Fight / Protector Entrance` pattern in `references/style_patterns.md`. Preserve character/scene continuity across segments, choose a natural clip bridge or use material references when provided, keep one hero as the action anchor, and explicitly ban subtitles/background music if requested.
 - Use director-level shot continuity rules from `references/style_patterns.md`: avoid adjacent shot sizes that are too similar, change camera horizontal angle by at least 30 degrees when cutting between different angles within the same scene and same subject/interaction, use insert shots when dialogue needs breathing room, leave ending breath, and use match-on-action when splitting one action across two shots. The 30-degree angle rule does not need to be forced when cutting to a new scene or new location.
 - Preserve 180-degree axis, eyeline, screen direction, handedness, prop position, costume/injury state, and entrance/exit continuity. Cross the axis only through a visible camera move, a neutral-axis shot, or a motivated re-establishing shot.
 - Convert feelings into behavior: eyes, breath, jaw, hands, posture, hesitation, stillness, impact, recovery.
@@ -199,12 +202,13 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 Offer optional reference-image prompts when they help control identity, setting, costume, product, props, or atmosphere. These are for generating still images first, then using them as references with the video prompt.
 
 - Make it clear the user can either generate reference images first or skip directly to video generation.
-- Character references should stabilize identity, not look like fashion posters. Include age range, ethnicity/era if relevant, facial impression, hair, clothing, emotional baseline, shot size, lighting, and film texture.
-- Scene references should define usable video space: layout, foreground/midground/background, light source, materials, era, color palette, and action area. Use `无人物` if the scene reference should be clean.
+- Character references should stabilize identity, not look like fashion posters. Include identity/role, age range, ethnicity/era if relevant, facial impression, body type/posture, hair, clothing, costume state, dirt/wetness/injury/makeup when relevant, emotional baseline, shot size, lighting/background, film texture, and explicit non-stylization constraints when useful. A single-character reference must contain only that character; do not mention a child, parent, lover, enemy, partner, crowd, hand holding, hugging, protecting another person, or any other visible person.
+- Scene references should define usable video space: location, layout, foreground/midground/background, entrances/exits, action path, obstacles, light source, materials, era, color palette, atmosphere, and action area. Use `无人物` if the scene reference should be clean.
 - Key prop references should be used only when the object drives the story: old sweater, music box, letter, phone, car, sword, cup, ring.
 - Do not create too many references. Most scenes need 1-2. Complex historical, product, or large-scene prompts may need 2-3.
 - Keep all references consistent with the final video prompt.
-- Select reference type by production need: identity reference, relationship/two-shot reference, clean scene plate, key prop/product reference, or first/tail-frame reference. Do not output every type by default.
+- Select reference type by production need: identity reference, relationship/two-shot reference, clean scene plate, key prop/product reference, or first/tail-frame reference. Do not output every type by default. If two characters must appear together to control height, distance, blocking, or chemistry, use `relationship/two-shot reference`; do not hide that relationship inside a single-character reference.
+- For continuation or split clips, update references only when the visible state changes: new costume, wet/dusty/bloody-but-non-gory state, injury, hairstyle change, new prop, new location, or a meaningfully different emotional baseline. Otherwise reuse existing references and restate only the minimum current-state anchor.
 
 Recommended counts:
 

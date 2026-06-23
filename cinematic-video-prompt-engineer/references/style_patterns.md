@@ -27,7 +27,7 @@ Use time only when it improves generation clarity.
   - emotional transitions and micro-expression settling time
   - scene/location/time changes
   - camera moves and reframing needed for large body action
-  - final 1-2s breath, sound tail, or tail-frame hold
+  - final 1-2s breath, sound tail, or bridge hold
 - A short synopsis can still exceed 15s if it contains multiple beats that need to be shown clearly.
 - If the full content cannot breathe within 15s, split by emotional turning point, action phase, location change, or reveal/aftermath boundary. Do not compress by simply speeding up action or removing reaction time.
 - For one continuous emotional beat: `0-3s / 3-8s / 8-12s`.
@@ -1115,7 +1115,7 @@ Compression rules:
 - Combine attack route, defense, and contact point into one concise beat.
 - Do not repeat `真实重量感`, `手持摄影`, `无血腥`, or continuity constraints under every shot.
 - Keep only action details that affect readability, physics, continuity, camera response, or model stability.
-- If more than 10 action beats are needed, split into two consecutive prompts and use the first segment's tail frame as reference.
+- If more than 10 action beats are needed, split into two consecutive prompts and choose a natural clip bridge: different angle/shot-size continuation, match-on-action, or a new completed action phase. Use the first segment's tail frame only when exact body position is essential.
 
 Compact action beat example:
 
@@ -1252,8 +1252,8 @@ A strong 10-15s fight should usually have a rhythm arc:
 
 For 30s split into two 15s prompts:
 
-- Segment 1: pressure, first exchange, incomplete reversal, tail-frame danger.
-- Segment 2: continuation from tail frame, tactical reversal, finishing impact, aftermath.
+- Segment 1: pressure, first exchange, incomplete reversal, ending on danger or an unfinished action.
+- Segment 2: continue the same story state from a new angle/shot size, complete the reversal, finishing impact, aftermath.
 
 ### Safety and Negative Constraints
 
@@ -1492,7 +1492,7 @@ Continuity rules:
 
 - Preserve the same visual style across all segments, but let the style follow the user's requested medium: live-action cinematic, realistic period drama, stylized fantasy, 3D animation, etc.
 - State that character faces, costumes, hairstyles, weapons, soldier designs, and location remain consistent with previous segment/reference material.
-- If continuing, start with `生成上个视频最后一帧画面衔接后续剧情` or `开头延续上一条尾帧`.
+- If continuing, do not default to copying the previous tail frame as the next first frame. Choose a bridge: different shot size/angle for continuous danger, match-on-action for unfinished movement, or a new 15s shot group for the next completed action phase.
 - Use material references explicitly when present, e.g. `公主和古代士兵们站位参考素材1`, `上个视频最后一帧参考素材2`.
 - Keep the location name consistent, such as `金銮殿`, `废弃教室`, `地下擂台`, `宫门台阶`, or the user's exact scene label.
 
@@ -1512,10 +1512,10 @@ Recommended segment structures:
 画面二：镜头紧跟保护者继续在人群中打斗，长兵器横扫、短促飞踢、肩撞、转身回击，多段分镜切换，环绕高速跟拍、慢动作、面部特写、高速摄影跟拍交替使用。敌人密集簇拥、层层包围，保护者重击多个敌人，动作一气呵成，画面冲击力强。
 ```
 
-**3. Tail-frame continuation, 5-8s**
+**3. Clip bridge continuation, 5-8s**
 
 ```text
-画面一：生成上个视频最后一帧画面衔接后续剧情，镜头拉远到中远景，保护者与被保护者相互靠近或并肩站立，合力御敌。无台词，仅生成打斗音效和环境音效，不配背景音乐，禁止字幕。
+画面一：接续上一段危险状态，但不复刻上一段尾帧；开头换为中远景侧后方角度，保护者与被保护者相互靠近或并肩站立，合力御敌。无台词，仅生成打斗音效和环境音效，不配背景音乐，禁止字幕。
 ```
 
 Action design rules:
@@ -1667,7 +1667,8 @@ Output:
 【连续性摘要】
 角色档案：
 场景档案：
-上一段尾帧状态：
+上一段结尾剧情状态：
+本段衔接方式：
 本段推进：
 
 【参考资产】
@@ -1679,7 +1680,8 @@ Output:
 ...
 
 【下一段衔接锚点】
-尾帧构图：
+结尾剧情状态：
+可衔接动作/情绪/道具：
 人物/道具状态：
 ```
 
@@ -1687,7 +1689,7 @@ Rules:
 
 - Keep canonical character and scene records stable across segments.
 - Each segment advances one main event or emotional turn.
-- Reuse previous tail frame by default.
+- Do not reuse the previous tail frame by default. Preserve story state, identity, space, props, and emotional residue; choose the bridge that best fits the next segment.
 - Add reference prompts only for new visual anchors or meaningful state updates.
 - Each segment remains under 15s and its final prompt under 2000 characters.
 
@@ -1709,8 +1711,8 @@ Choose structure before writing shot details. Always state the chosen structure 
 | **长特写微表情 / Close-Up Micro-Expression** | Emotion is carried mainly by face/head with minimal action | shock, suppressed crying, shame, hidden love, inner collapse | plot needs many events or spatial movement | Use ECU/CU, stable or slow push, timed facial-muscle progression |
 | **产品/人物质感片 / Product-Person Texture Film** | Product, place, or persona matters as much as plot | car, watch, founder, artist, venue, premium object | story requires many dramatic turns | Use tactile details, material, light, sound, controlled gesture, brand-like restraint |
 | **大场面压缩 / Large-Scene Compression** | Crowd, disaster, ceremony, battlefield, launch, courtroom, banquet | chaos with one human anchor, public pressure, group reaction | no clear protagonist or visual anchor | Pick one visual anchor; show crowd as pressure; use 4-5 clear nodes |
-| **长剧情拆分 / Sequential Prompt Split** | Playable content exceeds 15s or final prompt would exceed 2000 chars, even if the user's text is short | reunion, investigation, travel, multi-stage emotional arc, multiple actions or location changes | one small moment already fits under 15s | Split by emotional turning points; make each ending a usable tail-frame reference |
-| **剧情续写 / Continuation Segment** | User approves a segment and asks to continue | short-film sequences, tail-frame workflows, multi-part emotional arcs | no prior segment context exists | Begin from previous ending, preserve identity/scene/props, add only one new event |
+| **长剧情拆分 / Sequential Prompt Split** | Playable content exceeds 15s or final prompt would exceed 2000 chars, even if the user's text is short | reunion, investigation, travel, multi-stage emotional arc, multiple actions or location changes | one small moment already fits under 15s | Split by emotional turning points; make each segment a complete 15s mini-arc and define a bridge type for the next segment |
+| **剧情续写 / Continuation Segment** | User approves a segment and asks to continue | short-film sequences, clip bridges, multi-part emotional arcs | no prior segment context exists | Continue from previous story state, preserve identity/scene/props, choose a bridge type, add only one new event |
 | **主观镜头 / POV or Subjective Camera** | User needs immersion into a character's perception | fear, dizziness, memory trigger, entering unknown space | multi-character dialogue needs facial reactions | Use breath, hand edges, focus shifts, sound distortion; keep POV coherent |
 | **匹配剪辑 / Match Cut Structure** | Two times/places/actions mirror each other | past vs present, childhood/adulthood, before/after identity | simple linear action is clearer | Match hand, object, gaze, light, or sound across cuts |
 
@@ -1738,7 +1740,7 @@ Examples:
 - `主结构：格斗动作编排；辅助：手持近身冲击感`
 - `主结构：蒙太奇；辅助：匹配剪辑`
 - `主结构：大场面压缩；辅助：单人物视觉锚点`
-- `主结构：剧情续写；辅助：尾帧参考`
+- `主结构：剧情续写；辅助：动作中衔接`
 
 ### Structure Failure Warnings
 
@@ -1874,7 +1876,7 @@ Do not end the video on a line delivery, sudden facial expression, or unfinished
 - sound tail
 - the object after the action
 - a character choosing not to speak
-- a held frame for the next segment's tail-frame reference
+- a held reaction, sound cue, prop state, or unfinished action that can bridge into the next segment
 
 This is especially important for dialogue, crying, confession, shock, and confrontation scenes.
 
@@ -1953,7 +1955,7 @@ When a long novel input arrives, decide the entry path before writing final prom
 - key characters on screen
 - location and continuity state
 - key props or new visual references needed
-- tail-frame purpose for the next segment
+- bridge purpose for the next segment
 
 After outputting a continuous short-film structure table, wait for the user to choose a segment or ask to start generating prompts. Do not output all final prompts in the same response unless the user explicitly requests it and the scope is small enough.
 
@@ -2004,28 +2006,39 @@ Keep this section concise. It is for adaptation clarity, not literary analysis.
 
 When adapting a novel into multiple consecutive video prompts, keep a compact continuity record and avoid redundant restatement.
 
-- If two consecutive segments use the same characters, same costumes, same location, same lighting, and same key props, do not repeat the full character and scene descriptions. Use phrases such as `延续上一段尾帧`, `沿用苏敏的同一服装与疲惫妆容`, or `保持同一书房夜晚冷暖光`.
+- If two consecutive segments use the same characters, same costumes, same location, same lighting, and same key props, do not repeat the full character and scene descriptions. Use phrases such as `接续上一段剧情状态`, `沿用苏敏的同一服装与疲惫妆容`, or `保持同一书房夜晚冷暖光`.
 - Still repeat the minimum anchors needed for model stability: character name, approximate age, current emotional residue, current costume state, location, and the key prop currently in hand or in frame.
 - If a new character appears, add a concise character description and optional new character reference prompt.
 - If the story enters a new location, add a concise scene layout and optional clean scene plate prompt.
 - If a character changes clothing, makeup, injury, wet/dusty state, or hairstyle, describe the change and treat it as the new continuity state.
 - If a new key prop becomes narratively important, describe its appearance, initial position, and who holds or moves it. Track where it ends after the segment.
 - If the only change is emotional progression, do not regenerate identity or scene descriptions; describe the emotional residue from the previous segment and the new emotional turn.
-- Use the previous tail frame as the preferred continuity anchor between adjacent prompts.
+- Use the previous segment's story state as the continuity anchor between adjacent prompts. A previous tail frame may be used as a reference, but it should not be treated as the required first frame of the next video.
 
-## Continuation and Tail-Frame Workflow
+## Continuation and Clip-Bridging Workflow
 
-Use when the user says `继续`, `接着往下写`, `下一段`, `下一镜`, `延续上一条`, or wants to use the previous video's tail frame as reference.
+Use when the user says `继续`, `接着往下写`, `下一段`, `下一镜`, `延续上一条`, or when a long story is split into adjacent clips.
 
 ### Continuation Principles
 
-- Continue from the previous final image, not from a fresh setup.
+- Continue from the previous story state, not necessarily from the previous final image.
 - Keep character identity, age, hairstyle, clothing, makeup, injury state, and emotional residue consistent.
 - Keep setting, lighting, weather, time of day, color palette, camera texture, and sound bed consistent unless the story intentionally changes.
 - Keep key props consistent in design, position, and narrative meaning.
 - Progress emotion instead of replaying it.
 - Add only one main new event or emotional turn per 15s segment.
-- Leave the ending as a clean next tail-frame if more continuation may follow.
+- Let each 15s segment feel like a complete small dramatic unit. Do not force a long-take continuation across clips if a shot-group structure is more natural.
+- Leave the ending as a useful next bridge: a held reaction, an unfinished action, a prop state, a sound cue, or a completed mini-arc that can lead into the next beat.
+
+### Clip Bridge Types
+
+Choose one bridge before writing the next prompt:
+
+1. **Continuous Drama Bridge / 换景别换角度接续**: use when the previous ending must continue immediately, but the next video should not copy the same frame. Start the next clip from the same story moment with a different shot size and camera angle, such as CU -> WS, MS -> BCU, over-shoulder -> reverse angle, or side angle -> frontal angle. Preserve axis, eyeline, body direction, prop state, and emotional residue.
+2. **Match-on-Action Bridge / 动作中衔接**: use when the previous clip ends on an unfinished action. End segment 1 as the hand begins to open the door, body starts to turn, sword begins to draw, person starts to fall, lips begin to speak, or fist begins to swing; start segment 2 from a new angle/shot size continuing the same action, not restarting it.
+3. **Shot-Group Bridge / 分镜组衔接**: use when each 15s clip is a complete small scene or emotional beat. Segment 2 does not need to start from segment 1's tail frame. It should start with a strong new shot that belongs to the next mini-arc while preserving character, scene, prop, costume, light, sound, and emotional continuity.
+
+Use the previous tail frame only when exact body position, blocking, injury/damage state, or object position is critical. Otherwise, treat it as one reference asset among others, not as a required first-frame instruction.
 
 ### Continuation Diagnosis
 
@@ -2035,12 +2048,14 @@ Use this compact form:
 【接续判断】
 上一段结尾状态：...
 下一段情绪推进：...
-连续性注意：人物服装、场景光线、关键道具、尾帧构图需要沿用...
+衔接方式：换景别换角度接续 / 动作中衔接 / 分镜组衔接
+连续性注意：人物服装、场景光线、关键道具、动作方向、情绪残留需要沿用...
 ```
 
 ### Reference Image Rules for Continuation
 
-- If the next segment uses the same character, same scene, and same key props, say: `沿用上一段尾帧和已有参考图，不新增参考图。`
+- If the next segment uses the same character, same scene, and same key props, say: `沿用已有角色/场景/道具参考，不新增参考图。`
+- If exact continuity is needed, optionally add: `可参考上一段尾帧的身体姿态/道具位置，但下一段开头不必复刻同一帧。`
 - If a new character appears, add `新增人物参考图`.
 - If a new location appears, add `新增场景参考图`.
 - If a new key prop appears, add `新增关键道具参考图`.
@@ -2051,9 +2066,17 @@ Use this compact form:
 Use clear continuity phrases in the final prompt:
 
 ```text
-开头延续上一条尾帧：...
+接续上一段剧情状态，但开头换为新的景别与角度：...
 保持同一人物、同一服装、同一场景光线和同一道具位置。
 上一段结尾的情绪不重置，继续从...推进到...
+```
+
+```text
+动作中衔接：上一段结尾人物刚开始...，本段开头用...景别从...角度继续同一动作，动作不重来，只完成未做完的部分。
+```
+
+```text
+分镜组衔接：本段是下一组15秒小剧情，不复刻上一段尾帧；沿用人物、场景、道具和情绪余波，从新的有效开场镜头进入下一事件。
 ```
 
 ### Good Continuation Moves
@@ -2073,7 +2096,8 @@ Use clear continuity phrases in the final prompt:
 - Jumping to a new location without a transition or user request.
 - Changing clothing, lighting, age, or prop design accidentally.
 - Adding multiple new plot events in one 15s segment.
-- Starting with a generic establishing shot when the previous tail frame should be used.
+- Copying the previous tail frame as the next first frame by habit, especially when a new angle, match-on-action, or complete shot-group opening would be smoother.
+- Starting with a generic establishing shot that ignores the previous emotional or action state.
 
 ## Prompt Compression
 
@@ -2225,12 +2249,26 @@ Rules:
 - A prop remains where it was placed until a visible action moves it.
 - Doors, windows, lights, chairs, vehicles, and breakable objects keep state across cuts.
 - Damage accumulates; broken glass, spilled water, dust, torn clothing, and extinguished lights do not reset.
-- For continuation, the tail frame becomes the next segment's initial scene state.
+- For continuation, the previous ending defines story state and continuity facts, not necessarily the exact first frame of the next segment. The next segment may begin with a new angle/shot size, a match-on-action continuation, or a new shot group.
 - If moving into a new room or zone, show or clearly motivate the spatial transition.
 
 ## Visual Reference Image Prompt Patterns
 
 Use these optional text-to-image prompts as visual anchors before video generation. They are not the final video prompt. Keep them consistent with the final prompt. The user may generate these references first for more control, or skip them and generate video directly.
+
+Reference prompts should be complete enough to generate usable production references, not vague mood labels. Match the current segment's story state: costume, hair, dirt, wetness, injury, makeup, emotional baseline, prop ownership, light, weather, and setting should fit what is happening in that video segment. Do not reuse a generic character portrait if the character is currently running, grieving, injured, soaked, disguised, transformed, or in a different costume.
+
+### Reference Prompt Completeness Standard
+
+Use this standard whenever reference prompts are output:
+
+- **Character reference**: identity/role, age range, ethnicity/era when relevant, face shape and temperament, hairstyle, body type or posture, clothing and costume state, visible dirt/wetness/injury/makeup, emotional baseline, shot size, background/light, film texture, and constraints such as non-fashion, non-glamour, non-monsterized, natural performance.
+- **Single-character isolation**: a character reference for one person must describe only that person. Do not include other visible characters, relationship blocking, another person's hands/shoulders, hugging, holding, protecting, chasing, fighting, or looking at another named person. These details can cause image generation to create extra inconsistent characters.
+- **Scene reference**: exact location type, spatial layout, foreground/midground/background, entrances/exits, action path, obstacles, key furniture/vehicles/architecture, practical light source and color mood, materials, weather/atmosphere, era, and whether it should be `无人物`.
+- **Key prop/product reference**: object type, era, material, color, scale, wear marks, story-specific identifiers, current state, owner/placement if important, light/background, and detail clarity.
+- **Relationship/two-shot reference**: both identities, screen-left/screen-right positions, height/distance, eye lines, body tension, costume state, shared environment, and power relationship.
+
+Keep references complete but purposeful. Do not output long inventories of irrelevant fashion details, room objects, or texture adjectives that the current video will never use.
 
 ### Reference Output Decision Strategy
 
@@ -2238,24 +2276,25 @@ Choose references by the production problem being solved:
 
 | Need | Recommended Reference | Notes |
 |---|---|---|
-| Stable single character identity | Character identity reference | Neutral emotional baseline, clear face/hair/costume |
+| Stable single character identity | Character identity reference | One visible person only; neutral or current emotional baseline, clear face/hair/costume |
 | Two-character height, distance, or chemistry | Relationship/two-shot reference | Use only when blocking or physical relationship matters |
 | Stable room/location layout | Clean scene plate | No people; show entrances, depth, light sources, action path |
 | Story-critical object/product | Key prop/product reference | Only if its design must remain stable or readable |
 | Exact opening composition | First-frame reference | Match the first shot's framing and initial body state |
-| Continuation between clips | Previous tail frame | Preferred over regenerating the same scene |
-| New character in existing scene | New character reference only | Reuse existing scene and previous tail frame |
+| Continuation between clips | Existing references + optional previous tail frame | Use tail frame only when exact posture, blocking, prop position, or damage state matters |
+| New character in existing scene | New character reference only | Reuse existing scene references and continuity state |
 | New location in continuation | New clean scene plate | Add only when the story actually enters the new location |
 
 Priority order:
 
-1. Previous tail frame, when continuing.
-2. Character identity reference, when faces must remain stable.
-3. Clean scene plate, when spatial layout matters.
-4. Relationship/two-shot reference, when blocking/chemistry matters.
-5. Key prop/product reference, only when central.
+1. Character identity reference, when faces must remain stable.
+2. Clean scene plate, when spatial layout matters.
+3. Existing continuity state from previous segment, when continuing.
+4. Previous tail frame, only when exact body/prop/spatial state matters.
+5. Relationship/two-shot reference, when blocking/chemistry matters.
+6. Key prop/product reference, only when central.
 
-Do not provide redundant references. A simple face close-up usually needs only one character reference. A complex period dialogue may need two character references plus one clean scene plate.
+Do not provide redundant references. A simple face close-up usually needs only one character reference. A complex period dialogue may need two separate character references plus one clean scene plate. Add a relationship/two-shot reference only when shared blocking or chemistry must be controlled.
 
 ### First-Frame vs Identity Reference
 
@@ -2276,16 +2315,26 @@ Include:
 - scene light and camera height
 - no complex action; this is a blocking reference
 
+Do not use a relationship/two-shot reference as a substitute for identity references when each character needs stable faces. Generate individual character references first, then a two-shot reference only if the scene needs relationship geometry.
+
 ### Character Reference
 
 Purpose: stabilize identity, age, temperament, costume, and facial baseline.
 
-Include age range, face impression, hair, clothing, emotional baseline, shot size, lighting, background, film texture, and color palette.
+Include identity/role, age range, ethnicity/era if relevant, face impression, hair, body type/posture, clothing, current costume state, visible dirt/wetness/injury/makeup when relevant, emotional baseline, shot size, lighting/background, film texture, and color palette.
+
+Single-character rule:
+
+- Describe only this one person.
+- Do not mention other characters by role or name, such as daughter, mother, father, lover, enemy, police, doctor, crowd, corpse group, or partner.
+- Do not describe interaction with another person, such as holding a child, protecting someone, hugging, kissing, grabbing, fighting, being chased by a visible person, or looking at a named person.
+- If the character's emotional baseline is relational, translate it into that person's solo body evidence. For example, write `protective tension in her shoulders and alert eyes`, not `protecting her daughter`.
+- If the video requires multiple people in one still image, use `Relationship / Two-Shot Reference` instead of a single-character reference.
 
 Template:
 
 ```text
-人物参考图：{身份/年龄/时代}，{脸型与气质}，{发型与服装}，{情绪基调}，{镜头距离}，{光线与背景}，真实电影质感，低饱和色调，细腻皮肤纹理，非写真摆拍。
+人物参考图：单人角色图，只出现{身份/角色}一人，{年龄范围/民族或时代}，{脸型与气质}，{发型与身体姿态}，{服装与当前状态：干净/破损/湿透/沾灰/血迹但不血腥/妆容变化}，{情绪基线与眼神状态，用单人可见表演表达}，{镜头距离}，{光线与背景}，真实电影质感，低饱和色调，细腻自然皮肤纹理，非写真摆拍，非时尚大片，表演自然，不出现其他人物。
 ```
 
 Example:
@@ -2298,12 +2347,12 @@ Example:
 
 Purpose: stabilize layout, light source, materials, and action space.
 
-Include location, spatial layout, foreground/midground/background, light source, color temperature, key objects, usable action path, atmosphere, era, and materials. Use `无人物` when the scene reference should be clean.
+Include location, spatial layout, foreground/midground/background, entrances/exits, light source, color temperature, key objects, usable action path, obstacles, atmosphere/weather, era, and materials. Use `无人物` when the scene reference should be clean.
 
 Template:
 
 ```text
-场景参考图：{地点}，{空间结构}，前景{...}，中景{...}，背景{...}，{主要光源与色调}，{材质与氛围}，真实电影场景质感，空间纵深清晰，无人物。
+场景参考图：{地点与时代/类型}，{空间结构与镜头方向}，前景{...}，中景{...}，背景{...}，入口/出口{...}，可行动线{...}，障碍物/关键物件{...}，{主要光源与色调}，{天气/烟尘/雾气/材质与氛围}，真实电影场景质感，空间纵深清晰，无人物。
 ```
 
 Example:
@@ -2321,7 +2370,7 @@ Use only for important props: old sweater, music box, rejection letter, phone, r
 Template:
 
 ```text
-关键道具参考图：{道具}，{年代/材质/磨损细节}，{与剧情有关的标记}，{光线与背景}，真实电影道具质感，微距或近景，细节清晰。
+关键道具参考图：{道具名称与用途}，{年代/材质/颜色/尺寸}，{磨损、污渍、破损或使用痕迹}，{与剧情有关的标记或可读特征}，{当前状态与摆放位置/持有人}，{光线与背景}，真实电影道具质感，微距或近景，细节清晰。
 ```
 
 Example:
@@ -2352,10 +2401,12 @@ Template:
 
 ### Continuation References
 
-- For continuation, reuse prior tail frame and existing references by default.
+- For continuation, reuse existing character/scene/prop references and previous continuity facts by default.
 - Add new reference prompts only for new visual anchors.
-- If using a previous tail frame, the scene reference can be omitted unless the camera moves into a new space.
+- If using a previous tail frame, treat it as optional state guidance, not a required first frame. The scene reference can be omitted unless the camera moves into a new space.
 - If a new character enters an existing scene, provide only the new character reference and state that the existing scene reference remains unchanged.
+- If a character's visible state changes in a way the next clip must preserve, output an updated character reference with the new clothing, hair, dirt, wetness, injury, makeup, carried prop, and emotional baseline.
+- If the same location changes materially, output an updated scene reference only for meaningful changes such as new damage, smoke, rain, fire, darkness, blocked exits, moved vehicles, broken furniture, or changed light source.
 
 ### Reference Consistency Check
 
@@ -2364,7 +2415,10 @@ Before finalizing, ensure reference prompts and video prompt share:
 - same character age, clothing, hairstyle, and emotional baseline
 - same setting, era, color palette, and lighting
 - same key prop design
+- same current-state details: dust, wetness, injury, makeup, costume damage, carried objects, scene damage, weather, and light state when relevant
 - no contradiction between still-image pose and video action.
+- single-character references contain exactly one visible person and do not smuggle in other characters through relationship wording or interaction actions.
+- relationship/two-shot references are used only when multiple people intentionally need to appear together.
 
 ## Negative Constraints
 
@@ -2513,7 +2567,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Does the duration fit the content instead of defaulting to 15s?
 - Was duration/splitting judged by playable content rather than source text length alone, including event count, dialogue time, actions, emotional reactions, scene changes, camera moves, and ending breath?
 - If the story exceeds 15s or 2000 characters, does the answer recommend splitting and clearly state what this prompt covers?
-- If this is a split prompt, does the first segment end on a usable tail-frame reference and the next segment continue from it?
+- If this is a split prompt, has the bridge type been chosen: different shot size/angle continuation, match-on-action, or complete shot-group continuation?
 
 ### Prompt Usability
 
@@ -2533,7 +2587,11 @@ Run this silently before giving the final answer. Do not print it unless the use
 - If reference-image prompts are included, are they optional, concise, and consistent with the final video prompt?
 - Are reference types selected by production need rather than outputting character, scene, and prop prompts mechanically?
 - Is an identity reference distinguished from an exact first-frame reference?
-- For continuation, does the next prompt start from the previous ending and preserve identity, scene, lighting, sound bed, and key props?
+- Are reference-image prompts complete enough for image generation, including current segment clothing, appearance, dirt/wetness/injury/makeup, emotional baseline, scene layout, light, materials, and action space where relevant?
+- Do reference prompts avoid generic portraits or generic empty scenes when the current segment requires a specific costume state, disaster state, period styling, transformation, or emotional condition?
+- For every single-character reference, does the prompt describe only one visible person and avoid mentioning other characters, relationships, or interaction actions that could generate extra people?
+- If two or more characters need to appear together, has that been placed in a separate relationship/two-shot reference instead of contaminating individual identity references?
+- For continuation, does the next prompt continue the previous story state while preserving identity, scene, lighting, sound bed, and key props without blindly copying the previous tail frame?
 
 ### Time and Rhythm
 
@@ -2583,7 +2641,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Are entry/exit and travel directions continuous across connected spaces?
 - Are handedness, prop position, costume state, tears/injury marks, and body posture continuous?
 - For recurring scenes, are doors, furniture, lights, damage, props, entrances, and action paths consistent with the scene bible?
-- In continuation, does the previous tail frame define the next initial state?
+- In continuation, does the previous ending define continuity facts while the next opening uses the most natural bridge type rather than forcing the exact same tail frame?
 - Are insert shots used when long dialogue or emotional pauses need breathing room?
 - Does the ending leave a 1-2s performance pause or visual/sound tail?
 - If one action is split across shots, does the second shot continue the same action with match-on-action continuity?
