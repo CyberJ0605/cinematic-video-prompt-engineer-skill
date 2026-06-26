@@ -169,6 +169,7 @@ Expected:
 - 2 shots, 6-8 total action beats.
 - Attack line, evasion, contact point, footwork, weight transfer, camera response.
 - Stable A/B screen positions until a visible pivot or throw.
+- Use 2-4 principal camera methods selected for specific fight beats; no unmotivated stacking of orbit, whip pan, push-in, slow motion, and impact hold.
 - Final prompt 1300-1800 characters, under 2000.
 - Staged, non-lethal, no gore.
 
@@ -177,6 +178,7 @@ Failure checks:
 - more than 10 action beats
 - crowd enters fight
 - throw occurs without level change/grip/momentum setup
+- camera tricks obscure contact points, landing positions, or the attack-defense chain
 
 ## Case 07: Environmental Fight
 

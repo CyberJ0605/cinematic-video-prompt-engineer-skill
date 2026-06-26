@@ -1238,6 +1238,56 @@ Useful phrase:
 - Low-angle wide shot: useful for heroic entrance, spear sweep, shield charge, or surrounded protagonist.
 - Top shot or high angle: use sparingly for geography in crowd fights.
 
+### Action-Fight Camera Movement Selection System
+
+Choose camera movement from the action's dramatic need. Do not treat the following methods as a checklist. In a 10-15s fight, normally select 2-4 principal methods and give each one a clear job: establish space, follow displacement, clarify an exchange, emphasize a decisive impact, or create a motivated transition.
+
+| Camera method | Best use | Writing rule |
+|---|---|---|
+| **Tracking Follow / 跟拍跟镜** | pursuit, retreat, lateral exchange, fighters moving through a room | Follow the dominant movement direction and keep the next obstacle or destination visible; do not let the camera overtake the action without motivation. |
+| **Visible Orbit / 环绕运镜** | face-off, circling footwork, power reversal, showing a 180/360-degree arena | Orbit only while both fighters remain readable and the changing background explains the rotation. Preserve the axis through a visible move; avoid full orbits during limb-heavy grappling. |
+| **Rapid Dolly In / 急速推镜** | a fighter commits, a guard breaks, a decisive strike begins | Push toward the intended contact point immediately before or during one major impact, then stabilize. Do not use repeated push-ins for every hit. |
+| **Rapid Dolly Out / 急速拉镜** | reveal a fall, throw, environmental landing, new threat, or spatial consequence | Pull back to create physical room and show where the body/object lands. Use before or during large movement, not after the result has become unclear. |
+| **Low-Angle Upward Shot / 低角度仰拍** | forward drive, dominant stance, lift, leap, weapon rise | Keep feet or the force-generating body line visible; use briefly to magnify force without hiding contact or turning the move into a pose. |
+| **Overhead / High-Angle Geography / 高空俯拍** | group fight geography, encirclement, escape path, bodies changing formation | Use as an orientation beat, not the main impact view. Show lanes, spacing, exits, and who is surrounded. |
+| **Slow-Motion Tracking / 慢动作跟镜** | airborne movement, decisive dodge, weapon crossing, debris burst | Reserve for one peak beat. Track the complete motion path, then return to real time for landing, recoil, and recovery. |
+| **Whip Pan / 摇镜横移** | sudden attack from the side, opponent crossing frame, thrown object, fast defensive turn | Pan along the real action direction. End on a readable subject or landing point; do not use as random blur between unrelated actions. |
+| **Whip-Pan Flash Cut / 甩镜闪切** | hide a cut at the instant of a strike, accelerate a direction change, join two matching motions | Cut inside the motion blur while preserving direction, speed, body pose, weapon hand, and screen position. Use once at a major acceleration beat. |
+| **Micro-Montage Inserts / 特写切镜** | fists, feet, grip, eyes, weapon edge, impact preparation | Use 2-3 very short inserts only when they clarify cause and effect. Return to a wider readable shot before the main body action. |
+| **Ped Up/Down or Crane Rise/Fall / 升降运镜** | stair pursuit, jump/drop, stand-up recovery, changing vertical advantage | Move vertically with the action and reveal the new level or destination. Do not substitute a tilt when the camera itself must change height. |
+| **Foreground Occlusion Wipe / 穿墙过物穿梭** | move between adjacent fight zones, disguise a cut, reveal a new attacker or room | Let a pillar, wall edge, vehicle, hanging cloth, or foreground body fully wipe the frame; emerge with matching movement direction and preserved spatial logic. |
+| **Shot/Reverse Shot / 反打镜头** | clarify attack-defense alternation, reaction, feint, stare-down | Keep eyelines and screen sides stable. Change horizontal angle by at least 30 degrees within the same scene and avoid adjacent near-identical shot sizes. |
+| **Rotating Pan/Orbit / 旋转摇镜** | circling duel, clinch rotation, chained attacks that revolve around one center | Let fighter rotation motivate the camera rotation. Keep a stable visual anchor in the environment so the viewer does not lose orientation. |
+| **Impact Hold / 定格定镜** | one decisive non-graphic hit, block, collision, or near-miss | Use an ultra-brief impact hold, near-freeze, or speed-ramp plateau rather than a long literal freeze. Preserve recoil, sound, and immediate recovery so the strike retains physical continuity. |
+
+#### Selection by Fight Beat
+
+```text
+空间建立：Overhead/High Angle, Visible Orbit, FLS/LS establishing shot
+追逐与位移：Tracking Follow, Whip Pan, Ped/Crane movement
+攻防可读：Shot/Reverse Shot, Micro-Montage Inserts, medium handheld tracking
+力量升级：Rapid Dolly In, Low-Angle Upward Shot, Rotating Pan/Orbit
+摔投与落点：Rapid Dolly Out, Ped Down, overhead geography
+高潮命中：Slow-Motion Tracking or Impact Hold, choose one dominant emphasis
+隐藏剪辑：Whip-Pan Flash Cut or Foreground Occlusion Wipe, only with matched direction/action
+```
+
+#### Combination Rules
+
+- Tie every camera move to a verb in the choreography: pursue, evade, rotate, lift, fall, reveal, strike, recover. If the camera move has no action cause, remove it.
+- Keep the action chain readable before adding impact style. Show full bodies for footwork, throws, leaps, grappling reversals, and landings; use close inserts for preparation, grip, expression, or one contact detail.
+- Do not combine rapid push, whip pan, orbit, Dutch angle, slow motion, and impact hold in the same beat. Choose one primary emphasis and at most one supporting camera response.
+- For edited fights, preserve the 180-degree axis, screen direction, eyelines, weapon hand, and action velocity. Use match-on-action for cuts inside a strike, dodge, fall, or weapon swing.
+- For continuous long takes, use only physically connected camera paths. Foreground wipes may disguise stitching, but the resulting shot must still feel like one navigable space.
+- Let impact breathe for a fraction of a beat, then show recoil, pain response, balance recovery, environmental reaction, or the next threat. Do not freeze at contact and omit the physical result.
+- Use camera movement to vary rhythm: readable setup -> mobile exchange -> one emphasized peak -> stable aftermath. Continuous maximum-intensity movement weakens impact.
+
+Useful compact phrase:
+
+```text
+运镜按动作功能分配：FLS跟拍建立追逐方向，攻防转折用反打保持轴线，摔投前Rapid Dolly Out留出落点空间，决定性命中仅使用一次短暂Impact Hold，随后立即恢复实时速度并交代后坐、喘息与环境反馈；不堆叠无动机甩镜、环绕和慢动作。
+```
+
 ### Fight Rhythm Planning
 
 A strong 10-15s fight should usually have a rhythm arc:

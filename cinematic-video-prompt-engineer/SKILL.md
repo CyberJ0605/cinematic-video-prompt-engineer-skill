@@ -52,6 +52,22 @@ Output modes:
 
 When the user does not specify a model, assume a high-capability Seedance 2.0 / Kling 3.0 class video model. Do not add a separate generic model field. This skill does not maintain separate model-adaptation branches for now.
 
+## Execution Gates and Failure Recovery
+
+Resolve the following conditions before writing the final prompt:
+
+| Trigger | First response | If it still cannot fit or stabilize |
+|---|---|---|
+| The protagonist, location, or emotional transformation is missing | Ask one concise question covering only the missing foundations | If the user delegates creative control, choose one coherent interpretation, state it in one sentence, and proceed |
+| The requested events cannot play within 15 seconds | Keep the strongest filmable event or emotional turn and name the omitted material | Split into numbered clips; give each clip one main turn and its own ending breath |
+| Dialogue cannot fit its assigned time | Shorten wording while preserving the plot-changing fact, then reserve reaction time | Move supporting information into visible action, a prop, or a later clip; never accelerate speech unnaturally |
+| The final prompt exceeds 2000 Chinese characters | Apply the compression ladder in `references/style_patterns.md` | Reduce shots or events and split the scene; do not remove causality, key dialogue, continuity anchors, or the final reaction |
+| Spatial, prop, costume, or emotional continuity is uncertain | Reconstruct the last confirmed state and list the minimum continuity anchors | Use a neutral re-establishing shot or a new clip boundary; do not invent an invisible reset |
+| The user requests conflicting camera instructions | Preserve the requested dramatic function and choose one physically plausible camera path | State the single conflict that was resolved; do not stack incompatible moves |
+| A requested reference image would introduce unwanted people or visual drift | Separate identity, relationship, scene, and prop references by production purpose | Omit the unnecessary reference and restate the stable visual anchors inside the video prompt |
+
+**🔴 CHECKPOINT · Long-form adaptation:** If the user requests complete coverage of material over roughly 3000 Chinese characters and has not chosen between `片段拆选` and `连续短片结构`, stop after a compact scope diagnosis and ask them to choose. Do not generate final video prompts before that decision. If the user explicitly delegates the choice, select `连续短片结构` for full coverage and `片段拆选` for a single strongest moment.
+
 ## Duration Rules
 
 - Choose the duration from the story content. Maximum single prompt duration is 15 seconds.
@@ -170,6 +186,7 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 - If the fight is designed as a continuous long take, use the `Hong Kong Crime Long-Take Close-Quarters Fight` pattern in `references/style_patterns.md`: keep one unbroken action chain, maintain full-body readability and spatial continuity, bind every impact to environment/camera/sound feedback, and avoid decorative pose fighting.
 - Fight prompts must remain under 2000 Chinese characters for the copy-ready final prompt. Target 1300-1800 characters for a 10-15s fight; use 2-3 shots and 6-10 total action beats. If clarity requires more, split the fight into consecutive clips instead of exceeding the limit.
 - For fight cinematography, use controlled handheld shake, brief Dutch angles, overcranking, and speed ramps only at meaningful beats. Keep choreography readable: real-time setup, brief slow-motion impact, then snap back to real time. See `Fight Scene Cinematography Rhythm` in `references/style_patterns.md`.
+- Select fight camera movement by dramatic function rather than stacking techniques. Use the `Action-Fight Camera Movement Selection System` in `references/style_patterns.md`: establish geography, follow displacement, clarify attack/defense, emphasize one impact, or bridge a motivated cut. A 10-15s fight should usually use only 2-4 principal camera methods, each tied to a specific action beat.
 - For cinematic crowd fights or protector-entrance action scenes, use the `Epic Crowd Fight / Protector Entrance` pattern in `references/style_patterns.md`. Preserve character/scene continuity across segments, choose a natural clip bridge or use material references when provided, keep one hero as the action anchor, and explicitly ban subtitles/background music if requested.
 - Use director-level shot continuity rules from `references/style_patterns.md`: avoid adjacent shot sizes that are too similar, change camera horizontal angle by at least 30 degrees when cutting between different angles within the same scene and same subject/interaction, use insert shots when dialogue needs breathing room, leave ending breath, and use match-on-action when splitting one action across two shots. The 30-degree angle rule does not need to be forced when cutting to a new scene or new location.
 - Preserve 180-degree axis, eyeline, screen direction, handedness, prop position, costume/injury state, and entrance/exit continuity. Cross the axis only through a visible camera move, a neutral-axis shot, or a motivated re-establishing shot.
@@ -218,6 +235,19 @@ Recommended counts:
 - Period drama: character/costume reference plus scene reference.
 - Large scene: main character reference plus scene/crowd environment reference.
 - Object-led memory scene: key prop reference plus scene reference.
+
+## Anti-Patterns and Red Flags
+
+Do not:
+
+- turn prose into a sentence-by-sentence storyboard or preserve exposition that has no visible screen equivalent
+- cram several dramatic turns into one 15-second prompt or place the key line at the final instant without reaction time
+- use vague substitutions such as “对方说出噩耗” when the spoken fact changes the plot
+- stack camera moves, lens changes, lighting jargon, slow motion, and cuts without assigning each one a dramatic function
+- reset a character's face, costume, injury, held object, screen direction, location layout, lighting state, or emotional residue between clips
+- create every possible reference-image type by default, or put a second person inside a single-character identity reference
+- use generic labels such as `电影感`, `高级感`, `史诗感`, or `氛围拉满` in place of concrete action, light source, sound, composition, and timing
+- hide an overloaded scene inside dense fragments merely to stay under the character limit; reduce events or split the scene instead
 
 ## Safety and Taste Boundaries
 
