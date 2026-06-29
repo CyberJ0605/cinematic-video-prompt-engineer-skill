@@ -45,7 +45,7 @@ Prefer specific but generation-friendly terms:
 - Use standardized English abbreviations for shot size and camera movement in storyboard prompts. Chinese explanations can appear in diagnosis, but the final shot labels should use the abbreviations when professional terms are needed.
 - Character shot sizes: `ECU` Detail Shot (only a facial detail), `VCU` Face Shot (forehead to chin), `BCU` Big Close-Up (full head including face), `CU` Close-Up (head and shoulders), `MCU` Chest Shot (head to below chest), `WS` Waist Shot (head to waist), `KS` Knee Shot (head to knees), `FLS` Full Length Shot (full body with head/foot room), `LS` Long Shot (person occupies about 3/4 of frame), `ELS` Extra Long Shot (person far away).
 - Object/scenery shot sizes: `CU` Close-Up (local detail), `MCU` Medium Close-Up (about 1/4 of subject), `MS` Medium Shot (about 1/2 of subject), `MLS` Medium Long Shot (whole subject plus some surroundings), `LS` Long Shot (subject occupies about 3/4 to 1/3 of frame), `ELS` Extra Long Shot (farther than long shot).
-- Camera movement: `Dolly In/Out` or `Track In/Out` for camera physically moving forward/backward; `Pan Right/Left` for horizontal lens/head rotation; `Ped Up/Down` for camera moving vertically; `Tilt Up/Down` for vertical lens/head rotation; `Track Right/Left` or `Crab Right/Left` for camera moving sideways; `Zoom In/Out` for focal length change while camera stays physically still.
+- Camera movement: `Dolly In/Out` or `Track In/Out` for camera physically moving forward/backward; `Pan Right/Left` for horizontal lens/head rotation; `Tilt Up/Down` for vertical lens/head rotation; `Track Right/Left`, `Truck Right/Left`, or `Crab Right/Left` for camera moving sideways; `Ped Up/Down` for vertical camera movement; `Crane Up/Down` or `Jib Up/Down` for vertical/diagonal camera movement with a crane/jib feel; `Arc/Orbit` for a curved path around the subject; `Zoom In/Out` for focal length change while camera stays physically still; `Dolly Zoom` / `Vertigo effect` for dollying one way while zooming the opposite way; `Whip Pan` or `Crash Zoom` for fast transition/emphasis; `Handheld` for controlled human shake; `Static` for no camera movement.
 - 焦段: `24mm`, `35mm`, `50mm`, `85mm`, `100mm macro`, `200mm`.
 - 运镜: prefer the standardized movement terms above; phrases such as `Slow Push in`, `Handheld Backward Tracking`, or `Snap Pull Back` are allowed when they describe the desired feel more clearly.
 - Lens texture: shallow depth of field, anamorphic flare, bokeh, Chiaroscuro, hard side light, backlight, practical light.
@@ -53,6 +53,47 @@ Prefer specific but generation-friendly terms:
 Do not pile up terms. Use the terms that directly serve the scene's emotion.
 
 When a term has possible ambiguity, disambiguate by context. For example, `MCU` in a character shot means Chest Shot, while `MCU` in an object/scenery shot means Medium Close-Up. If needed, write `MCU Chest Shot` or `MCU object detail` once, then use the abbreviation consistently.
+
+### General Camera Movement Selection System
+
+Choose camera movement by narrative function, not as decoration. Most 6-15s prompts need only 1-3 principal moves; a simple emotional close-up may need none. If a move does not change emotional distance, reveal space, follow action, create disorientation, or mark a transition, use `Static` instead.
+
+| Camera move | Best use | Writing rule |
+|---|---|---|
+| **Push-In / Dolly-In** | intimacy, tension, realization, a character being emotionally trapped | Move physically closer to the subject and end on the important face, hand, object, or decision. Keep it slow for emotion, faster only for shock or threat. |
+| **Dolly-Out / Pull-Back** | reveal context, isolation, aftermath, closure, or a hidden spatial relationship | Start close enough to feel subjective, then reveal the larger room, crowd, landscape, or consequence. Do not pull back without new information. |
+| **Pan Right/Left** | follow a gaze, track an entering subject, reveal adjacent space, build anticipation | Rotate from one readable subject/space to another; end on a clear target rather than vague scenery. |
+| **Tilt Up/Down** | reveal height/depth, a body/object from detail to whole, power difference, vertical threat | Use when vertical information matters: tower, stairwell, falling object, kneeling/standing power change. |
+| **Tracking / Truck / Crab** | walking, driving, pursuit, side-by-side dialogue, smooth movement through space | Keep camera parallel to the subject or movement path; show obstacles or destination so direction stays clear. |
+| **Arc / Orbit** | show multiple sides of a character, reveal changing power, circle a confrontation, add dimension | Orbit around one stable subject or pair. Keep background readable and preserve axis logic through the visible move. |
+| **Crane / Jib** | grand reveal, scale, environment, vertical transition, a subject becoming small or powerful | Rise/fall with story purpose: reveal the crowd, city, battlefield, cliff, lighthouse, or emotional isolation. |
+| **Zoom In/Out** | focus attention, compress distance, isolate a face/object, observational or surveillance feel | Use when the camera should feel physically still; avoid replacing every emotional push-in with zoom. |
+| **Dolly Zoom / Vertigo effect** | disorientation, panic realization, moral vertigo, world collapsing around a character | Reserve for rare turning points. State the emotion it expresses; avoid using it as a generic cool effect. |
+| **Whip Pan / Crash Zoom** | sudden attention shift, energetic transition, surprise reveal, fast comedic or action beat | Use briefly. Start and end on readable subjects; preserve direction and avoid random blur. |
+| **Handheld** | realism, urgency, documentary immediacy, panic, chase, unstable confrontation | Describe the intensity: subtle human shake, close handheld, or rough handheld. Do not use heavy shake when facial nuance or action readability matters. |
+| **Static + angle family** | formal tension, observation, power, dread, comedy timing, precise performance | Use `Static Low Angle`, `Static High Angle`, `Static Dutch Angle`, `Bird's-Eye`, `Worm's-Eye`, or `Straight On` when perspective matters more than movement. Static is often strongest for micro-expression, interrogation, waiting, and moral pressure. |
+
+#### Selection by Drama Beat
+
+```text
+情绪靠近：Push-In / Dolly-In, or Static CU if the face already carries enough pressure
+孤独与后果：Dolly-Out / Pull-Back, Crane Up, ELS reveal
+发现与期待：Pan, Tilt, Slow Push-In
+并行移动：Tracking / Truck / Crab, Handheld following
+权力变化：Low Angle Static, High Angle Static, Tilt Up/Down, Arc/Orbit
+心理失衡：Dolly Zoom, Dutch Angle Static, brief Handheld instability
+快速转场或惊讶：Whip Pan / Crash Zoom, but end on a readable subject
+宏大空间：Crane/Jib, ELS, controlled Pull-Back
+微表情表演：Static ECU/CU or extremely slow Push-In; avoid restless camera
+```
+
+#### Combination Rules
+
+- Tie camera movement to a visible cause: gaze, footsteps, vehicle motion, body approach/retreat, door opening, object reveal, emotional realization, or sound cue.
+- Avoid stacking `Push-In + Orbit + Zoom + Handheld + Dutch Angle` in one beat. Choose one primary move and one supporting angle or lens choice.
+- Prefer `Dolly-In` for emotional approach because the camera physically enters the character's space; prefer `Zoom-In` for observation, surveillance, shock compression, or a distant watcher feeling.
+- Use `Static` deliberately. A fixed frame can make a confession, threat, micro-expression, or comedy pause more powerful than constant movement.
+- When cutting between shots, maintain the 180-degree axis and camera-angle rules elsewhere in this reference.
 
 ## Cinematic Lighting as Dramatic Design
 
@@ -474,6 +515,44 @@ Use this arc carefully:
 - Add quality constraints for face stability when needed: face stable, clear features, natural motion, no blur, no flicker, no shake.
 - If the scene is not romance, adapt the same structure: sudden recognition -> emotional leak -> concealment -> renewed courage.
 
+#### Coquettish Soft Refusal Arc
+
+Use for safe, non-explicit intimacy, playful sulking, shy protest, or a character saying something like `我不要` while the real emotion is closer to softness, trust, affection, and tiny willfulness. It must not read as real fear, coercion, or serious rejection.
+
+Core setup:
+
+```text
+固定 ECU/CU 或极轻微 Push in，人物正对镜头或面对近处对方，表演强度控制在三分；没有夸张撒娇动作，没有性感化挑逗，重点是眼神、嘴角、呼吸、手指小动作和台词气声。
+```
+
+Emotional logic:
+
+```text
+整体不是真正的反感拒绝，而是带着亲近关系中的小任性、软萌娇憨和被宠爱的安全感。台词可以是“我不要”，但眼神、笑意和身体并没有真正推远对方。
+```
+
+Emotional waveform:
+
+```text
+0-1s：人物先看向镜头/对方，手时轻时重，指尖带着犹豫又亲近的小动作；脑袋微微偏向一侧，眼神带点软乎乎的不情愿，嘴角轻轻抿出一点别扭弧度。
+1-2s：眼尾微微弯起，眼底藏着顽皮和被纵容的安全感，嘴唇轻轻开合，用很轻、很软、带鼻音的气声说：“我不要。”语气更像撒娇式推拒，而不是生硬拒绝。
+2-4s：说完后视线轻轻躲开半秒又偷偷回到对方身上，嘴角忍不住漫上一点浅笑；因不好意思微微垂眼，睫毛颤动，肩颈放松，身体没有后退。
+4-6s：轻笑被压回唇边，嘴角抿住又泄出一点笑意，眼神变得更柔；最后保持近距离、软软的别扭感，像仍在嘴硬，但心里已经被哄软。
+```
+
+Compression phrase:
+
+```text
+她轻轻偏头，眼神软乎乎地躲了一下，嘴角抿出别扭弧度，用很轻的气声说“我不要”；说完又偷偷看回对方，忍不住压出一点浅笑，身体没有后退，情绪是娇嗔式软拒绝而不是真正抗拒。
+```
+
+Avoid:
+
+- turning `我不要` into fear, panic, disgust, or real refusal unless the story asks for it
+- overt seduction, exposed body emphasis, or sexualized camera language
+- exaggerated pout, cartoon acting, childish baby voice, or idol-drama overacting
+- strong physical pushing, struggling, or coercive blocking
+
 #### Exhausted Silent Collapse Arc
 
 Use when a character has already endured too much and finally collapses inward without dramatic crying. Best for emotional exhaustion, quiet despair, grief after long restraint, hopeless acceptance, powerless love, or a character realizing they cannot change the outcome.
@@ -551,6 +630,10 @@ Use these as modular facial-performance beats. Select only the beats that fit th
 - **被发现心事的娇羞**: 眼神偷偷从镜头上弹开，左右飘忽，不敢看对方，颧骨微红，耳根与脖颈因极度害羞泛起潮红。
 - **抿唇咽口水**: 嘴唇紧张抿住，喉间极轻地滚动一下，头微微低垂。
 - **羞怯抬头**: 怯怯地再次抬眼，给出柔软而温热的直视，睫毛轻颤，鼻翼微微翕动。
+- **娇嗔偏头**: 脑袋微微偏向一侧，眼神带点软乎乎的不情愿，嘴角抿出一点别扭弧度。
+- **气声软拒绝**: 嘴唇轻轻开合，用很轻、很软、带鼻音的气声说短句，例如“我不要”，语气像撒娇式推拒，不是真正反感。
+- **躲开又偷看**: 视线轻轻躲开半秒，又偷偷回到对方身上，眼底仍有亲近和安全感。
+- **压住笑意**: 轻笑被压回唇边，嘴角抿住又泄出一点浅笑，身体没有后退。
 
 ### Calculation, Cruelty, and Dark Resolve
 
@@ -694,6 +777,20 @@ Typical phrase:
 
 ```text
 她怯怯抬眼看了一瞬又移开，睫毛轻颤，嘴角压不住地漏出一点笑意，手指无意识捏住袖口。
+```
+
+### 娇嗔软拒绝 / Coquettish Soft Refusal
+
+- Emotional intensity stays low, around three out of ten.
+- The spoken refusal is soft and brief, often a breathy line such as `我不要`.
+- Eyes and mouth contradict the literal words: gaze dodges but returns, smile is hidden but leaks out.
+- The body does not truly retreat; hands, shoulders, and distance remain relaxed or intimate.
+- The tone is safe, trusting, and playful, not fear, coercion, disgust, or explicit seduction.
+
+Typical phrase:
+
+```text
+她轻轻偏头，嘴角抿出一点别扭弧度，用带鼻音的气声小声说“我不要”；视线躲开半秒又偷偷看回去，眼底仍是软的，身体没有后退，像嘴上拒绝、心里已经被哄软。
 ```
 
 ### 爱意克制 / Restrained Love
@@ -2628,7 +2725,8 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Is there no empty boilerplate such as `视频模型：通用 AI 视频模型`?
 - Does the first summary line include duration and structure?
 - Are technical terms useful rather than decorative?
-- Are professional shot-size and camera-movement terms written with standardized English abbreviations where appropriate, such as `ECU`, `VCU`, `BCU`, `CU`, `MCU`, `WS`, `KS`, `FLS`, `LS`, `ELS`, `MS`, `MLS`, `Dolly In/Out`, `Pan Right/Left`, `Tilt Up/Down`, `Track Right/Left`, and `Zoom In/Out`?
+- Are professional shot-size and camera-movement terms written with standardized English abbreviations where appropriate, such as `ECU`, `VCU`, `BCU`, `CU`, `MCU`, `WS`, `KS`, `FLS`, `LS`, `ELS`, `MS`, `MLS`, `Dolly In/Out`, `Pan Right/Left`, `Tilt Up/Down`, `Track Right/Left`, `Crane/Jib`, `Arc/Orbit`, `Zoom In/Out`, `Dolly Zoom`, `Whip Pan`, `Handheld`, and `Static`?
+- Does each named camera movement have a clear dramatic function: intimacy, context reveal, gaze/action following, scale, power shift, disorientation, transition, urgency, or deliberate stillness?
 - If the prompt uses cinematic lighting, is the amount of lighting detail proportional to the scene? For ordinary scenes, is lighting kept to one compact motivated phrase instead of a full breakdown?
 - If the prompt uses detailed cinematic lighting, does it specify Key Light, Fill Light, Rim Light or Soft edge highlight, Background/Volumetric Light, concrete surfaces touched or hidden by light, tonal structure such as `Low-key High Contrast` when relevant, color-temperature meaning when relevant, and the emotional/story meaning of the light-shadow design?
 - If `Hard side-top Key Light` or `右上方硬质侧顶光` appears, is there a believable source in the environment and a story reason for such hard light?
@@ -2678,6 +2776,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 
 - Is the camera movement physically plausible?
 - Is camera movement motivated by gaze, body movement, emotional distance, or object interaction rather than decoration?
+- Has the prompt avoided piling up multiple camera moves in one beat when a single `Static`, `Dolly-In`, `Pull-Back`, `Pan`, `Tracking`, or `Handheld` choice would be clearer?
 - Before a large body action, does the framing create enough physical space to show it clearly?
 - Does each shot have a clear subject and composition?
 - For action or crowd scenes, is spatial direction clear?

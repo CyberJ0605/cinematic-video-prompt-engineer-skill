@@ -389,6 +389,52 @@ Failure checks:
 - compact mode includes unnecessary references
 - continuous mode omits reusable continuity records
 
+## Case 17: Coquettish Soft Refusal Close-Up
+
+Input:
+
+```text
+年轻女子在亲密但安全的关系里小声说“我不要”，她不是真的拒绝，而是带点娇嗔、害羞和被宠爱的任性。6秒固定面部特写，不要露骨，不要夸张撒娇。
+```
+
+Expected:
+
+- Structure: ultra-close face long take / coquettish soft refusal arc.
+- The line `我不要` is explicitly written and timed.
+- Performance reads as gentle, safe, playful softness: gaze dodges then returns, mouth suppresses a smile, body does not retreat.
+- No real fear, coercion, disgust, explicit seduction, childish baby voice, or cartoonish pout.
+- Final prompt target: 500-800 characters.
+
+Failure checks:
+
+- interprets the refusal as fear or non-consent
+- turns the scene into overt sexualization or exposed-body emphasis
+- uses exaggerated idol-drama acting instead of subtle micro-expression
+- omits the spoken line
+
+## Case 18: General Camera Movement Function
+
+Input:
+
+```text
+15秒心理悬疑：男人在空荡地铁站发现站台对面的人和自己长得一模一样。先是普通等待，然后听见广播故障声，抬头看见对面，世界感突然失衡，最后他没有逃，只是僵住。
+```
+
+Expected:
+
+- Camera movement is selected by function, not stacked as decoration.
+- Ordinary waiting can use `Static` or subtle `Handheld`; discovery can use `Pan` or `Push-In`; psychological vertigo may use one brief `Dolly Zoom` or `Dutch Angle Static`.
+- No more than 2-3 principal moves in the final prompt.
+- Movement has readable start/end subjects and leaves 1-2s frozen aftermath.
+- Station geography and screen direction remain clear.
+
+Failure checks:
+
+- piles up `Push-In`, `Orbit`, `Zoom`, `Whip Pan`, `Handheld`, and `Dutch Angle` in the same beat
+- uses `Dolly Zoom` without a major realization
+- camera movement obscures the double's position or the protagonist's reaction
+- ending cuts immediately at the discovery without aftermath
+
 ## Regression Log Template
 
 Append results in this form when testing:
