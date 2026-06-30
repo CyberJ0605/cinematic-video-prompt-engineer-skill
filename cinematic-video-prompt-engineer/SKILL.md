@@ -32,6 +32,7 @@ Output modes:
 2. **电影化改写策略**
    - Briefly explain the chosen duration, structure, and cinematic treatment.
    - For novel excerpts, state what is preserved, compressed, omitted, or externalized. Preserve the dramatic intention, not the original sentence order.
+   - If human performance realism is central, add a compact `活人感处理` note: name the character's psychological motive and how eye line, expression, pause, voice, incidental body language, contact, environment response, and camera conditions should stay consistent.
    - Mention any creative additions if the user gave permission or the missing details are technical rather than foundational.
 
 3. **建议先生成的参考图**
@@ -202,6 +203,7 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 - Keep camera language physically plausible. Avoid asking for too many impossible simultaneous camera moves.
 - Select camera movement by dramatic function. Use the `General Camera Movement Selection System` in `references/style_patterns.md` for ordinary drama, suspense, romance, dialogue, landscape reveal, or emotional beats: decide whether the shot needs intimacy, context reveal, gaze following, parallel movement, power shift, disorientation, urgency, or stillness before naming `Dolly-In`, `Pull-Back`, `Pan`, `Tilt`, `Tracking`, `Arc/Orbit`, `Crane/Jib`, `Zoom`, `Dolly Zoom`, `Whip Pan`, `Handheld`, or `Static`.
 - For characters, write internal logic first, then external evidence. Example: because the character is suppressing panic, their jaw locks, fingers dig into fabric, and breath becomes shallow.
+- For close human scenes, dialogue, everyday realism, intimacy, hesitation, concealment, explanation, lying, memory, or restrained emotion, use the `Live Performance Realism System` in `references/style_patterns.md`: performance must be driven by one psychological motive; expression, eye line, voice, pauses, incidental body language, biomechanics, object contact, environment response, and camera/light/focus conditions must feel like one real person in one physical space.
 - For intense emotional scenes, build a continuous director-performance chain: inner conflict -> physiological reaction -> micro-expression -> recurring action anchor -> decisive behavior. Preserve the anchor across the scene so hands and props do not reset between beats.
 - Before a large body action, create enough physical screen space. Widen the framing or pull the camera back before turns, falls, embraces, throws, or other full-body movement; then let the camera follow the action.
 - Let character action motivate camera, light, and sound changes. A gaze shift can trigger a small pan, an approach can trigger a push-in, a large movement can trigger a pull-back, and contact with fabric/objects should produce synchronized sound and environmental reaction.

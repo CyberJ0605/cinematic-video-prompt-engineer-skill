@@ -435,6 +435,34 @@ Failure checks:
 - camera movement obscures the double's position or the protagonist's reaction
 - ending cuts immediately at the discovery without aftermath
 
+## Case 19: Live Performance Realism
+
+Input:
+
+```text
+晚上家里餐桌前，年轻女性对镜头解释为什么她没有去参加朋友婚礼。她表面平静，其实很在意这件事。10秒，手机实拍感，半身近景，一杯水放在桌上。
+```
+
+Expected:
+
+- Strategy mentions live performance realism or psychological motive.
+- Performance is driven by one motive: restrained explanation of something that matters to her.
+- Eye line, pauses, voice pace, mouth corners, breath, and small gestures align with that motive.
+- Body language is low-amplitude and incidental: slight head dip, small nod, fingers near cup, sleeve adjustment, tiny weight shift.
+- Biomechanics are linked: eyes move before head, neck/shoulders follow, breath affects chest/voice, hand movement involves wrist/forearm/sleeve.
+- Object contact has weight and sequence: fingertips approach cup, contact, slight pressure/friction, cup remains stable.
+- Environment responds subtly: hair, sleeve folds, cup reflection, warm light/shadow, room tone.
+- Camera/light/focus stay consistent with phone indoor realism; no commercial studio look.
+
+Failure checks:
+
+- fixed fake smile or empty eyes
+- gestures added only to make the frame busy
+- isolated head/hand movement with frozen shoulders and no breath
+- hand/cup penetration, cup drift, or object movement before contact
+- character feels pasted onto the background
+- phone realism mixed with perfect studio lighting, plastic skin, or ad-like stabilization
+
 ## Regression Log Template
 
 Append results in this form when testing:

@@ -327,6 +327,196 @@ Write emotions as body evidence:
 - 决绝: still gaze, no blinking, body leans forward before action, breath stops then releases.
 - 自由: posture opens, hair and clothes catch wind, eyes lock onto distant light, a small fearless smile.
 
+## Live Performance Realism System / 活人感表演真实系统
+
+Use this system when the scene depends on human presence rather than plot mechanics alone: close human drama, dialogue, everyday realism, intimacy, hesitation, concealment, explanation, lying, regret, memory, restrained grief, soft refusal, or any prompt where the viewer should feel the character is thinking in real time.
+
+Do not print all six modules by default. Select only the modules that solve the scene's realism problem. For ordinary emotional dialogue, 2-4 concise live-performance cues are usually enough. For a long close-up or phone/live-action realism test, use more detail.
+
+### 1. Psychological Motivation Drives Performance
+
+Do not ask the character to "make a face." First decide what the character is doing internally: explaining, hiding, remembering, testing, lying, regretting, pretending to be relaxed, suppressing panic, or trying not to hurt someone.
+
+Then align:
+
+- eye direction and blink timing
+- mouth corners, lips, brow, jaw, and throat
+- voice texture, pace, hesitation, and pause placement
+- breath and small recovery after key words
+- whether the smile reaches the eyes
+
+Positive pattern:
+
+```text
+她不是直接表现悲伤，而是在努力保持平静。说话前短暂低头，像在组织语言；抬眼时眼神没有完全对准镜头；说到关键处停顿半拍，嘴角轻微收紧；最后轻轻笑一下，但笑意没有完全到眼底。眼神、表情、语气和停顿都服务于“克制地解释一件自己在意的事”这个心理状态。
+```
+
+Avoid:
+
+- fixed fake smile
+- empty eyes
+- sudden expression jumps
+- exaggerated crying/laughing
+- face emotion and dialogue meaning not matching
+- voice tone detached from expression
+- staring into camera without thought
+- no pauses, like reading lines
+
+### 2. State-Driven Incidental Body Language
+
+Do not add actions to make the frame busy. Let small actions leak out of the character's current state, social relationship, and speaking purpose.
+
+For serious explanation, hesitation, restraint, or concern, use low-amplitude movements near the body or table:
+
+- small nod
+- slight forward lean
+- shoulders relaxing with breath
+- fingers rubbing cup rim
+- re-gripping a cup
+- fingertip pause
+- adjusting sleeve cuff
+- tiny posture correction
+- brushing a loose hair only if it fits the social state
+
+Positive pattern:
+
+```text
+动作动机要求：不要为了让画面丰富而加入明显动作。她正在克制地表达一件自己在意的事，因此肢体动作保持低幅度、低姿态、靠近桌面，主要表现为轻微点头、短暂停顿、身体小幅重心变化、手指与杯子的细微接触、整理袖口或碎发。动作像边说边想时自然流露出来的无意识反应。
+```
+
+Avoid:
+
+- sudden chin-on-hand pose
+- big arm lift
+- posed cute gestures
+- exaggerated hand waving
+- actions that show off movement rather than psychology
+- actions that change the character's emotional state by accident
+
+### 3. Biomechanical Linked Motion
+
+Real bodies do not move as isolated parts. When one part moves, connected parts respond.
+
+Useful linked-motion logic:
+
+- Eyes usually react before the head.
+- A head turn brings neck and shoulder compensation.
+- A hand move involves forearm, wrist, fingers, sleeve, and small torso weight shift.
+- Breathing affects chest, shoulders, voice, and pause rhythm.
+- A nod is not only the head moving; eye focus, neck, shoulders, and breath all subtly participate.
+
+Positive pattern:
+
+```text
+她抬眼看向镜头前，眼睛先从桌面移开，随后下巴轻轻抬起，颈部自然跟随。说话时肩膀随呼吸有轻微起伏，身体重心有很小的前后变化。左手扶住杯子时，手腕、前臂和袖口产生细微联动，不要让手像独立物体一样移动。
+```
+
+Avoid:
+
+- isolated body-part motion
+- head moving while shoulders and neck freeze
+- stiff neck
+- floating arms
+- no breath movement
+- missing muscle/cloth linkage
+- robot keyframe motion
+
+### 4. Physical Contact and Object Weight
+
+When the character touches an object, write contact as a physical process: before contact, contact, pressure/resistance, and aftermath.
+
+For example, gripping a cup:
+
+```text
+左手指尖先轻轻靠近杯沿，短暂停住，随后拇指和食指扶住杯壁。杯子保持稳定，只出现极轻微的受力变化。手指在杯壁上小幅摩擦时有停留和阻力感。袖口靠近桌面时产生轻微褶皱变化，手臂移动不要穿过杯子或纸袋。
+```
+
+Use contact cues for:
+
+- cup, phone, letter, ring, sleeve, table edge, door handle, chair, bed sheet, sword hilt, bag, paper, glass
+- weight, friction, pressure, inertia, cloth tension, shadow/reflection change
+
+Avoid:
+
+- hand-object penetration
+- object moving before contact
+- floating cups/phones/props
+- no weight or resistance
+- fingers not aligning to object surface
+- clothes with no fold response
+- unclear table/body spatial relationship
+
+### 5. Environment Response to Human Action
+
+The character should not feel pasted onto the background. Small human actions should create small environmental responses.
+
+Use subtle feedback:
+
+- loose hair lags half a beat after a head turn
+- sleeve fold changes when the forearm moves
+- cup reflection changes as a hand approaches
+- paper bag edge compresses slightly under touch
+- warm light and shadow shift slightly as the character leans forward
+- room tone, cloth sound, cup sound, breath, chair creak, or phone vibration responds to action
+
+Positive pattern:
+
+```text
+她轻微前倾说话时，脸上的暖光和阴影有细小变化，额前碎发随头部移动轻微晃动后慢慢停住。左手靠近杯子时，杯壁反光随手的位置发生细微变化。袖口贴近桌面产生轻微褶皱，纸袋保持稳定但有真实纸张质感。
+```
+
+Avoid:
+
+- character pasted onto background
+- hair completely static
+- clothing behaving like a flat texture
+- light not responding to body angle
+- objects with no reflection or shadow change
+- unmotivated wind effects
+- environment response becoming too large or stealing attention
+
+### 6. Camera, Light, Focus, and Space Consistency
+
+First decide the shooting condition: phone realism, handheld documentary, restrained film drama, period candlelight, low-key crime, commercial product, or another coherent visual mode. All camera distance, stabilization, focus, light, skin texture, background blur, grain/noise, and spatial scale should belong to that same condition.
+
+Phone/live-action realism is one option, not the default for all cinematic prompts.
+
+Phone realism pattern:
+
+```text
+画面像手机在晚上室内自然拍摄，半身近景，镜头略高于桌面，轻微手持晃动但不影响观看。暖色顶灯是主要光源，脸部和手部阴影方向一致。背景轻微虚化但仍能看出家庭空间，画面保留轻微噪点、压缩感和真实皮肤纹理。焦点稳定，但有非常轻微的自然呼吸感。
+```
+
+Avoid:
+
+- commercial-ad look in a casual phone-realism scene
+- perfect studio lighting when the scene claims natural home light
+- plastic skin or heavy beauty smoothing
+- overly stable camera in a handheld setting
+- inconsistent light direction
+- wrong scale between character and background
+- severe focus drift
+- over-clean image with no real texture
+
+### When to Use Lightly vs Strongly
+
+Use strongly for:
+
+- face close-ups
+- dialogue-driven scenes
+- daily-life realism
+- restrained emotion
+- lying, explaining, remembering, hiding, testing
+- intimate but non-explicit emotional beats
+- phone/live-action realism
+
+Use selectively for:
+
+- fights: mainly biomechanics, contact, environment response
+- large scenes: mainly camera/space consistency and one human anchor
+- product films: mainly contact, light, reflection, material response
+- period drama: mainly psychological motive, biomechanics, cloth/light response
+
 ## Intense Emotional Scene Director Chain
 
 Use this for emotional confrontation, restraint breaking, confession, betrayal, reunion, intimacy, or any scene where an internal conflict becomes a decisive physical action.
@@ -2763,6 +2953,10 @@ Run this silently before giving the final answer. Do not print it unless the use
 
 ### Character Performance
 
+- If human performance realism is central, is the visible behavior driven by one clear psychological motive rather than isolated facial expressions?
+- Do expression, eye line, voice texture, pause placement, mouth corners, brow, jaw, breath, and body language serve the same inner state?
+- Are incidental gestures state-driven and low-motivated by the moment, rather than decorative posing or random action?
+- Do head, eyes, neck, shoulders, breath, hands, sleeves, and weight shift move as a linked body system instead of isolated parts?
 - Are emotions expressed through eyes, lips, jaw, breath, hands, posture, and timing?
 - For intense emotional scenes, is there a continuous chain from inner conflict to physiological reaction, micro-expression, action anchor, and decisive behavior?
 - Does the recurring hand/prop/posture anchor evolve continuously instead of resetting between beats?
@@ -2774,6 +2968,9 @@ Run this silently before giving the final answer. Do not print it unless the use
 
 ### Camera and Visual Logic
 
+- If the scene uses phone realism, documentary realism, period candlelight, low-key crime, commercial product, or another visual mode, are camera, light, focus, grain/noise, stabilization, skin texture, and spatial scale consistent with that single shooting condition?
+- When a character touches an object, is there believable before/contact/pressure/aftermath logic with weight, friction, resistance, shadow, reflection, or cloth response?
+- Do hair, clothing, props, light, reflection, sound, or room tone respond subtly to character motion so the person does not feel pasted onto the background?
 - Is the camera movement physically plausible?
 - Is camera movement motivated by gaze, body movement, emotional distance, or object interaction rather than decoration?
 - Has the prompt avoided piling up multiple camera moves in one beat when a single `Static`, `Dolly-In`, `Pull-Back`, `Pan`, `Tracking`, or `Handheld` choice would be clearer?
