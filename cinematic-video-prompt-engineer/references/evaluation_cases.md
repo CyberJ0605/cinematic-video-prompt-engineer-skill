@@ -463,6 +463,84 @@ Failure checks:
 - character feels pasted onto the background
 - phone realism mixed with perfect studio lighting, plastic skin, or ad-like stabilization
 
+## Case 20: Ordinary Drama One-Take Blocking
+
+Input:
+
+```text
+15秒一镜到底：深夜厨房里，妻子发现丈夫藏在水槽下的诊断报告。丈夫从客厅走进来想解释，她没有立刻质问，只是把报告慢慢推回原处，最后两人隔着厨房岛台沉默对视。
+```
+
+Expected:
+
+- Structure: single take, ordinary drama one-take blocking.
+- Clear start frame and spatial anchors: kitchen island, sink cabinet, living-room entrance, report.
+- One physically possible camera path, not multiple invisible cuts.
+- Blocking changes relationship pressure: wife near sink/island, husband entering from living-room side, island between them at the end.
+- Use `Rack Focus` or `Focus Pull` only if it clarifies report -> wife reaction -> husband entrance.
+- Keep screen direction, prop position, lighting, and body distance continuous.
+- End with 1-2s held silence after the report is pushed back.
+
+Failure checks:
+
+- says one-take but describes unrelated camera angles or cuts
+- report jumps from hand to drawer/counter without visible action
+- husband teleports into the kitchen or changes side of the island
+- uses too many camera moves instead of one coherent path
+- ends on the line/reveal without silence or reaction
+
+## Case 21: One-Take Character Reveal Ladder
+
+Input:
+
+```text
+15秒一镜到底古装府邸庭院群像：嫡长子、嫡长女、庶子、庶女四人暗中对峙。要求从嫡长子面部特写开始，通过环绕、背影遮挡、横移、后拉逐步揭示其他人，最后形成庭院权力站位。无台词。
+```
+
+Expected:
+
+- Structure: single take with character reveal ladder.
+- Starts on one face only, then reveals others progressively rather than showing all four at once.
+- Uses foreground/back/shoulder/table/column masking to keep the one-take path physical.
+- Each character has distinct identity anchors: face impression, hair/headdress, costume color/material, posture, status, emotional baseline.
+- Pull-back or widening clarifies hierarchy and courtyard layout.
+- Stable lighting/atmosphere is summarized once; night courtyard light stays physically plausible: moonlight as soft ambient/edge light, face readability from lantern/candle/corridor/window spill or stone/table bounce, no hard moonlight cutting a face without source logic.
+- No duplicate faces, extra people, modern objects, or identity drift.
+
+Failure checks:
+
+- describes cuts while claiming one-take
+- reveals four people too fast with no spatial logic
+- characters have similar faces/clothes or duplicated identity
+- camera path circles/passes through impossible space
+- lighting and style tags crowd out blocking, identity, and hierarchy
+- cold moonlight or abstract cinematic lighting creates an unrealistic hard face spotlight in an outdoor courtyard
+
+## Case 22: Prompt Sampling Range Control
+
+Input:
+
+```text
+做一个10秒破碎记忆闪回：女孩站在雨夜车站，脑中闪回车祸、红伞、碎玻璃、短信。要电影感，情绪是突然想起真相。
+```
+
+Expected:
+
+- Strategy names the abstract effect and translates `破碎记忆闪回` into visible fragments rather than leaving it as a style label.
+- Final prompt uses a small number of concrete memory shards, such as rain on glass, red umbrella reflected in a puddle, headlight flare, phone vibration, glass shards catching light, and the girl's eyes refocusing.
+- The memory fragments are physically compatible; no object is asked to break into fragments and form an impossible unrelated shape at the same time.
+- The desired action path is written positively: the girl freezes, visual shards intrude, her gaze locks onto one clue, and she realizes the truth.
+- Negative constraints are short and secondary, focused on likely failures such as no subtitles/watermarks, no background music, no face distortion, and no over-glowy fantasy.
+- Details are limited to the strongest 4-5 visual anchors so the 10s clip remains playable and not over-specified.
+
+Failure checks:
+
+- only says `破碎记忆闪回` or `电影感特效` without visible screen evidence
+- relies on `不要混乱、不要发呆、不要失败` instead of describing the desired visual/action path
+- contains contradictory object behavior, impossible lighting, or incompatible camera movement
+- lists too many fragments, props, overlays, camera moves, and emotions for 10 seconds
+- negative constraints become longer than the positive creative prompt
+
 ## Regression Log Template
 
 Append results in this form when testing:

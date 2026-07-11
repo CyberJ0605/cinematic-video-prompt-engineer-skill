@@ -38,6 +38,29 @@ Use time only when it improves generation clarity.
 - Time allocation should follow drama, not equal division. If a shot contains a line plus a complex action, give it more time or simplify it.
 - If the ending feels rushed, remove a detail or split the prompt instead of making the final beat abrupt.
 
+## Prompt Sampling Range Control Principles
+
+Use these principles before writing the final prompt and again during compression. Their purpose is to narrow the model's guessing range into a smaller, cleaner set of possible videos.
+
+1. **具体性原则 / Observable Specificity**
+   - Convert abstract intent into what the camera can see or hear: action, object, light source, texture, reflection, sound, body reaction, and timed transition.
+   - Do not stop at labels such as `破碎记忆闪回`, `高级感`, `压迫感`, `命运感`, or `电影感`; translate them into visible fragments. Example: `破碎记忆闪回` can become rain on glass, a red umbrella in puddle reflection, a phone vibration, headlight flare, glass shards catching light, and a face losing focus.
+
+2. **非矛盾性原则 / Non-Contradiction**
+   - Remove instructions that cannot physically, spatially, emotionally, or temporally coexist.
+   - Check object behavior, light source, camera path, costume/prop state, and action causality. Example: cloth can tear into fragments, but it should not also form a perfect blade-like arc unless it is an intentional visible VFX object.
+   - If two instructions conflict, keep the one that serves the story function and rewrite the other as a compatible visual detail.
+
+3. **正面描述优先 / Positive Target Description**
+   - Say the desired path first: `小球直接滚进蓝色框`, `车从路口左转`, `角色沿走廊尽头的亮门跑去`.
+   - Use negative constraints only as a small fallback for likely model failures, especially subtitles, watermarks, background music, face/body distortion, unwanted genre drift, or unsafe escalation.
+   - When the scene outcome matters, do not rely on `不要...` alone. Replace `不要进红框` with `直接进蓝框`; replace `不要突然亲吻` with `两人保持半步距离，只用眼神和呼吸拉近`.
+
+4. **避免过度指定 / Avoid Over-Specification**
+   - Details should reduce ambiguity, not try to control every pixel.
+   - Limit one short clip to the necessary visible targets: the main action path, emotional turn, key props, space, light source, and sound anchors. If a prompt names too many small targets, remove decorative or redundant details before adding more.
+   - When quality drops or action becomes unnatural, reduce goals: fewer fragments, fewer camera moves, fewer micro-actions, fewer props, or split into another clip.
+
 ## Camera Language
 
 Prefer specific but generation-friendly terms:
@@ -45,7 +68,7 @@ Prefer specific but generation-friendly terms:
 - Use standardized English abbreviations for shot size and camera movement in storyboard prompts. Chinese explanations can appear in diagnosis, but the final shot labels should use the abbreviations when professional terms are needed.
 - Character shot sizes: `ECU` Detail Shot (only a facial detail), `VCU` Face Shot (forehead to chin), `BCU` Big Close-Up (full head including face), `CU` Close-Up (head and shoulders), `MCU` Chest Shot (head to below chest), `WS` Waist Shot (head to waist), `KS` Knee Shot (head to knees), `FLS` Full Length Shot (full body with head/foot room), `LS` Long Shot (person occupies about 3/4 of frame), `ELS` Extra Long Shot (person far away).
 - Object/scenery shot sizes: `CU` Close-Up (local detail), `MCU` Medium Close-Up (about 1/4 of subject), `MS` Medium Shot (about 1/2 of subject), `MLS` Medium Long Shot (whole subject plus some surroundings), `LS` Long Shot (subject occupies about 3/4 to 1/3 of frame), `ELS` Extra Long Shot (farther than long shot).
-- Camera movement: `Dolly In/Out` or `Track In/Out` for camera physically moving forward/backward; `Pan Right/Left` for horizontal lens/head rotation; `Tilt Up/Down` for vertical lens/head rotation; `Track Right/Left`, `Truck Right/Left`, or `Crab Right/Left` for camera moving sideways; `Ped Up/Down` for vertical camera movement; `Crane Up/Down` or `Jib Up/Down` for vertical/diagonal camera movement with a crane/jib feel; `Arc/Orbit` for a curved path around the subject; `Zoom In/Out` for focal length change while camera stays physically still; `Dolly Zoom` / `Vertigo effect` for dollying one way while zooming the opposite way; `Whip Pan` or `Crash Zoom` for fast transition/emphasis; `Handheld` for controlled human shake; `Static` for no camera movement.
+- Camera movement and focus: `Dolly In/Out` or `Track In/Out` for camera physically moving forward/backward; `Pan Right/Left` for horizontal lens/head rotation; `Tilt Up/Down` for vertical lens/head rotation; `Track Right/Left`, `Truck Right/Left`, or `Crab Right/Left` for camera moving sideways; `Ped Up/Down` for vertical camera movement; `Crane Up/Down` or `Jib Up/Down` for vertical/diagonal camera movement with a crane/jib feel; `Arc/Orbit` for a curved path around the subject; `Zoom In/Out` for focal length change while camera stays physically still; `Dolly Zoom` / `Vertigo effect` for dollying one way while zooming the opposite way; `Whip Pan` or `Crash Zoom` for fast transition/emphasis; `Rack Focus` / `Focus Pull` for changing focus between foreground/background or person/object while the shot continues; `Handheld` for controlled human shake; `Static` for no camera movement.
 - 焦段: `24mm`, `35mm`, `50mm`, `85mm`, `100mm macro`, `200mm`.
 - 运镜: prefer the standardized movement terms above; phrases such as `Slow Push in`, `Handheld Backward Tracking`, or `Snap Pull Back` are allowed when they describe the desired feel more clearly.
 - Lens texture: shallow depth of field, anamorphic flare, bokeh, Chiaroscuro, hard side light, backlight, practical light.
@@ -123,6 +146,32 @@ Match the light quality to the source:
 - rim light and strong edge highlights should not appear without a credible back/side source.
 
 If the location does not support `Hard side-top Key Light` or `右上方硬质侧顶光`, do not force it. In a small black room, domestic interior, cramped apartment, or ordinary office, prefer motivated practical light such as a door crack, exposed bulb, desk lamp, phone screen, TV spill, window slit, corridor light, or weak ambient bounce. Hard side-top light is a specialty pattern, not the default cinematic look.
+
+### Realistic Night Exterior and Courtyard Light
+
+Use this for ancient courtyards, gardens, alleys, patios, palace yards, manor entrances, rooftops, or other night exterior scenes. Keep the light cinematic but physically believable.
+
+Core rule: moonlight can shape the overall cool ambience and edges, but it should not behave like a hard spotlight cutting a face unless the scene has a very specific high opening, mist, or stylized stage reason. Faces at night are usually made readable by nearby practical sources and bounce: lanterns, candles, corridor lamps, window spill, reflected light from stone floor/walls/table, or weak soft fill.
+
+Good night-courtyard phrasing:
+
+```text
+夜间府邸庭院，冷月光作为柔弱环境底色落在屋檐、石地和花木边缘；廊下灯笼与桌边烛火给人物脸部提供很弱的暖色反光，眼睛和颧骨保留可读细节，肩线、发冠和衣料边缘有自然的冷色轮廓高光。整体暗部有层次，不是硬切舞台光。
+```
+
+Use artistic processing with restraint:
+
+- Let moonlight outline hair, shoulders, headdress, roof edges, tree leaves, stone floor, and distant architecture.
+- Let lantern/candle/window spill reveal eyes, cheekbone, mouth line, fingers, jewelry, sleeve texture, or the key prop.
+- Use `soft edge highlight`, `weak practical fill`, `stone-floor bounce`, `lantern spill`, or `candle reflection` instead of hard face-cutting moonlight.
+- If the face needs stronger contrast, explain the source: a nearby lantern, side corridor lamp, open doorway, window lattice, reflective stone table, or hand-held candle.
+- For period courtyards, avoid modern studio terms unless the source is disguised as a motivated practical light.
+
+Avoid:
+
+- `冷月光切亮脸部一侧` if there is no believable angle or reflector.
+- mixing every light type in one sentence: moonlight, Rembrandt, spotlight, blinds, candle, window, golden hour, and volumetric beams all at once.
+- making night exteriors look like an indoor studio portrait unless the user asks for stylization.
 
 ### Dynamic Light Interaction
 
@@ -595,6 +644,92 @@ A one-take scene still needs internal dramatic sections. Use 2-4 beats such as:
 ```
 
 Keep camera continuity, but let framing, distance, gaze, action anchor, light, and sound evolve at each beat.
+
+### Ordinary Drama One-Take Blocking System
+
+Use this for ordinary drama, suspense, romance, family conflict, intimate tension, waiting, investigation, or quiet confrontation when the scene can physically unfold in one continuous space. It is separate from action-fight long takes: the goal is readable blocking, emotional pressure, and spatial continuity rather than impact spectacle.
+
+#### One-Take Arc
+
+Design the shot as one continuous camera sentence:
+
+```text
+起幅 establishing start -> 行进/靠近 movement or emotional drift -> 关系转折 turning beat -> 焦点/前后景切换 focus or blocking shift -> 落幅 held ending
+```
+
+Each part must change something visible: distance, eyeline, body position, foreground/background relation, light crossing the face, object contact, sound, or emotional pressure.
+
+#### Camera Path and Blocking
+
+- Start with a clear spatial anchor: doorway, corridor, table, sofa, window, mirror, bed edge, kitchen island, hospital curtain, elevator door, or other fixed object.
+- Keep one physically possible camera path. Avoid asking the camera to pass through walls, teleport, or circle a small room without enough space.
+- Let the camera change shot size through distance, not cuts: `LS/MLS` to establish, `MCU/CU` for pressure, then `Pull-Back` or slight `Track` if a larger body action needs room.
+- Use foreground objects to create depth: door frame, hanging cloth, glass reflection, table edge, chair back, curtain, hallway corner, bedpost, shelf, or mirror edge.
+- If using a foreground occlusion as a hidden transition inside a one-take style shot, the next view must preserve screen direction, body position, lighting state, and emotional continuity.
+
+#### Focus and Attention Shift
+
+Use `Rack Focus` / `Focus Pull` when the drama shifts between:
+
+- a face and a key object: phone, letter, cup, ring, weapon, medicine, door handle
+- foreground listener and background speaker
+- reflection and real body
+- hand action and facial reaction
+- outside threat and inside reaction
+
+Focus changes should follow attention. Do not add focus pulls if the story has no competing visual priorities.
+
+#### Multi-Person One-Take Blocking
+
+For 2-4 people in one space:
+
+- Assign stable geography first: who begins foreground/background, screen left/right, seated/standing, near/far from exit or key object.
+- Let power shift through blocking: one person steps closer, sits down, turns away, crosses behind another, enters light, blocks the exit, or becomes isolated in background.
+- Keep eyelines readable. If the camera crosses the 180-degree axis, do it through a visible move around the characters or a neutral frontal/back view.
+- Use focus or body blocking to change the subject rather than cutting: foreground listener sharp -> background speaker sharp -> key object sharp -> final face.
+- Avoid making everyone move at once. In a short 10-15s one-take, usually one main mover and one reacting anchor is enough.
+
+#### One-Take Character Reveal Ladder
+
+Use this when a one-take scene must reveal several important characters in a hierarchy, family power tableau, courtroom/banquet/council confrontation, or period-drama group portrait. The useful pattern is progressive disclosure, not dumping all faces at once.
+
+```text
+single-character ECU/CU -> visible orbit or move behind the character -> lateral reveal of a second character -> pull-back to show hierarchy and space -> held group relation
+```
+
+Rules:
+
+- Start with one face only when identity or authority matters. Keep other characters out of frame or deeply obscured until their reveal beat.
+- Use the first character's shoulder, back, hair crown, sleeve, chair, or pillar as a foreground mask while the camera moves. This gives the reveal depth and prevents a random cut feeling.
+- Reveal the next character from a motivated direction: slide past the first character's shoulder, pass a column, move around a table edge, or shift focus from foreground back to background.
+- After the reveal, pull back or widen only when the spatial hierarchy matters: who stands, who sits, who is foreground/background, who occupies the main seat, who is visually suppressed.
+- Keep every revealed character visually distinct: face shape, hairstyle, headdress, costume color, fabric texture, posture, status, and emotional baseline. Use compact identity tags such as `嫡长子-深青锦袍高冠`, `嫡长女-朱红织金长裙`, rather than repeating full paragraphs in every beat.
+- Do not reveal more than 2-4 key characters in a 10-15s one-take. If the scene needs more people, make extras background silhouettes or split into multiple clips.
+- In final prompts, avoid long lighting/style ingredient lists. Put stable atmosphere once, then use reveal beats to describe what changes: face -> back silhouette -> second face -> widened courtyard/table hierarchy.
+
+Useful compact phrase:
+
+```text
+一镜到底人物揭示：先以{角色A} ECU建立身份与压迫感，镜头绕到其肩背形成前景遮挡，再沿其右肩/桌沿缓慢横移揭示{角色B}，最后 Pull-Back 展开{庭院/厅堂/桌面}的主次站位；每个角色用不同脸型、发型、服色、姿态和眼神锁定身份，不出现重复脸或多余人物。
+```
+
+#### One-Take Prompt Template
+
+```text
+基础概括：{时长}单场景一镜到底长镜头，{地点}，{人物关系/情绪冲突}。镜头从{起幅空间锚点}开始，沿{明确路径}连续移动，不切镜头；通过人物走位、焦点转移、前景遮挡、光线变化和声音变化完成情绪推进。
+
+0-{a}s：{起幅与空间关系}，{主角初始动作/心理状态}，镜头{Static / Slow Dolly-In / Track}，建立{出口/关键物/另一人位置}。
+{a}-{b}s：{人物行进或关系压力上升}，镜头随{脚步/视线/手部动作}调整，必要时 `Rack Focus` 从{前景/物件/监听者}转到{说话者/反应者}。
+{b}-{c}s：{转折动作或台词}，人物走位改变权力关系，前景{门框/桌沿/玻璃/布帘}短暂遮挡但不切断空间连续性。
+{c}-结尾：镜头落在{最终面孔/物件/空间后果}，保留1-2秒沉默、呼吸、环境声或动作余韵。
+```
+
+#### One-Take Failure Warnings
+
+- Do not choose one-take for several locations, big time jumps, too many plot turns, or dense exposition.
+- Do not use `one-take` as a label while describing invisible cuts, unrelated angles, or impossible camera positions.
+- Do not overload the shot with every camera move. One main path plus one motivated focus or framing change is usually enough.
+- Do not end at the exact moment of a line, kiss, slap, reveal, or door opening; hold the consequence.
 
 ### Dialogue Performance Conditions
 
@@ -2038,7 +2173,7 @@ Choose structure before writing shot details. Always state the chosen structure 
 
 | Structure | Use When | Best For | Avoid When | Prompt Strategy |
 |---|---|---|---|---|
-| **单场景一镜到底 / Single Take** | One space, one continuous emotional shift, few actions, no major time jump | restrained grief, confrontation pause, ritual, waiting, subtle intimacy | many locations, action complexity, multiple plot turns | Use one camera path, simple blocking, strong micro-reactions, sound continuity |
+| **单场景一镜到底 / Single Take** | One space, one continuous emotional shift, few actions, no major time jump | restrained grief, confrontation pause, ritual, waiting, subtle intimacy | many locations, action complexity, multiple plot turns | Use the Ordinary Drama One-Take Blocking System: one camera path, start frame, blocking shift, motivated focus change, foreground depth, sound continuity, held ending |
 | **单场景连续剪辑 / Multi-Shot Sequence** | One location but several physical beats or reaction angles are needed | kitchen tension, hospital corridor, car interior conflict, interrogation | very abstract memory, large time span | Use 3-5 shots: establish space, key object/action, face reaction, ending breath |
 | **跳剪压缩 / Jump Cuts** | Time needs compression while staying in one emotional thread | preparation, decision, panic escalation, ritual, product/person process | scene requires smooth emotional realism | Use repeated visual anchor; each cut advances state clearly |
 | **蒙太奇 / Montage** | Memory, dream, symbolic contrast, parallel images, theme rather than linear action | childhood recall, grief objects, identity transformation, longing | direct dialogue scene, precise physical action | Use sound or object as transition anchor; keep fragments sensory and partial |
@@ -2761,6 +2896,8 @@ Before finalizing, ensure reference prompts and video prompt share:
 
 Use negative constraints only when they prevent likely generation failure:
 
+Write the desired content and action path positively first. Negative constraints are not the main steering wheel; they are a small guardrail after the positive target is clear. If a model does not handle negative language well, replace outcome-critical negatives with positive instructions.
+
 - 不要卡通感，不要塑料皮肤，不要过度磨皮。
 - 不要错误文字、水印、字幕。
 - 不要背景音乐，不要额外配乐；只保留必要台词人声、环境声、动作音效、物体声。
@@ -2915,13 +3052,17 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Is there no empty boilerplate such as `视频模型：通用 AI 视频模型`?
 - Does the first summary line include duration and structure?
 - Are technical terms useful rather than decorative?
-- Are professional shot-size and camera-movement terms written with standardized English abbreviations where appropriate, such as `ECU`, `VCU`, `BCU`, `CU`, `MCU`, `WS`, `KS`, `FLS`, `LS`, `ELS`, `MS`, `MLS`, `Dolly In/Out`, `Pan Right/Left`, `Tilt Up/Down`, `Track Right/Left`, `Crane/Jib`, `Arc/Orbit`, `Zoom In/Out`, `Dolly Zoom`, `Whip Pan`, `Handheld`, and `Static`?
+- Are professional shot-size, camera-movement, and focus terms written with standardized English abbreviations where appropriate, such as `ECU`, `VCU`, `BCU`, `CU`, `MCU`, `WS`, `KS`, `FLS`, `LS`, `ELS`, `MS`, `MLS`, `Dolly In/Out`, `Pan Right/Left`, `Tilt Up/Down`, `Track Right/Left`, `Crane/Jib`, `Arc/Orbit`, `Zoom In/Out`, `Dolly Zoom`, `Whip Pan`, `Rack Focus`, `Focus Pull`, `Handheld`, and `Static`?
 - Does each named camera movement have a clear dramatic function: intimacy, context reveal, gaze/action following, scale, power shift, disorientation, transition, urgency, or deliberate stillness?
 - If the prompt uses cinematic lighting, is the amount of lighting detail proportional to the scene? For ordinary scenes, is lighting kept to one compact motivated phrase instead of a full breakdown?
 - If the prompt uses detailed cinematic lighting, does it specify Key Light, Fill Light, Rim Light or Soft edge highlight, Background/Volumetric Light, concrete surfaces touched or hidden by light, tonal structure such as `Low-key High Contrast` when relevant, color-temperature meaning when relevant, and the emotional/story meaning of the light-shadow design?
 - If `Hard side-top Key Light` or `右上方硬质侧顶光` appears, is there a believable source in the environment and a story reason for such hard light?
 - If the scene has movement, does light interact with the movement through passing windows, doors, headlights, screens, weather, dust, fabric, breath, or moving shadows instead of remaining a static adjective?
 - Are abstract words translated into visible action, light, sound, object, or performance?
+- Has every abstract effect or theme been converted into eye-observable screen evidence instead of left as a label?
+- Have physically, spatially, emotionally, or temporally contradictory instructions been removed or rewritten?
+- Is the desired action path written positively before using any `不要...` constraints?
+- Are details limited to what reduces ambiguity, supports continuity, clarifies emotion, or prevents likely failure, rather than over-specifying every pixel?
 - If reference-image prompts are included, are they optional, concise, and consistent with the final video prompt?
 - Are reference types selected by production need rather than outputting character, scene, and prop prompts mechanically?
 - Is an identity reference distinguished from an exact first-frame reference?
@@ -2974,6 +3115,9 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Is the camera movement physically plausible?
 - Is camera movement motivated by gaze, body movement, emotional distance, or object interaction rather than decoration?
 - Has the prompt avoided piling up multiple camera moves in one beat when a single `Static`, `Dolly-In`, `Pull-Back`, `Pan`, `Tracking`, or `Handheld` choice would be clearer?
+- If this is a one-take scene, does it have a clear start frame, physically possible camera path, blocking/focus change, foreground/background depth, stable screen direction, and held ending?
+- If this is a one-take multi-character reveal, are characters revealed progressively with foreground masking, lateral movement, or pull-back hierarchy, and are their faces, hairstyles, costumes, postures, and emotional baselines distinct enough to avoid repeated faces?
+- If `Rack Focus` or `Focus Pull` appears, does it shift attention between meaningful subjects such as face/object, foreground/background, reflection/body, or hand/reaction?
 - Before a large body action, does the framing create enough physical space to show it clearly?
 - Does each shot have a clear subject and composition?
 - For action or crowd scenes, is spatial direction clear?
