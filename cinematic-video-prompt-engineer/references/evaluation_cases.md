@@ -541,6 +541,32 @@ Failure checks:
 - lists too many fragments, props, overlays, camera moves, and emotions for 10 seconds
 - negative constraints become longer than the positive creative prompt
 
+## Case 23: Execution Stability and Prop Endpoint
+
+Input:
+
+```text
+12秒悬疑戏：深夜办公室，女律师发现桌上的U盘里有关键证据，她刚插进电脑，门外响起脚步声，她立刻拔下U盘藏进左手袖口，假装继续看文件。
+```
+
+Expected:
+
+- Final prompt opening is reconstructable: office layout, woman position, desk/computer/U-disk start state, shot size, angle, gaze, and practical light source are clear.
+- Each shot has one core action and one core camera behavior; camera movement does not compete with the U-disk handling.
+- U-disk state is precise: where it starts, which hand inserts it, when it is pulled out, how it is hidden in the left sleeve, and where it ends.
+- Ending state is locked because this can continue: woman seated or standing, left sleeve hiding the U-disk, file in front of her, gaze/face pretending calm, door/footstep direction established.
+- No unresolved options such as `或`, `或者`, `A/B`, `可选`.
+- Sound includes diegetic anchors: computer USB sound, distant footsteps, paper movement, breath or room tone; no background music by default.
+
+Failure checks:
+
+- starts with a vague office mood and does not specify the first frame
+- says `她藏好U盘` without holder/hand/contact/final location
+- uses several competing camera moves in one shot
+- ends before showing the hidden U-disk state and her cover behavior
+- includes optional branches like `藏进袖口或抽屉`
+- relies mainly on negative constraints instead of positive stable action
+
 ## Regression Log Template
 
 Append results in this form when testing:

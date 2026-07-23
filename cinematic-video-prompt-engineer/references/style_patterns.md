@@ -2226,6 +2226,43 @@ Examples:
 
 Use these rules when writing multi-shot prompts. They make the prompt feel directed and editable, not just visually descriptive.
 
+### Generation Execution Stability
+
+Use these rules for the copy-ready final prompt, especially when the scene has reference images/videos, dialogue, action, one-take blocking, continuation, or important props.
+
+**First-frame reconstructability**
+
+The opening of the final prompt should let the model rebuild the first frame without hidden memory. Include the visible subject, start posture/action state, screen position and depth, facing direction, gaze, held or contacted prop, shot size, camera angle/height/axis, and main motivated light source when it affects composition. The first frame should not be a vague setup unless the story deliberately reveals the subject later.
+
+The visible subject does not have to be a person. It can be an empty location, key prop, vehicle, screen, building, landscape, or aftermath state. If the first frame is empty or object-led, define location layout, foreground/midground/background, key object position/state, weather or environmental motion, sound cue, shot size, camera angle/height/axis, and motivated light source when relevant.
+
+**One shot, one core action, one core camera behavior**
+
+Each shot should have one main action path and one main camera behavior. A shot can contain small supporting reactions, but the viewer should know which action the model must prioritize and what the camera is doing. If a continuous shot needs multiple movement phases, serialize them with clear settle points. If the action and camera compete, simplify the camera or split the shot.
+
+**Ending-state lock when needed**
+
+Do not add a separate ending field by default. But when a prompt will be continued, split, repaired, generated from first/last frames, or depends on a product/prop/action endpoint, state the final visible condition inside the last shot: character pose, gaze, body contact, prop location/state, focus, composition, and emotional residue. A completed action becomes a visible final state, not something to replay in the next clip.
+
+The ending state may also be empty or object-led. In that case, lock what remains on screen: the empty space, door/window/light state, fallen or placed prop, screen state, vehicle position, weather/sound continuation, focus, and composition.
+
+**Story-critical prop state**
+
+For phones, letters, cups, rings, weapons, reports, U-disks, photos, keys, documents, and other plot-changing objects, describe physical state with the same care as body action:
+
+- who holds or touches it
+- which hand or support point is used
+- grip/pressure/orientation
+- contact with body, table, floor, pocket, bag, door, another person, or device
+- visible change during the shot
+- final visible location and state
+
+If a prop changes owner, position, orientation, damage, wetness, light state, screen state, or readability, show the action that changes it.
+
+**No optional branches in final prompts**
+
+The final prompt should not contain unresolved options such as `或`, `或者`, `A/B`, `二选一`, `可选`, `可以...也可以...`, or `任选`. Make one director choice before delivery. Variants are allowed only when the user explicitly asks for multiple versions.
+
 ### Shot Size Progression
 
 Avoid cutting between two adjacent shot sizes that are too close, because it can feel like a jump cut rather than an intentional edit.
@@ -3052,6 +3089,11 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Is there no empty boilerplate such as `视频模型：通用 AI 视频模型`?
 - Does the first summary line include duration and structure?
 - Are technical terms useful rather than decorative?
+- Can the first frame be reconstructed from the final prompt? If character-led, are visible subject, start state, screen position/depth, facing direction, gaze, prop contact, shot size, camera angle/axis, and motivated light source clear? If empty or object-led, are location layout, foreground/midground/background, key object/environment state, sound cue, shot size, camera angle/axis, and motivated light source clear?
+- Does each shot have one core action path and one core camera behavior, with multiple camera phases serialized only when necessary?
+- If the prompt requires continuation, split clips, first/last frames, complex blocking, repair, or a product/prop endpoint, is the final visible ending state clearly locked inside the last shot, whether it is character-led, empty, or object-led?
+- Are story-critical props described with holder/hand, grip or support point, orientation, contact relationship, visible change, and final location/state?
+- Has the copy-ready final prompt removed unresolved options such as `或`, `或者`, `A/B`, `二选一`, or `可选`, unless the user explicitly requested variants?
 - Are professional shot-size, camera-movement, and focus terms written with standardized English abbreviations where appropriate, such as `ECU`, `VCU`, `BCU`, `CU`, `MCU`, `WS`, `KS`, `FLS`, `LS`, `ELS`, `MS`, `MLS`, `Dolly In/Out`, `Pan Right/Left`, `Tilt Up/Down`, `Track Right/Left`, `Crane/Jib`, `Arc/Orbit`, `Zoom In/Out`, `Dolly Zoom`, `Whip Pan`, `Rack Focus`, `Focus Pull`, `Handheld`, and `Static`?
 - Does each named camera movement have a clear dramatic function: intimacy, context reveal, gaze/action following, scale, power shift, disorientation, transition, urgency, or deliberate stillness?
 - If the prompt uses cinematic lighting, is the amount of lighting detail proportional to the scene? For ordinary scenes, is lighting kept to one compact motivated phrase instead of a full breakdown?
