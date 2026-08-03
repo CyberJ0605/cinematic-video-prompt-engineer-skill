@@ -747,6 +747,50 @@ For complex acting scenes, separate the prompt into three mental layers before w
 
 Do not let layer 1 consume the whole prompt. If a platform already provides visual style presets, keep style compact and spend more tokens on performance control.
 
+### Nested Shot and Performance Timeline
+
+Build the shot-level timeline first. Subdivide only the shot that carries dense dialogue, several trigger words, or a major emotional crack.
+
+- Primary timing answers: which shot, whose face, and why the view changes.
+- Secondary timing answers: how one performance develops inside that shot.
+- Keep simple reaction shots simple. Do not fragment every shot into mechanical half-second instructions.
+- Make all nested time ranges fit the parent shot and the dialogue delivery budget.
+
+```text
+SHOT 2（3.5-18.0s）：女方越肩近景，承担主要反击与防线破裂。
+3.5-7.0s【反击】：...
+7.0-12.0s【自证】：...
+12.0-18.0s【裂缝】：...
+```
+
+### Speaker and Listener Acting Tracks
+
+Treat a dialogue scene as two linked performance tracks:
+
+- **Speaker track**: intention, protective emotion, trigger words, voice, face, breath, gesture, and post-line residue.
+- **Listener track**: what exact word lands, the delayed physiological or facial response, whether they try to interrupt, and what they suppress.
+- Give the listener a reaction shot when their internal change advances the story. Keep it restrained when the speaker still owns the dramatic center.
+- Do not write generic reactions such as `他沉默` when a visible sequence can show defense -> attempted reply -> swallow -> gaze avoidance -> realization.
+
+### Dialogue Across Cuts and Semantic Edit Points
+
+Let dialogue and editing share one emotional syntax.
+
+- A line may continue as offscreen dialogue across a reaction shot. Use a motivated `J-cut`, `L-cut`, or sound bridge when the listener's face is more important than the speaker's mouth.
+- Preserve voice direction, room reflection, distance, and speaker identity across the cut.
+- Cut on a semantic event: a trigger word lands, the sentence changes meaning, the voice first cracks, the listener is hit, or a vulnerable phrase is withheld.
+- Do not divide dialogue shots by equal duration when the sentence structure suggests a stronger edit point.
+- Do not sacrifice lip-sync clarity: show the speaker when mouth articulation carries the beat; move offscreen only when the listener reaction carries more dramatic information.
+
+### Shot-Size Escalation by Emotional Access
+
+Let framing tighten as the character's psychological defense opens.
+
+- Keep `MCU/CU` or an over-shoulder composition while the character argues, explains, or maintains control.
+- Move to `BCU/ECU` only when the protective layer cracks, a hidden truth is admitted, the voice breaks, or the final vulnerable line begins.
+- Do not start at the tightest possible framing when the scene needs later visual escalation.
+- Tie every push-in or tighter cut to a specific emotional access point, not to generic intensity.
+
 ### Emotion Barrier / 情绪保护层
 
 Do not jump directly from anger to crying, confidence to collapse, or sarcasm to confession. Real characters often use a protective emotion before the vulnerable emotion appears.
@@ -1521,6 +1565,36 @@ Typical phrase:
 ```text
 他的职业假笑僵在脸上，眼神飞快向旁边求救，喉结滚动一下，手指徒劳地按灭手机。
 ```
+
+## Global Sound and Lighting Baseline
+
+Sound and light are minimum production controls, but they should stay proportional to the scene. Do not bolt on long generic descriptions after every storyboard.
+
+### Placement Hierarchy
+
+1. **Opening/global baseline**: state the motivated main light source, direction or color-temperature relationship, broad contrast, sound bed, and music policy once.
+2. **Shot-local change**: inside a shot, mention only changes caused by movement, screens, doors, weather, silence, impact, distance, or emotional focus.
+3. **Closing continuity block**: for multi-shot dialogue, suspense, action, continuation, or sound/light-led scenes, add a compact `整体声音与光影` block that unifies voice trajectory, sound tail, source direction, skin tone, shadow continuity, and the ending state.
+
+### Minimum Description Standard
+
+- Give every final prompt at least one motivated light sentence. Name a believable source and what it does to the visible subject or space; avoid empty labels such as `电影感光影`.
+- Use 2-4 concrete sound anchors for most scenes. Even a quiet scene needs a room tone, environmental bed, breath, object sound, or deliberate silence.
+- For dialogue, specify the important voice trajectory, pauses/breath, speaker separation, and lip-sync expectation when the model supports generated speech.
+- For suspense or shock, design sound narrowing, muffling, interruption, or one isolated sound when it serves the turn.
+- For emotional close-ups, keep light direction stable and describe eye catchlight, wet-eye/tear reflection, or the loss of facial readability only when it carries emotion.
+- For action, bind footsteps, cloth movement, weapon/object contact, impact, debris, and environment response to visible actions.
+- For continuation, preserve the previous segment's main light direction, color temperature, sound bed, acoustic space, and music policy unless the story visibly changes them.
+
+Compact ending block:
+
+```text
+【整体声音与光影】
+声音：无配乐，只保留{2-4个场景声音锚点}；{关键台词/情绪转折}时{声场变化}，结尾保留{呼吸/环境声/物体声}自然衰减。
+光影：{可信主光源}从{方向}照入，{冷暖/明暗关系}保持连续；只在{人物移动/门窗/屏幕/天气变化}时产生合理变化，肤色、眼部高光和阴影方向不跳变。
+```
+
+Do not repeat the full block when the same information is already stated clearly in a short single-shot prompt. Compress it into the opening summary instead.
 
 ## Sound Design Library
 
@@ -3388,11 +3462,17 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Is key dialogue short enough for the time block?
 - Has dialogue delivery time been estimated using an appropriate speech rate, including pauses and listener reaction?
 - If dialogue drives the acting, does the prompt treat the line as an expression timeline rather than placing a mood label before quoted text?
+- For complex dialogue, is the shot-level timeline established first, with nested performance timing used only inside the shot that genuinely needs it?
+- Are speaker and listener acting tracks both designed, with the listener reacting to a specific heard word without stealing the dramatic center?
+- If dialogue crosses a cut, are offscreen voice direction, speaker identity, acoustic continuity, and the semantic reason for the cut clear?
+- Do edit points follow trigger words, meaning shifts, voice breaks, listener impact, or withheld phrases rather than equal time slicing?
+- Does shot size tighten only when psychological access deepens, preserving visual escalation for the emotional crack or vulnerable line?
 - Are trigger words, emphasis, pauses, breath, gaze changes, facial/body reactions, and post-line state tied to the actual wording?
 - If a character moves from anger/sarcasm/calmness into vulnerability, is there an emotion barrier and a believable crack before crying, confession, or collapse?
 - Are tears, voice breaks, outbursts, forgiveness, or surrender delayed until the line or reaction actually earns them?
 - Does the shot have enough time for dialogue, physical action, camera movement, and reaction without rushing?
 - Does sound design include concrete diegetic sound rather than generic music?
+- Does the final prompt establish a concise sound bed with 2-4 concrete anchors, even when the scene is quiet?
 - Does the prompt avoid background music by default and keep only necessary dialogue/voice, ambient sound, Foley, movement, object, and action sound effects?
 - Is silence or sound reduction used when it would strengthen shock, tension, or aftermath?
 
@@ -3416,6 +3496,8 @@ Run this silently before giving the final answer. Do not print it unless the use
 ### Camera and Visual Logic
 
 - If the scene uses phone realism, documentary realism, period candlelight, low-key crime, commercial product, or another visual mode, are camera, light, focus, grain/noise, stabilization, skin texture, and spatial scale consistent with that single shooting condition?
+- Does every final prompt include at least one motivated light source or scene-level light baseline, with direction, color relationship, or visible effect stated concretely?
+- In a multi-shot or continuation prompt, do light direction, skin tone, shadow position, sound bed, and acoustic space stay continuous unless a visible event changes them?
 - When a character touches an object, is there believable before/contact/pressure/aftermath logic with weight, friction, resistance, shadow, reflection, or cloth response?
 - Do hair, clothing, props, light, reflection, sound, or room tone respond subtly to character motion so the person does not feel pasted onto the background?
 - Is the camera movement physically plausible?

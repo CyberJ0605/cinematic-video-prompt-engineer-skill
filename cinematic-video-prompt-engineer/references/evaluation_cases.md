@@ -697,6 +697,61 @@ Failure checks:
 - concise request prints diagnosis despite explicit "不要分析"
 - mode choice is based on vague compactness rather than explicit user intent or real ambiguity
 
+## Case 28: Nested Dialogue Timeline and Reaction Sound Bridge
+
+Input:
+
+```text
+30秒夫妻冲突戏。旧屋门廊，丈夫先抱怨自己十八年都困在原地；妻子立刻反击，说自己也牺牲了十八年。她从愤怒、自证逐渐转为承认自己也曾想过另一种人生。中途切到丈夫听她说话的反应，妻子的台词继续作为画外音，最后切回她完成最脆弱的一句。要求表演真实，不能一开始就哭。
+```
+
+Expected:
+
+- Build the four or fewer shot-level blocks first, then use nested performance beats only inside the wife's long, complex shot.
+- Keep a separate speaker track and listener track. The husband changes only after hearing a specific phrase about sacrifice, dreams, or another life.
+- Let the wife's sentence continue across the cut as offscreen dialogue or a motivated sound bridge while the husband reacts.
+- Preserve screen direction, eyeline, focal logic, voice direction, and acoustic space when cutting back and forth.
+- Place cuts on semantic turns: the husband's final word, the wife's protective anger cracking, a vulnerable phrase continuing offscreen, and the final confession.
+- Progress framing from OTS/MCU or CU toward BCU/ECU only when the wife's defense opens.
+- Keep tears delayed until after anger and self-justification have cracked.
+- Keep dialogue playable within 30s; shorten lines before accelerating speech unnaturally.
+
+Failure checks:
+
+- mechanically subdivides every shot into tiny time blocks
+- the listener is only described as `沉默` or reacts before the trigger phrase
+- offscreen dialogue loses speaker identity, direction, or room continuity
+- cuts occur at equal intervals with no semantic purpose
+- starts in ECU and has no later framing escalation
+- packs too much dialogue into the final second or cuts without reaction time
+
+## Case 29: Minimum Sound and Lighting Baseline
+
+Input:
+
+```text
+15秒深夜公寓悬疑戏：独居女孩听见门锁轻响，发现玄关地面多了一把陌生钥匙。她没有尖叫，只屏住呼吸，慢慢看向黑暗走廊。要求写实、克制、不要配乐。
+```
+
+Expected:
+
+- Establish one motivated light baseline, such as a warm interior practical light against cooler corridor spill, with a stable source direction.
+- Use 2-4 concrete sound anchors, such as lock click, refrigerator hum, bare-foot friction, breath, or a distant elevator.
+- Let the key discovery change the sound field through narrowing, muffling, or isolated silence rather than adding generic suspense music.
+- Mention shot-local light changes only when the door gap, hallway spill, phone screen, or character movement changes what is illuminated.
+- Keep skin tone, eye catchlight, shadow direction, room tone, and acoustic space continuous across cuts.
+- Use a compact `整体声音与光影` block or place the same information concisely in the opening summary when the prompt is short.
+- Leave an audible and visual ending residue: held breath, corridor hum, key reflection, or distant elevator sound.
+
+Failure checks:
+
+- only says `电影感光影` or `沉浸式音效`
+- gives no believable light source or sound bed
+- adds dramatic BGM despite the request
+- changes light direction between shots without an on-screen cause
+- repeats a full lighting breakdown in every shot
+- ends at the discovery with no sound tail or visual afterimage
+
 ## Regression Log Template
 
 Append results in this form when testing:
