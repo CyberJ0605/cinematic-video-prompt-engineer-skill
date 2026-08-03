@@ -24,8 +24,8 @@ Pass levels:
 
 Automatic failure conditions:
 
-- final prompt exceeds 2000 Chinese characters without recommending a split
-- single segment exceeds 15 seconds
+- final prompt exceeds the duration-based character ceiling without recommending a split
+- single segment exceeds 30 seconds
 - key plot-changing dialogue is omitted
 - dialogue cannot physically fit its assigned time
 - continuation resets character, scene, prop, or emotional state
@@ -37,7 +37,7 @@ Automatic failure conditions:
 For each case:
 
 1. Generate the answer in workshop mode.
-2. Measure only the copy-ready final prompt against the 2000-character ceiling.
+2. Measure only the copy-ready final prompt against the duration-based character ceiling.
 3. Check timing beat by beat.
 4. Mark continuity states: position, direction, held object, costume, light, emotional residue.
 5. Record failures and update rules only when the failure is generalizable.
@@ -170,7 +170,7 @@ Expected:
 - Attack line, evasion, contact point, footwork, weight transfer, camera response.
 - Stable A/B screen positions until a visible pivot or throw.
 - Use 2-4 principal camera methods selected for specific fight beats; no unmotivated stacking of orbit, whip pan, push-in, slow motion, and impact hold.
-- Final prompt 1300-1800 characters, under 2000.
+- Final prompt 1300-1800 characters when the selected duration is 10-15s; longer 16-30s fight prompts may use up to 2800 characters if every beat is necessary.
 - Staged, non-lethal, no gore.
 
 Failure checks:
@@ -194,7 +194,7 @@ Expected:
 - Cause-effect chain: body -> prop contact -> prop reaction -> opponent reaction -> camera reaction.
 - 2-3 shots, no more than 10 beats.
 - Props do not teleport or randomly break.
-- Final prompt under 2000 characters.
+- Final prompt under the duration-based character ceiling.
 
 Failure checks:
 
@@ -237,7 +237,7 @@ Expected:
 - Segment 1: discovery and approach; stable tail-frame composition.
 - Segment 2: begins from exact previous state; recognition and touch.
 - Same clothing, light, bench, sweater, positions, and sound bed.
-- Each final prompt under 2000 characters.
+- Each final prompt under the duration-based character ceiling.
 
 Failure checks:
 
@@ -566,6 +566,136 @@ Failure checks:
 - ends before showing the hidden U-disk state and her cover behavior
 - includes optional branches like `藏进袖口或抽屉`
 - relies mainly on negative constraints instead of positive stable action
+
+## Case 24: Dialogue-Driven Performance Control
+
+Input:
+
+```text
+15秒情感控诉戏：深夜客厅，女人终于知道丈夫三年前就隐瞒了她父亲病危的消息。她一开始不是哭，而是冷静反击，说：“你一直都知道，对吗？那我这三年算什么？”第一句带攻击，第二句说到“我”时声音变轻，最后才掉下第一滴眼泪。丈夫坐在对面沉默。
+```
+
+Expected:
+
+- Strategy mentions dialogue-driven performance control, trigger words, or emotion barrier.
+- The prompt does not write `女人悲伤地哭着说` as a single mood label. It treats the dialogue as the expression timeline.
+- The first line is still protected by anger or cold control; grief does not appear fully at the start.
+- The trigger word is clear, especially `我` or `三年`; the second line changes voice, gaze, face, and body after that word.
+- Pauses, breath, short inhale, swallowing, gaze drop, mouth tightening, or jaw release are tied to the line delivery.
+- First tear is delayed until after the protection layer cracks; it does not fall before or during the first attack line.
+- Optional AU/FACS, if used, appears after natural-language facial actions and stays compact, such as AU1/AU15/AU17 from B to C.
+- Husband's listener reaction is included but restrained; he should not steal the scene.
+- Ending leaves 1-2s for silence, breath, tear fall, or room tone after the line.
+
+Failure checks:
+
+- emotion jumps directly from anger to crying with no protective layer
+- dialogue is pasted under a generic sadness/anger label
+- no trigger word, no pause, no breath, no post-line state
+- first tear appears too early
+- AU codes are dumped without visible natural-language facial action
+- listener overacts or interrupts the main performance
+- ending cuts immediately after the last word
+
+## Case 25: 30s Duration Selection and Long Prompt Budget
+
+Input:
+
+```text
+30秒现实情感对话戏：清晨出租屋，准备搬走的女人把钥匙放在桌上，男人假装平静地说“你走吧，我没事”。女人停住，没有回头，问：“你真的没事，还是只是不想留我？”男人先笑了一下，想把话题带过去，随后终于承认：“我怕我一开口，就会显得太难看。”最后两人没有拥抱，只隔着一张旧餐桌沉默。要求表演自然，有停顿和呼吸，不要大哭。
+```
+
+Expected:
+
+- Diagnosis explains why this scene can use 24-30s: dialogue delivery, hesitation, listener reaction, table/keys contact, and emotional aftertaste need time.
+- The skill does not claim every prompt should default to 30s; it chooses a specific duration, such as 26s or 28s, only if the scene needs it.
+- Final prompt stays under 3000 Chinese characters and uses the extra length for timing, performance, contact realism, spatial continuity, and ending breath.
+- Dialogue is timed with pauses and breath. The key lines are explicit and have enough room before and after delivery.
+- The man's smile is protective rather than cheerful; grief or collapse does not arrive before the line that triggers it.
+- The keys, table, body distance, and eyelines stay consistent.
+- Ending leaves at least 2s for silence, room tone, breath, or stillness after the final line.
+
+Failure checks:
+
+- keeps the old 15s maximum and splits even though one 24-30s prompt can carry the scene
+- stretches a simple beat to 30s without dramatic reason
+- exceeds 3000 Chinese characters without recommending a split
+- packs all lines together with no pauses or listener reactions
+- uses generic sadness labels instead of line-triggered performance changes
+- cuts immediately after the final line
+
+## Case 26: 30s Psychological Stage Timeline
+
+Input:
+
+```text
+29秒超近情绪长镜头：女人面对即将离开的恋人，从追问到认命，再到想最后记住他的脸，最后含泪放手。她只说两句台词：“真的要走吗？”和“你走吧。”要求前面不要大哭，第一滴泪要很晚才落下，最后是含泪微笑。
+```
+
+Expected:
+
+- Strategy names a psychological stage timeline rather than only listing time codes.
+- Final prompt uses 4-5 stage titles such as `追问`, `认命`, `记住`, `惋惜`, `放手`.
+- Each stage includes visible action/expression evidence and a distinct psychological task.
+- The two smiles are differentiated: early smile as self-mockery/acceptance, final smile as tenderness/release.
+- Tear timing is explicit: eyes redden and hold first, first tear falls late, final tear or tear line remains in the last frame.
+- Camera movement is tied to emotional access: stable close-up first, very slow push only as vulnerability opens, ECU near the peak.
+- Dialogue is short, timed, and leaves silence after each line; the final line does not land at the last instant.
+- Final prompt stays under 3000 Chinese characters.
+
+Failure checks:
+
+- treats the whole prompt as generic sadness or crying
+- uses stage names but each stage repeats the same facial expression
+- first tear falls too early
+- final smile has the same meaning as the earlier bitter smile
+- camera movement is decorative or over-stacked
+- prints long `情感解析` paragraphs inside the copy-ready final prompt
+
+## Case 27: Output Mode Selection
+
+Input A:
+
+```text
+请用这个剧情写一条电影感视频提示词：雨夜便利店，失业男人在收银台前发现前女友也来买伞，两个人装作不认识。
+```
+
+Expected A:
+
+- Use full workshop mode by default.
+- Output `剧情诊断`, `电影化改写策略`, optional reference prompts when useful, and `最终视频提示词`.
+- Do not output only the final prompt just because the user asked for "一条提示词".
+
+Input B:
+
+```text
+先别写最终提示词。古风宫廷里，皇后发现皇帝一直在利用她的家族，我想先看剧情诊断和电影化改写方向。
+```
+
+Expected B:
+
+- Use direction confirmation mode.
+- Output only `剧情诊断`, `电影化改写策略`, and `需要你确认的方向`.
+- Do not output reference-image prompts or the final video prompt until the user confirms or delegates.
+
+Input C:
+
+```text
+直接给最终视频提示词，不要分析：深夜医院走廊，男人听见医生宣布母亲抢救失败。
+```
+
+Expected C:
+
+- Use concise mode.
+- Output only the final video prompt.
+- Still include the doctor's actual notice line and enough ending breath.
+
+Failure checks:
+
+- default ordinary request outputs only final prompt
+- direction-confirmation request still outputs final prompt
+- concise request prints diagnosis despite explicit "不要分析"
+- mode choice is based on vague compactness rather than explicit user intent or real ambiguity
 
 ## Regression Log Template
 

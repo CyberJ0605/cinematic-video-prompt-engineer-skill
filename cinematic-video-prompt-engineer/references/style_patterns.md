@@ -28,12 +28,12 @@ Use time only when it improves generation clarity.
   - scene/location/time changes
   - camera moves and reframing needed for large body action
   - final 1-2s breath, sound tail, or bridge hold
-- A short synopsis can still exceed 15s if it contains multiple beats that need to be shown clearly.
-- If the full content cannot breathe within 15s, split by emotional turning point, action phase, location change, or reveal/aftermath boundary. Do not compress by simply speeding up action or removing reaction time.
+- A short synopsis can still exceed 30s if it contains multiple beats that need to be shown clearly.
+- If the full content cannot breathe within 30s, split by emotional turning point, action phase, location change, or reveal/aftermath boundary. Do not compress by simply speeding up action or removing reaction time.
 - For one continuous emotional beat: `0-3s / 3-8s / 8-12s`.
 - For multi-shot prompts: `镜头 01`, `镜头 02`, etc.
 - Each time block should contain a visible change: action, gaze, light, spatial relation, or sound.
-- Avoid stuffing unrelated story events into a single 15s prompt.
+- Avoid stuffing unrelated story events into a single 30s prompt.
 - Do not end important dialogue or peak action exactly at the final second. Reserve 1-2 seconds for reaction, breath, silence, sound tail, or visual continuation.
 - Time allocation should follow drama, not equal division. If a shot contains a line plus a complex action, give it more time or simplify it.
 - If the ending feels rushed, remove a detail or split the prompt instead of making the final beat abrupt.
@@ -731,6 +731,151 @@ Useful compact phrase:
 - Do not overload the shot with every camera move. One main path plus one motivated focus or framing change is usually enough.
 - Do not end at the exact moment of a line, kiss, slap, reveal, or door opening; hold the consequence.
 
+## Dialogue-Driven Performance Control System / 台词驱动表演控制
+
+Use this when the scene depends on spoken performance: accusation, rebuttal, confession, breakup, apology, interrogation, courtroom pressure, family confrontation, voice message, phone call, or a line that breaks the character's emotional defense.
+
+This system is especially useful for dialogue scenes from 10-30s. Use 16-30s only when the line delivery, listener reactions, pauses, and emotional curve genuinely need the extra time; keep shorter scenes short instead of stretching them.
+
+### Three-Layer Prompt Structure
+
+For complex acting scenes, separate the prompt into three mental layers before writing the final copy:
+
+1. **Global control layer**: duration, location, characters, identity anchors, costume, voice/sound mode, broad visual style, and any required aspect ratio or platform constraint.
+2. **Shot timeline layer**: which shot covers which seconds, who is being observed, when view/focus changes, and why the camera changes attention.
+3. **Performance control layer**: what the character wants in this line, how emotion changes, which words trigger the change, where the pause/breath happens, how eyes/face/body respond, and which reaction must not happen too early.
+
+Do not let layer 1 consume the whole prompt. If a platform already provides visual style presets, keep style compact and spend more tokens on performance control.
+
+### Emotion Barrier / 情绪保护层
+
+Do not jump directly from anger to crying, confidence to collapse, or sarcasm to confession. Real characters often use a protective emotion before the vulnerable emotion appears.
+
+Common protective arcs:
+
+```text
+anger protects grief -> voice cracks -> attack fades -> vulnerability appears
+sarcasm protects shame -> smile stiffens -> eyes drop -> apology becomes possible
+calm protects panic -> breath shortens -> words slow -> body freezes
+politeness protects resentment -> pauses sharpen -> mouth tightens -> direct accusation
+```
+
+Prompt rule:
+
+```text
+先写保护性情绪，再写保护层出现裂缝，最后写真实情绪暴露。不要让愤怒、悲伤和落泪同时从第一秒出现。
+```
+
+### Dialogue as Expression Timeline
+
+Do not write a mood label and paste dialogue under it. Treat the line itself as the expression timeline.
+
+For every crucial line, write:
+
+- state before speaking
+- first phrase delivery
+- trigger word or emphasized word
+- pause / breath / swallow
+- eye line change
+- mouth, brow, jaw, throat, or tear change
+- body/hand reaction
+- state after the line
+- listener reaction when relevant
+
+Positive pattern:
+
+```text
+说话前她先压住呼吸，目光没有立刻看向对方。第一句“你一直都知道”音量较低，嘴唇几乎不张开，像还在维持体面；说到“知道”时短暂停顿半拍，眼神从对方脸上滑到桌面。第二句“那我算什么？”明显更轻更慢，重新抬眼时攻击性已经消失，眼眶开始湿润，但第一滴眼泪仍不能落下。
+```
+
+Bad pattern:
+
+```text
+她非常悲伤地哭着说：“你一直都知道，那我算什么？”
+```
+
+### Trigger Words and Delay
+
+When a line causes an emotional turn, mark the trigger word and delay the visible reaction by a believable fraction of time.
+
+Examples:
+
+- A character should not cry before hearing the plot-changing word.
+- A character should not soften before saying the vulnerable phrase.
+- A character should not explode before the accusation lands.
+- First tear should appear only after the defensive layer breaks, not at the start of the line.
+
+Useful instruction:
+
+```text
+不要让落泪提前发生。泪水只在说完关键词后开始聚在下睫毛处，下一次吸气失败时才落下第一滴。
+```
+
+### AU/FACS Auxiliary Calibration
+
+AU/FACS can help calibrate a close-up, but it is not the main language of the prompt. Always write visible natural-language actions first, then add optional AU tags only for high-stakes face close-ups.
+
+Recommended use:
+
+- Use AU only for long close-ups, extreme emotional control, crying restraint, anger restraint, shame, guilt, blackening, or close dialogue scenes where facial precision matters.
+- Use compact tags, not long code strings.
+- Include intensity only when it clarifies gradual change: `A` = barely visible, `B` = light, `C` = clear, `D` = strong, `E` = near maximum.
+- Write onset -> peak -> release when possible.
+
+Useful AU references:
+
+- `AU1`: inner brow raise
+- `AU4`: brow lower
+- `AU5`: upper lid raise
+- `AU7`: lid tighten
+- `AU9`: nose wrinkle
+- `AU15`: lip corner depressor
+- `AU17`: chin raiser
+- `AU23`: lip tighten
+- `AU25`: lips part
+- `AU26`: jaw drop
+
+Positive pattern:
+
+```text
+自然语言先行：眉毛内侧缓慢抬起，嘴角轻微下沉，下巴开始绷紧；她张开嘴想继续说话，却没有力气发声。辅助表情校准：AU1 + AU15 + AU17，强度从 B 增至 C，眼泪暂时不能落下。
+```
+
+Avoid:
+
+- using AU as a magic formula without natural-language description
+- listing too many AU codes in one beat
+- making all facial muscles peak from the first frame
+- treating one AU combination as a fixed emotion regardless of gaze, body, voice, and context
+
+### Facial Action Timing
+
+For important expressions, specify the change curve:
+
+```text
+onset -> peak -> release / transform
+```
+
+Example anger burst:
+
+```text
+说话前他先压紧嘴唇，咬住下颚，眉毛向内下压。前半句保持低沉；说到“现在”时 AU25 和 AU26 突然增强，嘴唇分开、下巴绷紧，音量短促抬高。最后一个词结束后立刻闭嘴，面部肌肉快速收回，只剩呼吸变重。
+```
+
+### Eight-Dimension Acting Formula
+
+Use this as an internal planning formula for dialogue-led acting. Do not print all labels unless the user asks for a table.
+
+```text
+时间段 -> 人物目的 -> 情绪保护层/变化 -> 台词与触发词 -> 面部动作 -> 目光与身体 -> 声音/呼吸/停顿 -> 说完后的状态与对手反应
+```
+
+Compact final-prompt pattern:
+
+```text
+{a}-{b}s：{人物}表面想{目的}，其实在用{保护性情绪}挡住{真实情绪}。说“{台词}”前先{呼吸/停顿/眼神}；说到“{触发词}”时{面部动作、目光、身体或AU辅助}，声音{音量/速度/质感}；说完后{余韵状态}，{对手反应}。
+```
+
 ### Dialogue Performance Conditions
 
 When dialogue is important, attach it to performance conditions:
@@ -741,6 +886,111 @@ When dialogue is important, attach it to performance conditions:
 - listener's immediate reaction
 
 Keep the line short enough for the assigned time.
+
+## 30s Psychological Stage Timeline
+
+Use this pattern for 20-30s emotion-led scenes where the viewer must feel a full internal turn: farewell, breakup, confession, accusation, reunion, apology, forgiveness, acceptance, or choosing to let someone go. It is a bridge between dialogue-driven acting and ultra-close micro-expression work.
+
+### Core Principle
+
+Do not divide a 30s scene by clock time alone. Divide it by psychological tasks: what the character is trying to do inside this phase.
+
+Good stage names are small verbs or emotional tasks:
+
+```text
+追问 -> 认命 -> 记住 -> 惋惜 -> 放手
+试探 -> 防御 -> 被击中 -> 坦白 -> 余震
+克制 -> 反击 -> 裂缝 -> 承认 -> 沉默
+```
+
+Each stage should contain:
+
+- stage title / psychological task
+- visible action, expression, eye line, breath, voice, or body evidence
+- one short line or a meaningful silence when needed
+- how this stage differs from the previous stage
+- a clear tear, smile, gaze, breath, or posture timing decision when relevant
+
+### Action + Meaning Workflow
+
+In `电影化改写策略`, you may briefly explain why an action matters. In the copy-ready final prompt, keep the visible behavior and only a compact meaning note when it prevents ambiguity.
+
+Good workshop reasoning:
+
+```text
+“短促苦笑”不是开心，而是自嘲和认命；“重新看回对方”不是挽留，而是想最后记住他的样子。
+```
+
+Good final-prompt compression:
+
+```text
+3-10s【认命】：她的视线从他脸上慢慢移开，望向旁边空地；眼睑低垂，嘴角牵起一抹很短的苦笑又落下，鼻翼轻收，胸口轻轻起伏一次，像把委屈咽回去。
+```
+
+Avoid turning the final prompt into long prose analysis:
+
+```text
+情感解析：这个动作象征她内心的命运感、遗憾、回忆和复杂人生……
+```
+
+### Difference Between Similar Expressions
+
+When the same visible expression appears twice, define the emotional difference.
+
+- First smile may be self-mockery, politeness, defense, or disbelief.
+- Last smile may be forgiveness, release, blessing, or exhausted tenderness.
+- First gaze may be asking for an answer.
+- Later gaze may be memorizing, accusing, forgiving, or saying goodbye.
+
+Useful instruction:
+
+```text
+前一个笑是自嘲和认命，最后一个笑是温柔放手；不要把两个笑都生成成同一种甜笑或假笑。
+```
+
+### Tear Timing and Delay
+
+Control tears as timed events, not generic sadness.
+
+Common sequence:
+
+```text
+眼眶泛红但不落泪 -> 眼泪被屏住 -> 第一滴泪在保护层松开后落下 -> 第二滴泪在最终台词或微笑中滑落 -> 结尾保留泪痕和呼吸
+```
+
+Rules:
+
+- Do not let tears appear before the emotional trigger.
+- If the character is restrained, hold tears for several seconds before the first drop.
+- Name which tear matters: first tear, second tear, tear line, tear held on lower lashes, tear sliding to the lip.
+- Do not overuse tears in every stage; one or two precise tear events are stronger than constant crying.
+
+### Camera Push Bound to Emotional Access
+
+Use camera movement only when emotional distance changes.
+
+- Start with stable CU/BCU when the character is still guarded.
+- Use a very slow push-in when the character stops defending or decides to reveal vulnerability.
+- Use ECU only for the peak stage: the line, tear, smile, or gaze that changes the meaning.
+- Keep the final frame long enough for the viewer to read the expression after the last line.
+
+Do not add push-in, orbit, handheld shake, and rack focus together for a quiet emotional scene. One motivated push or a fixed camera is usually enough.
+
+### 29-30s Farewell Template
+
+Use as a structure reference, not as a fixed story:
+
+```text
+基础概括：29秒写实电影情绪长镜头，{人物}面对镜头前的“他/她”，以{关系危机}为核心；固定 CU 起幅，后段极慢 Push-In 至 ECU。全片靠眼神、呼吸、短句、停顿和两次明确落泪完成情绪曲线，不大哭，不崩溃。
+
+0-3s【追问】：她直视镜头，眼神还干净没有泪，眉心轻蹙，嘴唇微启，轻声说：“真的要走吗？”说完不追问，停在等待里。
+3-10s【认命】：视线慢慢移开，眼睑低垂；嘴角牵出一抹短促苦笑又落下，鼻翼轻收，胸口小幅起伏一次，像把酸楚咽回去。
+10-17s【记住】：镜头极慢推进；她重新看回镜头，目光在对方脸上缓慢扫过，眼眶泛红但眼泪被屏住，嘴唇轻动又抿住，下巴收紧，喉间轻轻滚动，留 0.5s 死寂。
+17-23s【惋惜】：她垂眼，第一滴泪无声落在衣襟上；没有擦泪，没有抽泣。再抬眼时，目光从挽留变成深深惋惜，眉心一点点松开，极轻地摇头，像无声叹息。
+23-29s【放手】：镜头推至更近 ECU；她努力牵起一个很轻、很柔的微笑，第二滴泪从眼角滑过鼻翼停在唇边。她用几乎听不见但稳住的声音说：“你走吧。”说到“走”字时声音极轻颤一下又压住。说完后笑停在脸上，眼神不移开，最后 1-2s 留给含泪微笑和安静呼吸。
+```
+
+Compression rule: for 20-24s, reduce to 4 stages. For 10-15s, do not force this full pattern; use a shorter micro-expression timeline instead.
 
 ## Long Facial Close-Up Micro-Expression Timeline
 
@@ -1520,7 +1770,7 @@ Use this for staged combat, close-quarters fighting, underground ring scenes, wu
 
 ### Fight Prompt Length Budget
 
-The copy-ready fight prompt must stay under 2000 Chinese characters. This excludes `剧情诊断`, `电影化改写策略`, and optional reference-image prompts.
+The copy-ready fight prompt must follow the duration-based ceiling: under 2000 Chinese characters for 1-15s, under 3000 Chinese characters for 16-30s. This excludes `剧情诊断`, `电影化改写策略`, and optional reference-image prompts.
 
 Recommended budget for a 10-15s fight:
 
@@ -1529,6 +1779,13 @@ Recommended budget for a 10-15s fight:
 - 6-10 timed action beats total.
 - 2-4 active actions per shot.
 - One short line each for environment, camera, style, and constraints; merge repeated information into the opening summary.
+
+Recommended budget for a 16-30s fight:
+
+- 2000-2800 Chinese characters total.
+- 3-5 shots or one readable long-take chain with internal phases.
+- 10-16 timed action beats total.
+- Keep choreography readable. If more action beats are required, split into consecutive clips.
 
 Compression rules:
 
@@ -1817,7 +2074,7 @@ Use diegetic sound only: rain, footsteps splashing, metal impact, cloth friction
 
 ### Compression Notes
 
-For final prompts under 2000 Chinese characters, compress this pattern by keeping location and one-take structure, 6-8 action beats, environment feedback for major impacts, camera continuity/readability rules, diegetic sound, and negative constraints. Cut repeated style tags first. Do not cut attack-defense causality or final breathing room.
+For final prompts under the duration-based character ceiling, compress this pattern by keeping location and one-take structure, the strongest action beats, environment feedback for major impacts, camera continuity/readability rules, diegetic sound, and negative constraints. Cut repeated style tags first. Do not cut attack-defense causality or final breathing room.
 
 ## Tavern Brawl / Environmental Fight Pattern
 
@@ -2127,7 +2384,7 @@ Rules:
 
 - Keep diagnosis and strategy concise and correctable.
 - Output only references that improve control.
-- The 2000-character ceiling applies only to the final video prompt.
+- The duration-based character ceiling applies only to the final video prompt.
 
 ### 连续短片模式 / Continuous Short-Film Mode
 
@@ -2163,7 +2420,7 @@ Rules:
 - Each segment advances one main event or emotional turn.
 - Do not reuse the previous tail frame by default. Preserve story state, identity, space, props, and emotional residue; choose the bridge that best fits the next segment.
 - Add reference prompts only for new visual anchors or meaningful state updates.
-- Each segment remains under 15s and its final prompt under 2000 characters.
+- Each segment remains under 30s and its final prompt under the duration-based character ceiling.
 
 ## Structure Selection
 
@@ -2183,7 +2440,7 @@ Choose structure before writing shot details. Always state the chosen structure 
 | **长特写微表情 / Close-Up Micro-Expression** | Emotion is carried mainly by face/head with minimal action | shock, suppressed crying, shame, hidden love, inner collapse | plot needs many events or spatial movement | Use ECU/CU, stable or slow push, timed facial-muscle progression |
 | **产品/人物质感片 / Product-Person Texture Film** | Product, place, or persona matters as much as plot | car, watch, founder, artist, venue, premium object | story requires many dramatic turns | Use tactile details, material, light, sound, controlled gesture, brand-like restraint |
 | **大场面压缩 / Large-Scene Compression** | Crowd, disaster, ceremony, battlefield, launch, courtroom, banquet | chaos with one human anchor, public pressure, group reaction | no clear protagonist or visual anchor | Pick one visual anchor; show crowd as pressure; use 4-5 clear nodes |
-| **长剧情拆分 / Sequential Prompt Split** | Playable content exceeds 15s or final prompt would exceed 2000 chars, even if the user's text is short | reunion, investigation, travel, multi-stage emotional arc, multiple actions or location changes | one small moment already fits under 15s | Split by emotional turning points; make each segment a complete 15s mini-arc and define a bridge type for the next segment |
+| **长剧情拆分 / Sequential Prompt Split** | Playable content exceeds 30s or final prompt would exceed the duration-based character ceiling, even if the user's text is short | reunion, investigation, travel, multi-stage emotional arc, multiple actions or location changes | one small moment already fits under 30s | Split by emotional turning points; make each segment a complete 15-30s mini-arc and define a bridge type for the next segment |
 | **剧情续写 / Continuation Segment** | User approves a segment and asks to continue | short-film sequences, clip bridges, multi-part emotional arcs | no prior segment context exists | Continue from previous story state, preserve identity/scene/props, choose a bridge type, add only one new event |
 | **主观镜头 / POV or Subjective Camera** | User needs immersion into a character's perception | fear, dizziness, memory trigger, entering unknown space | multi-character dialogue needs facial reactions | Use breath, hand edges, focus shifts, sound distortion; keep POV coherent |
 | **匹配剪辑 / Match Cut Structure** | Two times/places/actions mirror each other | past vs present, childhood/adulthood, before/after identity | simple linear action is clearer | Match hand, object, gaze, light, or sound across cuts |
@@ -2198,7 +2455,7 @@ Choose structure before writing shot details. Always state the chosen structure 
 - If the core is **a process compressed into moments**, choose `跳剪压缩`.
 - If the core is **a product/person/place aura**, choose `产品/人物质感片`.
 - If the core is **large chaos but one person matters most**, choose `大场面压缩`.
-- If the playable content cannot breathe within 15s, choose `长剧情拆分` even when the user's written description is short.
+- If the playable content cannot breathe within 30s, choose `长剧情拆分` even when the user's written description is short.
 - If the user asks to continue from an approved prompt, choose `剧情续写`.
 
 ### Hybrid Structures
@@ -2436,13 +2693,13 @@ Priority order:
 
 Use length tiers before deciding whether to generate a final video prompt.
 
-- Under roughly 1500 Chinese characters: direct adaptation is usually allowed. Still select one clear event or emotional turn, then generate one 6-15s prompt.
+- Under roughly 1500 Chinese characters: direct adaptation is usually allowed. Still select one clear event or emotional turn, then generate one 6-30s prompt based on playable content.
 - Roughly 1500-3000 Chinese characters: do not adapt the whole passage. First diagnose the passage, identify the strongest filmable scene, state what will be covered and what will become context or later material, then generate only one prompt for that selected scene.
 - Over roughly 3000 Chinese characters or a full chapter: do not generate final prompts immediately. First judge or ask whether the user wants `片段拆选` or `连续短片结构`.
   - If the user wants a strong single video moment, test case, highlight, or does not specify full coverage, output a `影视化片段拆选表`: list 3-6 candidate scenes with emotional core, visual hook, suggested duration, and reason to adapt. This table does not need to cover every plot beat.
   - If the user asks for complete adaptation, full coverage, a short film, a mini-drama, serialized generation, or turning the whole novel excerpt into videos, output a `连续短片总结构表`: cover the main story spine in order, preserve cause and effect between segments, note recurring characters/scenes/props, and do not output final video prompts yet.
 
-Do not mechanically split long prose into one prompt per 15 seconds. That creates bloated, low-control output. Use scene selection or a continuous structure table first, and enter detailed multi-segment prompt generation only after the user confirms a segment, episode range, or full continuous-short-film plan.
+Do not mechanically split long prose into one prompt per 30 seconds. That creates bloated, low-control output. Use scene selection or a continuous structure table first, and enter detailed multi-segment prompt generation only after the user confirms a segment, episode range, or full continuous-short-film plan.
 
 ### Long Novel Entry Decision
 
@@ -2495,7 +2752,7 @@ Keep this section concise. It is for adaptation clarity, not literary analysis.
 
 ### Compression Rules for Novel Inputs
 
-- If one excerpt contains setup, reveal, argument, collapse, and aftermath, choose only one main turn for a single 15s prompt and recommend splitting the rest.
+- If one excerpt contains setup, reveal, argument, collapse, and aftermath, choose only the turns that can naturally play within one 30s prompt and recommend splitting the rest.
 - For 1500-3000 character excerpts, state the selected scene explicitly before the final prompt. Treat all other material as context unless the user asks for a full sequence.
 - For 3000+ character excerpts, output a scene-selection list first. Do not output a long chain of final prompts unless requested.
 - If the original has many adjectives, keep only those that change lighting, costume, texture, performance, or mood.
@@ -2509,7 +2766,7 @@ Keep this section concise. It is for adaptation clarity, not literary analysis.
 - Include concrete time allocation, physical action, camera behavior, performance detail, sound, and ending breath.
 - Do not include literary commentary such as "象征着", "暗示了", or "表现了" unless immediately tied to a visible action.
 - When preserving prose language as voiceover, keep it short and timed; avoid turning the whole scene into narration.
-- If the scene is part of a longer chapter, mention what this 15s prompt covers and what should continue in later segments.
+- If the scene is part of a longer chapter, mention what this prompt covers and what should continue in later segments.
 
 ### Continuous Novel Adaptation Continuity
 
@@ -2535,8 +2792,8 @@ Use when the user says `继续`, `接着往下写`, `下一段`, `下一镜`, `�
 - Keep setting, lighting, weather, time of day, color palette, camera texture, and sound bed consistent unless the story intentionally changes.
 - Keep key props consistent in design, position, and narrative meaning.
 - Progress emotion instead of replaying it.
-- Add only one main new event or emotional turn per 15s segment.
-- Let each 15s segment feel like a complete small dramatic unit. Do not force a long-take continuation across clips if a shot-group structure is more natural.
+- Add only one main new event or emotional turn per short segment; a 16-30s segment may include a fuller setup-turn-aftermath arc if it stays playable.
+- Let each segment feel like a complete small dramatic unit. Do not force a long-take continuation across clips if a shot-group structure is more natural.
 - Leave the ending as a useful next bridge: a held reaction, an unfinished action, a prop state, a sound cue, or a completed mini-arc that can lead into the next beat.
 
 ### Clip Bridge Types
@@ -2545,7 +2802,7 @@ Choose one bridge before writing the next prompt:
 
 1. **Continuous Drama Bridge / 换景别换角度接续**: use when the previous ending must continue immediately, but the next video should not copy the same frame. Start the next clip from the same story moment with a different shot size and camera angle, such as CU -> WS, MS -> BCU, over-shoulder -> reverse angle, or side angle -> frontal angle. Preserve axis, eyeline, body direction, prop state, and emotional residue.
 2. **Match-on-Action Bridge / 动作中衔接**: use when the previous clip ends on an unfinished action. End segment 1 as the hand begins to open the door, body starts to turn, sword begins to draw, person starts to fall, lips begin to speak, or fist begins to swing; start segment 2 from a new angle/shot size continuing the same action, not restarting it.
-3. **Shot-Group Bridge / 分镜组衔接**: use when each 15s clip is a complete small scene or emotional beat. Segment 2 does not need to start from segment 1's tail frame. It should start with a strong new shot that belongs to the next mini-arc while preserving character, scene, prop, costume, light, sound, and emotional continuity.
+3. **Shot-Group Bridge / 分镜组衔接**: use when each clip is a complete small scene or emotional beat. Segment 2 does not need to start from segment 1's tail frame. It should start with a strong new shot that belongs to the next mini-arc while preserving character, scene, prop, costume, light, sound, and emotional continuity.
 
 Use the previous tail frame only when exact body position, blocking, injury/damage state, or object position is critical. Otherwise, treat it as one reference asset among others, not as a required first-frame instruction.
 
@@ -2604,21 +2861,22 @@ Use clear continuity phrases in the final prompt:
 - Repeating the same reveal from the previous segment.
 - Jumping to a new location without a transition or user request.
 - Changing clothing, lighting, age, or prop design accidentally.
-- Adding multiple new plot events in one 15s segment.
+- Adding more plot events than the selected duration can naturally play.
 - Copying the previous tail frame as the next first frame by habit, especially when a new angle, match-on-action, or complete shot-group opening would be smoother.
 - Starting with a generic establishing shot that ignores the previous emotional or action state.
 
 ## Prompt Compression
 
-Final prompts should be direct and proportionate to scene complexity. The 2000-character limit is a ceiling, not a target. It applies only to the copy-ready final prompt, not to the diagnosis or strategy sections in workshop mode.
+Final prompts should be direct and proportionate to scene complexity. The character ceiling is duration-based and is not a target. It applies only to the copy-ready final prompt, not to the diagnosis or strategy sections in workshop mode.
 
 Length targets:
 
 - 500-800 Chinese characters: simple one-person, one-action, one-emotion scenes.
 - 800-1300 Chinese characters: default range for most 8-15s cinematic prompts.
-- 1300-2000 Chinese characters: complex scenes such as multi-person dialogue, large-scene compression, montage, long-story splits, or spatial action.
+- 1300-2000 Chinese characters: complex 10-15s scenes such as multi-person dialogue, large-scene compression, montage, long-story splits, or spatial action.
+- 2000-3000 Chinese characters: only for 16-30s prompts with longer dialogue, multi-shot progression, complete emotional curves, or complex blocking.
 
-If the prompt exceeds 1300 characters, each extra detail must improve generation stability, emotional clarity, spatial continuity, or failure prevention. If not, cut it.
+If the prompt exceeds 1300 characters for <=15s or 2000 characters for 16-30s, each extra detail must improve generation stability, emotional clarity, spatial continuity, or failure prevention. If not, cut it.
 
 - Do not include empty boilerplate such as `视频模型：通用 AI 视频模型`. If no model is specified, omit it.
 - Put duration and structure into the first summary line.
@@ -2640,7 +2898,7 @@ When a final prompt is too long, compress in this order. Preserve story causalit
 7. Reduce insert shots and secondary crowd/environment reactions.
 8. Shorten negative constraints to the scene-specific minimum.
 9. Reduce shot count or action beat count.
-10. If the scene still cannot fit under 2000 characters or 15 seconds, split it at an emotional/action turning point.
+10. If the scene still cannot fit under the duration-based ceiling or 30 seconds, split it at an emotional/action turning point.
 
 Never remove first:
 
@@ -3059,7 +3317,7 @@ Omit or shorten them when:
 
 - The user asks for a very compact prompt.
 - The scene has few generation risks.
-- The final prompt is near the 2000-character limit.
+- The final prompt is near the duration-based character ceiling.
 
 Minimum fallback:
 
@@ -3075,17 +3333,17 @@ Run this silently before giving the final answer. Do not print it unless the use
 
 - Does the diagnosis name the emotional core and visual core?
 - Is the chosen structure explicitly stated and justified?
-- Does the duration fit the content instead of defaulting to 15s?
+- Does the duration fit the content instead of defaulting to 30s?
 - Was duration/splitting judged by playable content rather than source text length alone, including event count, dialogue time, actions, emotional reactions, scene changes, camera moves, and ending breath?
-- If the story exceeds 15s or 2000 characters, does the answer recommend splitting and clearly state what this prompt covers?
+- If the story exceeds 30s or the duration-based character ceiling, does the answer recommend splitting and clearly state what this prompt covers?
 - If this is a split prompt, has the bridge type been chosen: different shot size/angle continuation, match-on-action, or complete shot-group continuation?
 
 ### Prompt Usability
 
-- Is the final prompt copy-ready and under 2000 Chinese characters when possible?
+- Is the final prompt copy-ready and under the correct duration-based character ceiling when possible?
 - Is the chosen output mode appropriate to the user's request: compact, workshop, or continuous-short-film?
 - If the draft was too long, was the automatic compression ladder applied before splitting?
-- For fight prompts, has the copy-ready final prompt been kept strictly under 2000 Chinese characters, preferably 1300-1800, with no more than 2-3 shots and 6-10 action beats?
+- For fight prompts, has the copy-ready final prompt stayed within the duration-based ceiling, with action beats limited to what the selected duration can clearly show?
 - Is there no empty boilerplate such as `视频模型：通用 AI 视频模型`?
 - Does the first summary line include duration and structure?
 - Are technical terms useful rather than decorative?
@@ -3117,7 +3375,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 ### Time and Rhythm
 
 - Are time blocks playable, with enough duration for action, camera movement, line delivery, and reaction?
-- If the user gave a short but content-dense plot, has it been split or narrowed instead of crammed into one 15s prompt?
+- If the user gave a short but content-dense plot, has it been split or narrowed instead of crammed into one 30s prompt?
 - Is key dialogue or peak action not placed at the final instant?
 - Does the ending leave 1-2 seconds for breath, reaction, sound tail, or visual afterimage?
 - Are there too many events for the duration? If yes, remove details or split.
@@ -3129,6 +3387,10 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Are phone calls, doctor/police notices, confessions, breakups, voice messages, or offscreen lines concrete?
 - Is key dialogue short enough for the time block?
 - Has dialogue delivery time been estimated using an appropriate speech rate, including pauses and listener reaction?
+- If dialogue drives the acting, does the prompt treat the line as an expression timeline rather than placing a mood label before quoted text?
+- Are trigger words, emphasis, pauses, breath, gaze changes, facial/body reactions, and post-line state tied to the actual wording?
+- If a character moves from anger/sarcasm/calmness into vulnerability, is there an emotion barrier and a believable crack before crying, confession, or collapse?
+- Are tears, voice breaks, outbursts, forgiveness, or surrender delayed until the line or reaction actually earns them?
 - Does the shot have enough time for dialogue, physical action, camera movement, and reaction without rushing?
 - Does sound design include concrete diegetic sound rather than generic music?
 - Does the prompt avoid background music by default and keep only necessary dialogue/voice, ambient sound, Foley, movement, object, and action sound effects?
@@ -3145,6 +3407,8 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Does the recurring hand/prop/posture anchor evolve continuously instead of resetting between beats?
 - For long close-ups, is there a smooth micro-expression timeline with no sudden jump?
 - Are 3-5 micro-expression beats chosen instead of an overloaded facial-action list?
+- If AU/FACS appears, is it only auxiliary calibration after visible natural-language facial action, with compact intensity and no long code dump?
+- Do important facial expressions have onset, peak, and release/transform rather than appearing fully formed from the first frame?
 - Is the performance natural for the character's situation, age, status, and relationship?
 - Are tears, crying, anger, or fear restrained unless the story specifically needs a large outburst?
 - For recurring characters, are permanent identity traits separated from temporary state such as tears, sweat, dust, injury, or costume damage?
