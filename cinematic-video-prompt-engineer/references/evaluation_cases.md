@@ -609,7 +609,7 @@ Expected:
 
 - Diagnosis explains why this scene can use 24-30s: dialogue delivery, hesitation, listener reaction, table/keys contact, and emotional aftertaste need time.
 - The skill does not claim every prompt should default to 30s; it chooses a specific duration, such as 26s or 28s, only if the scene needs it.
-- Final prompt stays under 3000 Chinese characters and uses the extra length for timing, performance, contact realism, spatial continuity, and ending breath.
+- Final prompt normally stays within the 2200-3400-character target for a 25-30s scene and always below the 4000-character ceiling. Any text beyond 3000 characters must directly support timing, performance, contact realism, spatial continuity, sound, or ending breath.
 - Dialogue is timed with pauses and breath. The key lines are explicit and have enough room before and after delivery.
 - The man's smile is protective rather than cheerful; grief or collapse does not arrive before the line that triggers it.
 - The keys, table, body distance, and eyelines stay consistent.
@@ -619,7 +619,7 @@ Failure checks:
 
 - keeps the old 15s maximum and splits even though one 24-30s prompt can carry the scene
 - stretches a simple beat to 30s without dramatic reason
-- exceeds 3000 Chinese characters without recommending a split
+- exceeds 4000 Chinese characters without recommending a split, or exceeds 3000 with decorative detail that does not improve generation
 - packs all lines together with no pauses or listener reactions
 - uses generic sadness labels instead of line-triggered performance changes
 - cuts immediately after the final line
@@ -751,6 +751,162 @@ Failure checks:
 - changes light direction between shots without an on-screen cause
 - repeats a full lighting breakdown in every shot
 - ends at the discovery with no sound tail or visual afterimage
+
+## Case 30: Short-Drama Hook Diagnostic Boundary
+
+Input A:
+
+```text
+做成25秒强钩子悬疑短剧：深夜，快递员送来一个写着明天日期的包裹。独居女孩想在男友回家前打开，门外物业却打电话说今晚没有快递员上楼。盒子里是男友正在响铃的手机，屏幕显示来电人正是女孩自己。结尾要让人想继续看。
+```
+
+Expected A:
+
+- Activate the short-drama hook and narrative-drive diagnostic because the user explicitly asks for a strong-hook suspense short.
+- Diagnose the existing anomaly, immediate goal, active obstacle, information reversal, and unresolved question without insisting on a separate deadly rule.
+- Preserve the supplied plot. Do not add a hidden murderer, supernatural identity, countdown, or new culprit unless the user delegates further invention.
+- Translate the functions into visible beats: future date, her attempt to open the parcel, the property call, the phone inside, and her own incoming caller identity.
+- Use no more beats than can play naturally in 25s, including dialogue/reaction and 1-2s ending residue.
+- End with a completed reveal and held reaction while the larger question remains open; do not cut off the phone line or box-opening action halfway.
+
+Input B:
+
+```text
+8秒固定镜头情绪特写：母亲看到儿子的大学录取通知书，先不敢相信，确认名字后笑着落下一滴泪。全程无台词，安静克制。
+```
+
+Expected B:
+
+- Do not activate the short-drama hook formula merely because the video is short.
+- Do not invent an anomaly, deadline, fatal rule, obstacle, identity reversal, or cliffhanger.
+- Preserve the performance-led emotional arc and use the micro-expression close-up system.
+
+Failure checks:
+
+- requires all six narrative functions for Input A
+- silently rewrites the supplied culprit, identity, relationship, or ending
+- mistakes an unresolved answer for an abrupt unfinished action
+- adds a twist or danger to Input B
+- turns every emotional change into a plot reversal
+
+## Case 31: Dense Dialogue, Interruption, and Playability Boundary
+
+Input A:
+
+```text
+做成30秒双人情感对话。姐姐发现弟弟准备替父亲承担一项会毁掉前途的责任，她越说越快，害怕一停下就无法阻止他；弟弟始终低声、礼貌，用“没关系”安慰她，却多次在“我”字上卡住。两人可以温和抢话和短暂重叠，以下关键台词必须完整保留。镜头不要花哨，重点是原生对白、口型、声音和听者反应。
+```
+
+Expected A:
+
+- Establish a scene-level performance contract: her speed comes from fear of losing the chance to stop him; his politeness protects him from collapse and tries to reduce her guilt.
+- Treat dense dialogue as a playability question rather than applying an automatic word-count cut. Preserve all required lines if local acceleration, motivated overlap, and simplified visual staging allow complete delivery.
+- Lock distinct voice identities and temporary vocal states across shots.
+- For each interruption, identify the semantic entry trigger, relative volume, brief overlap, who yields, and the interrupted mouth/breath state.
+- Protect intentional failed `我—` starts from smoothing, completion, comic repetition, or audio-glitch behavior.
+- Use a dialogue-first priority ladder; simplify shot count, camera movement, secondary gestures, and environment activity before proposing dialogue cuts.
+- Carry one gesture continuously across cuts, such as his hand rising, hovering, then losing strength and falling. Preserve the relationship's no-touch distance if established.
+
+Input B:
+
+```text
+15秒低声告别戏：两个人必须缓慢说完十二句长台词，每句之间停顿一秒，每句都要有吞咽、落泪、对方反应和一次运镜，最后一句说到最后一帧。所有内容都不能删。
+```
+
+Expected B:
+
+- Do not claim the scene is playable merely because all dialogue is marked mandatory.
+- Diagnose the concrete conflict among slow delivery, twelve one-second pauses, repeated physiological actions, listener reactions, camera moves, and no ending residue.
+- First propose simplifying camera and repeated gestures, but recognize that those reductions cannot recover enough time for twelve long lines and pauses.
+- Explain the remaining conflict and recommend splitting into multiple clips or ask whether the user prefers preserving every line or preserving the 15s limit. Do not silently edit key dialogue and do not accelerate it unnaturally.
+
+Input C:
+
+```text
+结尾她想说“其实我一直——”，却因为终于看见对方已经明白而主动停住。不要补全后半句；用她未闭合的嘴唇、缓慢呼气和对方抬眼回应完成结尾。
+```
+
+Expected C:
+
+- Allow the unfinished line because refusing or no longer needing to finish is the completed dramatic action.
+- State why speech stops, prevent automatic completion, and hold the mouth, breath, gaze, listener response, or silence long enough to read.
+- Do not place the dash at the last frame with no consequence; reserve visible and audible aftermath.
+
+Failure checks:
+
+- compresses Input A only because its word count exceeds a generic speech-rate estimate
+- turns overlap into clean alternating turns or mutes the first speaker abruptly
+- repeats a cross-cut line in full after the edit
+- converts failed speech into comic stuttering or mechanical loops
+- accepts Input B without identifying the genuine timing contradiction
+- silently deletes mandatory lines from Input B
+- treats Input C as permission for an accidental mid-line cutoff
+
+## Case 32: Knowledge State, Non-Human Performance, and Behavioral Payoff
+
+Input A:
+
+```text
+30秒写实车站剧情：一只年迈的搜救犬多年后突然听见已经离开的训导员声音。它先怀疑、确认，再慢慢靠近；最后声音消失，它不再继续盯着站口，而是在原来的等待位置趴下。不要把狗拍成人脸式哭泣。
+```
+
+Expected A:
+
+- Use species-appropriate performance: ear orientation, half-turn freeze, sniffing, breath, tentative paw placement, tail/spine tension, weight shift, slow aged approach, contact release, and final resting posture.
+- Preserve age and locomotion limits; recognition may restore intent but not youthful speed or agility.
+- Do not use human tears, smiles, theatrical nodding, or anthropomorphic sobbing.
+- Adapt the relationship axis to unequal height using hand, coat, waist, ear, or back foreground anchors rather than forcing a human shoulder-level reverse shot.
+- Build a behavioral payoff: habitual watching of the entrance is established, then the final choice not to look back and to lie down proves waiting has ended.
+
+Input B:
+
+```text
+25秒科幻情感戏：婚礼前夜，年轻女人开门遇见一位陌生老人。老人提前说出她下一秒会做的生活习惯，动作在画外发生；她从声音和他的神态中逐渐猜到，他可能来自自己的未来。不要解释穿越原理。
+```
+
+Expected B:
+
+- Track knowledge state: she begins with no recognition, observes a specific prediction and verification, forms a tentative hypothesis, then receives only enough confirmation to ask a personal future question.
+- Keep audience knowledge and character knowledge distinct; do not let her name the relationship before credible evidence arrives, and do not let the visitor explain the mechanism.
+- Use prediction -> waiting gap -> offscreen verification -> reaction -> revised hypothesis.
+- Keep the camera on her face if the realization matters more than showing the habitual hand action; use precise contact sound, brief offscreen eyeline shift, breath stop, and renewed gaze as proof.
+- Select questions from character values: once identity is sufficiently clear, move from `who are you` to what the shared life meant rather than continuing mechanical exposition.
+
+Input C:
+
+```text
+20秒深夜小餐馆告别：女人一直想替对面的男人整理歪掉的衣领，却顾及两人的关系边界没有碰他。结尾男人自己整理好衣领，随后把桌上的钥匙推回给她。背景仍有服务员收桌和远处客人低声交谈。
+```
+
+Expected C:
+
+- Establish the withheld collar gesture early and preserve it as a relational boundary rather than adding a random symbolic action only at the ending.
+- Pay it off through transfer/recontextualization: he completes the grooming action himself, then the key movement becomes the decisive relationship action.
+- Keep background workers and guests on plausible independent routines; they do not stop, stare, gather, or mirror the couple's emotion.
+- Use a subjective sound arc: ordinary restaurant room tone -> distant ambience recedes after the key decision -> cloth/key/table contact becomes close -> room tone returns after the private beat.
+
+Input D:
+
+```text
+列车从两人和摄影机之间驶过，遮挡期间其中一人消失；列车离开后，另一人仍保持原来的站位和视线方向，只剩手里刚刚接过的旧车票。
+```
+
+Expected D:
+
+- Allow the train as a motivated foreground occlusion because it belongs to the space and carries a visible path, parallax, wind pressure, reflection, and synchronized sound.
+- Preserve camera side, interaction axis, screen direction, lighting, remaining character pose, gaze, hand/prop state, and the first visible post-occlusion composition.
+- Do not use the cover to hide unrelated character drift, costume change, flipped geography, or an unexplained camera teleport.
+
+Failure checks:
+
+- gives Input A human tears, smiling, nodding, or sudden youthful movement
+- lets a character know identity, death, timeline, or relationship before receiving evidence
+- cuts to every object action even when the observer reaction carries the story
+- asks generic exposition questions that ignore character priorities
+- introduces a new symbolic ending action with no earlier setup
+- freezes or redirects all background people toward the protagonist
+- turns subjective sound narrowing into arbitrary total silence
+- uses foreground occlusion as an unmotivated blackout or continuity reset
 
 ## Regression Log Template
 

@@ -376,6 +376,83 @@ Write emotions as body evidence:
 - 决绝: still gaze, no blinking, body leans forward before action, breath stops then releases.
 - 自由: posture opens, hair and clothes catch wind, eyes lock onto distant light, a small fearless smile.
 
+## Character Knowledge and Evidence Control
+
+Use this for delayed recognition, mystery, reunion, time displacement, hidden identity, supernatural ambiguity, investigation, betrayal, or any scene where the audience and characters do not know the same things at the same time.
+
+### Knowledge-State Record
+
+Track four states internally for each important character:
+
+```text
+Already knows -> newly observes/hears -> may reasonably infer -> must still remain unknown
+```
+
+Emotional performance must follow that order. A character cannot grieve a confirmed death while they only know someone is missing; cannot recognize a future relative before receiving identifying evidence; and cannot explain a time jump, culprit, relationship, or sacrifice merely because the writer knows it.
+
+Useful progression:
+
+```text
+ordinary assumption -> anomaly noticed -> evidence checked -> tentative hypothesis -> emotionally costly recognition -> action based on partial knowledge
+```
+
+If the character never receives full proof, let the final behavior reflect a plausible partial understanding rather than false certainty.
+
+### Audience and Character Information Ladder
+
+Control two parallel questions:
+
+- **Character question**: what is this person trying to understand right now?
+- **Audience question**: what does the viewer suspect, know first, or still need confirmed?
+
+A strong 20-30s scene may let the question evolve:
+
+```text
+Who/what is this? -> How can they know that? -> What happened between them? -> What choice or feeling does this truth create now?
+```
+
+Do not keep repeating the same mystery after it has been answered. Once identity or mechanism is clear enough, move to the more personal question.
+
+### Character-Defining Question and Line Selection
+
+What a character chooses to ask should reveal values, relationship, and worldview.
+
+- A protective character may ask whether the other person survived before asking what happened to themselves.
+- A grieving character may ask whether someone waited rather than demand an exposition dump.
+- A lover facing the future may ask whether the life was worth living rather than how the mechanism works.
+
+Test each key line: if any generic character could say it without changing the scene, rewrite it through this character's priorities. Avoid convenient questions whose only purpose is to explain the plot to the audience.
+
+### Evidence Economy and Reaction-First Coverage
+
+Use the fewest clear pieces of evidence needed to make the inference credible.
+
+If physical mechanics matter, show the action. If realization matters more, keep the camera on the observer and prove the event through:
+
+- a precise offscreen sound
+- gaze shifting toward the unseen source
+- object vibration, reflection, shadow, light, or environmental response
+- a delayed breath, pupil, posture, or hand reaction
+- one later confirmation rather than an immediate explanatory insert
+
+Useful pattern:
+
+```text
+他先准确说出她下一秒会做的习惯动作；镜头不切手部，只保留在她脸上。画外传来两次细小接触声，第二次之后她的视线极短下移，呼吸停住，再重新抬眼看他。观众通过声音与反应完成确认。
+```
+
+Do not cut to a phone, handle, hand, key, footprint, or object merely to prove every noun. Use an insert only when the object's physical state, readable information, or later continuity depends on seeing it.
+
+### Prediction -> Verification Beat
+
+For suspense or high-concept hooks, a useful compact proof structure is:
+
+```text
+claim/prediction -> short waiting gap -> offscreen or visible verification -> observer reaction -> revised hypothesis
+```
+
+The verification must be specific enough to reduce coincidence but small enough to preserve mystery. Do not immediately explain the mechanism after the proof lands.
+
 ## Live Performance Realism System / 活人感表演真实系统
 
 Use this system when the scene depends on human presence rather than plot mechanics alone: close human drama, dialogue, everyday realism, intimacy, hesitation, concealment, explanation, lying, regret, memory, restrained grief, soft refusal, or any prompt where the viewer should feel the character is thinking in real time.
@@ -566,6 +643,55 @@ Use selectively for:
 - product films: mainly contact, light, reflection, material response
 - period drama: mainly psychological motive, biomechanics, cloth/light response
 
+## Species-Appropriate Non-Human Performance System
+
+Use this when an animal, creature, robot, vehicle-like character, or other non-human subject carries emotion or narrative attention.
+
+### Core Rule
+
+Do not translate a human emotion label into a human face pasted onto a non-human body. Build performance from the subject's real or established expressive channels:
+
+- sensory orientation: ears, eyes, head angle, antennae, sensors, sniffing, listening, scanning
+- body tension and weight: freeze, crouch, lean, recoil, step, paw/foot placement, balance, tail/spine posture
+- breathing or mechanical rhythm: panting, breath hold, whine, motor idle, fan speed, light pulse, servo hesitation
+- approach and distance: avoidance, testing, circling, retreat, gradual commitment, contact seeking
+- contact response: muscle release, head/limb leaning into touch, pressure change, sound, vibration, or power-down
+- species/design-specific vocalization only when natural and restrained
+
+### Recognition and Trust Ladder
+
+A useful emotional sequence is:
+
+```text
+baseline habit/fatigue -> sensory cue -> orient without committing -> verify -> tentative movement -> second confirmation -> weight shifts forward -> approach -> contact -> tension release
+```
+
+Do not jump from first cue directly to maximal excitement unless the story and subject's condition justify it.
+
+### Age, Injury, and Energy Limits
+
+Preserve the body state throughout the emotional turn.
+
+- An old animal may become more alert but should not suddenly move like a young one.
+- An injured creature may commit emotionally while still protecting a limb or moving asymmetrically.
+- A low-power robot may recognize someone while motors remain weak, delayed, or noisy.
+
+Emotion can change intent faster than the body can change capability.
+
+### Anthropomorphism Boundary
+
+Avoid human-style crying, smiling, brow acting, hugging, nodding, or theatrical grief unless the established species/design supports it. Prefer observable behavior and contact state. A tear, whine, tail movement, light pulse, or head tilt should not be repeated as a generic emotion icon.
+
+### Camera for Unequal Body Geometry
+
+Preserve the relationship axis even when subjects are at different heights. Lower the camera toward the non-human subject's functional eyeline when needed. Replace a forced shoulder foreground with a hand, coat edge, waist, leg, ear, back, harness, or relevant body contour. Keep gaze direction and screen side stable without distorting anatomy to imitate a human over-shoulder composition.
+
+Compact pattern:
+
+```text
+狗位于画面左侧向右上方看人，人物位于右侧向左下方看狗；拍狗时用人物手臂、腰侧或衣摆作为右侧柔焦前景，拍人时用狗耳朵和背部轮廓作为左侧低位前景。保持同一轴线，不强行把肩膀塞入低机位画面。
+```
+
 ## Intense Emotional Scene Director Chain
 
 Use this for emotional confrontation, restraint breaking, confession, betrayal, reunion, intimacy, or any scene where an internal conflict becomes a decisive physical action.
@@ -644,6 +770,53 @@ A one-take scene still needs internal dramatic sections. Use 2-4 beats such as:
 ```
 
 Keep camera continuity, but let framing, distance, gaze, action anchor, light, and sound evolve at each beat.
+
+## Behavioral Setup-Payoff System
+
+Use this when the ending should prove emotional change without an explanatory speech.
+
+### Four-Step Loop
+
+```text
+Establish behavior -> repeat or strain it -> transform its meaning -> complete/stop/reverse/transfer it at the ending
+```
+
+Possible anchors:
+
+- waiting posture or repeated gaze toward an entrance
+- a hand that repeatedly reaches, stops, or returns to an object
+- a cup, ring, door, photograph, coat, chair, or empty place
+- a no-touch boundary or fixed physical distance
+- a grooming, caretaking, protective, or avoidance habit
+- a phrase that changes meaning when repeated
+
+### Payoff Types
+
+- **Completion**: an unfinished gesture finally reaches contact.
+- **Stopping**: a repeated behavior ceases, proving release or acceptance.
+- **Reversal**: the character performs the opposite of the opening habit.
+- **Transfer**: one character begins a familiar gesture, stops, and the other completes it.
+- **Recontextualization**: the same line or action returns with a different emotional meaning.
+
+The payoff must remain physically continuous and readable. Do not introduce a new symbolic action only at the ending and call it resolution.
+
+Useful pattern:
+
+```text
+开场她每次紧张都会抓住门框；中段手指逐渐松开；结尾听见真相后，她没有再次抓门框，而是主动跨过门槛。人物状态变化由行为完成，不再追加解释台词。
+```
+
+### Ending State Reversal
+
+Compare the final frame with the opening baseline:
+
+- looking toward the entrance -> no longer looking there
+- gripping an object -> releasing it
+- avoiding touch -> allowing or initiating one restrained contact
+- holding distance -> crossing one step of space
+- trying to finish a sentence -> accepting that it need not be finished
+
+Reserve enough time for the viewer to read the changed behavior and its sound. The action result, not the preceding dialogue alone, is the ending.
 
 ### Ordinary Drama One-Take Blocking System
 
@@ -747,6 +920,43 @@ For complex acting scenes, separate the prompt into three mental layers before w
 
 Do not let layer 1 consume the whole prompt. If a platform already provides visual style presets, keep style compact and spend more tokens on performance control.
 
+### Scene-Level Performance Contract
+
+Before writing facial beats, define the acting logic in one compact sentence. This is the scene's performance contract, not an abstract theme.
+
+It should answer:
+
+- What does each character need from the other right now?
+- Which protective behavior lets them keep functioning: anger, politeness, denial, humor, caretaking, control, or speed?
+- What do they fear will happen if they stop speaking or lose that protection?
+- How should that motive shape voice, gaze, pauses, distance, and incidental movement?
+
+Useful pattern:
+
+```text
+这不是舞台式展示悲伤。她越说越快，不是为了攻击对方，而是害怕一停下来就再也说不完；他保持礼貌和低声，不是冷漠，而是用照顾她来阻止自己当场瓦解。后续台词、眼神、呼吸和动作都服务于这组心理机制。
+```
+
+Do not repeat this explanation under every beat. State the contract once, then express it through observable behavior.
+
+### Voice Identity and Temporary Vocal State
+
+Treat voice as part of character continuity, not a generic sound effect.
+
+Lock stable voice identity when dialogue matters:
+
+- vocal age and perceived gender presentation when relevant
+- range/register, texture, resonance, and habitual speaking rhythm
+- accent or dialect only when the user requests it or the setting makes it necessary
+- each speaker's relative loudness and spatial position
+
+Keep temporary vocal state separate from permanent identity:
+
+- fatigue, hoarseness, recent crying, a blocked throat, breathlessness, illness, cold air, or suppressed panic
+- how the voice changes under pressure: pitch narrows, pace accelerates, consonants harden, breath fails, or endings lose support
+
+Preserve these anchors across cuts and continuation clips. Do not let a voice suddenly become younger, cleaner, louder, differently accented, or studio-polished without an on-screen cause.
+
 ### Nested Shot and Performance Timeline
 
 Build the shot-level timeline first. Subdivide only the shot that carries dense dialogue, several trigger words, or a major emotional crack.
@@ -772,6 +982,112 @@ Treat a dialogue scene as two linked performance tracks:
 - Give the listener a reaction shot when their internal change advances the story. Keep it restrained when the speaker still owns the dramatic center.
 - Do not write generic reactions such as `他沉默` when a visible sequence can show defense -> attempted reply -> swallow -> gaze avoidance -> realization.
 
+Use three different trigger types when useful:
+
+- **Speaker trigger**: a word changes the speaker's own face, voice, breath, or intention.
+- **Listener trigger**: a heard word lands, followed by a believable delayed reaction.
+- **Interruption trigger**: the listener understands where the sentence is going and enters before it finishes.
+
+Do not make the listener display the final reaction before the relevant word or meaning arrives.
+
+### Interrupted and Overlapping Dialogue System
+
+Use this for arguments, panic, intimate confrontation, family conflict, interrogation, medical emergencies, or any scene where turn-taking itself carries emotion.
+
+For every important interruption or overlap, define only what controls the performance:
+
+1. **Entry trigger**: the word, unfinished syllable, gesture, or inferred intention that makes the second speaker enter.
+2. **Entry motive**: denial, reassurance, fear of losing the chance to speak, correction, self-protection, or trying to stop a painful sentence.
+3. **Overlap hierarchy**: who began first, who is foreground, relative volume, and whether the second voice supports, competes, or gently takes over.
+4. **Yield behavior**: who retreats, continues underneath, changes sentence, or cannot regain the floor.
+5. **Interrupted state**: preserve unfinished mouth shape, held breath, failed inhalation, gaze, or the hand motion already in progress.
+6. **Audio-spatial continuity**: keep speaker identity, left/right position, distance, room reflection, and lip movement independent and stable.
+
+Useful pattern:
+
+```text
+她听见他说到“我已经决—”便意识到他要结束关系，未等尾音完成就低声抢入：“你先听我说。”两人声音自然重叠约半拍；他的声音不会突然静音，而是在她台词下方失去力度后停住，嘴仍保持未完成口型。她不是提高音量压过他，而是因害怕失去表达机会而加快；随后他退让，目光落下。
+```
+
+Rules:
+
+- Prefer semantic triggers and approximate natural overlap over hundredth-second micromanagement.
+- Do not turn overlap into clean alternating dialogue, identical loudness, or one speaker muting unnaturally.
+- Do not let both speakers repeat their full lines after the cut. Split a cross-cut sentence into explicit start and continuation fragments.
+- Use overlap sparingly enough that speaker identity and lip-sync remain readable.
+
+### Protected Performance Disfluency
+
+Some irregular speech is intentional acting information, not a generation defect:
+
+- stammering or repeated pronoun starts
+- a word that forms in the mouth but has no sound
+- failed inhalation, swallow, or throat closure before speech
+- self-correction, abandoned syntax, or changing to a safer sentence
+- an interrupted phrase that does not restart cleanly
+- speech that briefly accelerates because stopping would cause emotional collapse
+
+When used, name the psychological cause and the visible/acoustic evidence. Protect it from automatic smoothing, reordering, completion, or clean studio delivery.
+
+Positive pattern:
+
+```text
+他说“我—我本来……”时并非喜剧口吃：第一个“我”有声音，第二次只形成口型并伴随失败吸气，喉结轻动后吞咽；他放弃原句，改成更安全的“你别担心”。不要补全被放弃的句子，不要机械等间隔重复。
+```
+
+Avoid:
+
+- comic stutter, rhythmic looping, audio glitch, frozen mouth, or duplicated syllables without motive
+- every line containing a swallow, blink, failed breath, or repeated word
+- using disfluency as decoration when fluent speech better serves the character
+
+### Dialogue Playability Audit
+
+Dialogue word count and average speech rate are risk indicators, not hard ceilings. Do not automatically shorten dense dialogue when rapid speech, interruption, overlap, or emotional urgency is the intended performance.
+
+Audit the actual playable timeline:
+
+- local pace for each phrase, including deliberate acceleration and deceleration
+- simultaneous speech and how much wall-clock time overlap genuinely saves
+- pauses, failed starts, breaths, swallowing, crying, and silence
+- listener reactions that must remain visible
+- mouth-critical lines that require the speaker on screen
+- camera changes, blocking, hand action, and ending residue competing for the same seconds
+
+Preserve all dialogue when the complete line order, lip-sync, emotional turns, reactions, and ending can still play naturally. Do not normalize an emotionally urgent exchange to one global words-per-minute value.
+
+If timing is dense, simplify in this order before cutting dialogue:
+
+1. remove decorative camera movement and unnecessary shot changes
+2. reduce secondary gestures, repeated micro-expressions, and environment business
+3. let dialogue continue across a reaction shot through a controlled `L-cut/J-cut`
+4. preserve intentional overlap and local acceleration when motivated
+5. only then explain the remaining conflict and offer a split or user-approved line edit
+
+Do not silently delete plot-changing or character-defining lines. Conversely, do not claim dialogue is playable merely because the user wants every line: if slow delivery, long pauses, many failed starts, complex blocking, and reaction holds create a real conflict, state the risk and recommend a split.
+
+### Scene-Specific Generation Priority
+
+For a complex prompt, state a short priority ladder only when it helps resolve competing instructions.
+
+```text
+对白主导：台词顺序、说话者身份、口型、抢话与声音表演 > 听者反应 > 连续手势与视线 > 镜头装饰与环境细节。
+动作主导：动作因果、空间方向、接触和重量 > 身体反应 > 镜头跟随 > 台词与环境装饰。
+情绪特写：心理变化、微表情和呼吸 > 声音与泪水时机 > 光影连续 > 背景运动。
+```
+
+When two instructions conflict, simplify the lower-priority instruction. A priority ladder is not permission to ignore continuity, safety, or the user's explicit must-have elements.
+
+### Continuous Gesture and Relational Boundary
+
+Use one recurring hand, prop, posture, or distance change as a continuous acting line when it carries the relationship.
+
+```text
+他的右手跨三个镜头完成“抬起 -> 悬停 -> 失去力量 -> 落下”，切镜后不得重新抬手。两人始终相距约一米；不触碰不是普通禁令，而是当前关系无法靠近的可见边界。
+```
+
+Lock who may enter whose space, whether touch is allowed, and what approach, retreat, or withheld contact means. Do not let the model add an automatic embrace, hand-hold, kiss, or reconciliation that changes the scene's relationship state.
+
 ### Dialogue Across Cuts and Semantic Edit Points
 
 Let dialogue and editing share one emotional syntax.
@@ -781,6 +1097,20 @@ Let dialogue and editing share one emotional syntax.
 - Cut on a semantic event: a trigger word lands, the sentence changes meaning, the voice first cracks, the listener is hit, or a vulnerable phrase is withheld.
 - Do not divide dialogue shots by equal duration when the sentence structure suggests a stronger edit point.
 - Do not sacrifice lip-sync clarity: show the speaker when mouth articulation carries the beat; move offscreen only when the listener reaction carries more dramatic information.
+
+### Intentional Unfinished Lines
+
+An unfinished line can be a complete dramatic action when the character cannot continue, is interrupted, abandons the sentence, or deliberately refuses to say the final thought.
+
+To use it safely:
+
+- mark the psychological or interpersonal reason the line stops
+- state whether the last sound trails off, is cut by another voice, dies after a failed breath, or remains only as mouth shape
+- do not let the model invent or speak the missing words
+- show the consequence through held mouth, breath, gaze, listener reaction, hand state, or silence
+- leave enough readable aftermath that the ending feels intentional rather than technically truncated
+
+Do not use a dash at the final timestamp as a substitute for an ending. If no performance consequence follows, finish the line earlier or redesign the ending.
 
 ### Shot-Size Escalation by Emotional Access
 
@@ -929,7 +1259,7 @@ When dialogue is important, attach it to performance conditions:
 - physiological state such as swallowing, broken breath, clenched jaw
 - listener's immediate reaction
 
-Keep the line short enough for the assigned time.
+Keep the dialogue playable within the assigned time. Dense dialogue may remain intact when motivated rapid speech, interruption, or overlap lets the complete performance land; word count alone does not require compression. If full delivery conflicts with required pauses, reactions, blocking, or ending residue, simplify lower-priority visual instructions first, then explain the remaining risk and propose a split or user-approved edit.
 
 ## 30s Psychological Stage Timeline
 
@@ -1612,6 +1942,28 @@ Sound should shape emotion and structure. Prefer concrete diegetic sound over ge
 - Avoid generic phrases like `dramatic music`. If music is needed, describe its role: low cello drone, distant radio song, muted festival TV, single sustained note.
 - If no music fits, explicitly say `无配乐，只保留环境声`.
 
+### Subjective Sound-Perspective Arc
+
+Use this when attention, recognition, grief, shock, intimacy, or realization changes how the character perceives the same space.
+
+```text
+Objective environment -> perceptual narrowing -> close human/animal/object detail -> rupture or held silence -> environment return
+```
+
+- **Objective environment**: establish the real room, street, station, bar, hospital, or crowd at normal distance.
+- **Perceptual narrowing**: lower or soften distant ambience after a specific trigger; do not erase it completely.
+- **Close detail**: bring forward breath, cloth, paw/foot contact, swallowing, hair, skin, metal, glass, or one restrained vocalization.
+- **Rupture**: use a train pass, door slam, impact, announcement, machine start, or deliberate silence only when it belongs to the scene.
+- **Return**: after the private beat, let room tone and distant life regain normal perspective so the world feels continuous.
+
+The sound shift must be motivated by attention or an on-screen event. Avoid arbitrary underwater muffling, total silence, or dramatic sound effects that the environment cannot produce.
+
+Compact pattern:
+
+```text
+前段车站广播、脚步和轮轨声保持正常纵深；角色认出对方后，远景声退后一层但仍存在，呼吸、衣料和脚步触地成为近景；列车遮挡时低频与风压短暂扩大；遮挡结束后车站声场恢复，只留下最后一次身体落地或物体放下的细响。
+```
+
 ### Hospital / Medical Corridor
 
 Use for death notices, waiting, diagnosis, restrained grief.
@@ -1844,7 +2196,7 @@ Use this for staged combat, close-quarters fighting, underground ring scenes, wu
 
 ### Fight Prompt Length Budget
 
-The copy-ready fight prompt must follow the duration-based ceiling: under 2000 Chinese characters for 1-15s, under 3000 Chinese characters for 16-30s. This excludes `剧情诊断`, `电影化改写策略`, and optional reference-image prompts.
+The copy-ready fight prompt must follow the duration-based ceiling: under 2000 Chinese characters for 1-15s, under 3200 Chinese characters for 16-24s, and under 4000 Chinese characters for 25-30s. This excludes `剧情诊断`, `电影化改写策略`, and optional reference-image prompts.
 
 Recommended budget for a 10-15s fight:
 
@@ -1854,11 +2206,17 @@ Recommended budget for a 10-15s fight:
 - 2-4 active actions per shot.
 - One short line each for environment, camera, style, and constraints; merge repeated information into the opening summary.
 
-Recommended budget for a 16-30s fight:
+Recommended budget for a 16-24s fight:
 
-- 2000-2800 Chinese characters total.
+- 1800-2600 Chinese characters total.
 - 3-5 shots or one readable long-take chain with internal phases.
 - 10-16 timed action beats total.
+
+Recommended budget for a 25-30s fight:
+
+- 2200-3400 Chinese characters total.
+- Use more than 3000 only when the extra text protects action geography, timing, continuity, or physical readability.
+- If the fight still needs more than 4000 characters, split it into consecutive clips instead of increasing action density.
 - Keep choreography readable. If more action beats are required, split into consecutive clips.
 
 Compression rules:
@@ -2496,6 +2854,83 @@ Rules:
 - Add reference prompts only for new visual anchors or meaningful state updates.
 - Each segment remains under 30s and its final prompt under the duration-based character ceiling.
 
+## Short-Drama Hook and Narrative Drive Diagnostic
+
+Use this only when the user asks for a breakout short drama, strong hook, suspense reversal, high-concept premise, cliffhanger, serial episode, or when a plot-driven input clearly lacks propulsion. It is a diagnosis and optional repair tool, not the default screenplay template for every cinematic prompt.
+
+Do not activate it merely because a video is short. Skip or greatly reduce it for emotional close-ups, quiet relationship scenes, atmosphere films, product/person texture films, choreography demonstrations, or complete plots whose strength comes from performance rather than suspense.
+
+### Six Optional Narrative Functions
+
+| Function | Diagnostic question | Playable screen evidence |
+|---|---|---|
+| **异常事件 / Anomaly** | What is visibly wrong, impossible, misplaced, or unexpectedly changed? | a future-dated parcel, a second key, a familiar voice from an empty room, an impossible name on a screen |
+| **即时目标 / Immediate Goal** | What must the protagonist obtain, prevent, open, reach, prove, hide, or escape right now? | hand reaching for the parcel before someone returns, running toward a closing lift, hiding evidence before a knock |
+| **规则或代价 / Rule or Cost** | What constraint changes behavior, and what is lost if the character fails? | a deadline, one forbidden action, limited attempts, exposure, separation, arrest, loss of trust; it need not be literally deadly |
+| **现实阻力 / Active Obstacle** | Who, what, or which physical condition actively blocks the immediate goal? | security stops entry, a jammed door, a witness approaches, power fails, time expires |
+| **身份或信息反转 / Information Reversal** | What new evidence changes the meaning of what the viewer just saw? | the helper owns the missing phone, the victim sent the warning, the apparent exit is the trap |
+| **未完成答案 / Unresolved Question** | Which specific story question remains open after the visible beat completes? | who sent it, why the voice is hers, what waits behind the door, whether the warning is truthful |
+
+These are functions, not six compulsory plot points. A 15-30s video often needs only 3-4. Combine compatible functions instead of overloading the scene:
+
+```text
+异常出现 -> 即时目标与规则/代价建立 -> 阻力升级 -> 信息反转并留下具体未完成问题
+```
+
+Do not force a separate `致命规则` when ordinary stakes are stronger or more believable. Use `规则或代价` as the broader category. Do not add an identity reversal merely to create surprise; an object, message, behavior, or changed interpretation can carry the reversal.
+
+### Responsibility Boundary
+
+- **Complete plot supplied**: diagnose only. Preserve its causality, tone, and ending unless the user asks for a stronger hook or rewrite.
+- **One function is weak or missing**: state the gap in `剧情诊断`; propose one minimal repair in `电影化改写策略`.
+- **The repair changes identity, motive, world rules, culprit, relationship, or ending**: use direction-confirmation mode before writing reference images or the final prompt, unless the user explicitly delegates creative control.
+- **The user asks for breakout/strong-hook creation or delegates freely**: add only the smallest number of functions needed to create propulsion, then continue to cinematic translation.
+- **Performance-led scene**: do not import anomaly, countdown, reversal, or cliffhanger unless the supplied story already contains them.
+
+### Beat Design, Not Mechanical Timing
+
+A beat is a change in the viewer's question, the character's tactic, the perceived chance of success, or the cost of failure. Do not change the plot every fixed number of seconds merely to imitate pace.
+
+Useful emotional-information progression:
+
+```text
+疑问 -> 紧张 -> 短暂希望 -> 更高代价 -> 新问题
+```
+
+Choose only the changes the selected duration can play. If dialogue, physical action, reaction, and ending residue cannot fit, remove a function or split the story instead of accelerating everything.
+
+### Translate Functions into Filmable Evidence
+
+Do not print abstract screenplay labels inside the copy-ready prompt. Convert each selected function into action, object state, dialogue, sound, framing, or reaction.
+
+Bad:
+
+```text
+这里发生身份反转，结尾留下悬念。
+```
+
+Better:
+
+```text
+门禁屏幕亮起，女孩的证件照旁显示“已于三年前注销”；她的手停在感应区上方，身后的保安同时抬头。走廊尽头传来她自己的声音：“别回头。”
+```
+
+### Open Answer, Completed Screen Beat
+
+Do not confuse a cliffhanger with an unfinished generation. Complete the immediate action, reveal the evidence, then hold the consequence for 1-2 seconds while the larger answer remains open.
+
+```text
+门被推开一条缝，里面传来她自己的声音；她立刻停手，指节仍压在门沿，门缝冷光落在湿润的眼睛里。声音继续一秒，画面停在她不敢推开也不敢后退的状态。谁在里面仍未回答。
+```
+
+Avoid:
+
+- ending mid-sentence or mid-action merely to manufacture suspense
+- adding an unrelated villain, secret identity, supernatural rule, or countdown
+- treating confusion as mystery; the viewer should know the specific question being withheld
+- fitting all six functions into a simple 8-15s performance scene
+- replacing emotional causality with constant information tricks
+
 ## Structure Selection
 
 Choose structure before writing shot details. Always state the chosen structure in the diagnosis, and explain the reason in one sentence. If more than one structure fits, choose one primary structure and one secondary support.
@@ -2646,6 +3081,29 @@ Cross the axis only when motivated by one of these methods:
 - let a character visibly move across the axis and create a new spatial relationship
 
 Do not silently flip character positions between adjacent shots.
+
+### Asymmetric Body Geometry
+
+The interaction axis does not require equal eye height or conventional shoulder-to-shoulder coverage.
+
+- For adult/child, standing/seated, human/animal, wheelchair, bed, floor, or large-creature scenes, define each subject's functional eyeline and vertical relationship.
+- Keep screen side and gaze direction stable while adapting camera height and foreground anchors to anatomy and mobility.
+- Do not stretch, lift, or reposition a low subject merely to imitate a standard human over-shoulder shot.
+- When a character lowers to the other's level, show the body transition and let the camera descend or widen with physically plausible parallax.
+
+### Motivated Foreground Occlusion Transition
+
+A train, door, passing person, pillar, vehicle, curtain, smoke bank, darkness, or large foreground object may briefly cover the frame to perform a reveal, disappearance, time shift, or scene bridge.
+
+Requirements:
+
+- the occluding object must belong to the established space and move on a plausible path
+- preserve axis, screen direction, camera position, light logic, and sound continuity across the cover
+- define what changes while hidden and lock the first visible state after reveal
+- keep the cover long enough to read but not so long that it becomes an unexplained blackout
+- let the object produce synchronized parallax, reflection, wind, pressure, shadow, or sound when relevant
+
+Do not use an occlusion to hide an impossible continuity reset. The reveal must feel like a motivated cinematic transition, not model drift.
 
 ### Screen Direction and Entry/Exit
 
@@ -2948,9 +3406,11 @@ Length targets:
 - 500-800 Chinese characters: simple one-person, one-action, one-emotion scenes.
 - 800-1300 Chinese characters: default range for most 8-15s cinematic prompts.
 - 1300-2000 Chinese characters: complex 10-15s scenes such as multi-person dialogue, large-scene compression, montage, long-story splits, or spatial action.
-- 2000-3000 Chinese characters: only for 16-30s prompts with longer dialogue, multi-shot progression, complete emotional curves, or complex blocking.
+- 1600-2600 Chinese characters: recommended range for 16-24s prompts with longer dialogue, multi-shot progression, emotional development, or complex blocking.
+- 2200-3400 Chinese characters: recommended range for 25-30s prompts with a complete emotional arc, multi-character dialogue, action geography, or strict continuity control.
+- 3400-4000 Chinese characters: exceptional range for complex 25-30s prompts only; every added instruction must materially improve generation reliability.
 
-If the prompt exceeds 1300 characters for <=15s or 2000 characters for 16-30s, each extra detail must improve generation stability, emotional clarity, spatial continuity, or failure prevention. If not, cut it.
+If the prompt exceeds 1300 characters for <=15s, 2400 characters for 16-24s, or 3000 characters for 25-30s, each extra detail must improve generation stability, emotional clarity, spatial continuity, sound/performance timing, or failure prevention. Treat 3000 characters as a soft threshold for 25-30s prompts and 4000 as the absolute ceiling. If an added detail does not help the render, cut it.
 
 - Do not include empty boilerplate such as `视频模型：通用 AI 视频模型`. If no model is specified, omit it.
 - Put duration and structure into the first summary line.
@@ -3092,6 +3552,16 @@ Rules:
 - Damage accumulates; broken glass, spilled water, dust, torn clothing, and extinguished lights do not reset.
 - For continuation, the previous ending defines story state and continuity facts, not necessarily the exact first frame of the next segment. The next segment may begin with a new angle/shot size, a match-on-action continuation, or a new shot group.
 - If moving into a new room or zone, show or clearly motivate the spatial transition.
+
+### Background Autonomy
+
+In public, working, domestic, or inhabited spaces, background life should continue independently of the protagonist unless the plot gives it a reason to react.
+
+- Give extras, staff, traffic, machinery, animals, screens, weather, or household routines a low-intensity baseline behavior.
+- Keep background action sparse enough not to steal focus, but do not freeze the entire space during emotional dialogue.
+- Avoid synchronized crowd turns, collective staring, random filming, or everyone stopping at the same instant.
+- When the subjective sound field narrows, visual background movement may remain normal; perception changes without the world literally stopping.
+- After the private emotional beat, returning ambience or ordinary background motion can re-establish that life continues.
 
 ## Visual Reference Image Prompt Patterns
 
@@ -3407,10 +3877,16 @@ Run this silently before giving the final answer. Do not print it unless the use
 
 - Does the diagnosis name the emotional core and visual core?
 - Is the chosen structure explicitly stated and justified?
+- If the short-drama hook diagnostic was activated, was it justified by the user's request or plot type, and were only the useful narrative functions selected instead of forcing all six?
+- If a proposed hook repair changes identity, motive, world rules, culprit, relationship, or ending, did the user request it, delegate creative control, or confirm the direction first?
+- If the ending withholds an answer, does the immediate screen action still complete and leave a readable 1-2s consequence rather than stopping mid-line or mid-action?
 - Does the duration fit the content instead of defaulting to 30s?
 - Was duration/splitting judged by playable content rather than source text length alone, including event count, dialogue time, actions, emotional reactions, scene changes, camera moves, and ending breath?
 - If the story exceeds 30s or the duration-based character ceiling, does the answer recommend splitting and clearly state what this prompt covers?
 - If this is a split prompt, has the bridge type been chosen: different shot size/angle continuation, match-on-action, or complete shot-group continuation?
+- For delayed recognition, mystery, time displacement, or hidden identity, does each character react only to evidence they have actually received, with known facts, new evidence, reasonable inference, and remaining unknowns kept distinct?
+- Does the audience question evolve after each meaningful answer instead of repeating the same mystery, and do key questions reveal character values rather than merely explain the plot?
+- If the ending depends on emotional change, was an earlier behavior, boundary, contact attempt, object action, or posture established so the final completion, stopping, reversal, transfer, or recontextualization feels earned?
 
 ### Prompt Usability
 
@@ -3459,22 +3935,34 @@ Run this silently before giving the final answer. Do not print it unless the use
 
 - If the plot implies a key spoken line, is the actual line written?
 - Are phone calls, doctor/police notices, confessions, breakups, voice messages, or offscreen lines concrete?
-- Is key dialogue short enough for the time block?
-- Has dialogue delivery time been estimated using an appropriate speech rate, including pauses and listener reaction?
+- For a complex performance-led scene, does one compact performance contract define what each character wants, what protects them, and what they fear will happen if they stop or lose control?
+- Are stable voice identity and temporary vocal state separated and preserved across cuts: age/register, texture, rhythm, requested accent, relative loudness, spatial position, plus current fatigue, hoarseness, recent crying, blocked breath, or panic?
+- Is key dialogue playable in the time block at the intended local pace, including overlap, interruptions, pauses, failed starts, listener reactions, and ending residue?
+- Were word count and average speech rate used only as risk indicators rather than automatic compression rules?
+- If dialogue is intentionally dense, were camera moves, secondary gestures, and environment detail simplified before proposing line cuts?
+- If a real timing conflict remains, was it explained with a split or user-approved edit instead of silently deleting key dialogue or forcing unnatural speed?
 - If dialogue drives the acting, does the prompt treat the line as an expression timeline rather than placing a mood label before quoted text?
 - For complex dialogue, is the shot-level timeline established first, with nested performance timing used only inside the shot that genuinely needs it?
 - Are speaker and listener acting tracks both designed, with the listener reacting to a specific heard word without stealing the dramatic center?
+- Does each important interruption identify its semantic entry trigger, motive, overlap hierarchy, yield behavior, and interrupted mouth/breath state?
+- During overlapping dialogue, are speaker identity, independent lip movement, relative volume, sound direction, distance, and room reflection stable?
+- If stammering, a failed start, self-correction, or an unfinished phrase is intentional, is its motive clear and is it protected from smoothing, reordering, completion, comic repetition, or audio-glitch behavior?
 - If dialogue crosses a cut, are offscreen voice direction, speaker identity, acoustic continuity, and the semantic reason for the cut clear?
+- If one sentence crosses a cut, is it divided into clear start/continuation fragments rather than accidentally repeated in full?
 - Do edit points follow trigger words, meaning shifts, voice breaks, listener impact, or withheld phrases rather than equal time slicing?
 - Does shot size tighten only when psychological access deepens, preserving visual escalation for the emotional crack or vulnerable line?
 - Are trigger words, emphasis, pauses, breath, gaze changes, facial/body reactions, and post-line state tied to the actual wording?
 - If a character moves from anger/sarcasm/calmness into vulnerability, is there an emotion barrier and a believable crack before crying, confession, or collapse?
 - Are tears, voice breaks, outbursts, forgiveness, or surrender delayed until the line or reaction actually earns them?
 - Does the shot have enough time for dialogue, physical action, camera movement, and reaction without rushing?
+- Does each recurring gesture continue its previous phase across cuts, and does interpersonal distance or no-touch blocking preserve the relationship state?
+- If a line intentionally remains unfinished, is the speech failure itself motivated and followed by enough visible or audible consequence to feel complete rather than accidentally truncated?
+- If a generation priority ladder is used, does it resolve competing instructions without discarding continuity, safety, or the user's explicit must-have elements?
 - Does sound design include concrete diegetic sound rather than generic music?
 - Does the final prompt establish a concise sound bed with 2-4 concrete anchors, even when the scene is quiet?
 - Does the prompt avoid background music by default and keep only necessary dialogue/voice, ambient sound, Foley, movement, object, and action sound effects?
 - Is silence or sound reduction used when it would strengthen shock, tension, or aftermath?
+- If sound becomes subjective, is there a motivated arc from objective environment through perceptual narrowing and close detail to rupture/silence and believable environment return, without arbitrary total muting?
 
 ### Character Performance
 
@@ -3492,6 +3980,8 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Is the performance natural for the character's situation, age, status, and relationship?
 - Are tears, crying, anger, or fear restrained unless the story specifically needs a large outburst?
 - For recurring characters, are permanent identity traits separated from temporary state such as tears, sweat, dust, injury, or costume damage?
+- For a non-human performer, are emotion and recognition expressed through species/design-appropriate sensory orientation, body tension, movement, breath/mechanical rhythm, distance, contact, and age/energy limits rather than human-style facial acting?
+- Does a non-human subject preserve its established age, injury, energy, anatomy, and locomotion even when emotional intent changes quickly?
 
 ### Camera and Visual Logic
 
@@ -3524,6 +4014,10 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Does the ending leave a 1-2s performance pause or visual/sound tail?
 - If one action is split across shots, does the second shot continue the same action with match-on-action continuity?
 - Are action, light change, environmental reaction, and sound effect bound to the same readable event where appropriate?
+- When the event itself is less important than the realization, does the prompt stay on the observer and use sufficient offscreen sound, eyeline, object/environment response, or delayed reaction instead of an unnecessary insert?
+- For unequal height, body geometry, mobility, or species, are camera height, foreground anchor, gaze direction, and relationship axis adapted without forcing a conventional human over-shoulder composition?
+- If a foreground occlusion performs a reveal, disappearance, time shift, or bridge, is the occluder motivated and are before/after geography, axis, light, sound, parallax, and final state locked?
+- In inhabited locations, do background people and systems maintain plausible independent low-intensity behavior rather than freezing, staring, gathering, or mirroring the protagonist without cause?
 
 ### Negative Constraints
 
