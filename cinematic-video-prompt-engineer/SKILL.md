@@ -9,28 +9,57 @@ This skill turns a user's plot summary, novel excerpt, or scene idea into a cine
 
 It can also continue a previous generated segment. When the user asks to continue, extend the story from the prior segment's ending, preserve character/scene/prop continuity, and create new reference-image prompts only for newly introduced characters, locations, products, or key props.
 
+## Execution Decisions and Agent Capabilities
+
+Apply these rules before mode/path-specific checkpoints. They work through ordinary conversation and available attachments; no named agent, special question API, persistent memory, or media-generation tool is required.
+
+1. Read the requested deliverable/stage and explicit constraints, then reuse relevant decisions from the available conversation or supplied handoff. Do not claim to remember unavailable context. Ask only for the missing state needed to continue; `与前文无关` starts a new story state.
+2. Honor an explicit request to discuss, approve, or stop at a stage. Otherwise, reuse an already selected direction, route, ratio, scope, or asset when its controlling conditions have not changed. Resolve `1`, `按建议`, and `继续` against the most recent unambiguous pending choice; ask which choice only if more than one remains plausible.
+3. Check required evidence and material availability. Missing assets block only dependent work; finish useful independent work already requested. A plain-language question is sufficient when clarification is necessary.
+4. Ask only if an unresolved fact cannot be reasonably inferred or supplied through authorized creative discretion, and would change core story facts, a hard constraint, delivery scope, or costly production assets. Genre labels, length alone, multiple valid treatments, and missing ordinary cinematography details are not independent reasons to pause. Select camera, light, performance, and pacing within the brief. Preserve a vague-input question when even the intended event/emotional transformation is unknown and creative control has not been delegated.
+5. Approval is object-specific: a direction choice permits that direction, not image approval; a reference-first route permits the asset plan/image prompts, not a generation-service call; selected actual images permit reference-driven writing, not redesign of approved facts; full adaptation requests preserve full coverage, not a highlight-only substitute. Requests to generate/edit actual media authorize only the requested media work within the host's permissions. Never infer publication or unrelated external actions.
+
+### Capability and Completion Boundaries
+
+- The baseline deliverable is text. Distinguish the agent writing the prompt from the video model receiving it; video-model assumptions below do not grant the agent tools or permissions.
+- Read supporting files relative to this skill through the host's available resource mechanism. If a needed reference is unavailable, name the missing resource/rule and its effect; do not invent its contents. Continue only portions that do not depend on it.
+- Inspect actual images when the host can access and view them. A filename, earlier image prompt, or user description is not a visual inspection. If the host cannot view a required image, identify the specific missing visual facts; offer a provisional description-based draft only if useful, clearly marked as not image-verified. Do not claim a production reference has been inspected or approved by the agent.
+- Generate or edit media only when requested/authorized and supported by available tools and host permissions. Otherwise deliver the requested text that can be completed and identify any unfulfilled media action. Do not turn a prompt-only request into a media-generation step. An agent's image inspection does not replace user approval when the user explicitly reserved it.
+- Stage-only requests end after that stage. For a complete deliverable, continue through authorized stages once required decisions/assets are available; do not introduce a fresh approval merely because a stage ended. If the host's output/continuation limit forces batching, preserve completed segment numbers, remaining scope, continuity anchors, and the next step; resume when the host permits and never label a partial batch as the whole deliverable.
+- Report only the verification actually performed: text self-check, actual image inspection, or actual video-result review. Text quality or a successful tool call alone does not prove generated-image/video quality. No generation tool is required to finish a prompt-only task.
+
 ## Default Workflow
 
 Choose an output mode from the user's intent. Default to full workshop mode.
 
+After choosing the output mode, choose one production path: `直接视频路径` or `参考图优先路径`. Do not merge both into one universal prompt. Use the direct path for a self-contained video prompt; use the reference-first path as a staged workflow whose later video prompt assumes approved/generated reference images. Read `references/reference_first_video_workflow.md` only when references are requested, supplied, or materially useful.
+
 If the user asks to continue, use the continuation workflow instead of the standard first-segment workflow.
+
+If the user provides or describes a generated video result and asks to fix it, use `Generated-Result Surgical Repair` in `references/style_patterns.md`: diagnose the result-to-intent gap, lock successful elements, and change only the failed control unless the underlying shot structure is unsound.
+
+If the user provides or describes a generated reference image and asks to fix it, use `Reference Image Result Repair` in `references/reference_first_video_workflow.md`: preserve approved visual facts, change only the failed field and its physical dependents, and do not redesign the asset from scratch unless the failure is foundational.
+
+When camera movement materially affects storytelling, the user requests a specific move, or the shot needs more precise start/path/speed/end control, read `references/camera_movement_prompt_library.md`. Select by dramatic function and adapt only the needed module; do not load all 46 movements into the output.
+
+When a named emotion, emotional transition, close performance, dialogue barrier, concealment, or reaction beat needs more observable acting detail, read `references/emotion_performance_prompt_library.md`. Select one nearest base emotion, keep only 2-4 useful signals, and adapt them to the character rather than copying a complete stock expression.
+
+Resolve aspect ratio without adding routine friction. Follow an explicit ratio, inherit the actual first-frame/approved continuation ratio, and preserve a confirmed series ratio. If nothing indicates otherwise, default ordinary low-risk work to `16:9横屏` without asking. Ask once only when the ratio cannot be inferred and would materially change production references, two-person/group blocking, full-body action, fight/dance/chase, architecture/landscape/vehicle scale, or a multi-platform master; merge the question with any existing direction or production-path checkpoint. When vertical/portrait/`9:16` is selected, read `references/vertical_9x16_adaptation.md` and recompose for the narrow frame rather than cropping horizontal grammar.
 
 Output modes:
 
 - `精简模式`: final video prompt only; use only when the user explicitly says `直接给提示词`, `不要分析`, `只要成品`, `只输出最终提示词`, or `精简模式`.
-- `打磨模式`: diagnosis, strategy, optional references, final prompt; default for ordinary creation and revision.
-- `方向确认模式`: diagnosis, strategy, and confirmation points only; use before reference prompts and final video prompts when the input has high ambiguity, high selection cost, or sensitive style boundaries.
+- `打磨模式`: diagnosis, strategy, and the deliverable for the current production path/stage; default for ordinary creation and revision. Do not force reference prompts and a final video prompt into the same response.
+- `方向确认模式`: diagnosis, strategy, and the specific unresolved decision only; use when the execution rules above require clarification or the user explicitly reserved approval.
 - `连续短片模式`: continuity summary, character bible, scene continuity sheet, references, segmented/continued prompts, and clip-bridging instructions; use for multi-part stories or repeated continuation.
 
-Use `方向确认模式` when any of these are true:
+Use `方向确认模式` only when:
 
-- The plot is long or has several valid adaptation choices: novel excerpts, 30s multi-turn drama, complex multi-character relationships, long-story splitting, or full short-film planning.
-- The plot is vague and would require major creative invention, such as `写一个很虐的分手戏` or `来一个高级悬疑短片`.
-- The scene has sensitive or high-taste-risk boundaries: intimacy, violence, horror, coercion risk, period-romance ambiguity, or strong genre stylization.
-- The user explicitly asks to discuss direction, diagnose first, confirm strategy first, or wait before writing the prompt.
-- The current conversation is testing or refining the skill and the user benefits from checking the direction before generation.
+- The user explicitly asks to discuss/confirm direction or strategy before the deliverable. A request for diagnosis as part of the finished answer does not alone reserve a separate approval turn.
+- Core story foundations cannot be inferred within the brief and creative invention has not been delegated.
+- A proposed change would contradict a specified identity, relationship, ending, key line, hard duration, or delivery scope, and the conflict cannot be resolved within the current authorization.
 
-In `方向确认模式`, stop after:
+**🔴 CHECKPOINT · Direction selection:** In `方向确认模式`, stop after the following sections and wait for the user's choice or explicit delegation:
 
 ```text
 【剧情诊断】
@@ -45,7 +74,18 @@ In `方向确认模式`, stop after:
 3. ...
 ```
 
-Do not output `建议先生成的参考图` or `最终视频提示词` until the user confirms or delegates the choice. If the user says `按你的建议`, `你决定`, or clearly delegates, continue with reference prompts and the final video prompt.
+While this direction decision is unresolved, do not output reference prompts or the final video prompt. Once the user selects or delegates that decision, continue with the deliverable for the chosen production path and actual asset state. Do not ask the same question again or treat direction approval as image approval.
+
+### Production Path Routing
+
+- If the user explicitly asks to generate reference images first or use supplied images, choose `参考图优先路径` without another route question.
+- If the user explicitly asks for a direct/final video prompt or says to skip reference images, choose `直接视频路径` without another route question.
+- For a simple single-character, single-location, low-drift scene, default to `直接视频路径`; do not add a route checkpoint merely because a reference image could help.
+- If the task has high visual-drift or reuse cost—period identity/costume, several principal characters, several recurring or topology-critical locations, strict prop ownership, relationship blocking, product structure, or multi-clip continuity—and the user has not chosen a route, ask once: `这类场景建议先建立参考图。你要走参考图优先，还是直接生成完整视频提示词？`
+- Combine this choice with an existing direction-selection checkpoint when both apply. Do not create two consecutive confirmation rounds.
+- If the user delegates the decision, choose `参考图优先路径` for the high-drift cases above and `直接视频路径` for simple low-drift scenes.
+
+In `参考图优先路径`, wait only when required actual images are unavailable/unreadable or the user reserved an image-approval step. If images are already supplied, selected, and readable, inspect them and proceed without repeating Stage 1. If actual generation and continuation are authorized, use available tools, inspect results, and continue unless user approval was reserved. If the user requests a complete text package before images exist, label the later video draft as provisional and not compiled from actual images; never invent image verification.
 
 1. **剧情诊断**
    - Identify the emotional core, visual core, conflict relationship, and the strongest filmable moment.
@@ -66,8 +106,8 @@ Do not output `建议先生成的参考图` or `最终视频提示词` until the
    - Mention any creative additions if the user gave permission or the missing details are technical rather than foundational.
 
 3. **建议先生成的参考图**
-   - Provide optional text-to-image prompts for visual anchors when they would improve video control.
-   - State that the user may generate these reference images first, or skip them and use the video prompt directly.
+   - In `直接视频路径`, omit this section by default. A brief optional recommendation is enough when references would improve control; do not also dump full image prompts unless the user asks.
+   - In `参考图优先路径`, provide only missing asset planning/image prompts for the requested stage. Apply the availability and approval conditions in `Production Path Routing`; skip asset creation for usable, selected images already supplied.
    - Usually include only the needed anchors: character, scene, key prop, product, costume, or atmosphere. Do not force all categories.
    - Keep reference-image prompts consistent with the final video prompt: same era, color palette, lighting, environment, character age, clothing, and emotional state.
    - When outputting reference-image prompts, write them at a complete production-control level: enough to directly generate usable character/scene/prop reference images. Match clothing, appearance, damage, makeup, emotional baseline, environment, and lighting to the current segment's story state rather than using a generic template.
@@ -75,10 +115,13 @@ Do not output `建议先生成的参考图` or `最终视频提示词` until the
 
 4. **最终视频提示词**
    - Output one directly usable prompt.
+   - In `直接视频路径`, make it self-contained: include the minimum character, setting, costume, prop, light, and start-state anchors needed to work without images.
+   - In `参考图优先路径`, compile it from the actual approved/generated images. The pixels in the selected images outrank their earlier image prompts: do not treat a planned prop, costume detail, pose, or layout as present unless it is visibly confirmed. Do not repeat full static descriptions. State a compact reference-authority mapping, then prioritize story structure, duration, action order, performance change, shot-size/angle development, camera movement, dialogue/lip-sync, sound, transitions, and ending state. Describe any intended change from a reference as an explicit timed delta with cause and final state.
+   - If the user asks for both forms, label and output two distinct prompts: `参考图驱动版` and `无参考图直出版`. Do not make one ambiguous prompt serve both purposes.
    - Keep only the final prompt within the duration-based ceiling when possible: 2000 Chinese characters for 1-15s prompts, 3200 Chinese characters for 16-24s prompts, and 4000 Chinese characters for 25-30s prompts. This limit does not include the user's original plot, `剧情诊断`, `电影化改写策略`, or optional reference-image prompts. Do not treat the ceiling as a target length.
    - Default final-prompt target: 800-1300 Chinese characters for most 8-15s prompts. Use 500-800 characters for simple one-person or one-action scenes and 1300-2000 characters for complex 10-15s scenes. For longer scenes, target 1600-2600 characters for 16-24s and 2200-3400 characters for 25-30s. Use the upper end only when longer dialogue, multi-shot progression, a complete emotional arc, action geography, or continuity control genuinely needs it.
    - If the draft is too long, apply the automatic compression ladder in `references/style_patterns.md` before recommending a split.
-   - Use Chinese as the main language. Use standardized English abbreviations for professional shot-size and camera-movement terms when writing storyboard prompts. Follow the shot vocabulary in `references/style_patterns.md`, such as `ECU`, `VCU`, `BCU`, `CU`, `MCU`, `WS`, `KS`, `FLS`, `LS`, `ELS`, `MS`, `MLS`, `Dolly In/Out`, `Pan Right/Left`, `Tilt Up/Down`, `Track Right/Left`, and `Zoom In/Out`. Keep other useful film terms in English when they clarify generation: `35mm`, `50mm`, `Handheld`, `Chiaroscuro`, `Lens Flare`, `Smash Cut to Black`.
+   - Use Chinese as the default output language. English is reserved for standardized cinematography abbreviations and professional camera/lens/focus terms when they improve precision, such as `ECU`, `CU`, `MS`, `MLS`, `Dolly In/Out`, `Pan Right/Left`, `Tilt Up/Down`, `Track Right/Left`, `Rack Focus`, `35mm`, or `Handheld`. Write action, emotion, performance, lighting effect, sound, causality, and story instructions in Chinese; do not paste English library sentences into the final prompt.
    - Give every final prompt a compact, motivated light baseline and a concrete sound bed. Most scenes need one scene-level light sentence and 2-4 sound anchors; expand only when light or sound carries the dramatic turn. For multi-shot, dialogue-led, suspense, action, or continuation prompts, add a compact `整体声音与光影` block when it improves continuity. Follow the placement hierarchy in `references/style_patterns.md`.
    - Before responding, run the quality self-check in `references/style_patterns.md`. Do not print the checklist unless the user asks for critique or debugging.
 
@@ -90,15 +133,20 @@ Resolve the following conditions before writing the final prompt:
 
 | Trigger | First response | If it still cannot fit or stabilize |
 |---|---|---|
-| The protagonist, location, or emotional transformation is missing | Ask one concise question covering only the missing foundations | If the user delegates creative control, choose one coherent interpretation, state it in one sentence, and proceed |
-| The requested events cannot play within 30 seconds | Keep the strongest filmable event or emotional turn and name the omitted material | Split into numbered clips; give each clip one main turn and its own ending breath |
+| A story foundation is unresolved and cannot be inferred or chosen within delegated creative control | Ask one concise question covering only that missing foundation | Once resolved or delegated, choose one coherent interpretation and proceed; do not restart other confirmed choices |
+| The requested events cannot play within one 30-second clip | Preserve the requested coverage: select a highlight only for highlight scope; use numbered clips for full coverage | If full coverage and a hard single-clip limit conflict, explain the concrete conflict and ask which constraint may change; do not silently omit events |
 | Dialogue timing is dense or uncertain | Run a dialogue playability audit: judge local speaking pace, interruption, overlap, pauses, failed starts, listener reactions, and ending residue; word count and average speech rate are risk signals, not automatic deletion rules | If the intended performance still cannot complete naturally, preserve key lines and first simplify shots, camera, blocking, and decorative detail; then explain the conflict and offer a split or user-approved line edit instead of silently deleting dialogue or forcing an unnatural delivery |
-| The final prompt exceeds the duration-based ceiling | Apply the compression ladder in `references/style_patterns.md` | Reduce shots or events and split the scene; do not remove causality, key dialogue, continuity anchors, or the final reaction |
+| The final prompt exceeds the duration-based ceiling | Apply the compression ladder in `references/style_patterns.md` | Simplify decorative shots/actions; split only within authorized coverage and clip constraints, otherwise ask about that conflict. Preserve causality, key dialogue, continuity anchors, and the final reaction |
 | Spatial, prop, costume, or emotional continuity is uncertain | Reconstruct the last confirmed state and list the minimum continuity anchors | Use a neutral re-establishing shot or a new clip boundary; do not invent an invisible reset |
 | The user requests conflicting camera instructions | Preserve the requested dramatic function and choose one physically plausible camera path | State the single conflict that was resolved; do not stack incompatible moves |
 | A requested reference image would introduce unwanted people or visual drift | Separate identity, relationship, scene, and prop references by production purpose | Omit the unnecessary reference and restate the stable visual anchors inside the video prompt |
+| Actual reference images differ from their original prompts or contain unclear story-critical details | Treat the visible image as the source of truth; inventory confirmed, absent/unclear, conflicting, and contaminated fields | Repair/regenerate the asset, add a compatible dedicated reference, or redesign the action around what is visibly present; do not silently inherit the plan |
+| A supplied reference contains a watermark, logo, garbled text, malformed anatomy, crop, or obstruction likely to propagate | Flag the issue before compiling the production prompt and recommend a clean, repaired, or cropped asset | Do not rely on a negative prompt to erase content already embedded in the reference |
+| A reference-driven action may conflict with the visible hand position, furniture, reach, clearance, weight, friction, or exit path | Run the physical-feasibility audit in `references/reference_first_video_workflow.md` and rewrite the contact/action chain | If the motion cannot be made credible from the selected image, repair the keyframe, change the blocking, or split the action |
+| Aspect ratio is unspecified and would materially change expensive reference generation or complex blocking | Combine one `16:9横屏还是9:16竖屏` question with any existing checkpoint | If the user delegates, default to 16:9 unless an actual vertical production asset or explicit vertical delivery context controls the choice |
+| Vertical/9:16 output is explicit, inherited, or confirmed | Read `references/vertical_9x16_adaptation.md`; redesign composition, coverage, movement, and reference frames for a narrow canvas | Simplify/group shots, add a vertical keyframe, or make a separate vertical adaptation if essential width cannot survive |
 
-**🔴 CHECKPOINT · Long-form adaptation:** If the user requests complete coverage of material over roughly 3000 Chinese characters and has not chosen between `片段拆选` and `连续短片结构`, stop after a compact scope diagnosis and ask them to choose. Do not generate final video prompts before that decision. If the user explicitly delegates the choice, select `连续短片结构` for full coverage and `片段拆选` for a single strongest moment.
+**🔴 CHECKPOINT · Adaptation scope conflict:** `完整改编` / `完整覆盖` / `连续短片` already select full coverage; `选最强片段` selects highlights. Do not re-ask that choice. Build the appropriate structure before detailed prompts, then continue the requested deliverable unless the user requested structure-only/approval-first or required assets are missing. Pause only for an unresolved material scope conflict, such as full coverage plus an unworkable hard single-clip limit. Input length alone is not a checkpoint.
 
 ## Duration Rules
 
@@ -106,8 +154,8 @@ Resolve the following conditions before writing the final prompt:
 - Evaluate duration by playable screen content, not by text length alone. Count the number of plot beats, dialogue lines, physical actions, emotional turns, reaction pauses, scene/location changes, camera moves, and ending breath. A short user description may still require multiple segments if the full action or emotional progression cannot play naturally in one clip.
 - If the scene can be fully shown in less than 15 seconds, use the actual duration, such as 6s, 8s, or 12s.
 - Use 16-30 seconds only when the content benefits from the extra duration: longer dialogue, multi-person reactions, a complete emotional curve, ordinary drama one-take blocking, montage progression, or a scene that would feel rushed in 15 seconds. Do not stretch a simple beat to 30 seconds.
-- If the story exceeds what 30 seconds can carry, do not cram everything in. Explain the selection, suggest splitting, and produce the strongest single prompt for one segment.
-- For novel excerpts, use text-length tiers before adapting: under roughly 1500 Chinese characters can usually be adapted directly into one prompt; 1500-3000 characters should first be reduced to the strongest filmable scene or emotional turn; over 3000 characters should not go straight to final prompts. First judge or ask whether the user wants `片段拆选` or `连续短片结构`. If the user asks for complete adaptation, full coverage, a short film, a mini-drama, or serialized generation, output a continuous short-film structure table first, not final prompts. If the user only wants a strong single video moment or does not specify full coverage, default to a cinematic scene-selection list. Do not mechanically split long prose into consecutive short-video prompts unless the user explicitly asks for a continuous short-film breakdown.
+- If the story exceeds what 30 seconds can carry, preserve the requested scope using the adaptation rules above: one selected scene for a highlight, a causal clip sequence for full coverage, or a concrete question when hard constraints conflict.
+- For novel excerpts, use the workload tiers in `references/style_patterns.md`, subordinate to requested coverage. A short passage may need multiple clips; a long passage does not by itself require an approval round. Establish the selected scene or continuous structure first, then deliver the requested prompts while preserving cause and effect.
 - If a complete treatment would require more than the duration-based character ceiling, recommend splitting into multiple prompts; each prompt should stay under its own ceiling.
 - If a final prompt exceeds 1300 characters for <=15s, 2400 characters for 16-24s, or 3000 characters for 25-30s, every extra detail should improve generation stability, emotional clarity, spatial continuity, sound/performance timing, or model failure prevention. Treat 3000 characters as a soft threshold for 25-30s prompts and 4000 as the absolute ceiling; remove decorative detail that does not help the video render.
 - Leave enough time for reaction and ending breath. Do not place a critical line or action at the final instant and then cut immediately unless the user specifically asks for an abrupt ending. Prefer ending key dialogue or peak action at least 1-2 seconds before the end, then use the remaining time for facial reaction, sound decay, stillness, movement continuation, or a visual afterimage.
@@ -116,7 +164,7 @@ Resolve the following conditions before writing the final prompt:
 
 ## When to Ask Questions
 
-Ask a concise question before generating only when foundational information is missing:
+Apply `Execution Decisions and Agent Capabilities`. Ask one concise question only when a necessary story foundation remains unresolved after checking the brief and delegated creative control, for example:
 
 - Who is the main character?
 - Where does the scene happen?
@@ -130,7 +178,7 @@ Use this when the user says `继续`, `接着往下写`, `延续上一条`, `下
 
 Continuation is not a new unrelated prompt. It must preserve continuity and move the story forward.
 
-Default continuation format:
+Default continuation format; include the reference-assets block only when the chosen path or a new/updated visual anchor needs it:
 
 ```text
 【接续判断】
@@ -138,7 +186,7 @@ Default continuation format:
 下一段情绪推进：
 连续性注意：
 
-【建议先生成的参考图】
+【参考资产状态】
 沿用上一段人物/场景/道具参考：
 本段衔接方式：
 新增人物参考图：
@@ -160,15 +208,17 @@ Rules:
 - Emotion should progress, not restart. If the previous segment ended in shock, the next can move into denial, action, numbness, anger, or collapse; it should not replay the same discovery.
 - Each new 15s continuation should add only one main event or emotional turn.
 - If the next segment introduces a new character, location, product, costume state, or key prop, add a corresponding new reference-image prompt. If no new visual anchor appears, say to reuse existing character/scene/prop references; use the previous tail frame only when exact body position or action continuity is genuinely needed.
-- In continuous-short-film mode, maintain an internal character bible and scene continuity sheet. Print compact versions when they help the user generate multiple segments consistently.
+- In continuous-short-film mode, maintain an internal character bible and scene continuity sheet with an anchor budget: keep 4-6 stable identity anchors for the main character, 3-5 for an important supporting character, 4-6 spatial/light anchors for each recurring scene, and 1-2 group-level anchors for background people. Track temporary story state separately, including held/placed props, missing accessories, wetness/injury, body position, travel direction, voice condition, and emotional residue. Causally necessary state overrides the numeric budget. Repeat only the anchors visible or relevant in the current shot; when the prompt becomes crowded, remove decorative identity detail before action causality, spatial direction, prop state, key dialogue, or the ending reaction. Print compact bible/sheet versions only when they help the user generate multiple segments consistently.
 - If the user provides a new direction for the continuation, follow it. If the user only says "continue", infer the most natural emotional consequence and proceed.
 - Keep the next final prompt under the normal length targets and 30s maximum.
 
 ## Output Format
 
-Default format is workshop mode. Keep diagnosis and strategy visible so the user can correct the interpretation before reusing the final prompt. Keep these sections concise; the copy-ready final prompt is the main deliverable. Include optional visual reference prompts when they improve control.
+Default format is workshop mode. Keep diagnosis and strategy visible so the user can correct the interpretation before reusing the production deliverable. Keep these sections concise. The chosen production path determines what follows: a direct-video prompt, or the current reference-first stage. Do not show empty sections.
 
 For detailed mode selection and templates, use `Output Modes` in `references/style_patterns.md`.
+
+Direct-video workshop format:
 
 ```text
 【剧情诊断】
@@ -181,15 +231,30 @@ For detailed mode selection and templates, use `Output Modes` in `references/sty
 【电影化改写策略】
 ...
 
-【建议先生成的参考图】
-人物参考图：
-场景参考图：
-关键道具参考图：
-
 【最终视频提示词】
 基础概括：
 ...
 ```
+
+Reference-first Stage 1 format:
+
+```text
+【剧情诊断】
+...
+
+【电影化改写策略】
+...
+
+【参考图素材规划】
+本阶段需要：
+不单独生成：
+
+【参考图提示词】
+参考图1｜类型与用途：
+提示词：
+```
+
+After the actual images are generated, selected, or supplied, use the reference-driven prompt shape in `references/reference_first_video_workflow.md`.
 
 For the final prompt, include the sections that matter for the scene. Do not force every label if it makes the prompt bloated. Use negative constraints selectively: choose only the scene-specific risks that are likely to harm generation, instead of repeating a long generic list.
 
@@ -215,6 +280,8 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 ## Cinematic Translation Rules
 
 - Choose structure before writing shot details. In the diagnosis, name the chosen structure and state why it fits this story. If the scene combines structures, identify the primary structure and the secondary support, such as `主结构：多人对话交叉剪辑；辅助：微表情特写`.
+- For multi-shot sequences, dialogue cross-cutting with three or more shots, large-scene compression, or continued clips, create an internal shot ledger before drafting the final prompt. For each shot, lock its story function, one primary action, audience gaze path (`entry → hold/occlusion → landing`), the necessary change from the preceding shot, and the continuity anchors that must survive the cut. Use the ledger to remove cuts that only repeat an angle or action. Do not print it as a default user-facing section, and skip it for a simple one-take, a static close-up, or a single-action scene.
+- For a plot-driven shot ledger, audit adjacent shot order before finalizing: if two shots can trade places without changing character knowledge, action causality, or reaction timing, merge, remove, or redefine one of them. Skip this order test for associative atmosphere montage, product/person texture sequences, and deliberately fragmented or nonlinear memory.
 - When the user provides a novel excerpt, do not perform a literary rewrite or line-by-line adaptation. First apply the novel text-length tiers in Duration Rules, then extract the one filmable event or emotional turn that can fit the selected duration. Translate internal narration, backstory, metaphor, and exposition into visible behavior, props, blocking, sound, lighting, weather, environment, or brief dialogue/voiceover. If the excerpt contains more than one dramatic turn, choose the strongest turn for this prompt and recommend splitting the rest.
 - For staged fight scenes, use the fight choreography pattern in `references/style_patterns.md`. Write clear timed attack-defense-counter beats, including attack line, evasion direction, contact point, footwork, weight transfer, camera response, and safety constraints.
 - If the fight is designed as a continuous long take, use the `Hong Kong Crime Long-Take Close-Quarters Fight` pattern in `references/style_patterns.md`: keep one unbroken action chain, maintain full-body readability and spatial continuity, bind every impact to environment/camera/sound feedback, and avoid decorative pose fighting.
@@ -230,6 +297,7 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 - Convert themes into physical motifs: wind, dust, glass reflection, streetlight stripes, rain on a window, paper trembling, cloth friction, engine vibration.
 - Before finalizing, apply the `Prompt Sampling Range Control Principles` in `references/style_patterns.md`: turn abstract intent into visible screen evidence, remove physically or narratively contradictory instructions, write the desired action path positively before adding any negative constraints, and keep only details that reduce ambiguity rather than trying to control every pixel.
 - Do not write `电影感布光` as an empty style label, but also do not over-describe lighting by default. Use lighting detail proportionally: most scenes only need one compact scene-level light phrase; expand into key light, fill light, rim/soft edge highlight, background/volumetric light, and tonal meaning only when lighting is a dramatic core, a style test, or the user specifically asks for lighting. Do not repeat a full lighting breakdown in every shot unless the light changes.
+- When color carries a story turn, period or place identity, or a product/person texture film, set one compact color premise before shot detail: two dominant color ranges, one transition range, and at most one small accent, each tied to a physical source. State what remains stable or changes across the scene and why. Do not impose a palette on a simple dialogue or action scene when color carries no dramatic information.
 - Keep light motivated by the environment. Do not force `Hard side-top Key Light` or `右上方硬质侧顶光` into small rooms, domestic interiors, or ordinary scenes unless there is a believable source such as a bare bulb, high window, table lamp, doorway slit, neon, car headlight, phone screen, or flashlight, and the story needs that hardness. If the source does not support hard top-side light, choose softer or more natural practical light.
 - For night exterior or period courtyard scenes, use the `Realistic Night Exterior and Courtyard Light` rules in `references/style_patterns.md`: moonlight should usually act as soft ambient/edge light, while readable faces should come from motivated lantern, candle, doorway/window spill, stone-floor bounce, table reflection, or weak practical fill. Keep artistic contrast believable rather than forcing hard moonlight across a face.
 - When a scene contains movement, let light interact with motion instead of staying decorative: window light, door slits, headlights, phone screens, clouds, rain, dust, grass, fabric, or breath can create moving highlights, shadows, particles, and sound/light transitions that follow the action.
@@ -238,12 +306,14 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 - Make time marks playable. Each shot should have enough duration for the described action, camera movement, line delivery, and reaction.
 - Keep camera language physically plausible. Avoid asking for too many impossible simultaneous camera moves.
 - Make the first frame reconstructable: the final prompt should clearly establish the visible subject and start state. The subject does not have to be a person; it can be an empty location, key prop, vehicle, screen, building, landscape, or aftermath state. If people are visible, include posture, screen position/depth, facing direction, gaze, and held/contacted prop. If the first frame is empty or object-led, include location layout, foreground/midground/background, key object state, weather/environment motion, sound cue, main light source when relevant, shot size, camera angle, and camera axis. Do this especially for one-take scenes, reference-image/video workflows, dialogue, action, and emotional close-ups.
+- A first-frame reference locks only the opening pose, composition, screen positions, contact, and visible state unless the user explicitly requests a locked shot or one-take. It must not silently freeze the whole clip into that shot size and angle. After the opening is established, choose cuts, shot-size progression, focus changes, and motivated camera movement from the story beats while preserving identity, space, axis, handedness, prop state, and light continuity. Do not add cuts merely for variety: every new view must reveal action, information, reaction, power change, or aftermath.
 - Keep one core action path and one core camera behavior per shot unless the user explicitly asks for complex continuous movement. If a shot needs several camera phases, serialize them with clear settle points; if several actions compete, split the beat or remove the weaker action.
 - For story-critical props, write physical state precisely: holder, hand, grip/support point, orientation, contact relationship, visible change, and final location. Show any change of state on screen instead of letting props jump between shots.
 - Do not leave optional branches in the copy-ready final prompt. Remove `或`, `或者`, `A/B`, `二选一`, and `可选` unless the user explicitly asks for variants; make the director choice before delivery.
-- Select camera movement by dramatic function. Use the `General Camera Movement Selection System` in `references/style_patterns.md` for ordinary drama, suspense, romance, dialogue, landscape reveal, or emotional beats: decide whether the shot needs intimacy, context reveal, gaze following, parallel movement, power shift, disorientation, urgency, or stillness before naming `Dolly-In`, `Pull-Back`, `Pan`, `Tilt`, `Tracking`, `Arc/Orbit`, `Crane/Jib`, `Zoom`, `Dolly Zoom`, `Whip Pan`, `Handheld`, or `Static`.
+- Select camera movement by dramatic function. Use the `General Camera Movement Selection System` in `references/style_patterns.md` for the first decision; when the scene needs a less common movement or precise start/path/direction/speed/end wording, read `references/camera_movement_prompt_library.md` and choose from its 46 movement modules. Decide whether the shot needs intimacy, context reveal, gaze following, parallel movement, power shift, disorientation, urgency, stillness, scale, or a transition before naming the move. Do not add a movement only because it exists in the library.
+- When `9:16竖屏` is active, do not reuse a horizontal composition with cropped sides. Use the vertical adaptation system to protect face/hand/prop/action endpoints, layer people through depth or `OTS`, create head/foot room before full-body movement, shorten horizontal camera travel, and keep composition-controlling references in the target ratio.
 - For ordinary non-fight one-take scenes, use the `Ordinary Drama One-Take Blocking System` in `references/style_patterns.md`: design a continuous camera sentence with a clear start frame, physical camera path, blocking shift, motivated `Rack Focus` / `Focus Pull` when needed, foreground depth, stable screen direction, and a held ending. When the one-take reveals several important characters, use the `One-Take Character Reveal Ladder`: reveal identities progressively through orbit, shoulder/back foreground masking, lateral movement, and pull-back hierarchy rather than showing everyone at once.
-- For characters, write internal logic first, then external evidence. Example: because the character is suppressing panic, their jaw locks, fingers dig into fabric, and breath becomes shallow.
+- For characters, write internal logic first, then external evidence. Example: because the character is suppressing panic, their jaw locks, fingers dig into fabric, and breath becomes shallow. When a named emotion or transition needs a more specific acting vocabulary, use `references/emotion_performance_prompt_library.md` as a 25-emotion source: choose one base module, take only 2-4 fitting visible/audible cues, and rewrite them around the scene trigger, onset, peak, and release/transform.
 - For close human scenes, dialogue, everyday realism, intimacy, hesitation, concealment, explanation, lying, memory, or restrained emotion, use the `Live Performance Realism System` in `references/style_patterns.md`: performance must be driven by one psychological motive; expression, eye line, voice, pauses, incidental body language, biomechanics, object contact, environment response, and camera/light/focus conditions must feel like one real person in one physical space.
 - For dialogue-led acting scenes, use the `Dialogue-Driven Performance Control System` in `references/style_patterns.md`: treat dialogue as the timeline of expression. Write the state before speaking, the exact trigger words, emphasis, pause, breath, eye/body reaction, emotional barrier, post-line state, and listener response. For high-stakes close-ups, natural-language facial actions come first; optional AU/FACS tags and intensity can be added only as auxiliary calibration.
 - For complex multi-shot dialogue, first divide the scene into shot-level blocks, then subdivide only the shot that carries the dense emotional turn into nested performance beats. Maintain separate speaker and listener acting tracks, let dialogue continue across a cut as a motivated `J-cut/L-cut` or offscreen sound bridge when useful, cut on semantic turns rather than equal time, and reserve tighter framing for the moment the character's psychological defense actually opens.
@@ -277,9 +347,12 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 
 Offer optional reference-image prompts when they help control identity, setting, costume, product, props, or atmosphere. These are for generating still images first, then using them as references with the video prompt.
 
+For route selection, staged delivery, reference authority, static-information deduplication, and image-to-video compilation, read `references/reference_first_video_workflow.md`. The rules below define reference content; that file defines how references and video text divide control.
+
 - Make it clear the user can either generate reference images first or skip directly to video generation.
-- Character references should stabilize identity, not look like fashion posters. Include identity/role, age range, ethnicity/era if relevant, facial impression, body type/posture, hair, clothing, costume state, dirt/wetness/injury/makeup when relevant, emotional baseline, shot size, lighting/background, film texture, and explicit non-stylization constraints when useful. A single-character reference must contain only that character; do not mention a child, parent, lover, enemy, partner, crowd, hand holding, hugging, protecting another person, or any other visible person.
-- Scene references should define usable video space: location, layout, foreground/midground/background, entrances/exits, action path, obstacles, light source, materials, era, color palette, atmosphere, and action area. Use `无人物` if the scene reference should be clean.
+- Do not output a complete reference set and a complete self-contained video prompt together by default. Keep the current turn scoped to the chosen production path and stage.
+- Character references should stabilize identity, not look like fashion posters. Treat identity/role, age range, era, facial impression, body type/posture, hair, clothing/costume state, dirt/wetness/injury/makeup, emotional baseline, framing, light/background, and non-stylization as a candidate field menu, not a completeness checklist. Select 4-6 recurring identity/costume anchors plus one emotional baseline; add a field only when the current production state genuinely depends on it. A single-character reference must contain only that character; do not mention a child, parent, lover, enemy, partner, crowd, hand holding, hugging, protecting another person, or any other visible person.
+- Scene references should define usable video space with 4-6 topology/light anchors: select only the location relationships, foreground/midground/background, entrances/exits, action path, obstacles, source light, materials, era, palette, atmosphere, or action area that affect later blocking and continuity. These are candidate fields, not a checklist. Use `无人物` if the scene reference should be clean.
 - Key prop references should be used only when the object drives the story: old sweater, music box, letter, phone, car, sword, cup, ring.
 - Do not create too many references. Most scenes need 1-2. Complex historical, product, or large-scene prompts may need 2-3.
 - Keep all references consistent with the final video prompt.
@@ -305,6 +378,11 @@ Do not:
 - stack camera moves, lens changes, lighting jargon, slow motion, and cuts without assigning each one a dramatic function
 - reset a character's face, costume, injury, held object, screen direction, location layout, lighting state, or emotional residue between clips
 - create every possible reference-image type by default, or put a second person inside a single-character identity reference
+- repeat full face, costume, setting, palette, and lighting descriptions inside a reference-driven video prompt; retain only compact reference bindings and story-required timed changes
+- treat the first-frame reference as a command to preserve one shot size, one angle, and one composition for the entire clip when the story needs motivated coverage or camera development
+- import a planned object or state from the earlier image prompt after the actual selected reference failed to show it clearly
+- squeeze a horizontal two-shot, group tableau, wide action, or landscape into 9:16 without re-blocking, shot separation, or a deliberate vertical composition
+- treat a reference-driven prompt and a no-reference prompt as interchangeable when one omits static visual information
 - use generic labels such as `电影感`, `高级感`, `史诗感`, or `氛围拉满` in place of concrete action, light source, sound, composition, and timing
 - hide an overloaded scene inside dense fragments merely to stay under the character limit; reduce events or split the scene instead
 

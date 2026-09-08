@@ -17,7 +17,7 @@ Score each case out of 100:
 
 Pass levels:
 
-- 90-100: production-ready
+- 90-100: strong prompt-text result; actual media quality still requires generated-result review
 - 80-89: usable with minor revision
 - 70-79: major weakness in one area
 - below 70: revise rules or output strategy
@@ -26,6 +26,7 @@ Automatic failure conditions:
 
 - final prompt exceeds the duration-based character ceiling without recommending a split
 - single segment exceeds 30 seconds
+- repeats a resolved approval, executes an unapproved media action, omits requested deliverables without a stated blocker, or claims unavailable image/video verification
 - key plot-changing dialogue is omitted
 - dialogue cannot physically fit its assigned time
 - continuation resets character, scene, prop, or emotional state
@@ -36,7 +37,7 @@ Automatic failure conditions:
 
 For each case:
 
-1. Generate the answer in workshop mode.
+1. Generate the answer in the mode/stage requested by the case; use workshop mode only when unspecified. Keep explicit approval boundaries and host capability conditions.
 2. Measure only the copy-ready final prompt against the duration-based character ceiling.
 3. Check timing beat by beat.
 4. Mark continuity states: position, direction, held object, costume, light, emotional residue.
@@ -908,6 +909,569 @@ Failure checks:
 - turns subjective sound narrowing into arbitrary total silence
 - uses foreground occlusion as an unmotivated blackout or continuity reset
 
+## Case 33: Generated Fight Result Surgical Repair
+
+Input:
+
+```text
+上一版12秒仓库格斗已经生成：两名成年女性的脸、服装、仓库站位、冷白顶灯和手持摄影都很好。问题只有反摔动作：A没有先降低重心和建立抓握，B就突然翻到地上，右手护腕还从B手上跳到了地面。只修动作和护腕连续性，其他都不要改。
+```
+
+Expected:
+
+- Activate generated-result surgical repair rather than rewriting the whole fight.
+- Diagnose at most three dominant failures: missing grip/level-change/momentum causality, teleport-like throw, and wrist-guard state discontinuity.
+- Lock the successful identities, wardrobe, warehouse layout, fighter positions, cold overhead light, and handheld shooting condition.
+- Repair only the attack-defense-counter chain: establish grip, level change, weight transfer, pivot, fall path, landing/recovery, and the wrist guard's holder/contact/final location.
+- Keep the original duration and action count playable; do not add a new fighter, weapon, light design, slow-motion showcase, or unrelated camera move.
+
+Failure checks:
+
+- rewrites faces, costumes, warehouse, light, or the accepted camera style
+- adds generic negative constraints without repairing throw mechanics
+- fixes the throw but leaves the wrist guard teleporting or duplicated
+- expands one failed beat into an overloaded new fight sequence
+- claims the repaired prompt proves the next generated video will succeed
+
+## Case 34: Single-Variable Camera Revision
+
+Input:
+
+```text
+上一版15秒厨房夫妻对话的台词、口型、表演、站位、暖色吊灯和结尾沉默都满意。只把正面固定机位改成从厨房门框后方略带遮挡的观察机位，仍保持原来的180度轴线和人物左右关系，其他内容不变。
+```
+
+Expected:
+
+- Treat the request as a single-variable camera revision.
+- Preserve dialogue wording/order, lip-sync, performance timing, blocking, character screen-left/right, practical light source, sound bed, and ending silence.
+- Change only the physically dependent camera clauses: witness position behind the doorway, height/distance, plausible foreground doorframe occlusion, framing, and focus behavior.
+- Keep the doorway observation position physically compatible with the existing axis; do not cross the axis or move either character merely to beautify the composition.
+- Do not introduce surveillance, horror, voyeurism, new props, new lighting, or a different story interpretation unless the user asks for it.
+
+Failure checks:
+
+- rewrites dialogue, acting, light, sound, or ending
+- changes character blocking or flips screen direction without necessity
+- treats the doorframe as a decorative overlay with no physical camera position
+- adds unrelated handheld movement, lens flare, fog, or dramatic color grading
+- outputs several camera alternatives instead of one resolved revision
+
+## Case 35: Production-Path Routing Without Extra Friction
+
+Input A:
+
+```text
+先给我生成人物和场景参考图提示词，图片满意后再写视频提示词：宋代婚礼前夜，新娘独自在喜房里拆下凤冠。
+```
+
+Expected A:
+
+- Enter the reference-first path without asking whether the user wants references.
+- Output only the current-stage asset plan and needed image prompts; do not pretend the images already exist or append a reference-driven video prompt.
+
+Input B:
+
+```text
+直接给8秒视频提示词，不要参考图：清晨厨房，男人把煎糊的鸡蛋偷偷倒掉，妻子在门口看见却忍住笑。
+```
+
+Expected B:
+
+- Enter the direct-video path without a route question.
+- Output a self-contained prompt and no reference-image section.
+
+Input C:
+
+```text
+宋代家族群像连续短片，三名主要人物会在正厅、婚房和祠堂反复出现，服饰身份和空间方位必须稳定。
+```
+
+Expected C:
+
+- Because the user has not chosen a route and the task has high drift/reuse cost, ask one concise production-route question.
+- If direction selection is also needed, combine the choices into one checkpoint rather than asking twice.
+
+Failure checks:
+
+- asks Inputs A or B to choose a route already specified
+- dumps complete reference prompts and a complete video prompt for Input A
+- silently defaults Input C to a large mixed package
+- adds a production-route checkpoint to a simple low-drift direct request
+
+## Case 36: Minimal Reference Asset Set for Multiple Characters and Scenes
+
+Input:
+
+```text
+连续三段宋代家庭故事，有夫妻两位主角、两个只出现一次的仆人，正厅会反复出现，后院只出现一次；第一段先制作参考图。
+```
+
+Expected:
+
+- Create individual identity references for the two recurring principals.
+- Create a clean scene plate for the recurring main hall when its topology matters.
+- Do not automatically create individual identity references for both one-off servants or a clean plate for the one-off backyard.
+- Explain briefly which assets are not generated and why.
+- Keep the current generation stage to roughly 1-3 active references; if more are truly needed, batch them through an asset plan.
+
+Failure checks:
+
+- creates a reference for every named person and location
+- generates identity, relationship, scene, prop, first-frame, and tail-frame references by default
+- includes all later locations before the current clip needs them
+- omits recurring principal identity or recurring location control
+
+## Case 37: Reference Authority and Static Deduplication
+
+Input:
+
+```text
+我已经生成了三张图：参考图1是女主定妆，参考图2是宋代厅堂空景，参考图3是男女主隔桌而坐的首帧。请基于这三张图写15秒对话视频提示词。图片里外貌、服装、场景和灯光都满意，不要重新设计。
+```
+
+Expected:
+
+- State a compact mapping: image 1 controls the woman's identity/costume, image 2 controls layout/light, image 3 controls start-frame relationship geometry.
+- Treat the supplied visual facts as locked and do not repeat full face, costume, architecture, palette, or lighting descriptions.
+- Focus the video prompt on dialogue order, lip-sync, gaze, breath, body/contact changes, camera behavior, sound, and ending state.
+- Keep only minimal role/position/prop bindings needed to interpret motion.
+
+Failure checks:
+
+- rewrites the woman's full appearance or proposes a new costume
+- introduces a competing room layout, palette, light direction, or first-frame pose
+- omits reference mapping so the three images compete for authority
+- removes so much binding information that character identity, position, or prop ownership becomes ambiguous
+
+## Case 38: Explicit Timed Delta From a Reference
+
+Input:
+
+```text
+参考图里新娘穿着完整红色婚服，视频12秒时她转身，红色外袍从肩上滑落，露出里面早已穿好的白色丧服；外袍最后挂在左肘。其他外貌和房间都保持参考图。
+```
+
+Expected:
+
+- Preserve the reference as the starting state.
+- Describe the wardrobe change with time, physical cause, contact path, revealed layer, and final state.
+- Do not describe the character as wearing only white at the start.
+- Avoid repeating unchanged face, hair, room, and lighting descriptions.
+
+Failure checks:
+
+- contradicts the image at the opening
+- makes the outer robe disappear, teleport, or return to its initial position
+- describes the change without cause or endpoint
+- redesigns unrelated static details
+
+## Case 39: Separate Reference-Driven and No-Reference Versions
+
+Input:
+
+```text
+这个镜头我要两种版本：一种绑定我现有的人物和场景参考图，另一种不用任何图片也能直接生成。
+```
+
+Expected:
+
+- Output two clearly labeled prompts: `参考图驱动版` and `无参考图直出版`.
+- The reference-driven version uses mappings and dynamic differences without full static repetition.
+- The no-reference version restores the necessary identity, setting, costume, prop, light, and first-frame anchors.
+- Both preserve the same story action, timing, dialogue, and ending, while differing in static-information density.
+
+Failure checks:
+
+- gives one ambiguous prompt claimed to work equally well in both modes
+- leaves nonexistent reference-image language in the direct version
+- fully repeats all static descriptions in the reference-driven version
+- changes the story or performance between versions without being asked
+
+## Case 40: Reference-First Continuation Uses Actual State
+
+Input:
+
+```text
+上一段已经用参考图生成成功。结尾女主左侧发簪掉落，衣袖被雨打湿，信落在石阶第二级。继续下一段，人物、庭院和灯光都不要重做。
+```
+
+Expected:
+
+- Reuse the existing identity and scene references rather than regenerating them.
+- Bind the next prompt to the actual previous ending state: missing left hairpin, wet sleeve, letter on the second step.
+- Create an updated-state reference only if the changed state will recur or cannot be held reliably through the continuation prompt.
+- Focus the new prompt on the next temporal action and emotional turn rather than repeating the full visual bible.
+
+Failure checks:
+
+- restores the hairpin, dries the sleeve, or moves the letter without visible action
+- outputs a new generic character or courtyard reference
+- repeats the complete identity and scene description
+- treats the continuation as an unrelated direct-video prompt
+
+## Case 41: Inspiration Reference vs Production Reference
+
+Input:
+
+```text
+我给你两张图：图A是一张经典电影截图，我只喜欢它用门框压住人物的构图；图B是我已经生成满意的宋代女主定妆图。请规划喜房首帧参考图，女主身份必须稳定，但不要照搬电影截图。
+```
+
+Expected:
+
+- Classify image A as `灵感参考图` controlling only the declared composition method.
+- Classify image B as `生产资产参考图` controlling the woman's identity and approved costume state.
+- Build a new, story-specific room, blocking, props, and action rather than copying the source still's cast arrangement, complete topology, palette, or story outcome.
+- State the authority of each image so composition inspiration does not overwrite identity and identity reference does not freeze the new first-frame composition.
+
+Failure checks:
+
+- treats the movie still as authority over identity, exact layout, action, and palette
+- reproduces a recognizable complete shot or merely swaps the actor
+- lets the generated identity image dictate an unrelated pose or camera position
+- fails to state which image controls which field
+
+## Case 42: Type-Specific Reference Prompt Density
+
+Input:
+
+```text
+为宋代夫妻争执戏制作四类参考图：妻子定妆、正厅空景、夫妻隔桌关系图、桌上和离书关键道具图。图片之后要用于生成视频，请避免提示词过载。
+```
+
+Expected:
+
+- Wife identity prompt uses 4-6 stable identity/costume anchors and one emotional baseline, with no husband or relationship action.
+- Clean hall prompt prioritizes 4-6 topology/light anchors, entrances/exits/action path, one primary source, and only 2-3 causal environment traces; it contains no people.
+- Relationship prompt uses one relationship axis, left/right positions, distance/eyelines, one contact or no-contact state, and one visual center.
+- Prop prompt locks the letter's material, scale, orientation, readable feature when essential, wear/state, and placement without an elaborate unrelated scene.
+- Each prompt requests one standalone frame and one composition; no grid, collage, model sheet, or multiple views unless explicitly requested.
+
+Failure checks:
+
+- applies the same long template to all four asset types
+- places the husband or interaction language inside the wife's identity reference
+- clutters the clean hall with irrelevant objects or several light effects
+- gives the relationship frame several actions or time beats
+- produces a four-panel sheet instead of four independently usable prompts
+- forces 21:9, English, or a particular image model without user request
+
+## Case 43: Surgical Repair of a Generated Reference Image
+
+Input:
+
+```text
+这张宋代女主参考图的脸、发髻、服装颜色、人物比例、背景和窗侧光都满意。只有右袖口错误，做成了现代宽松喇叭袖；请只修成窄口交领袍袖，不要重做其他部分。
+```
+
+Expected:
+
+- Inspect the actual image when it is available and identify the sleeve construction as the dominant failed field.
+- Output `保持不变`, `只修改`, and `禁止连带变化`.
+- Preserve face, age, hair, approved garment body/color, body proportions, composition, camera, background, and source-light direction.
+- Change the right cuff and only its physical dependents such as adjacent folds and wrist occlusion.
+- Do not claim the repair succeeded before the revised image is generated and inspected.
+
+Failure checks:
+
+- rewrites the whole character prompt or redesigns the costume
+- changes face, hair, color, pose, camera, background, or light
+- changes the cuff without repairing directly connected folds/contact
+- adds a long generic negative list unrelated to collateral drift
+- reports success from the repair instruction alone
+
+## Case 44: Actual Reference Supremacy, Cleanliness, and Physical Feasibility
+
+Input:
+
+```text
+我原来的首帧提示词要求桌上有压纸木条，但实际生成的夫妻隔桌图里只能清楚看到和离书，没有木条；右下角还有生成平台水印。妻子坐在带扶手的椅子上，右手放在膝上。请根据实际图片写15秒图生视频提示词：她把和离书推给丈夫，然后起身离开。
+```
+
+Expected:
+
+- Treat the actual pixels as authoritative and do not inherit the absent/unclear paperweight from the earlier image prompt.
+- Flag the visible watermark before production and recommend a clean/cropped/repaired reference; do not claim that `不要水印` will reliably erase it.
+- Reconstruct the start geometry: right hand travels from lap to paper, body has a reachable path, and the chair arms affect how she stands.
+- Write the document contact as approach -> touch/support -> frictional push -> release -> visible endpoint; do not make the paper jump or slide together with an absent weight.
+- Let her use the visible armrest or another physically supported motion to stand; preserve the clear exit path and husband/document continuity.
+- Replace arbitrary centimeter precision with a visible event unless exact measurement is story-critical.
+
+Failure checks:
+
+- imports the paperweight from the old prompt despite its absence in the selected image
+- relies only on a negative prompt to remove the embedded watermark
+- makes the hand teleport from lap to document or the document move before contact
+- asks her to press through the chair, table, or armrest, or gives no viable standing/exit path
+- claims the reference or final video is clean/successful without a revised generation result
+
+## Case 45: First Frame Must Not Freeze Cinematic Coverage
+
+Input:
+
+```text
+三张实际参考图分别锁定宋代妻子身份、正厅布局，以及夫妻隔桌而坐的首帧关系。15秒无台词：妻子把和离书推过去，丈夫伸手却停住，她看他一眼后起身离开，最后留下空椅和丈夫。首帧是正面双人中景，但不要整段都保持这个景别；根据故事切换景别并选择合适运镜。
+```
+
+Expected:
+
+- Bind the relationship image as the exact opening state only; preserve identities, room topology, axis, positions, document state, and light across later views.
+- Choose a multi-shot relationship-drama structure rather than defaulting to a static one-take.
+- Use motivated coverage, for example: opening `MS/MLS` relationship geography -> document/hand `CU` with match-on-action -> husband's `CU/BCU` stopped reach and reaction -> wider or moving follow shot for her stand/exit -> held aftermath on empty chair/document/husband.
+- Make every cut or move reveal action, reaction, power change, or aftermath; do not add decorative angles.
+- Use meaningful shot-size contrast and at least a 30-degree horizontal change when cutting around the same interaction; preserve the 180-degree axis and eyelines.
+- Widen or pull back before the full-body stand/exit if needed, and give the ending 1-2 seconds to read.
+
+Failure checks:
+
+- treats the first-frame composition as the required framing for all 15 seconds
+- labels the result `一镜到底` without a story reason or user request
+- changes shots but repeats nearly identical medium framing and angle
+- adds cuts or camera moves with no change in information, emotion, action readability, or aftermath
+- loses identity, room geometry, screen direction, document position, or light continuity after leaving the opening view
+- keeps a close framing during the stand/exit so the body action becomes cropped or physically unclear
+
+## Case 46: Camera-Movement Library Is Selected by Story Function
+
+Input:
+
+```text
+12秒写实悬疑：女人沿酒店走廊走向自己的房门，身后电梯突然打开，她从门牌反光里看见一个人影跟出来。不要我指定运镜，你根据剧情设计，提示词仍以中文为主。
+```
+
+Expected:
+
+- Read the camera-movement library because movement and spatial reveal carry the suspense.
+- Select only the movements that serve the route and reveal, such as a controlled `Follow Shot / OTS` for approach plus one motivated `Pan`, `Slider`, or focus/cut response for the reflected figure.
+- For every selected move, state the readable start subject, physical path/direction, speed, newly revealed information, and settled endpoint.
+- Keep the corridor, door, elevator, reflection, travel direction, and screen axis coherent; do not let the camera pass through walls or the character.
+- Keep action and story instructions in Chinese; retain English only for useful cinematography terms and abbreviations.
+- Use no more than the few movements the 12-second action can carry.
+
+Failure checks:
+
+- lists several of the 46 moves as alternatives instead of making a director choice
+- stacks `Orbit`, `Whip Pan`, `Crash Zoom`, `Drone`, and `Handheld` for style alone
+- names a movement without start, path/direction, speed, story result, or endpoint
+- switches to an English prompt paragraph copied from the library
+- sacrifices corridor geography, reflection logic, or reaction time for camera spectacle
+
+## Case 47: Observable Emotion Library Without Stock Acting
+
+Input:
+
+```text
+10秒近景：女人对母亲说“我过得很好”，先挤出一个紧张假笑；母亲把她退回来的车票放在桌上后，她的笑消失，愧疚地低下眼睛，却没有哭。表演自然克制，提示词用中文。
+```
+
+Expected:
+
+- Use `紧张假笑` as the initial protection and `愧疚` as the triggered destination rather than mixing several unrelated emotions.
+- Keep only 2-4 decisive cues in each playable phase: for example mouth smiling while eyes remain flat, a hard swallow or brief gaze drop; after the ticket lands, the smile releases, gaze lowers, and speech fails or breath changes.
+- Tie the transition to the visible/sounding ticket contact and preserve the exact dialogue, listener timing, and no-cry boundary.
+- Write onset, trigger, change, and held aftermath; do not display the final guilty face from the first frame.
+- Keep the final performance direction in Chinese. Do not print English emotion labels, intensity tags, library analysis, or an AU/FACS dump.
+
+Failure checks:
+
+- copies the complete stock modules or uses every listed facial/body cue
+- adds shock, terror, sobbing, flirtation, or another unrelated emotion
+- makes her cry despite the explicit boundary
+- describes only abstract `紧张、愧疚` without visible eyes, mouth, breath, gaze, hand, or posture evidence
+- outputs the emotion library's English labels or long English acting sentences
+
+## Case 48: Aspect-Ratio Routing Without Repeated Questions
+
+Inputs:
+
+```text
+A：直接给我9:16竖屏提示词：女孩在电梯里发现镜中有人站在她身后。
+B：继续上一段，沿用已经确认的竖屏人物和场景参考图。
+C：8秒单人厨房近景，男人偷偷倒掉煎糊的鸡蛋；没有画幅要求。
+D：先给宋代夫妻隔桌和离戏制作正式场景和首帧参考图；没有说明横竖屏。
+```
+
+Expected:
+
+- A enters the vertical system directly without asking about ratio.
+- B inherits the confirmed vertical ratio without asking again.
+- C defaults to 16:9 horizontal and proceeds because the low-risk single-subject action does not justify a checkpoint.
+- D asks once because formal scene/relationship/first-frame assets and two-person table blocking are costly to redo; combine this with any existing direction or reference-route confirmation.
+- If the user delegates D, use 16:9 by default unless an actual vertical production asset or explicit vertical delivery context exists.
+
+Failure checks:
+
+- asks A or B to choose a ratio already given or inherited
+- interrupts C with an unnecessary aspect-ratio question
+- generates D's composition-controlling assets before resolving a materially consequential ratio
+- creates a separate aspect-ratio question immediately after another confirmation round
+- assumes a platform ratio without the user specifying its intended format
+
+## Case 49: Vertical Two-Person Reference-First Relationship Scene
+
+Input:
+
+```text
+9:16竖屏，宋代夫妻隔桌而坐。先做正厅场景和双人首帧参考图，图片满意后生成15秒视频：妻子推过和离书，丈夫伸手停住，她起身离开。不要把横屏画面直接裁窄。
+```
+
+Expected:
+
+- Read the vertical adaptation and reference-first workflow; state 9:16 in composition-controlling scene/first-frame prompts.
+- Recompose the hall around a central depth/action corridor, readable table/document, viable standing/exit path, and vertical source-light geometry.
+- Avoid two equally small figures pushed to opposite edges; use staggered depth, height, `OTS`, diagonal relationship, or another narrow-frame solution while preserving the axis and document ownership.
+- Keep face, hands, document, chair support, head/foot clearance, and exit visible where their actions occur.
+- Stage 1 stops after the reference plan/prompts. After actual vertical images are supplied, the video may use motivated shot-size changes rather than freezing the first-frame composition.
+
+Failure checks:
+
+- writes a horizontal side-by-side composition and merely appends `9:16`
+- crops out a spouse, the document, chair arms, or the exit route
+- creates composition-controlling references in conflicting ratios
+- gives a tight portrait first frame that cannot support pushing, standing, and leaving
+- outputs the final video prompt before actual images are generated without an explicit complete-package request
+
+## Case 50: Vertical Full-Body Action and Camera Travel
+
+Input:
+
+```text
+12秒9:16竖屏：年轻女人从楼梯下方跑上来，在平台停住，抬头看见楼上门缝透出光，转身继续向上。要紧张但动作清楚，根据剧情选择运镜。
+```
+
+Expected:
+
+- Use stairs, height, destination, and upper/lower frame relationships as meaningful vertical geography.
+- Choose a physically plausible combination such as low `Follow Shot`, controlled `Tilt Up`, `Pedestal/Crane`, or a motivated cut; do not use vertical movement merely because the canvas is tall.
+- Maintain head/foot room and the travel direction; widen or reframe before the stop/turn so the full-body mechanics remain visible.
+- Keep horizontal travel short, the door-light destination readable, and the final upward direction continuous.
+- Preserve action time and ending breath rather than stacking camera techniques.
+
+Failure checks:
+
+- keeps a tight face shot while demanding running, stopping, turning, and climbing
+- loses feet, stair edges, landing, or door destination
+- adds `Orbit`, long lateral tracking, drone movement, and whip pans without story function
+- reverses travel direction or relocates the light/door between shots
+- treats 9:16 as a suffix instead of a composition and movement constraint
+
+## Case 51: Sustained Body-Mounted Camera and Repeated Recovery
+
+Input:
+
+```text
+20秒、16:9、全程身体固定机位、一镜到底。快递员抱着包裹穿过走廊，两次伸手想敲门又收回；第二次听到门内自己的名字后才真正敲响。头和手可以自然动，始终看到关键动作。直接给视频提示词，不要配乐。
+```
+
+Expected:
+
+- Accept the sustained Snorricam request without imposing a short psychological insert or a cut.
+- Bind the camera to the torso, allow independent head/arm motion, and frame the hand path and supported parcel.
+- Preserve visible withdrawal and a changed trigger for renewed action; clarify which hand supports the parcel.
+- Background motion follows torso movement and settles with it; no independent orbit, push or zoom.
+
+Failure checks:
+
+- freezes the head and hands along with the torso, hides withdrawal, or loops equal gestures without motive
+- drops/transfers the parcel invisibly or adds an unrelated threat/music
+
+## Case 52: Matched Memory Cut With Intentional State Change
+
+Input:
+
+```text
+12秒，两镜。女孩把旧网球滚到老犬脚边，球停住。保持球的位置和低机位，硬切到她记忆里的晴天球场，同一只犬年轻健康，上前叼球。不要渐变，不要解释性旁白，直接给提示词。
+```
+
+Expected:
+
+- State the matched ball position/camera and deliberate location, light and age changes across the hard cut.
+- Treat the change as the supplied memory, not present-time healing or resurrection.
+- Preserve identity without freezing temporary age/state or generating extra reference assets by default.
+
+Failure checks:
+
+- morphs between states, treats the cut as an accidental continuity reset, or adds a supernatural rule
+
+## Case 53: Environment-Driven Adjustment and Tone Boundary
+
+Inputs:
+
+```text
+A. 12秒写实：服务员端着水杯穿过行驶中的列车，列车转弯，他扶住座椅恢复平衡，保住杯子，继续走。认真克制，无台词，直接给提示词。
+B. 同一情节改成冷幽默：站稳后他看着仅剩一点水的杯子，停一下，说“还好，杯子没事。”直接给提示词。
+```
+
+Expected:
+
+- A: carriage motion causes consistent body/liquid response; specify free-hand support, recovery and continued movement without inventing a crash or joke.
+- B: show how water spills, retain the changed cup state, and reserve time for the pause, supplied line and understated aftermath.
+- Keep no-music default and use scene sound; do not force slow motion, triumphant posing or a freeze.
+
+Failure checks:
+
+- cup refills or teleports, support uses an occupied hand, or environment motion has no effect on balance
+- adds a comic line to A or rushes B's dialogue into an unplayable final instant
+
+## Case 54: Direction Continuation and Reserved Approval
+
+Run each variant with its own context:
+
+```text
+A. 直接给12秒悬疑视频提示词：夜班保安听到空电梯里传出自己的声音，按住关门键，声音却从身后响起。无配乐。
+B. 同一剧情先给两个方向，等我选了再写提示词。
+C. Previous exchange: assistant offered 1. 保持现实质感，不解释声音来源; 2. 加入梦境解释. User: 1，直接写12秒最终提示词。
+D. 我要一个很震撼、很电影感的视频。
+E. 我要一个很震撼、很电影感的视频。主角、场景和事件你决定，直接写12秒提示词。
+```
+
+Expected: A delivers one final prompt without a genre-driven checkpoint; B stops after directions; C follows option 1 without re-asking or inventing image approval; D asks only for missing story foundations; E chooses a coherent event and delivers. No camera/lens questionnaire.
+
+Failure checks: uses suspense alone to stop A; writes B's final prompt early; loses C's choice; invents an unauthorized story for D; asks E to supply already-delegated details.
+
+## Case 55: Agent Capabilities and Object-Specific Approval
+
+Run each variant independently; capability fixtures are evaluator controls, not additional user requests.
+
+```text
+A. 图片我已经满意了，请按这张首帧写15秒视频提示词：妻子推过和离书，丈夫伸手停住，她起身离开。
+B. 先给妻子定妆图和正厅空景的图片提示词，不要实际生成图片。
+C. 请生成妻子定妆图，我看过满意后，你再写视频提示词。
+D. 按刚才选定的参考图优先路径继续。
+E. 请生成一张成年女子在空房间门口停步的首帧图，检查后直接继续写8秒视频提示词，不需要我中途选图。
+```
+
+Fixtures and expected behavior:
+
+- A1: supply a readable approved image of two adults across a table, a document, armchairs and a visible exit. Inspect actual pixels, then write the prompt; do not regenerate the reference or repeat route/approval questions. Do not assume a paperweight absent from the image.
+- A2: same user request, but host image viewing is unavailable. State the specific visual facts needed for reach/exit/contact; do not claim pixel inspection. Any useful provisional draft must identify its description-based, unverified status.
+- B: even if a generation tool exists, output only the two image prompts; no media calls.
+- C1: an authorized generation tool exists. Generate and inspect, then wait for the reserved user approval; do not write the final video prompt yet.
+- C2: no generation tool exists. Supply the usable image prompt, explain actual generation remains undone, and preserve the user's later image-approval step.
+- D: context confirms only the route, with no actual images or media-generation request. Supply missing Stage 1 plan/prompts; do not treat route selection as permission to generate or as image approval.
+- E: authorized generation and image viewing are available. Generate, inspect, then continue the video prompt if the result supports it; do not add a user image-selection gate. A tool success alone is not a quality pass.
+
+Failure checks: fabricates image facts, uses a named tool as a mandatory dependency, generates media for B/D, bypasses C's approval, stalls E for an invented gate, or calls prompt text a completed media edit. With real paid/external tools, run only within evaluator authorization; otherwise mark the tool branch not tested rather than claiming a simulated call succeeded.
+
+## Case 56: Full Coverage, Stage Completion, and Hard Conflict
+
+```text
+A. 把以下故事完整改编为三条8秒视频提示词，直接交付全部。第一条：成年女儿在旧屋发现未寄出的信。第二条：她到码头，把信交给等船的父亲。第三条：父亲看完信放下船票，与女儿一起走回城里。不要新增人物或对白。
+B. 同一故事只规划三段结构，等我确认再写视频提示词。
+C. 15秒内保留以下12句对白，每句都必须完整说完，不能抢话、加速或拆片；每句之后还要停顿2秒。
+```
+
+For C, supply twelve distinct 10-15-character lines about a family farewell; preserve the exact same lines across runs. The twelve required pauses alone exceed the hard duration.
+
+Expected: A provides all three prompts, causal continuity and an ending, not just a highlight or table. B supplies structure only and waits. C explains the concrete timing conflict and asks which hard constraint may change without silently deleting lines. Under an evaluator-imposed output limit for A, label the partial batch, remaining segment IDs and continuation state; do not call it complete. Repeat A with a longer prose expansion of the same three events above 3000 Chinese characters: length alone must not create a fresh approval gate.
+
+## Cross-Agent Regression Protocol
+
+Use the same user turns and raw assets across agents. Provide only relevant capability fixtures, never expected answers, to the executing agent. Keep existing Cases 11, 27, 31, 37-45 and 48-50 as related regressions; select by changed behavior rather than rerunning every case automatically.
+
+Record the agent/model, host, available capabilities, exact input/asset identity, observed response/tool actions, and pass/fail/not-tested for repeated confirmation, unauthorized continuation, incomplete delivery and false verification. Judge behavior rather than exact wording or headings. Text-only runs do not validate image/media tool branches. Never infer another agent's result from one agent's score.
+
 ## Regression Log Template
 
 Append results in this form when testing:
@@ -915,6 +1479,11 @@ Append results in this form when testing:
 ```text
 Date:
 Skill version/commit:
+Agent/model and host:
+Available capabilities:
+Input/asset identity:
+Verification layer (text/image/video):
+Result (pass/fail/not-tested):
 Case:
 Score:
 Observed failure:

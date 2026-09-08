@@ -63,6 +63,8 @@ Use these principles before writing the final prompt and again during compressio
 
 ## Camera Language
 
+Resolve the aspect-ratio route before choosing composition-sensitive camera grammar. Ordinary low-risk work defaults to `16:9横屏` when no ratio is given; vertical/portrait/`9:16` work must read `vertical_9x16_adaptation.md`. Do not ask routinely—ask once only when an unresolved ratio materially changes production references, complex blocking, full-body action, groups, scale, or multi-platform delivery.
+
 Prefer specific but generation-friendly terms:
 
 - Use standardized English abbreviations for shot size and camera movement in storyboard prompts. Chinese explanations can appear in diagnosis, but the final shot labels should use the abbreviations when professional terms are needed.
@@ -78,6 +80,8 @@ Do not pile up terms. Use the terms that directly serve the scene's emotion.
 When a term has possible ambiguity, disambiguate by context. For example, `MCU` in a character shot means Chest Shot, while `MCU` in an object/scenery shot means Medium Close-Up. If needed, write `MCU Chest Shot` or `MCU object detail` once, then use the abbreviation consistently.
 
 ### General Camera Movement Selection System
+
+Use this system to choose the dramatic function first. If the selected move needs precise Chinese start/path/direction/speed/end wording, or a less common option such as `Snorricam`, `Pedestal`, `Slider`, aerial movement, or object pass-through, read `camera_movement_prompt_library.md`. Select only the relevant module; do not expand the final prompt into a catalogue.
 
 Choose camera movement by narrative function, not as decoration. Most 6-15s prompts need only 1-3 principal moves; a simple emotional close-up may need none. If a move does not change emotional distance, reveal space, follow action, create disorientation, or mark a transition, use `Static` instead.
 
@@ -359,6 +363,8 @@ Avoid:
 
 ## Performance Writing
 
+For a named emotion or a performance transition that needs more concrete observable cues, read `emotion_performance_prompt_library.md`. Use one nearest base emotion and adapt 2-4 signals to the character's motive, trigger, restraint, body condition, and scene distance. The library supplements the systems below; it does not override character knowledge, dialogue timing, FACS restraint, biomechanics, or emotional causality.
+
 Strong performance prompts use this sequence:
 
 ```text
@@ -470,6 +476,8 @@ Then align:
 - voice texture, pace, hesitation, and pause placement
 - breath and small recovery after key words
 - whether the smile reaches the eyes
+
+An expression need not finish. When new evidence or a competing task redirects attention, show the forming expression being interrupted and its residue changing gradually; do not reset to neutral at every line. Example: 笑意尚未成形，门内动静先吸走他的视线，呼吸轻变，嘴角随后回落。Use only when the interruption has a scene cause, not as a mandatory almost-smile or facial sequence.
 
 Positive pattern:
 
@@ -818,6 +826,16 @@ Compare the final frame with the opening baseline:
 
 Reserve enough time for the viewer to read the changed behavior and its sound. The action result, not the preceding dialogue alone, is the ending.
 
+### Repeated Action Recovery
+
+When an action recurs, show its visible completion, withdrawal or recovery before the next attempt. Give the restart a new stimulus or changed circumstance; vary timing or amplitude only when that change motivates it. Do not force a fixed cycle count, equal intervals, or a pause into deliberately continuous action. Recovery is physical continuity, not a reset of fatigue, emotion or prop state.
+
+Example: 她把信递出，对方没有接；手停住后收回胸前。听见对方叫她名字，她才再次伸手，这次不再躲开目光。保留递出与收回的轨迹，不用切镜或模糊掩盖。
+
+### Understated Comic Aftermath
+
+Use only for requested or approved dry/black comedy. Let a heightened event resolve into a brief pause, an understated response, and a return to the character's established ordinary concern. Keep the physical aftermath credible; do not auto-add a quip, smile, triumph or gag to serious drama. Allocate actual dialogue and reaction time, and let action sound settle so the line reads; this does not change the default no-music policy.
+
 ### Ordinary Drama One-Take Blocking System
 
 Use this for ordinary drama, suspense, romance, family conflict, intimate tension, waiting, investigation, or quiet confrontation when the scene can physically unfold in one continuous space. It is separate from action-fight long takes: the goal is readable blocking, emotional pressure, and spatial continuity rather than impact spectacle.
@@ -839,6 +857,8 @@ Each part must change something visible: distance, eyeline, body position, foreg
 - Let the camera change shot size through distance, not cuts: `LS/MLS` to establish, `MCU/CU` for pressure, then `Pull-Back` or slight `Track` if a larger body action needs room.
 - Use foreground objects to create depth: door frame, hanging cloth, glass reflection, table edge, chair back, curtain, hallway corner, bedpost, shelf, or mirror edge.
 - If using a foreground occlusion as a hidden transition inside a one-take style shot, the next view must preserve screen direction, body position, lighting state, and emotional continuity.
+
+- For requested observational handheld realism, a small framing or focus correction may follow a specific cause: an unexpected gesture, obstacle avoidance, subject acceleration or stopping. Let the operator notice and recover while preserving readable faces, key actions and the established path. Do not track every new speaker instantly by habit; keep the dramatic center until attention warrants moving. This is not random shake or scheduled error: do not require repeated delays, focus misses, exact subsecond offsets, or imperfections in locked/formal shots. If the user forbids hidden cuts, partial occlusion must preserve the real continuous path rather than conceal a transition.
 
 #### Focus and Attention Shift
 
@@ -979,6 +999,8 @@ Treat a dialogue scene as two linked performance tracks:
 
 - **Speaker track**: intention, protective emotion, trigger words, voice, face, breath, gesture, and post-line residue.
 - **Listener track**: what exact word lands, the delayed physiological or facial response, whether they try to interrupt, and what they suppress.
+- When a non-speaker already has a task, choose one compatible ongoing activity and let the line enter, interrupt or coexist with it; preserve hand/prop ownership and finish or suspend the activity visibly. Do not freeze them in anticipation of their turn or invent busywork for every listener. Their eyes may register speech while the hand finishes its prior action; listening does not require staring continuously at the speaker.
+- For several people receiving the same event, derive different reaction paths from each person's preceding state, knowledge and role: residual amusement fades for one, ongoing work stops for another, a third needs time to process. Use modest onset/order/amplitude differences when useful, not arbitrary staggered timers or a universal eyes-breath-mouth-body sequence. A common stimulus may legitimately cause simultaneous reactions; avoid only unmotivated identical choreography. Keep one clear reaction focus rather than giving every face equal detail.
 - Give the listener a reaction shot when their internal change advances the story. Keep it restrained when the speaker still owns the dramatic center.
 - Do not write generic reactions such as `他沉默` when a visible sequence can show defense -> attempted reply -> swallow -> gaze avoidance -> realization.
 
@@ -2187,6 +2209,7 @@ Use this for staged combat, close-quarters fighting, underground ring scenes, wu
 - Keep the number of active fighters small. For a 10-15s clip, 1v1 is safest; 1v2 or 1v3 needs much simpler beats.
 - Define each fighter's identity, outfit, body type, fighting attitude, and visual anchor before the action.
 - Write action as a timed chain: attack line -> perception/reaction -> defense/evasion -> counter -> impact/recovery.
+- When an action repeats, use `Repeated Action Recovery`: preserve the visible recovery path and changed trigger instead of looping the same pose or hiding the return in motion blur.
 - Specify body orientation and footwork: step back, side slip, lower stance, lateral step, pivot, twist, sprawl, level change.
 - Specify contact points: forearm block, palm parry, elbow cover, knee to midline, shoulder check, grip at waist, controlled throw.
 - Show weight and physics: lowered center of gravity, torso rotation, braced feet, transferred momentum, dust burst, floor impact.
@@ -2519,6 +2542,7 @@ Use this for messy but readable fights in taverns, inns, warehouses, gambling ro
 - Use objects as temporary obstacles, shields, or impact surfaces, not random decoration.
 - Keep one active action per beat. If a fighter kicks a stool, the stool's path and effect should be clear.
 - Write the cause-and-effect chain: body movement -> object contact -> object reaction -> opponent reaction -> camera reaction.
+- When wind, waves, a moving vehicle/platform or a slippery surface actually changes the action, also use the reverse chain: environment change -> lost support or blocked route -> body adjustment -> new action/result. Establish the forcing direction and available support, and keep loose objects responding consistently. Example: 甲板倾斜，散落木桶滑向低侧；人物随之失衡，扶住栏杆重新站稳，再继续原来的行动。Use only the environment changes needed for the beat; do not add a disaster to an ordinary scene.
 - Use short environmental aftermath to sell weight: broken wood settles, liquid spreads, dust hangs in light, bystanders freeze or step back.
 
 ### Body and Object Contact Points
@@ -2815,7 +2839,7 @@ Output:
 Rules:
 
 - Keep diagnosis and strategy concise and correctable.
-- Output only references that improve control.
+- Treat the output blocks above as conditional: follow the selected production path and actual asset state in `../SKILL.md`. Direct-video work omits full reference prompts by default; reference-first work delivers only the current required stage and continues when assets/approvals permit.
 - The duration-based character ceiling applies only to the final video prompt.
 
 ### 连续短片模式 / Continuous Short-Film Mode
@@ -2953,6 +2977,12 @@ Choose structure before writing shot details. Always state the chosen structure 
 | **剧情续写 / Continuation Segment** | User approves a segment and asks to continue | short-film sequences, clip bridges, multi-part emotional arcs | no prior segment context exists | Continue from previous story state, preserve identity/scene/props, choose a bridge type, add only one new event |
 | **主观镜头 / POV or Subjective Camera** | User needs immersion into a character's perception | fear, dizziness, memory trigger, entering unknown space | multi-character dialogue needs facial reactions | Use breath, hand edges, focus shifts, sound distortion; keep POV coherent |
 | **匹配剪辑 / Match Cut Structure** | Two times/places/actions mirror each other | past vs present, childhood/adulthood, before/after identity | simple linear action is clearer | Match hand, object, gaze, light, or sound across cuts |
+
+### Cross-Time or Cross-Space Match Cut
+
+When choosing a match cut across time or place, specify the few visual invariants needed to connect the cut (object screen position/size, camera height/angle, or motion phase), then the intentional changes (location, light, costume, age or injury state). A hard cut is not a gradual morph. Distinguish it from match-on-action within one continuous event. Preserve the user's intended memory, imagination, reality shift or ambiguity; do not invent a resurrection or other story mechanism to explain the edit.
+
+Example: 低机位看球停在犬爪前；硬切，保持球的位置与机位，地面换成阳光下的球场，健康的同一只犬上前叼球。球是转场锚点，不要求整个场景保持原样，也不让病伤在同一连续时空中无故消失。
 
 ### Quick Decision Rules
 
@@ -3223,24 +3253,23 @@ Priority order:
 
 ### Novel Text-Length Tiers
 
-Use length tiers before deciding whether to generate a final video prompt.
+Use length as a workload estimate, subordinate to `Execution Decisions and Agent Capabilities` and the adaptation-scope rule in `../SKILL.md`.
 
-- Under roughly 1500 Chinese characters: direct adaptation is usually allowed. Still select one clear event or emotional turn, then generate one 6-30s prompt based on playable content.
-- Roughly 1500-3000 Chinese characters: do not adapt the whole passage. First diagnose the passage, identify the strongest filmable scene, state what will be covered and what will become context or later material, then generate only one prompt for that selected scene.
-- Over roughly 3000 Chinese characters or a full chapter: do not generate final prompts immediately. First judge or ask whether the user wants `片段拆选` or `连续短片结构`.
-  - If the user wants a strong single video moment, test case, highlight, or does not specify full coverage, output a `影视化片段拆选表`: list 3-6 candidate scenes with emotional core, visual hook, suggested duration, and reason to adapt. This table does not need to cover every plot beat.
-  - If the user asks for complete adaptation, full coverage, a short film, a mini-drama, serialized generation, or turning the whole novel excerpt into videos, output a `连续短片总结构表`: cover the main story spine in order, preserve cause and effect between segments, note recurring characters/scenes/props, and do not output final video prompts yet.
+- Under roughly 1500 Chinese characters: one clear 6-30s event may suffice; check playable content rather than assuming the whole passage fits.
+- Roughly 1500-3000 Chinese characters: identify the strongest scene for a highlight request, or preserve the full causal spine across clips for full coverage.
+- Over roughly 3000 Chinese characters or a full chapter: establish a scene-selection or continuous structure before detailed prompts. Full coverage is already selected by `完整改编` / `完整覆盖` / `连续短片`; do not ask the user to choose highlights instead. If scope is genuinely unresolved and changes the deliverable materially, ask one scope question.
 
-Do not mechanically split long prose into one prompt per 30 seconds. That creates bloated, low-control output. Use scene selection or a continuous structure table first, and enter detailed multi-segment prompt generation only after the user confirms a segment, episode range, or full continuous-short-film plan.
+Do not mechanically split prose into one prompt per 30 seconds. Use filmable scene units, continuity, and requested coverage. A structure table is preparation for requested final prompts, not an automatic approval gate; respect structure-only and explicit approval-first requests.
 
 ### Long Novel Entry Decision
 
 When a long novel input arrives, decide the entry path before writing final prompts:
 
 ```text
-如果用户想要单条爆点视频：输出【影视化片段拆选表】
-如果用户想要完整改写/覆盖全文/短片/短剧/连续视频：输出【连续短片总结构表】
-如果用户意图不明确：先简短说明两种选择，并默认给出片段拆选表，或询问用户要哪一种
+如果用户想要单条爆点视频：选定或按要求列出片段，再交付所要求的提示词
+如果用户想要完整改写/覆盖全文/连续视频：先建立【连续短片总结构表】，再继续所要求的完整提示词
+如果用户只要结构或要求先确认：交付结构后停止或等待对应确认
+如果范围仍无法推断且影响交付：只询问这个范围问题
 ```
 
 `影视化片段拆选表` is for choosing the strongest filmable moments. It is selective and does not guarantee full coverage.
@@ -3255,7 +3284,7 @@ When a long novel input arrives, decide the entry path before writing final prom
 - key props or new visual references needed
 - bridge purpose for the next segment
 
-After outputting a continuous short-film structure table, wait for the user to choose a segment or ask to start generating prompts. Do not output all final prompts in the same response unless the user explicitly requests it and the scope is small enough.
+After establishing the continuous structure, continue the requested final prompts when scope is clear and required assets are available. Wait only for a reserved user approval, unresolved material decision, or required asset. If the host requires batches, label completed and remaining segments plus the next continuation state; do not imply that a partial batch completes full coverage.
 
 ### Diagnosis Fields for Novel Inputs
 
@@ -3285,7 +3314,7 @@ Keep this section concise. It is for adaptation clarity, not literary analysis.
 ### Compression Rules for Novel Inputs
 
 - If one excerpt contains setup, reveal, argument, collapse, and aftermath, choose only the turns that can naturally play within one 30s prompt and recommend splitting the rest.
-- For 1500-3000 character excerpts, state the selected scene explicitly before the final prompt. Treat all other material as context unless the user asks for a full sequence.
+- For highlight adaptation, state the selected scene explicitly before the final prompt and treat other material as context. For full coverage, preserve the causal sequence regardless of source length.
 - For 3000+ character excerpts, output a scene-selection list first. Do not output a long chain of final prompts unless requested.
 - If the original has many adjectives, keep only those that change lighting, costume, texture, performance, or mood.
 - If the original contains multiple named characters, keep only the characters who affect this moment on screen.
@@ -3396,6 +3425,62 @@ Use clear continuity phrases in the final prompt:
 - Adding more plot events than the selected duration can naturally play.
 - Copying the previous tail frame as the next first frame by habit, especially when a new angle, match-on-action, or complete shot-group opening would be smoother.
 - Starting with a generic establishing shot that ignores the previous emotional or action state.
+
+## Generated-Result Surgical Repair
+
+Use this only when the user provides a generated video, frames, or a concrete description of the rendered result and asks for correction. Diagnose the gap between the intended result and the visible/audible result; do not treat prompt wording alone as proof of the cause.
+
+### Repair Scope
+
+Choose no more than three dominant failures that materially affect the video:
+
+- identity or reference drift
+- body, contact, prop, or action-chain mechanics
+- spatial continuity, screen direction, or camera path
+- performance timing, expression, or emotional progression
+- dialogue order, lip-sync, voice identity, overlap, or sound balance
+- light-source continuity, exposure, material response, or unwanted commercial polish
+- pacing, shot density, ending state, or missing reaction time
+
+Separate a local control failure from a structural failure:
+
+- **Local failure:** the story beat, blocking, space, and successful visual/audio facts still work. Preserve them and revise only the smallest clauses controlling the failed result.
+- **Structural failure:** the story beat, action causality, blocking, topology, or camera path cannot produce the intended result. Rebuild only the affected shot or beat, while keeping every unrelated successful fact stable.
+
+Do not add more style words or a longer negative list when the real cause is missing action causality, impossible body mechanics, unclear space, conflicting camera instructions, or unplayable timing.
+
+### Success Lock and Single-Variable Revision
+
+Before revising, internally separate:
+
+```text
+锁定保留：已经成功且用户未要求改变的人物、服装、场景、时间天气、空间拓扑、道具状态、动作顺序、机位轴线、光源方向、对白、声音或结尾状态
+本轮只改：用户指定的变量，或能够解释主要失败的最小控制项
+```
+
+If the user says `只改运镜`, `只修动作`, `人物不要变`, `保留这版光线`, or gives another single-variable instruction, change only that axis. Update dependent physical consequences only when necessary; for example, a new camera position may require compatible framing and occlusion, but it does not authorize rewriting dialogue, wardrobe, lighting, or story. Do not turn a physical camera-position change into a new narrative viewpoint or mood such as voyeurism, surveillance, horror, threat, or intimacy unless the user requested that meaning.
+
+If the requested single change cannot coexist with a locked fact, identify the exact conflict instead of silently changing additional variables.
+
+### Output
+
+In workshop mode, keep the repair response compact:
+
+```text
+【生成结果诊断】
+主要失败：
+可能原因：
+
+【锁定保留】
+...
+
+【最小修复提示词】
+...
+```
+
+If the user asks for prompt-only output, return only the repaired copy-ready prompt. Do not claim a frontend supports deterministic local editing unless the user has established that capability.
+
+Method inspiration: `zy-cinematic-realism` result-repair and invariant-lock workflow (CC-BY-NC-4.0). This section is independently adapted for timed video, motion, dialogue, sound, and shot continuity rather than copied as an image workflow.
 
 ## Prompt Compression
 
@@ -3707,7 +3792,7 @@ Template:
 - Use 3 references only when a prop/product is central or the scene is historically/stylistically demanding.
 - Avoid giving separate reference prompts for every minor object.
 - In compact mode, omit reference prompts unless explicitly requested or essential for control.
-- In workshop mode, output only the recommended references and state that they are optional.
+- In workshop mode, follow the chosen production path: reference recommendations are optional for direct-video work, while required assets in reference-first work remain explicit dependencies. Do not describe a required production reference as optional.
 - In continuous-short-film mode, maintain references as a reusable asset list and mark each as `沿用`, `新增`, or `更新状态`.
 
 ### Continuation References
@@ -3916,6 +4001,8 @@ Run this silently before giving the final answer. Do not print it unless the use
 - If reference-image prompts are included, are they optional, concise, and consistent with the final video prompt?
 - Are reference types selected by production need rather than outputting character, scene, and prop prompts mechanically?
 - Is an identity reference distinguished from an exact first-frame reference?
+- When actual reference images are available, does the compiled video prompt use only facts visibly confirmed in those images rather than silently inheriting planned details from the earlier image prompts?
+- Were active references checked for watermarks/logos, garbled text, malformed anatomy, accidental people/objects, harmful crops, and other artifacts likely to propagate into video, with repair/cleaning recommended instead of relying on negative prompts?
 - Are reference-image prompts complete enough for image generation, including current segment clothing, appearance, dirt/wetness/injury/makeup, emotional baseline, scene layout, light, materials, and action space where relevant?
 - Do reference prompts avoid generic portraits or generic empty scenes when the current segment requires a specific costume state, disaster state, period styling, transformation, or emotional condition?
 - For every single-character reference, does the prompt describe only one visible person and avoid mentioning other characters, relationships, or interaction actions that could generate extra people?
@@ -3985,6 +4072,12 @@ Run this silently before giving the final answer. Do not print it unless the use
 
 ### Camera and Visual Logic
 
+- Was the aspect ratio explicit, inherited from an actual production frame/continuation, or safely defaulted without unnecessary questioning?
+- If `9:16竖屏` is active, was the scene deliberately recomposed for a narrow canvas rather than side-cropped from horizontal grammar?
+- In vertical output, are faces, eyes, hands, key props, head/foot room, entry/exit paths, and final action endpoints protected inside a readable action corridor?
+- Are two-person/group relationships expressed through depth, `OTS`, height, focus, reflection, masking, or motivated coverage rather than several subjects squeezed against the side edges?
+- Are horizontal moves short enough to retain the subject and land on a visible target, and are vertical moves motivated by real height/depth/action information?
+- Do literal first/tail frames and other composition-controlling references match the target ratio, with horizontal-to-vertical reframing inspected instead of assumed?
 - If the scene uses phone realism, documentary realism, period candlelight, low-key crime, commercial product, or another visual mode, are camera, light, focus, grain/noise, stabilization, skin texture, and spatial scale consistent with that single shooting condition?
 - Does every final prompt include at least one motivated light source or scene-level light baseline, with direction, color relationship, or visible effect stated concretely?
 - In a multi-shot or continuation prompt, do light direction, skin tone, shadow position, sound bed, and acoustic space stay continuous unless a visible event changes them?
@@ -3994,6 +4087,9 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Is camera movement motivated by gaze, body movement, emotional distance, or object interaction rather than decoration?
 - Has the prompt avoided piling up multiple camera moves in one beat when a single `Static`, `Dolly-In`, `Pull-Back`, `Pan`, `Tracking`, or `Handheld` choice would be clearer?
 - If this is a one-take scene, does it have a clear start frame, physically possible camera path, blocking/focus change, foreground/background depth, stable screen direction, and held ending?
+- If a first-frame reference is supplied, does it lock only the opening pose/composition/state unless the user explicitly requested a locked shot or one-take? After the opening, do shot size, angle, focus, cuts, and camera movement develop from story function rather than repeating the reference framing?
+- If the content needs several evidence, reaction, power, or aftermath beats, was a motivated multi-shot progression considered instead of defaulting to a static long take? Does every new view change what the audience knows, feels, or can physically verify?
+- For reference-driven motion, were visible hand/foot positions, body support, reach, furniture clearance, prop weight/friction, action path, and exit space checked before writing contact and movement?
 - If this is a one-take multi-character reveal, are characters revealed progressively with foreground masking, lateral movement, or pull-back hierarchy, and are their faces, hairstyles, costumes, postures, and emotional baselines distinct enough to avoid repeated faces?
 - If `Rack Focus` or `Focus Pull` appears, does it shift attention between meaningful subjects such as face/object, foreground/background, reflection/body, or hand/reaction?
 - Before a large body action, does the framing create enough physical space to show it clearly?
