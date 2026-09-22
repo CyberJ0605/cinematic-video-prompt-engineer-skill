@@ -202,12 +202,14 @@ Avoid bare contradictions such as describing the character as wearing white at t
 
 ## First-Frame and Camera-Development Contract
 
+Before applying this section, distinguish a previous tail-frame state reference from an explicitly bound opening frame. A supplied previous ending does not automatically authorize matching its composition. Follow `continuity_director_contract.md` for cross-clip cuts and shot-to-reference coverage. Only a user-selected actual first-frame binding uses the opening-composition contract below.
+
 A `状态/首帧参考图` controls the opening state, not the whole film grammar. Unless the user explicitly requests `固定镜头`, `一镜到底`, or the model/workflow requires a locked view, its shot size, angle, framing, and focus authority ends after the opening beat is established. Identity, costume state, scene topology, relationship axis, light direction, handedness, and prop continuity remain locked across later views.
 
 Choose the structure from the dramatic content before writing the timeline:
 
 - Use a one-take only when continuous space, uninterrupted performance, or real-time tension is the dramatic advantage. Let the camera develop inside the take through one coherent path, motivated reframing, or focus change; do not keep the first-frame composition static by habit.
-- Use a multi-shot sequence when the story needs distinct evidence, object contact, a listener reaction, a power shift, or an aftermath that one view cannot read clearly. Begin from the supplied first frame, then cut to views derived from the same identity and space.
+- Use a multi-shot sequence when the story needs distinct evidence, object contact, a listener reaction, a power shift, or an aftermath that one view cannot read clearly. When the image is explicitly bound as the first frame, begin there; otherwise use it as state evidence and open on the planned new angle. Cut only to views supported by the same identity and inspected spatial references.
 - Build a motivated shot progression rather than equal time slices. A common relationship-drama progression is `relationship geography -> decisive hand/object action -> affected face/reaction -> release or aftermath`, but omit or reorder stages to fit the actual story.
 - Each new shot must change what the audience knows, feels, or can physically verify. Vary shot size, horizontal angle, focus, or camera distance enough to create a real edit; preserve the 180-degree axis, eyelines, screen direction, light, body/prop state, and match-on-action continuity.
 - If a required new view depends on unseen room geometry, an unverified reverse side, or a face/prop angle the active references cannot hold reliably, generate a compatible additional keyframe/scene view or split the clip instead of inventing uncontrolled space.

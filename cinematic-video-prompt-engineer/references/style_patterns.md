@@ -177,6 +177,8 @@ Avoid:
 - mixing every light type in one sentence: moonlight, Rembrandt, spotlight, blinds, candle, window, golden hour, and volumetric beams all at once.
 - making night exteriors look like an indoor studio portrait unless the user asks for stylization.
 
+For a restrained urban night exterior, a dark background can coexist with soft, readable midtones rather than mandatory high contrast. Let motivated street/bridge/window light retain facial modeling, clothing folds and natural skin color against a darker river or skyline; allow a small neutral-warm practical contrast within cool ambient light. Separate foreground, people and distant lights through occlusion, distance and subtle atmospheric falloff. Do not prescribe color-area percentages, a uniform cyan cast, lifted gray blacks or a complete glowing rim as universal requirements.
+
 ### Dynamic Light Interaction
 
 Use this when the character, vehicle, train, curtain, door, window, flashlight, or weather is moving. The light should not sit still as decoration; it should interact with motion.
@@ -458,6 +460,114 @@ claim/prediction -> short waiting gap -> offscreen or visible verification -> ob
 ```
 
 The verification must be specific enough to reduce coincidence but small enough to preserve mystery. Do not immediately explain the mechanism after the proof lands.
+
+## Retrospective Reversal and Dual-Meaning Montage System
+
+Use this system when the ending should make the audience reinterpret earlier images or sounds: subjective memory, hallucination, dissociation, deceptive montage, mistaken perception, unreliable experience, or a supplied twist whose strongest effect comes from retrospective meaning.
+
+Do not activate it for ordinary emotional close-ups, product films, straightforward action, or complete scenes that do not need perceptual misdirection. Do not invent a hallucination, hidden reality, death, culprit, or world rule merely to create a twist. If the hidden truth changes a user-specified identity, relationship, motive, or ending, obtain direction approval unless the user already delegated that invention.
+
+### Three-Track Belief Record
+
+Track three different states internally:
+
+```text
+Objective truth: what is physically happening
+Character perception: what the character currently experiences or can admit
+Audience belief: what the available image and sound invite the viewer to believe
+```
+
+For every major beat, know:
+
+```text
+Visible/audible evidence -> intended surface interpretation -> hidden compatible truth -> later evidence that changes the interpretation
+```
+
+Character knowledge and audience belief are related but not interchangeable. A character may be hallucinating while the audience accepts the hallucination as a memory; a character may know the truth while the framing withholds it from the audience; or the audience may suspect more than the character. Performance must follow character perception, while editing, framing, and sound control audience belief.
+
+### Dual-Meaning Beat Map
+
+Before writing the copy-ready prompt, map only the paired beats needed to carry the reversal:
+
+```text
+Surface beat:
+Hidden real event:
+Shared physical carrier:
+What must remain different:
+Final proof:
+```
+
+Useful shared carriers:
+
+- the same action phase: reaching, falling, turning, pulling, embracing, running
+- the same subject position, silhouette, contact point, or foreground shape
+- the same screen direction or entry path
+- the same rhythmic sound family: breath, footsteps, pulse, scraping, beeps, cloth friction
+- the same object geometry with a deliberately changed state or meaning
+
+Use two or three strong correspondences rather than a long sentimental montage. Each earlier beat must make sense under the surface interpretation and remain physically compatible with the hidden truth. The ending should reveal a pattern, not introduce an unrelated fact.
+
+### Matched Transition Across Perceptual States
+
+When moving between reality and memory/perception, prefer a physical editorial carrier over decorative transformation:
+
+```text
+action begins in one state -> preserve composition/contact/motion direction -> hard cut at the action phase -> action resolves in the other state
+```
+
+Lock the elements that sell the match: frame position, action phase, motion direction, hand/contact point, camera height, and dominant sound rhythm. State intentional differences such as age, costume, location, light, weather, injury, or object condition clearly so the model does not treat the change as accidental continuity drift.
+
+Particles, white flashes, morphing, dissolves, and transformation effects are not forbidden, but use them only when the story's perception genuinely requires them. A clean hard cut or sound bridge is usually stronger when the two images already share action and composition.
+
+### Sound Recontextualization
+
+Sound may carry the second reading rather than merely decorate the reveal. Design one compact motif whose cadence or texture can support both meanings:
+
+```text
+first hearing: benign or emotionally safe interpretation
+return/reveal: the same rhythmic family exposes its actual source
+```
+
+Examples include playful beeps becoming an alarm pattern, excited breathing becoming oxygen-starved breathing, affectionate cloth movement becoming restrained physical struggle, or a household rhythm becoming failing machinery. Preserve enough acoustic similarity for recognition, while changing source position, room response, intensity, or accompanying image to reveal the truth.
+
+Do not rely on graphic bodily sound, excessive volume, or a late unrelated effect. If the story works without a dual-use sound motif, use ordinary scene sound instead.
+
+### Camera Stability as a Narrative Arc
+
+Treat stabilization as a scene-level variable when consciousness, safety, or control changes:
+
+```text
+stable/ordered -> subtle human correction -> closer and less stable -> perceptual loss of control -> decisive final stabilization or collapse
+```
+
+This is a menu, not a compulsory sequence. A false memory may begin `Static` or gently stabilized, reality may intrude through increasingly close `Handheld`, and the final reveal may return to a locked wide shot that forces the audience to inspect the truth. Another story may reverse that pattern.
+
+Do not shake every shot. Bind each stability change to a specific change in perception, physical danger, operator distance, or character control. Preserve face, prop, geography, and action readability.
+
+### Timing and Reveal
+
+For a 25-30s version, a useful proportional shape is:
+
+```text
+establish conflict and objective clues -> decision/contact threshold -> sustained surface interpretation with paired beats -> reveal and held evidence
+```
+
+Do not copy fixed timestamps mechanically. Give the deceptive middle enough time to feel emotionally real, but reserve enough ending time for two or three decisive pieces of visual or sonic evidence and a readable aftermath.
+
+Prefer an inferable ending over explanatory dialogue or voiceover. The final shot should complete the immediate physical action, reveal the objective state, and hold long enough for the audience to connect the earlier correspondences. Ambiguity is allowed only when the remaining question is intentional; basic spatial facts should still be legible.
+
+### Copy-Ready Prompt Rule
+
+The belief record and beat map are planning tools. Do not print their abstract labels inside the final video prompt. Translate them into exact shots, actions, sound bridges, matched composition, performance state, and timed reveal evidence.
+
+Avoid:
+
+- random happy memories with no physical correspondence to the hidden event
+- revealing the objective truth so early that the middle no longer carries a credible surface reading
+- a final twist supported only by new exposition
+- treating continuity changes as magic morphing when a deliberate hard cut is intended
+- continuous heavy handheld movement with no stability progression
+- explaining every correspondence through narration after the audience can already see it
 
 ## Live Performance Realism System / 活人感表演真实系统
 
@@ -876,6 +986,8 @@ Focus changes should follow attention. Do not add focus pulls if the story has n
 
 For 2-4 people in one space:
 
+- When opposing groups, a hostage/contact relation, or a physical boundary makes geography fragile, internally establish three linked facts: the fixed ordering/facing of people and landmarks; the camera's physically accessible route; and the background expected behind each viewed person. For example: river -> railing -> hostage and captor -> confrontation gap -> officers -> crowd. Moving attention to the officers must not move the crowd behind the captor. Characters leaving frame retain their world positions; left/right screen coordinates may change with a motivated camera move. Describe only the essential relationships in the final prompt, and scope any no-crossing restriction to the actual scene rather than banning axis crossings universally.
+
 - Assign stable geography first: who begins foreground/background, screen left/right, seated/standing, near/far from exit or key object.
 - Let power shift through blocking: one person steps closer, sits down, turns away, crosses behind another, enters light, blocks the exit, or becomes isolated in background.
 - Keep eyelines readable. If the camera crosses the 180-degree axis, do it through a visible move around the characters or a neutral frontal/back view.
@@ -1161,6 +1273,8 @@ Prompt rule:
 ```text
 先写保护性情绪，再写保护层出现裂缝，最后写真实情绪暴露。不要让愤怒、悲伤和落泪同时从第一秒出现。
 ```
+
+An optional return to defense can follow vulnerability when the relationship and story support it: a familiar name interrupts anger; the character briefly exposes hurt through a broken phrase, released jaw or avoided gaze; recognizing that exposure, they tighten again and redirect it into accusation or refusal. Bind the renewed defense to that trigger and changed intention, not simply a louder repetition. Do not require re-escalation in scenes that resolve through trust, acceptance or sustained vulnerability.
 
 ### Dialogue as Expression Timeline
 
@@ -2206,7 +2320,7 @@ Use this for staged combat, close-quarters fighting, underground ring scenes, wu
 
 ### Core Principles
 
-- Keep the number of active fighters small. For a 10-15s clip, 1v1 is safest; 1v2 or 1v3 needs much simpler beats.
+- Keep the number of active fighters small. For a 10-15s clip, 1v1 is safest; 1v2 or 1v3 needs a simplified focal exchange and explicit non-focal states. A 25-30s stylized 1v2 or 1v3 fight may carry more action changes when `Stylized Multi-Attacker Fight Control` below remains readable.
 - Define each fighter's identity, outfit, body type, fighting attitude, and visual anchor before the action.
 - Write action as a timed chain: attack line -> perception/reaction -> defense/evasion -> counter -> impact/recovery.
 - When an action repeats, use `Repeated Action Recovery`: preserve the visible recovery path and changed trigger instead of looping the same pose or hiding the return in motion blur.
@@ -2215,7 +2329,46 @@ Use this for staged combat, close-quarters fighting, underground ring scenes, wu
 - Show weight and physics: lowered center of gravity, torso rotation, braced feet, transferred momentum, dust burst, floor impact.
 - Camera should respond to the action: handheld follow, low-angle tracking, short shake on near impact, tilt up during lift, snap tilt down on landing.
 - Surrounding crowd should be background pressure only, not extra fighters unless the user asks.
-- Keep safety and taste clear: staged, non-lethal, no gore, no real injury emphasis.
+- Keep safety and taste clear: staged and non-graphic. Default to non-lethal when the outcome is unspecified. If the user explicitly requires a fatal result, show it through defeat state and aftermath rather than gore or fetishized injury.
+
+### Stylized Multi-Attacker Fight Control
+
+Use this for heightened 1v2 or 1v3 action in which speed, acrobatics, simultaneous pressure, and a dense 16-30s action chain matter more than ordinary fight realism. Do not turn one successful example into a mandatory template; apply only the controls needed by the requested tone and duration.
+
+**Combat-function signature**
+
+- Give each fighter a compact, non-overlapping signature: weapon ownership and count, preferred distance, dominant attack plane or line, usual entry sector, rhythm, and recovery/re-entry behavior. Distinguish fighters by how they create pressure, not only by names or costumes.
+- Preserve weapon ownership and count as hard continuity. Treat exact named techniques as execution vocabulary unless a move carries the story turn.
+
+**Multi-attacker state continuity**
+
+- Each beat has one readable focal exchange. Every other active fighter must remain in a purposeful visible state such as pursuing, re-angling, blocking an escape lane, recovering balance, retrieving the weapon line, changing height, or re-entering from a blind side.
+- Do not write turn-taking combat. The non-focal attacker should shape the protagonist's next decision without launching a competing limb-heavy contact at the same instant.
+- Use a short `Threat-Handoff Overlap / 威胁交接重叠` when focal pressure transfers: `当前攻防尚未完全结束 -> 下一名攻击者已入画、举械预备、封住退路、投下逼近影子，或以清晰脚步/兵器声施压 -> 两股威胁短暂重叠 -> 主攻关系完成交接`. The next attacker must begin a readable pressure state before the current attacker fully exits or settles.
+- Keeping all fighters fully visible is not mandatory. When the frame cannot hold three readable bodies, prove the off-screen attacker's continuing pressure with one precise cue—weapon entering the edge of frame, blocked escape space, moving shadow, approaching footfall, or a forced eyeline—then bring that attacker back on the next causal beat.
+- Avoid long unopposed solo runs unless temporary separation is the intended story beat. Prefer one focal contact plus one preloaded or constraining threat over three simultaneous limb-heavy contacts.
+- Carry the end state of one beat into the next: stance, travel direction, weapon line, height, balance, and distance become the next action's cause. Do not use `attack -> stop -> reset -> attack`.
+
+**Hard state-change isolation**
+
+- Treat disarming, weapon breakage, weapon transfer, exact weapon landing/embedding, a fighter becoming incapacitated, and a major environment collapse as hard state changes. These are continuity events, not decorative move vocabulary.
+- Give one short beat or phase only one primary hard state change. Write it as `trigger -> visible process -> result -> confirmation`: name the hand/weapon or body involved, the causal contact, the travel or fall path, and a brief readable end state before the next event competes for attention.
+- Do not stack a precise disarm, exact weapon endpoint, character fall, and a large debris/net/bag collapse inside the same beat. Combine two only when one directly causes the other and the causal chain plus final state can remain visible as a single event.
+- For direct-video generation without approved references, `several fighters + dual wielding + mid-fight disarm + multiple exact weapon endpoints` is a high-risk control bundle. If dual wielding is not story-critical, prefer one visually distinct single weapon per fighter. If it is story-critical, dedicate a shot/beat or a suitable reference asset to that weapon state and remove competing hard state changes from the same interval.
+
+**Instruction priority**
+
+1. Hard invariants: fighter count and identity, no fusion/duplication, weapon ownership/count, location, required victory or defeat state.
+2. Phase anchors: usually 3-5 indispensable structural events such as an opening near-miss, central pincer, reversal, environmental payoff, and final result.
+3. Soft move vocabulary: spins, flips, slides, rebounds, counters, and connective actions that the model may sample or substitute within the same function.
+
+If instructions compete, preserve hard invariants and phase anchors before exact move names, ornamental camera behavior, particles, or repeated negative constraints.
+
+**Sustained high-intensity exception**
+
+- A stylized 25-30s fight may stay at high pressure without a full pause when contrast is created through attack direction, height, distance, focal attacker, shot size, camera side, and environmental consequence.
+- High intensity is not permission for visual sameness. Change the dominant relationship or spatial problem between phases, reserve one primary emphasis device such as a near-miss speed ramp or impact hold, and leave a short readable final state.
+- Split only when simultaneous contacts, weapon paths, camera moves, and environment events can no longer be assigned a clear causal order. Do not split solely because the action-beat count exceeds one fixed number.
 
 ### Fight Prompt Length Budget
 
@@ -2240,7 +2393,7 @@ Recommended budget for a 25-30s fight:
 - 2200-3400 Chinese characters total.
 - Use more than 3000 only when the extra text protects action geography, timing, continuity, or physical readability.
 - If the fight still needs more than 4000 characters, split it into consecutive clips instead of increasing action density.
-- Keep choreography readable. If more action beats are required, split into consecutive clips.
+- Organize dense choreography into 3-5 phase anchors. Additional connective actions may remain inside those phases when fighter states, weapon paths, and cause-effect order stay readable; otherwise split into consecutive clips.
 
 Compression rules:
 
@@ -2249,7 +2402,7 @@ Compression rules:
 - Combine attack route, defense, and contact point into one concise beat.
 - Do not repeat `真实重量感`, `手持摄影`, `无血腥`, or continuity constraints under every shot.
 - Keep only action details that affect readability, physics, continuity, camera response, or model stability.
-- If more than 10 action beats are needed, split into two consecutive prompts and choose a natural clip bridge: different angle/shot-size continuation, match-on-action, or a new completed action phase. Use the first segment's tail frame only when exact body position is essential.
+- For 1-15s fights, more than 10 distinct action beats normally signals overload and should be simplified or split. For 16-30s fights, do not apply a universal ten-beat cutoff: first compress named moves into functional chains and test whether each phase preserves fighter state, weapon ownership, spatial direction, contact, and recovery. Split only if those relationships remain unreadable. Choose a natural bridge such as a different angle/shot-size continuation, match-on-action, or a new completed action phase; use the first segment's tail frame only when exact body position is essential.
 
 Compact action beat example:
 
@@ -2414,7 +2567,7 @@ Choose camera movement from the action's dramatic need. Do not treat the followi
 - For edited fights, preserve the 180-degree axis, screen direction, eyelines, weapon hand, and action velocity. Use match-on-action for cuts inside a strike, dodge, fall, or weapon swing.
 - For continuous long takes, use only physically connected camera paths. Foreground wipes may disguise stitching, but the resulting shot must still feel like one navigable space.
 - Let impact breathe for a fraction of a beat, then show recoil, pain response, balance recovery, environmental reaction, or the next threat. Do not freeze at contact and omit the physical result.
-- Use camera movement to vary rhythm: readable setup -> mobile exchange -> one emphasized peak -> stable aftermath. Continuous maximum-intensity movement weakens impact.
+- Use camera movement to vary rhythm: readable setup -> mobile exchange -> one emphasized peak -> stable aftermath. In realistic fights, continuous maximum intensity usually weakens impact. In stylized 25-30s fights, pressure may remain high when direction, height, distance, focal attacker, shot scale, and environmental consequence keep changing; avoid repeated movement texture and still preserve one dominant emphasis and a readable aftermath.
 
 Useful compact phrase:
 
@@ -2441,10 +2594,16 @@ For 30s split into two 15s prompts:
 
 ### Safety and Negative Constraints
 
-Use explicit constraints:
+Choose outcome-specific constraints. When no fatal result is requested, use:
 
 ```text
 电影特技打斗，非致命，无血腥，无真实伤害；保持角色脸部、发色、服装一致；不要肢体穿模，不要多余手脚，不要武器变形，不要动作方向混乱；围观者只作为背景反应，不冲入打斗。
+```
+
+When the user explicitly requires a fatal result, preserve the narrative outcome without graphic injury:
+
+```text
+电影特技打斗，非血腥；死亡仅通过决定性动作、失去行动能力、倒地状态和幸存者关系表达，不展示开放伤口、肢解、喷溅或伤害猎奇；保持角色身份、武器归属和倒地位置连续。
 ```
 
 ### Common Failure Fixes
@@ -3077,7 +3236,7 @@ Prefer stronger size contrast or a motivated bridge:
 - 特写 -> 中景 / 全景
 - 全景 -> 环境道具插入 -> 特写
 
-If adjacent shot sizes are necessary, motivate the cut with action, sound, eyeline, object movement, or a clear emotional turn.
+Do not use adjacent shot sizes when the user has explicitly prohibited them. Otherwise an exceptional adjacent-size cut requires a specific editorial reason; do not use action or sound as a blanket exemption.
 
 ### Camera Angle Change
 
@@ -3343,6 +3502,8 @@ When adapting a novel into multiple consecutive video prompts, keep a compact co
 - Use the previous segment's story state as the continuity anchor between adjacent prompts. A previous tail frame may be used as a reference, but it should not be treated as the required first frame of the next video.
 
 ## Continuation and Clip-Bridging Workflow
+
+Apply `continuity_director_contract.md` first: prior tail frames are state references by default, not bound opening compositions. Audit the inter-clip cut as well as internal cuts, and check reference coverage before compiling unseen angles.
 
 Use when the user says `继续`, `接着往下写`, `下一段`, `下一镜`, `延续上一条`, or when a long story is split into adjacent clips.
 
@@ -3971,6 +4132,10 @@ Run this silently before giving the final answer. Do not print it unless the use
 - If this is a split prompt, has the bridge type been chosen: different shot size/angle continuation, match-on-action, or complete shot-group continuation?
 - For delayed recognition, mystery, time displacement, or hidden identity, does each character react only to evidence they have actually received, with known facts, new evidence, reasonable inference, and remaining unknowns kept distinct?
 - Does the audience question evolve after each meaningful answer instead of repeating the same mystery, and do key questions reveal character values rather than merely explain the plot?
+- If a retrospective reversal or deceptive montage is used, are objective truth, character perception, and audience belief tracked separately, with no character reacting beyond their actual perception?
+- Do at least two earlier image or sound beats remain compatible with both the surface interpretation and the later revealed truth, rather than functioning as unrelated memory decoration?
+- Does the reveal use previously prepared action, composition, direction, contact, object, or sound evidence instead of introducing an unsupported final fact or explanatory speech?
+- If sound recontextualization or a camera-stability arc is used, does each change carry a specific perceptual or dramatic function while preserving action and spatial readability?
 - If the ending depends on emotional change, was an earlier behavior, boundary, contact attempt, object action, or posture established so the final completion, stopping, reversal, transfer, or recontextualization feels earned?
 
 ### Prompt Usability

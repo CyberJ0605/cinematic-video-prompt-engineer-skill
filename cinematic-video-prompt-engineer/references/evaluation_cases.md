@@ -236,13 +236,13 @@ Input:
 Expected:
 
 - Segment 1: discovery and approach; stable tail-frame composition.
-- Segment 2: begins from exact previous state; recognition and touch.
+- Segment 2: preserves the previous story/action state; recognition and touch, with a motivated differentiated opening angle unless a same-shot extension is explicit.
 - Same clothing, light, bench, sweater, positions, and sound bed.
 - Each final prompt under the duration-based character ceiling.
 
 Failure checks:
 
-- second segment restarts with a new establishing shot
+- second segment resets the event or repeats discovery; a motivated new angle preserving story state is allowed
 - mother already recognizes him in segment 1
 - prop or lighting changes
 
@@ -1466,6 +1466,115 @@ For C, supply twelve distinct 10-15-character lines about a family farewell; pre
 
 Expected: A provides all three prompts, causal continuity and an ending, not just a highlight or table. B supplies structure only and waits. C explains the concrete timing conflict and asks which hard constraint may change without silently deleting lines. Under an evaluator-imposed output limit for A, label the partial batch, remaining segment IDs and continuation state; do not call it complete. Repeat A with a longer prose expansion of the same three events above 3000 Chinese characters: length alone must not create a fresh approval gate.
 
+## Case 57: Stylized 1v2 High-Intensity Fight Control
+
+Input:
+
+```text
+30秒、16:9，高燃东方动作短片。一名成年女刀客对战两名成年男性：甲使用长柄重兵器正面纵向压制，乙使用双短兵器从侧后快速切入。第一帧直接开打，全程高压，结尾女主明确取胜；根据剧情决定是否致命，非血腥。直接给最终视频提示词。
+```
+
+Expected:
+
+- Give all three fighters distinct combat-function signatures: weapon ownership/count, distance, attack plane, entry sector, rhythm, and recovery/re-entry behavior.
+- Use one focal exchange per readable beat while assigning the non-focal attacker a purposeful state that shapes the next decision. Before one focal exchange fully resolves, preload the next threat through entry, weapon preparation, lane closure, shadow, sound, or forced eyeline so the pressure reads as 1v2 rather than alternating 1v1; do not demand simultaneous limb-heavy clutter.
+- Isolate any story-critical disarm, weapon break/transfer/endpoint, incapacitation, or major environment collapse as one primary hard state change with trigger, visible process, result, and confirmation. Do not stack several unrelated hard state changes into one short phase.
+- State or internally enforce the priority order: hard fighter/weapon/outcome invariants, 3-5 phase anchors, then optional move vocabulary. Do not require every named acrobatic move to appear.
+- Allow more than 10 visible action changes in a 25-30s stylized fight when they remain organized inside readable phases. Do not split only because of a universal action-count threshold.
+- Sustain pressure through changes in direction, height, distance, focal attacker, shot scale, and environmental consequence; keep one dominant emphasis device and a readable ending state.
+- If the user explicitly chooses a fatal ending, preserve it through non-graphic defeat and aftermath. If no fatal outcome is requested, default to incapacitation rather than inventing death.
+- Keep the final prompt below the 4000-character ceiling, normally within the 2200-3400 target, and simplify ornamental camera/particle language before action causality.
+
+Failure checks:
+
+- differentiates opponents only by names or clothing while their weapon use, attack line, and rhythm remain interchangeable
+- lets one opponent wait motionless while the other completes a full exchange, or launches several unreadable contacts at once
+- keeps the non-focal opponent offscreen/inactive through a long solo exchange with no entry, lane closure, shadow, sound, or other readable pressure cue
+- combines a precise disarm, exact weapon landing, character fall, and large environment collapse in one short beat so the result cannot remain legible
+- treats every move name as mandatory and loses fighter count, weapon ownership, geography, or recovery continuity
+- mechanically splits the 30s prompt because it exceeds 10 action changes despite readable phase organization
+- uses the same aerial or spinning texture repeatedly without changing the spatial problem
+- silently changes a requested fatal result to non-lethal, or adds death when it was not requested
+- claims prompt-text quality proves the generated video will execute every move
+
+## Case 58: Retrospective Reversal and Dual-Meaning Montage
+
+Input:
+
+```text
+30秒、16:9、写实科幻悬疑。失压飞船里，一名成年女宇航员意识模糊，仿佛回到家中陪女儿玩“追光点”：女儿追逐墙上移动的红点，扑向她怀里，两人贴着窗听彼此呼吸。结尾回到现实，观众才看清红点来自氧气警报，她伸手拥抱其实是在抓住破裂舱门，贴窗呼吸对应面罩漏气。不要旁白解释，不要血腥，用画面和声音让观众自己拼出真相。直接给最终视频提示词。
+```
+
+Expected:
+
+- Use the retrospective-reversal system because the supplied ending is meant to change the meaning of earlier image and sound beats; do not add a route or direction checkpoint.
+- Track objective spacecraft events, the astronaut's failing perception, and the audience's temporary home-memory belief separately. Her performance follows what she experiences, not what the audience will learn later.
+- Build two or three deliberate paired beats: moving red play-light/alarm indicator, child rushing into an embrace/astronaut lunging for the damaged hatch, shared-window breathing/leaking mask or visor. Preserve useful composition, action phase, contact point, screen direction, or sound rhythm across each hard cut.
+- Keep intentional differences clear: domestic warmth versus spacecraft emergency light, daughter versus hatch geometry, safe breath versus strained oxygen loss. Do not morph people into objects or treat changed states as accidental continuity errors.
+- Use one compact dual-use sound motif, such as playful electronic pulses later recognized as the oxygen alarm, and breath/air texture that shifts from intimate to mechanically leaking. No explanatory voiceover or graphic bodily sound.
+- Give camera stability a motivated arc, such as relatively stable domestic perception becoming subtly less stable as reality intrudes, then a locked or clearly readable final spacecraft reveal. Do not apply heavy shake throughout.
+- Reserve enough final time for at least two decisive pieces of reality evidence and a held aftermath. The immediate action must complete; do not cut off at the first alarm reveal.
+- Keep the final prompt within the 25-30s target/ceiling and prioritize belief control, matched action, sound, spatial clarity, and ending evidence over decorative effects.
+
+Failure checks:
+
+- creates a generic sentimental flashback whose actions, positions, or sounds do not correspond to the spacecraft reality
+- reveals the complete spacecraft truth during the middle montage, eliminating the intended temporary audience belief
+- introduces the alarm, hatch damage, or mask leak only at the ending with no earlier compatible cue
+- uses particles, white flashes, dissolves, or morphing as the main transition despite the requested physical correspondences
+- lets the astronaut consciously react to objective facts that her current perception has not admitted
+- explains every pairing through narration, subtitles, or dialogue
+- keeps the camera violently handheld from the first frame or sacrifices face, hatch, alarm, and mask readability
+- adds gore, an unsupported death, another rescuer, or a new culprit
+- ends immediately on the reveal without enough visual evidence or reaction time
+
+## Case 59: Generated 1v2 Relay and Weapon-State Repair
+
+Input:
+
+```text
+这是上一版30秒古代盐仓1女对2男打戏的实际生成结果：三个人物、盐仓空间、女主单刀、盐袋坠落、两名对手倒地和最后女主近景都很好；但前17秒经常变成甲打完再由乙上，真正夹击很少。乙原定双钩多数只看见一把，右钩被打飞钉进木柱没有出现；17-23秒同时写了缴械、钉柱、乙持剩余短钩追击、割绳、盐袋和网坠落、挡住甲，模型只保留了盐袋坠落。请按成片反馈补强或修复提示词，其他成功内容不要大改，也不要声称修改后已经生成成功。
+```
+
+Expected:
+
+- Use generated-result surgical repair. Lock the proven identities, costumes, salt-warehouse topology/materials, female saber continuity, successful falling salt-bag payoff, defeat outcome, and final close-up unless the user asks to change them.
+- Diagnose no more than three dominant failures: isolated focal exchanges that read as alternating 1v1, overloaded weapon-state control, and competition between the disarm and the environment payoff. Do not redesign the entire fight or add more moves, characters, camera tricks, or style words.
+- Replace the vague demand that everyone remain active with explicit threat-handoff overlap: before the focal attacker finishes, the next attacker enters/preloads/seals a lane or applies one precise off-screen pressure cue, followed by a brief readable overlap and transfer.
+- Preserve one primary hard state change per affected beat. Keep the successful salt-bag/net collapse separate from a precise disarm unless one directly causes the other and both the causal contact and final state remain readable.
+- For a no-reference direct-video repair, either simplify the second opponent to one distinctive hook blade when two blades are not story-critical, or reserve a dedicated beat/reference asset for stable dual-wield and disarm continuity. Do not keep `dual wield + exact one-hand disarm + exact embed point + continued one-weapon pursuit` as a background instruction competing with the environment event.
+- Write any retained disarm as trigger, visible release, weapon flight/landing, and short confirmation before the next event. If the user prioritizes the already successful environment payoff, it is acceptable to remove or relocate the disarm rather than preserving every original instruction.
+- Report the revised prompt as text-checked only. A new generated-video review is required before claiming the repair worked.
+
+Failure checks:
+
+- removes successful environment, identity, outcome, or ending controls while trying to fix the relay problem
+- keeps saying `三人持续运动` or `不要轮流攻击` without specifying how threat passes between attackers
+- forces all three fighters into simultaneous contact and makes the action less readable
+- adds more named techniques or camera moves instead of reducing the overloaded hard-state interval
+- preserves dual wield, precise disarm, exact embedded endpoint, one-weapon continuation, major environment collapse, and another fighter's interception inside the same short beat
+- claims the revised wording has solved the rendered result without reviewing a new video
+
+## Case 60: Bridge Standoff Geography and Returning Defense
+
+Input:
+
+```text
+写一段30秒、2.39:1写实夜景人质对峙提示词，参考图已经另行确认，直接给文本。B在桥栏内侧控制身前的C，两人背后是河面；A在桥面持枪警戒，D从A身后的警察区域赶来，群众更远。真正一镜到底，摄影机只在警察侧活动。先看B/C，再看A，D到场后形成A/D双人构图，最后回到B。D叫出熟人的名字，使B的愤怒短暂露出受伤，随后B重新用指责掩盖脆弱；不击发。夜景冷而通透，保留自然肤色。不需要重复参考人物外貌，也不要字幕和配乐。
+```
+
+Expected:
+
+- Preserve world-space facing, captor/hostage contact and officer/crowd zones through the camera path. B's background remains railing/river; officer views may reveal the police/crowd side. Off-screen characters retain their positions. Use accessible camera movement without pretending a pan changes physical distance.
+- Keep A's guard task active while D speaks; allow brief acknowledgment without turning both officers into a face-to-face conversation. Give C restrained, contact-compatible reactions rather than synchronized background acting.
+- Tie B's exposed hurt and renewed defensive accusation to the name and relationship, with a small number of visible/vocal changes. Do not equate intensity with uninterrupted shouting or require this arc for every emotional scene.
+- Make the night dark but readable through motivated light, retained midtones, natural skin and depth. Do not impose exact palette percentages, mandatory 65mm/aperture, scheduled focus errors, or a copied negative list.
+- Fit speech, camera travel and ending into 30 seconds; report text checks separately from rendered-video verification.
+
+Evidence scope: inspired by the user's supplied bridge-standoff prompt and reviewed video frames on 2026-09-17. Frames support attention progression, broad spatial relations, dark-background separation and changing facial performance. Exact audio overlaps, optical settings and absence of hidden cuts were not independently verified; visible subtitles/credit cannot be attributed to generation alone.
+
+Failure checks: crowd migrates behind B; camera crosses the specified boundary; off-screen people relocate; A abandons guard merely because D speaks; every actor mirrors the same reaction; vulnerability automatically becomes a second shouting peak without motive; night detail is replaced by uniform cyan or crushed blacks; claims the new rule has passed video testing.
+
 ## Cross-Agent Regression Protocol
 
 Use the same user turns and raw assets across agents. Provide only relevant capability fixtures, never expected answers, to the executing agent. Keep existing Cases 11, 27, 31, 37-45 and 48-50 as related regressions; select by changed behavior rather than rerunning every case automatically.
@@ -1492,3 +1601,17 @@ Rule changed:
 Retest result:
 Remaining risk:
 ```
+
+
+## Regression Suite: Six Director and Continuity Fixes
+
+Run these as text-level cases; record actual outputs, pass/fail and media-not-tested.
+
+1. Tail-frame continuation: previous medium shot shows a crouched cowboy offering a hand; next clip develops the child's trust. Expect a state-only tail-frame role and a nonadjacent-size reverse opening, horizontal angle >30 degrees on the same axis side. Fail: duplicate opening for one second before cutting, repeated offering gesture, or promise of identical pixels. Repeat with a forced-first-frame tool: expect a new-angle start asset or explicit trimming plan, not contradictory first-frame instructions.
+2. Local prompt: a normal bartender with approved identity image serves a drink; she transforms only in a later clip. Expect present actions and bar-side blocking only. Fail: “尚未尸变”, future foreshadowing rationale, or repeated full costume description in model text.
+3. Coverage gap: only an entrance-facing tail image exists; requested next clip shows the reverse wall and full-body exit. Expect identity/scene coverage map and missing reverse-angle reference prompt with invariant architecture, before final image-grounded compilation. Fail: invent reverse geometry, treat tail frame as sufficient, or generate images without authorization. With all actual views supplied, proceed without duplicate asset requests.
+4. Delivery mode: user says “继续下一段”. Expect concise diagnosis, strategy and continuity/reference checks. Repeat “只给最终提示词”: omit visible analysis while retaining internal checks. Fail: assume iterations mean terse mode or print unwanted analysis in prompt-only mode.
+5. Optics: girl emotional close-up versus two-person hand contact. Expect specific physical camera height/direction and purposeful focus/readability, optional equivalent focal length/aperture. Fail: decorative numbers without spatial effect, blurred critical contact, exact optical-performance guarantee.
+6. Camera variety: two-person close fight followed by quiet trust. Expect motivated choices from POV/follow/orbit/handheld/Dutch angle with start/end and readable geography, stable emotional coverage. Fail: all techniques indiscriminately stacked, roll counted as horizontal angle, physical POV showing observer's own face.
+7. Editing handles: 12 seconds of dialogue and action in a requested 12-second clip plus 2-second pause. Expect a timing revision/scope resolution; never promise 14 seconds inside 12. For action matching, preserve continuous motion and trim overlap, not frozen mid-action.
+8. Explicit exception: user requests same-shot locked-camera extension. Honor that direction with truthful limitations and state consistency; do not force a reverse cut or unnecessary new-angle images.

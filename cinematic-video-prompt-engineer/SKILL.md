@@ -28,6 +28,12 @@ Apply these rules before mode/path-specific checkpoints. They work through ordin
 - Stage-only requests end after that stage. For a complete deliverable, continue through authorized stages once required decisions/assets are available; do not introduce a fresh approval merely because a stage ended. If the host's output/continuation limit forces batching, preserve completed segment numbers, remaining scope, continuity anchors, and the next step; resume when the host permits and never label a partial batch as the whole deliverable.
 - Report only the verification actually performed: text self-check, actual image inspection, or actual video-result review. Text quality or a successful tool call alone does not prove generated-image/video quality. No generation tool is required to finish a prompt-only task.
 
+## Continuity and Director Delivery Gate
+
+For continuation, multi-shot reference-driven work, or cut/geometry repairs, read `references/continuity_director_contract.md` before drafting. This contract governs six controls: tail-frame versus first-frame authority and cut auditing; visible-only model instructions; shot-to-reference coverage; visible diagnosis/strategy sections; purposeful camera geometry/lens/depth; motivated camera variety. It overrides older examples that imply copying a tail frame. Run its final delivery gate before responding.
+
+Default workshop and continuation outputs retain concise 【剧情诊断】 and 【电影化改写策略】; repeated revisions do not imply prompt-only mode. Missing new-angle evidence triggers reference prompts before final image-grounded video compilation. Explicit user scope and approval boundaries still apply.
+
 ## Default Workflow
 
 Choose an output mode from the user's intent. Default to full workshop mode.
@@ -91,6 +97,7 @@ In `参考图优先路径`, wait only when required actual images are unavailabl
    - Identify the emotional core, visual core, conflict relationship, and the strongest filmable moment.
    - When the user explicitly wants a breakout short drama, strong hook, suspense reversal, cliffhanger, serial episode, or plot-driven high-concept scene, run the `Short-Drama Hook and Narrative Drive Diagnostic` in `references/style_patterns.md`. Check anomaly, immediate goal, rule/cost, active obstacle, information reversal, and unresolved question as optional functions, not mandatory ingredients. Do not apply this formula by default to emotional close-ups, atmosphere pieces, product films, action demonstrations, or already complete plots.
    - For mystery, reunion, time displacement, hidden identity, delayed recognition, or any scene where a character learns the truth gradually, track character knowledge separately from audience knowledge. Use the `Character Knowledge and Evidence Control` system in `references/style_patterns.md`: preserve what the character already knows, what new evidence they observe, what they may reasonably infer, and what must remain unknown. Do not let a character react to information the screenplay has not yet made available to them.
+   - For subjective memory, hallucination, deceptive montage, false perception, or an ending designed to reinterpret earlier images or sounds, use the `Retrospective Reversal and Dual-Meaning Montage System` in `references/style_patterns.md`. Track objective truth, character perception, and audience belief separately; pair earlier and later beats through action, composition, motion direction, contact, or sound; and reveal enough final evidence to change the earlier meaning without explanatory narration. Do not force this system onto ordinary emotional scenes or add an unsupported twist merely to use it.
    - If the input is a novel excerpt, treat it as source material rather than translating it sentence by sentence: identify the filmable main event, character relationship, visible emotional turn, and the parts that are internal narration, exposition, memory, metaphor, or authorial description.
    - Decide the duration needed for the prompt. Do not default to 30 seconds.
    - Decide the best structure using the structure selection table in `references/style_patterns.md`: single take, multi-shot sequence, jump cuts, montage, continuous action editing, dialogue cross-cutting, close-up micro-expression, product/person texture film, large-scene compression, or another fitting form.
@@ -181,6 +188,12 @@ Continuation is not a new unrelated prompt. It must preserve continuity and move
 Default continuation format; include the reference-assets block only when the chosen path or a new/updated visual anchor needs it:
 
 ```text
+【剧情诊断】
+本段可见变化与时长风险：
+
+【电影化改写策略】
+表演、切点与摄影选择：
+
 【接续判断】
 上一段结尾状态：
 下一段情绪推进：
@@ -284,6 +297,8 @@ Do not include a separate `视频模型` line by default. If the user specifies 
 - For a plot-driven shot ledger, audit adjacent shot order before finalizing: if two shots can trade places without changing character knowledge, action causality, or reaction timing, merge, remove, or redefine one of them. Skip this order test for associative atmosphere montage, product/person texture sequences, and deliberately fragmented or nonlinear memory.
 - When the user provides a novel excerpt, do not perform a literary rewrite or line-by-line adaptation. First apply the novel text-length tiers in Duration Rules, then extract the one filmable event or emotional turn that can fit the selected duration. Translate internal narration, backstory, metaphor, and exposition into visible behavior, props, blocking, sound, lighting, weather, environment, or brief dialogue/voiceover. If the excerpt contains more than one dramatic turn, choose the strongest turn for this prompt and recommend splitting the rest.
 - For staged fight scenes, use the fight choreography pattern in `references/style_patterns.md`. Write clear timed attack-defense-counter beats, including attack line, evasion direction, contact point, footwork, weight transfer, camera response, and safety constraints.
+- For stylized 1v2 or 1v3 fights, also use `Stylized Multi-Attacker Fight Control` in `references/style_patterns.md`: give every fighter a distinct combat-function signature, transfer pressure through short threat-handoff overlaps instead of isolated 1v1 turns, isolate story-critical weapon/prop state changes, separate hard invariants and phase anchors from optional move vocabulary, and judge density by readability rather than one universal action-count limit.
+- Default to staged, non-graphic outcomes. If the user explicitly requires a death or fatal result, preserve that story outcome through readable defeat, loss of action, body position, and aftermath without gore or fetishized injury; do not silently rewrite it as non-lethal.
 - If the fight is designed as a continuous long take, use the `Hong Kong Crime Long-Take Close-Quarters Fight` pattern in `references/style_patterns.md`: keep one unbroken action chain, maintain full-body readability and spatial continuity, bind every impact to environment/camera/sound feedback, and avoid decorative pose fighting.
 - Fight prompts must follow the duration-based character ceiling for the copy-ready final prompt. Target 1300-1800 characters for a 10-15s fight, 1800-2600 for a 16-24s fight, and 2200-3400 for a 25-30s fight; keep action count readable. Use more than 3000 characters only when the extra text protects action geography, timing, continuity, or physical readability. If clarity requires more than the applicable ceiling, split the fight into consecutive clips.
 - For fight cinematography, use controlled handheld shake, brief Dutch angles, overcranking, and speed ramps only at meaningful beats. Keep choreography readable: real-time setup, brief slow-motion impact, then snap back to real time. See `Fight Scene Cinematography Rhythm` in `references/style_patterns.md`.
