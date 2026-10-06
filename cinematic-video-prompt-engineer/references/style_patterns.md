@@ -965,6 +965,7 @@ Each part must change something visible: distance, eyeline, body position, foreg
 - Start with a clear spatial anchor: doorway, corridor, table, sofa, window, mirror, bed edge, kitchen island, hospital curtain, elevator door, or other fixed object.
 - Keep one physically possible camera path. Avoid asking the camera to pass through walls, teleport, or circle a small room without enough space.
 - Let the camera change shot size through distance, not cuts: `LS/MLS` to establish, `MCU/CU` for pressure, then `Pull-Back` or slight `Track` if a larger body action needs room.
+- A true one-take does not imply fixed framing or fixed focal length. Read `one_take_emotional_coverage.md` when emotion, near/far attention or shared contact needs coverage: budget readable detail/reaction landing frames and the continuous route between them. A focus pull alone does not enlarge a distant face. Honor intentionally fixed shots and avoid compulsory close-up/orbit quotas.
 - Use foreground objects to create depth: door frame, hanging cloth, glass reflection, table edge, chair back, curtain, hallway corner, bedpost, shelf, or mirror edge.
 - If using a foreground occlusion as a hidden transition inside a one-take style shot, the next view must preserve screen direction, body position, lighting state, and emotional continuity.
 
@@ -2331,6 +2332,14 @@ Use this for staged combat, close-quarters fighting, underground ring scenes, wu
 - Surrounding crowd should be background pressure only, not extra fighters unless the user asks.
 - Keep safety and taste clear: staged and non-graphic. Default to non-lethal when the outcome is unspecified. If the user explicitly requires a fatal result, show it through defeat state and aftermath rather than gore or fetishized injury.
 
+### Consequence, Space and Camera Continuity in Fights
+
+Apply these controls when injury, exhaustion, environmental interaction or changing advantage carries the scene. They are not a mandatory defeat arc, prop checklist or fixed shot sequence. Preserve required story turns and outcomes; leave nonessential connective techniques flexible.
+
+- **Consequences constrain capability:** after a decisive hit or accumulated exertion, carry one relevant limitation into the next action: interrupted breath shortens a counter, an unstable leg delays rising, or reduced grip changes a hold. Distinguish being driven back, recovering support, still able to interfere and unable to continue. An opponent may re-enter through a visible recovery and reachable route, not an undamaged reset. Do not force all opponents to recover or every action to pause and plant both feet. End-state fatigue survives victory or escape.
+- **Space and props cause action:** let a body, doorway, table or stair turn constrain attack lanes and the number of attackers who can reach the focal exchange while others reposition or obstruct escape. A blocked attacker must adjust rather than strike through a partner. For story-critical prop use, establish access and necessary release/activation, then preserve grip, use, damage and release before the hands take another object. Show only consequential transitions, not a mechanical inventory. Dirt, water, debris and damage require an established source and contact; they cannot appear before their cause or spread to untouched areas.
+- **Camera preserves evidence:** choose wider coverage for geography, support and displacement; closer coverage for meaningful contact or reaction; and a readable ending for the resulting positions and bodily cost. These are functions, not required shot counts or alternating angles. An action cut continues the same movement, direction and contact phase rather than replaying the strike or omitting its cause. Danger may briefly occlude the view or jostle the camera, followed by a motivated recovery of the subject and threat geometry; avoid fixed subsecond obscuration schedules. In a one-take, allow enough retreat, lateral movement or tilt to show essential action rather than locking every event to a tight shoulder view. Camera steadiness may follow changing control and settle on consequences; do not mandate shake, slow motion, shallow focus or a victory pose.
+
 ### Stylized Multi-Attacker Fight Control
 
 Use this for heightened 1v2 or 1v3 action in which speed, acrobatics, simultaneous pressure, and a dense 16-30s action chain matter more than ordinary fight realism. Do not turn one successful example into a mandatory template; apply only the controls needed by the requested tone and duration.
@@ -3591,6 +3600,8 @@ Use clear continuity phrases in the final prompt:
 
 Use this only when the user provides a generated video, frames, or a concrete description of the rendered result and asks for correction. Diagnose the gap between the intended result and the visible/audible result; do not treat prompt wording alone as proof of the cause.
 
+For evidence-based attribution, read `one_take_emotional_coverage.md`, section `Generated-result evidence and attribution`. Separate observed failure, prompt omission/conflict, execution deviation and unverified causes. One output cannot establish a model's inherent limit; sampled frames cannot verify unheard dialogue or prove the absence of hidden cuts.
+
 ### Repair Scope
 
 Choose no more than three dominant failures that materially affect the video:
@@ -4252,7 +4263,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 - Is camera movement motivated by gaze, body movement, emotional distance, or object interaction rather than decoration?
 - Has the prompt avoided piling up multiple camera moves in one beat when a single `Static`, `Dolly-In`, `Pull-Back`, `Pan`, `Tracking`, or `Handheld` choice would be clearer?
 - If this is a one-take scene, does it have a clear start frame, physically possible camera path, blocking/focus change, foreground/background depth, stable screen direction, and held ending?
-- If a first-frame reference is supplied, does it lock only the opening pose/composition/state unless the user explicitly requested a locked shot or one-take? After the opening, do shot size, angle, focus, cuts, and camera movement develop from story function rather than repeating the reference framing?
+- If a first-frame reference is supplied, does it lock the opening state without freezing all later framing? Are explicit locked-camera constraints honored, while true one-take requests forbid cuts but still allow continuous motivated reframing, focus and physical camera travel?
 - If the content needs several evidence, reaction, power, or aftermath beats, was a motivated multi-shot progression considered instead of defaulting to a static long take? Does every new view change what the audience knows, feels, or can physically verify?
 - For reference-driven motion, were visible hand/foot positions, body support, reach, furniture clearance, prop weight/friction, action path, and exit space checked before writing contact and movement?
 - If this is a one-take multi-character reveal, are characters revealed progressively with foreground masking, lateral movement, or pull-back hierarchy, and are their faces, hairstyles, costumes, postures, and emotional baselines distinct enough to avoid repeated faces?

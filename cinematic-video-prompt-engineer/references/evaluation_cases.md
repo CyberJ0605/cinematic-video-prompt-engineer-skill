@@ -1575,6 +1575,32 @@ Evidence scope: inspired by the user's supplied bridge-standoff prompt and revie
 
 Failure checks: crowd migrates behind B; camera crosses the specified boundary; off-screen people relocate; A abandons guard merely because D speaks; every actor mirrors the same reaction; vulnerability automatically becomes a second shouting peak without motive; night detail is replaced by uniform cyan or crushed blacks; claims the new rule has passed video testing.
 
+## Case 61: Bus-Station True One-Take Emotional Coverage Repair
+
+Input:
+
+```text
+30秒横屏中文对白真正一镜到底，汽车站父女重逢。成片前十秒女子面部在画外，照片可见却没有压紧动作；扶垃圾桶接触不清；女子朝向让人看不出在看父亲；走近、递包、并肩离开的顺序可保留。请查看视频，区分提示词和模型问题并修复。希望照片手部特写起，后拉上移看犹豫的脸与远处父亲；叫“爸”后看父亲反应，再完整跟拍走近，近看对话，最后一起走。
+```
+
+Expected:
+
+- Inspect available media with timestamped observations/limits; if unavailable, attribute descriptions to user. Do not claim unheard audio, exact anatomy hidden in blur, intrinsic model incapacity or guaranteed absence of cuts from sparse frames.
+- Separate missing/conflicting direction from observed noncompliance. Do not assume the conversation draft equals the submitted prompt or invent responsibility percentages. Preserve successful story, appearance, setting and ending.
+- Provide usable detail/reaction coverage and dwell, body/head/gaze toward father, response after call and compatible camera position.
+- Distinguish focus from zoom and physical travel. Serialize detail, reveal, remote reaction, wide approach, handoff/reaction and departure; retain the entire approach. Do not lock a prime lens while ordering optical zoom.
+- Give bin contacts distinct roles/support. Simplification to one lifter and a cleaner handling the lid is permitted only if exact joint lifting is not required and the change is disclosed. Do not hide all mechanics in blur.
+- Record text validation separately from future media retest; new generation needs authorization.
+
+Boundary probes:
+
+1. `8秒固定全景，人物不走近，不要特写。` Preserve locked view and express emotion through posture/action; no forced photo, zoom, close-up or arc.
+2. `两人必须同时扶桶。` Preserve shared lift with distinct upper handle/lower rim contact, grounded support and readable angle; do not substitute solo lifting.
+3. `只改女子朝向，其他都满意。` Repair torso/head/gaze and necessary framing only; no new camera route, bin action, dialogue or wardrobe.
+4. `只做远近移焦，固定焦距不变。` Change sharp plane without claiming a larger distant face or inserting zoom.
+
+Failure checks: face cropped during decisive emotion; screen-left mistaken for gaze; tiny sharp distant face called close-up; approach starts offscreen; ambiguous shared contact; hidden cuts; multiple changes called single-variable testing; text checks claimed as media success.
+
 ## Cross-Agent Regression Protocol
 
 Use the same user turns and raw assets across agents. Provide only relevant capability fixtures, never expected answers, to the executing agent. Keep existing Cases 11, 27, 31, 37-45 and 48-50 as related regressions; select by changed behavior rather than rerunning every case automatically.
