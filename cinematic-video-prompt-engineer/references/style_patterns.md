@@ -73,7 +73,7 @@ Prefer specific but generation-friendly terms:
 - Camera movement and focus: `Dolly In/Out` or `Track In/Out` for camera physically moving forward/backward; `Pan Right/Left` for horizontal lens/head rotation; `Tilt Up/Down` for vertical lens/head rotation; `Track Right/Left`, `Truck Right/Left`, or `Crab Right/Left` for camera moving sideways; `Ped Up/Down` for vertical camera movement; `Crane Up/Down` or `Jib Up/Down` for vertical/diagonal camera movement with a crane/jib feel; `Arc/Orbit` for a curved path around the subject; `Zoom In/Out` for focal length change while camera stays physically still; `Dolly Zoom` / `Vertigo effect` for dollying one way while zooming the opposite way; `Whip Pan` or `Crash Zoom` for fast transition/emphasis; `Rack Focus` / `Focus Pull` for changing focus between foreground/background or person/object while the shot continues; `Handheld` for controlled human shake; `Static` for no camera movement.
 - 焦段: `24mm`, `35mm`, `50mm`, `85mm`, `100mm macro`, `200mm`.
 - 运镜: prefer the standardized movement terms above; phrases such as `Slow Push in`, `Handheld Backward Tracking`, or `Snap Pull Back` are allowed when they describe the desired feel more clearly.
-- Lens texture: shallow depth of field, anamorphic flare, bokeh, Chiaroscuro, hard side light, backlight, practical light.
+- Lens/rendering features: depth of field, bokeh and optional anamorphic characteristics. Lighting choices such as Chiaroscuro, hard side light, backlight and practical sources belong to lighting design, not focal-length selection. Use the conditional lens/depth chain in `continuity_director_contract.md` when optical choices affect readable evidence.
 
 Do not pile up terms. Use the terms that directly serve the scene's emotion.
 
@@ -1517,6 +1517,8 @@ Template:
 全过程表情自然过渡，微表情细腻，没有突然变化，没有夸张哭泣。
 ```
 
+This example assumes a story-established calm start before grief emerges; it is not a mandatory reset. Start from the current event or previous shot's emotional residue, including existing fear, anger, exhaustion or tears. Preserve that state and develop only the changes supported by new evidence or action. The example timings and calm-to-grief ladder are optional, not a checklist for every close-up.
+
 Adapt the emotion words to the scene:
 
 - Shock freeze: relaxed face -> smile stops -> eyes lose focus -> breath stops -> jaw locks.
@@ -1524,7 +1526,7 @@ Adapt the emotion words to the scene:
 - Guilt: gaze avoids -> blink slows -> mouth tightens -> brow folds inward -> face lowers.
 - Anger under restraint: still gaze -> nostrils flare -> jaw hardens -> fingers tense -> eyes stay wet but unblinking.
 
-When using this pattern, keep the camera simple: `ECU/CU`, stable or very slow `Push in`, shallow depth of field, minimal background motion. Do not overload it with complex blocking.
+When using this pattern, keep the camera simple: `ECU/CU`, stable or very slow `Push in`; use shallow depth only if it leaves the required facial evidence readable. Keep background action subordinate, not frozen, and do not overload it with complex blocking.
 
 ### Ultra-Close Face Long Take: Emotional Arc System
 
@@ -2079,6 +2081,19 @@ Sound should shape emotion and structure. Prefer concrete diegetic sound over ge
 - Avoid generic phrases like `dramatic music`. If music is needed, describe its role: low cello drone, distant radio song, muted festival TV, single sustained note.
 - If no music fits, explicitly say `无配乐，只保留环境声`.
 
+### Sound Priority and Spatial Continuity
+
+Use when dialogue, crowd, impacts or offscreen evidence competes, or when a source/listener moves between acoustic zones. Keep ordinary sound beds compact.
+
+- Select the current story-bearing sound: a key line, an interruption or one audible clue. Supporting footsteps, crowd and machinery remain present but do not obscure it. A deliberately obscured line is valid when the plot requires it; mark what remains unheard and preserve the listener's knowledge limit rather than making every word clear.
+- Tie each important sound to a stable source and listening perspective. State near/far or direction only when needed for recognition, tension or geography. Track a moving source through an exit or across a room; do not relocate an offscreen voice to the new screen center after a cut.
+- Perspective may be camera-based or character-subjective; keep the chosen basis coherent. A cut to CU, a zoom or Rack Focus alone does not physically bring the microphone or speaker closer. Make intentional subjective emphasis explicit through the scene trigger.
+- Doors, walls, turns and changes of room can soften, obstruct or change the reverberation of a source; show the relevant opening/closing or crossing. Preserve a faint continuation when plausible rather than arbitrarily muting everything. Do not impose exact acoustic values.
+- At a key line keep impact/crowd texture subordinate; at a decisive contact let its synchronized sound briefly lead, then restore the prior bed. Overlapping dialogue retains the semantic entry trigger, relative dominance, speaker identity and who yields; do not flatten intentional interruption into orderly turns.
+- Match physical source/time across J-cuts and L-cuts. A sound bridge may anticipate or continue an event, but must not falsely imply that a prop moved or a character heard evidence they could not access. Reserve reverb/distance changes for the real acoustic transition or a clearly marked subjective shift.
+
+Compact example: `两人从街边走入门厅，近处对白始终可辨，围观声留在身后；穿过门口后街声变远，门厅脚步出现短促回响；关门时外面喊声变闷但仍隐约持续。`
+
 ### Subjective Sound-Perspective Arc
 
 Use this when attention, recognition, grief, shock, intimacy, or realization changes how the character perceives the same space.
@@ -2479,6 +2494,8 @@ Constraints:
 
 Use action-film camera techniques to create immediacy, but apply them at specific beats. Do not make the whole scene shaky or tilted.
 
+For genre-matched shot density, scales and physically motivated handheld intensity, read `chase_action_coverage.md`, section `Genre-matched coverage and immediacy`. Tense edited pursuit/combat may benefit from more short, informative views; quiet scenes and explicit locked-camera/one-take work do not inherit that treatment. The techniques below are optional, not a checklist.
+
 **Handheld physical shake**
 
 - Use light handheld breathing throughout close combat for realism.
@@ -2505,6 +2522,7 @@ Useful phrase:
 
 **Overcranking / 升格慢动作**
 
+- Select only when prolonging a peak serves the requested tone; real-time contact and action-matched cuts are sufficient for urgent, rough close combat. Do not add slow motion merely because the scene is a fight.
 - Use for one key moment only: flying kick, weapon crossing near the face, body lifted, glass/wood dust exploding, a decisive dodge.
 - Keep the setup and recovery at normal speed, so the slow motion feels earned.
 - Pair slow motion with clear sound change: impact sound drops low, breath or cloth movement becomes sharp, then real-time sound snaps back.
@@ -2552,7 +2570,7 @@ Choose camera movement from the action's dramatic need. Do not treat the followi
 | **Micro-Montage Inserts / 特写切镜** | fists, feet, grip, eyes, weapon edge, impact preparation | Use 2-3 very short inserts only when they clarify cause and effect. Return to a wider readable shot before the main body action. |
 | **Ped Up/Down or Crane Rise/Fall / 升降运镜** | stair pursuit, jump/drop, stand-up recovery, changing vertical advantage | Move vertically with the action and reveal the new level or destination. Do not substitute a tilt when the camera itself must change height. |
 | **Foreground Occlusion Wipe / 穿墙过物穿梭** | move between adjacent fight zones, disguise a cut, reveal a new attacker or room | Let a pillar, wall edge, vehicle, hanging cloth, or foreground body fully wipe the frame; emerge with matching movement direction and preserved spatial logic. |
-| **Shot/Reverse Shot / 反打镜头** | clarify attack-defense alternation, reaction, feint, stare-down | Keep eyelines and screen sides stable. Change horizontal angle by at least 30 degrees within the same scene and avoid adjacent near-identical shot sizes. |
+| **Shot/Reverse Shot / 反打镜头** | clarify attack-defense alternation, reaction, feint, stare-down | Keep eyelines and screen sides stable. Choose views that reveal the exchange clearly; use the conditional cut audit below rather than forcing a 30-degree relocation or nonadjacent size for every cut. |
 | **Rotating Pan/Orbit / 旋转摇镜** | circling duel, clinch rotation, chained attacks that revolve around one center | Let fighter rotation motivate the camera rotation. Keep a stable visual anchor in the environment so the viewer does not lose orientation. |
 | **Impact Hold / 定格定镜** | one decisive non-graphic hit, block, collision, or near-miss | Use an ultra-brief impact hold, near-freeze, or speed-ramp plateau rather than a long literal freeze. Preserve recoil, sound, and immediate recovery so the strike retains physical continuity. |
 
@@ -2586,17 +2604,17 @@ Useful compact phrase:
 
 ### Fight Rhythm Planning
 
-A strong 10-15s fight should usually have a rhythm arc:
+A fight's rhythm follows its requested tone, bodily pressure and readable consequences, not fixed timestamps. One possible 10-15s treatment, only when it fits the scene:
 
 ```text
 0-3s：建立站位与第一击，实时速度，空间清楚。
 3-7s：连续攻防，手持近身，短促震动，动作接触点明确。
-7-10s：短暂停顿或失衡，荷兰角/呼吸/对视制造节奏变化。
+7-10s：攻防转折、位移或身体代价改变节奏；仅在剧情有原因时停顿。
 10-13s：爆发动作，冲刺、腾空、摔投或武器反击。
-13-15s：升格冲击后回到实时，留半秒到一秒余韵。
+13-15s：呈现冲击后果与余韵；可全程实时，不强制升格。
 ```
 
-For 30s split into two 15s prompts:
+Only when the user has selected two connected 15s clips, a possible bridge is below. A coherent requested 30s single clip is valid; do not split by duration alone:
 
 - Segment 1: pressure, first exchange, incomplete reversal, ending on danger or an unfinished action.
 - Segment 2: continue the same story state from a new angle/shot size, complete the reversal, finishing impact, aftermath.
@@ -2621,7 +2639,7 @@ When the user explicitly requires a fatal result, preserve the narrative outcome
 - If bodies deform, reduce grappling complexity and avoid simultaneous limb-heavy actions.
 - If spatial direction is unclear, anchor the fighters: `A在画面左侧，B在画面右侧`, then maintain screen direction.
 - If impact lacks weight, add stance, momentum transfer, floor reaction, dust, cloth movement, and a short camera shake.
-- If the crowd distracts, describe them as dark silhouettes forming a fixed semicircle.
+- If a fight explicitly takes place inside a spectator ring, subordinate onlookers without losing requested reactions. In a working street/market, keep localized avoidance and independent background activity instead of imposing a fixed semicircle; use `Background Autonomy`.
 
 ## Hong Kong Crime Long-Take Close-Quarters Fight
 
@@ -3229,37 +3247,23 @@ The final prompt should not contain unresolved options such as `或`, `或者`, 
 
 ### Shot Size Progression
 
-Avoid cutting between two adjacent shot sizes that are too close, because it can feel like a jump cut rather than an intentional edit.
+Choose shot sizes by what the audience must read. Adjacent sizes such as 全景 -> 中景 or 近景 -> 特写 can clarify an action or psychological turn; they are not automatic defects. Check the actual subject, composition difference and cut point rather than the distance between labels.
 
-Avoid:
-
-- 全景 -> 中景
-- 中景 -> 近景
-- 近景 -> 特写
-- 特写 -> 大特写
-
-Prefer stronger size contrast or a motivated bridge:
-
-- 全景 -> 近景 / 特写
-- 中景 -> 特写 / 大特写
-- 特写 -> 中景 / 全景
-- 全景 -> 环境道具插入 -> 特写
-
-Do not use adjacent shot sizes when the user has explicitly prohibited them. Otherwise an exceptional adjacent-size cut requires a specific editorial reason; do not use action or sound as a blanket exemption.
+If two same-subject views are nearly identical, avoid an accidental jump through a meaningful size/composition change, a different horizontal viewpoint, or a readable match-on-action. Strong size contrast and informative inserts remain useful options, not requirements. A sound bridge alone does not repair mismatched action or geometry. Honor explicit user prohibitions on adjacent sizes.
 
 ### Camera Angle Change
 
-When cutting between different camera angles within the same scene, and especially between shots of the same subject or same interaction, change the camera's horizontal angle by at least 30 degrees. This prevents awkward jump cuts and gives the edit a real perspective shift.
+For near-identical views of the same subject, roughly 30 degrees or more of horizontal angle change is one useful way to distinguish the cut. It is a guide, not a compulsory relocation for every reaction, insert or reverse shot. A meaningful framing change or readable action match may serve the cut instead. Preserve world positions, axis and eyelines regardless of which method is chosen.
 
-This rule applies only inside the same scene or continuous spatial relationship. When cutting to a new scene, new location, new time, or a clearly different spatial setup, do not force a 30-degree angle change; prioritize the new scene's geography, mood, and opening composition.
+When the user explicitly specifies a minimum horizontal angle, honor it: a Dutch roll, height or focal-length change alone does not satisfy that requirement. For a new scene, location, time or spatial setup, prioritize readable geography and opening composition rather than inventing a relative angle.
 
 Examples:
 
 - Shot 1: front-left 3/4 angle.
-- Shot 2: side angle over the other character's shoulder, at least 30 degrees away.
+- Shot 2: side angle over the other character's shoulder, meaningfully separated from the first view; use roughly 30 degrees or more when resolving a near-identical same-subject cut.
 - Shot 3: reverse angle or object insert.
 
-Do not write repeated same-angle close-ups inside the same scene unless the scene intentionally uses a locked-off long take.
+Do not add repeated same-angle close-ups without new information or a motivated cut; do not move the camera solely to satisfy an angle number.
 
 ### 180-Degree Axis and Eyeline
 
@@ -3766,6 +3770,18 @@ Rules:
 
 Use this to keep dialogue, blocking, intimacy, and confrontation consistent.
 
+## Ensemble Attention Relay
+
+Use for negotiation, meetings, family/table conflict and coordinated groups where several principal characters contribute. This is not a compulsory dialogue ladder and does not replace combat threat handoff or autonomous extras.
+
+- Internally track each relevant person's immediate goal, known evidence, baseline task, world position and current speaker/listener role. Use compact facts, not a printed biography; no requirement for one hero or equal screen time.
+- Transfer attention through a causal chain: current lead -> audible/visible trigger -> who can perceive it -> changed response/action -> reason to attend to that person next. A line, look, offered object, withheld signature or blocked path may transfer initiative. Others retain their task and emotional residue; they do not reset or wait blankly.
+- Choose coverage for new evidence: a group frame for shared negotiation, a two-shot for a changed alliance, a readable reaction or contact detail when necessary. Do not assign a cut, close-up, focus pull or movement to every person. In a locked shot, gaze, posture and speech can relay attention without camera movement; in a true one-take, the camera path remains physically continuous.
+- Preserve unequal reactions: agreement, hesitation, concealment and intervention can coexist. Not everyone must react to each line. A character may react only to what they could see/hear or already knew. When a trigger is withheld, do not reveal private knowledge through premature performance.
+- When several actions overlap, make the current decision/contact readable and keep other actions purposeful but subordinate. Simplify decorative movement before required group agency; one focal exchange does not mean everyone else is frozen.
+
+Compact example: `父亲把合同推到桌中；女儿按住签字页，母亲原本收碗的手停住；哥哥看见她按住的是担保条款，收回递来的笔。镜头留在多人中景看清这次阻止，随后才收近母亲的回应。` Adapt goals and coverage to the plot, not this family template.
+
 ## Scene Spatial Continuity Bible
 
 Use for multi-shot dialogue, action, continuation, and any location revisited across clips.
@@ -3817,6 +3833,7 @@ In public, working, domestic, or inhabited spaces, background life should contin
 - Give extras, staff, traffic, machinery, animals, screens, weather, or household routines a low-intensity baseline behavior.
 - Keep background action sparse enough not to steal focus, but do not freeze the entire space during emotional dialogue.
 - Avoid synchronized crowd turns, collective staring, random filming, or everyone stopping at the same instant.
+- If the story causes a public reaction, localize its spread: people nearest the visible/audible trigger notice first; others react only after hearing, seeing or being alerted. Use a few meaningful depth/zone groups, not an individual schedule for every extra. Allow distinct responses such as looking, making room, intervening or continuing an unrelated task. Do not force staggered delay when a common salient trigger genuinely reaches the whole group at once.
 - When the subjective sound field narrows, visual background movement may remain normal; perception changes without the world literally stopping.
 - After the private emotional beat, returning ambience or ordinary background motion can re-establish that life continues.
 
@@ -3959,9 +3976,9 @@ Template:
 
 ### Reference Image Count
 
-- Use 1 reference for a simple emotional close-up.
-- Use 2 references for most scenes: character + scene.
-- Use 3 references only when a prop/product is central or the scene is historically/stylistically demanding.
+- A simple emotional close-up often needs one identity reference; character + scene is a useful two-image starting estimate.
+- Complex scenes may need three or more distinct assets. Counts are planning estimates, not caps: required identity, topology, contact and planned-view coverage determines the smallest sufficient set.
+- Reuse approved assets and distinguish the full series library from current-shot inputs. A real tool input limit may require compatible shot/asset batches; it does not justify omitting necessary evidence.
 - Avoid giving separate reference prompts for every minor object.
 - In compact mode, omit reference prompts unless explicitly requested or essential for control.
 - In workshop mode, follow the chosen production path: reference recommendations are optional for direct-video work, while required assets in reference-first work remain explicit dependencies. Do not describe a required production reference as optional.
@@ -4274,8 +4291,8 @@ Run this silently before giving the final answer. Do not print it unless the use
 - For large scenes, is there one visual anchor the model can follow?
 - For product/person texture scenes, are materials, tactile details, and light concrete?
 - For memory/dream scenes, is there a transition anchor such as sound, object, gesture, or match cut?
-- In multi-shot prompts, do adjacent shots avoid overly similar shot sizes unless motivated?
-- When cutting between shots of the same subject or interaction inside the same scene, does the camera angle change by at least 30 degrees? If cutting to a new scene or location, is the new opening composition clear instead of forcing the 30-degree rule?
+- Does each cut add readable information or action continuity, with a perceptible framing/view difference where needed, rather than mechanically rejecting adjacent shot-size labels?
+- For near-identical same-subject cuts, is there a meaningful size/composition change, a roughly 30-degree horizontal change, or a readable action match? Are explicit user size/angle restrictions honored, with axis and eyelines preserved?
 - Is the 180-degree axis preserved, or is any axis crossing visibly motivated?
 - Do dialogue eyelines remain matched across reverse shots?
 - Are entry/exit and travel directions continuous across connected spaces?
@@ -4290,6 +4307,9 @@ Run this silently before giving the final answer. Do not print it unless the use
 - For unequal height, body geometry, mobility, or species, are camera height, foreground anchor, gaze direction, and relationship axis adapted without forcing a conventional human over-shoulder composition?
 - If a foreground occlusion performs a reveal, disappearance, time shift, or bridge, is the occluder motivated and are before/after geography, axis, light, sound, parallax, and final state locked?
 - In inhabited locations, do background people and systems maintain plausible independent low-intensity behavior rather than freezing, staring, gathering, or mirroring the protagonist without cause?
+- When applicable, does ensemble attention transfer through perceptible evidence and changed behavior, with different goals/knowledge intact and no mandatory shot per person?
+- When optics matters, are required faces/contact/routes readable simultaneously or in a purposeful focus sequence, with numeric lens/aperture settings optional and camera constraints respected?
+- When sounds compete or cross a boundary, is the story-bearing sound intelligible as intended, with source distance/obstruction and the listening perspective continuous rather than changing solely with picture size?
 
 ### Negative Constraints
 

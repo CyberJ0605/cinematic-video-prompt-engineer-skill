@@ -42,7 +42,7 @@ Choose the smallest asset set that solves those risks. Do not create one referen
 - Use a clean scene plate for recurring locations or spaces whose entrances, exits, depth, or action path matter.
 - Use a relationship/two-shot reference only when shared blocking or chemistry is generation-critical.
 - Use a prop/product reference only when its design, ownership, readable marking, or state carries the story.
-- Most generation stages should use 1-3 active references. If more assets are genuinely needed for a series, output an asset plan and generate them in batches rather than dumping every prompt at once.
+- 1-3 active references is a common planning estimate, not a universal cap. Required identity, topology, contact and planned-view coverage determines the smallest sufficient set. Reuse assets and omit redundant images; do not drop a necessary principal identity or unseen critical view merely to stay within three. Separate the reusable asset library from the current shot's inputs. If an actual tool input limit applies, plan compatible shot/asset batches without losing required coverage; follow the user's requested text-delivery scope rather than introducing a new approval round.
 
 Stage 1 output:
 

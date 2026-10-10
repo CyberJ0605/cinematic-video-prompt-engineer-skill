@@ -10,8 +10,8 @@ Distinguish reference input from first-frame input. If the tool supports ordinar
 
 ### Cut audit (including the boundary between clips)
 
-- Default to nonadjacent shot sizes: avoid 全景→中景, 中景→近景, 近景→特写 and 特写→大特写. Prefer 全景→近景, 中景→特写, 特写→全景. Continuous reframing inside one shot is not a cut. If the user imposes a strict rule, do not silently grant an exception. Otherwise an exception needs a concrete editorial reason.
-- For a same-scene cut on the same subject/interaction, specify a horizontal camera change greater than 30 degrees, while preserving the 180-degree axis and eyelines. A Dutch roll, vertical height change or focal-length change alone does not satisfy this. A new location needs readable geography, not a fabricated relative angle.
+- Judge a cut by its information, perceptible framing difference and action continuity, not adjacency in a shot-size list. 全景→中景, 中景→近景 and 近景→特写 are valid when they clarify action, attention or emotion. Near-identical same-subject views need a meaningful composition/size change, roughly 30 degrees or more of horizontal angle change, or a readable action match; sound alone does not repair a visual discontinuity. Continuous reframing is not a cut. Honor any explicit user size/angle prohibition without silently granting an exception.
+- Preserve world positions, the 180-degree axis and eyelines. Use the 30-degree guide for near-identical same-subject cuts, not as a mandatory relocation for every reaction, insert or reverse shot. A Dutch roll is not horizontal relocation; focal length/height can change framing but do not prove horizontal angle change when the user explicitly requires it. A new location needs readable geography, not a fabricated relative angle.
 - Use environment, object or listener inserts only when they carry information, a reaction, elapsed time or a sound bridge. Do not hide a physically impossible reset with an insert.
 - Budget 1–2 seconds after the last key line or completed performance beat for reaction, breath, sound decay or continued movement. Include it in total duration. For match-on-action, use flowing action handles/overlap for editing instead of freezing halfway; trim overlap so the action is not repeated on screen.
 - Match-on-action specifies previous action phase, next phase, contact, direction, active hand, prop ownership and cut point. Use differentiated sizes/angles; do not restart a completed gesture.
@@ -45,6 +45,17 @@ Unless the user explicitly requests prompt-only output, include concise 【剧�
 Specify important camera positions relative to fixed landmarks, view direction, height, subject angle and movement path. For critical cuts describe horizontal angle change and axis side. Do not overload every shot with every field.
 
 Use full-frame-equivalent focal length when perspective/subject distance matters; pair it with framing and desired spatial effect. Use aperture or a range only when depth of field serves evidence, performance or focus transfer; specify exactly which face/contact/background must be readable. Treat numeric lens/aperture values as visual intent, not guaranteed optical simulation. Do not put a critical gun hit, hand contact or route in blur merely to get a cinematic look. Skip gratuitous numeric settings for simple shots. Example: “85mm等效视角，f/2.8浅景深效果，双眼清晰，身后麻袋虚化但可辨；机位与人物眼睛等高”.
+
+### Conditional lens and depth selection
+
+Use this decision chain only when optics affects readability; keep the reasoning internal and print the necessary result:
+
+1. Required evidence: identify the face, contact, full-body action or spatial relationship that must be readable in this beat.
+2. Geometry: establish near/far subject positions, occlusion, usable camera distance/path and enough framing room for action endpoints. Do not use a focal-length label to solve an inaccessible camera position.
+3. Framing and lens intent: choose the shot size and a compatible view from that position. Add one equivalent focal length only when it clarifies the desired spatial effect; do not prescribe a universal focal length by genre or imply that a number alone establishes perspective.
+4. Clarity: decide simultaneous readability versus sequential attention. If two unequal-depth faces and a contact must be seen together, favor sufficient depth, compatible blocking or another useful view over ornamental blur. If attention transfers in time, name the focus origin, destination, trigger and readable dwell; focus transfer is not enlargement or zoom.
+5. Aperture: optional calibration after clarity is decided, never a mandatory field or a guarantee of depth. Prefer `两张脸和交接手部清楚，背景出口仍可辨` when that is the important control. If user-specified shallow depth and simultaneous evidence cannot coexist in the chosen setup, first adjust authorized blocking/framing; if the hard requirements remain incompatible, identify the concrete conflict rather than promising both.
+6. Movement: recheck focus and framing as people approach, separate or change level. Maintain the important face/contact through the movement. Preserve an explicit fixed-lens or locked-camera requirement; do not quietly introduce optical zoom or cuts to solve it.
 
 ## 6. Choose camera language by dramatic purpose
 

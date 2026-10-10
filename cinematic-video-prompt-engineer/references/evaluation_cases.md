@@ -2,24 +2,40 @@
 
 Use this file only when testing or revising the skill. Do not load it during ordinary prompt generation.
 
+For field tests of exit/door causality, forward falls and contamination, moving one-take focus, support visibility, speech triggers, doorway sound, ensemble attention, darkness, continuation and incompatible scope, consult `references/field_validation_probes.md` (path relative to the skill root). These supplemental probes do not replace the fixed core or modify its input expectations.
+
 ## Scoring Rubric
 
-Score each case out of 100:
+Rubric revision: `2026-10-07-r2`. These are evaluation dimensions, not mandatory prompt headings or ingredients. Score only the requested stage and its applicable requirements. The full weight is 100:
 
-- Story diagnosis and structure choice: 15
-- Duration and pacing feasibility: 15
-- Camera, axis, eyeline, and spatial continuity: 15
-- Character performance and emotional clarity: 15
-- Dialogue timing and sound design: 10
-- Reference-image consistency: 10
-- Prompt clarity, compression, and length compliance: 10
-- Scene-specific negative constraints and safety: 10
+| Dimension | Weight | Evidence to judge |
+|---|---:|---|
+| Story, knowledge and structure | 15 | Requested events/ending preserved; information received before reaction; fitting structure rather than a preferred template |
+| Duration and pacing | 10 | Actions, speech, travel, pauses and ending fit; simultaneous tasks are not mechanically counted twice |
+| Camera, editing and spatial continuity | 12 | Useful coverage/movement; axes, eyelines, direction, geometry, contacts and prop states remain coherent |
+| Optical intent and readability | 8 | Required faces, contacts and routes readable; framing/focus/lens compatible with movement and hard camera constraints; numbers optional |
+| Individual performance | 12 | Motive, emotional residue, voice and visible response form a plausible continuous person, without a stock cue checklist |
+| Multi-person/ensemble blocking | 10 | Distinct goals/tasks, causal attention or threat handoff, meaningful non-focal activity and localized crowd reactions |
+| Dialogue and sound | 10 | Key speech/order, intended interruption and audibility; source, distance, obstruction, acoustic continuity and sound tail |
+| Light, color and image continuity | 8 | Motivated sources, necessary visibility, skin/material/color continuity and movement through light; elaborate palette optional |
+| Reference authority and coverage | 7 | Actual image role/state used correctly; necessary coverage, reuse and asset stages respected; static information not redundantly repeated |
+| Clarity and compression | 5 | Copy-ready text has resolved choices and useful details; no decorative overload or omission disguised by compression |
+| Scene-specific risks and boundaries | 3 | Likely failure controls and requested constraints addressed; no irrelevant negative list or unapproved action |
 
-Pass levels:
+### Applicability, incomplete evidence and normalization
 
-- 90-100: strong prompt-text result; actual media quality still requires generated-result review
-- 80-89: usable with minor revision
-- 70-79: major weakness in one area
+- Mark applicability from the input, requested stage and declared fixture before reading the answer. `N/A` means genuinely outside scope, with a reason. A direct solo prompt can mark reference authority and ensemble blocking N/A; a plain text-package stage does not need rendered images to demonstrate planning correctness.
+- Missing a required instruction, line, contact, light baseline or group reaction is a deficiency, not N/A. Score the affected dimension down; apply any hard failure independently. Do not reward unnecessary optic numbers, complex palettes, extra movements or extra references.
+- `Not tested` means the applicable evidence has not been assessed or is unavailable. It remains in the applicable-weight denominator and blocks a complete total for that layer; do not turn it into N/A or assume success. If required actual assets are unavailable, evaluate the agent's truthful dependency handling separately from the untested image-grounded compilation.
+- For a complete assessed layer: `normalized score = 100 × sum(earned applicable points) / sum(applicable weights)`. Report raw points/weight, normalized score (one decimal) and N/A reasons together. Example: reference authority alone is N/A, earned 83/93 -> 89.2/100, not 83/100 or 90/100 with free reference points.
+- For a partial layer, report assessed earned/assessed weight and `coverage = assessed weight / applicable weight`; label any subset percentage provisional, not a total or pass level. If no dimensions apply, report unscored. Do not aggregate different applicable scopes or compare old-rubric scores with r2 without rescoring the same outputs.
+- Cite observable text passages or media timestamps for deductions. Do not double-charge one defect under several dimensions unless it produces separately evidenced consequences; always retain the original failure description.
+
+Pass levels for complete text-layer scores without a hard failure:
+
+- 90 to 100 inclusive: strong result for this assessed text case, not whole-skill maturity; actual media quality still requires generated-result review
+- 80 to below 90: usable with minor revision
+- 70 to below 80: major weakness in one area
 - below 70: revise rules or output strategy
 
 Automatic failure conditions:
@@ -33,15 +49,53 @@ Automatic failure conditions:
 - action direction becomes contradictory or axis flips without motivation
 - unsafe explicit sexual content, sexualized minors, or gore-focused violence
 
+A hard failure overrides an otherwise high total. Retain the score as diagnostic if useful, but label the case failed. Major plot outcome/physical contact/exit contradictions or violating an explicit one-take/locked-camera requirement also fail; do not let decorative strengths compensate. Distinguish an observed instruction violation from a missing/unavailable media check.
+
 ## Evaluation Procedure
 
 For each case:
 
-1. Generate the answer in the mode/stage requested by the case; use workshop mode only when unspecified. Keep explicit approval boundaries and host capability conditions.
-2. Measure only the copy-ready final prompt against the duration-based character ceiling.
-3. Check timing beat by beat.
-4. Mark continuity states: position, direction, held object, costume, light, emotional residue.
-5. Record failures and update rules only when the failure is generalizable.
+1. Record the actual case input/variant, requested stage, available raw assets/capabilities, skill-file fingerprint and rubric revision. Declare applicable dimensions and evidence layer; do not supply expected answers to an independently executing evaluator.
+2. Generate and save the actual answer in the requested mode/stage; use workshop mode only when unspecified. Keep explicit approval boundaries and host capability conditions. A rule read-through or verbal boundary prediction is not a completed case run.
+3. Measure only the copy-ready final prompt against its duration-based ceiling when that deliverable applies. Count the complete prompt with one consistent character-count convention across runs; shorter-than-target text is not an automatic failure if sufficient. Reference-plan-only stages have no final-video length requirement.
+4. Check beat timing and continuity states: position, facing, gaze, contact, held object, costume, light, voice and emotional residue. Score evidence/readability, not presence of specialist words or a preselected number of shots.
+5. Mark each applicable dimension assessed or not tested, record earned points with evidence, check hard failures, then normalize only a complete layer. Record text/image/video results separately using the evidence rules below.
+6. Compare affected cases against saved prior outputs under the same rubric and input where available; state when there is no comparable baseline. Update governing rules only for a generalizable failure, then rerun failed/affected controls after that change, not after an unchanged successful check.
+
+### Evidence layers
+
+- `Text`: actual answer inspected for intent, feasibility, stage boundaries and internally consistent instructions. This proves neither physical rendering nor audible delivery.
+- `Image`: inspected actual supplied/generated images for identity, design, topology, contacts and reference contamination. If absent, mark not tested; a planned image prompt is not pixel evidence.
+- `Video visual`: identify the actual submitted prompt/reference set and inspected file, with timestamps and playback/frame-sampling coverage. Representative stills support observed states but not guaranteed motion fluidity, contact mechanics between frames or absence of hidden cuts.
+- `Video audio`: record actual listening/playback coverage separately from visual review; dialogue clarity, lip-sync, overlap and distance cannot pass from silent frame inspection. If audio is inaccessible, leave it not tested.
+
+Do not infer unavailable input settings or substitute a conversation draft for the actual submitted prompt. Compare repeated media trials only with their actual duration, ratio, references, platform/model settings and any supported seed/control conditions recorded. No new generation or credit spend is implied by evaluation.
+
+## Fixed Core Regression and Maintenance Gate
+
+Core revision: `2026-10-07-core1`. Keep these existing cases stable; add new variants beside them rather than replacing difficult originals with easier inputs:
+
+| Case | Core coverage | Fixture/evidence boundary |
+|---|---|---|
+| 01 | Simple fixed emotional close-up; no over-direction | Text feasible; media not implied |
+| 02 | Multi-person dialogue, knowledge, timing and axis | Inserts optional unless actually required by input |
+| 20 | Ordinary true one-take, report ownership and silent ending | Text camera path; rendered continuity separate |
+| 29 | Minimum motivated light and concrete sound bed | No forced palette; audible result separate |
+| 37 | Reference authority and static deduplication | Needs actual accessible images for image-grounded branch |
+| 49 | Vertical relationship asset planning and stage boundary | Stage 1 can run as text; actual image approval/video stage separate |
+| 57 | High-pressure 1v2, threat overlap and defeated-state evidence | Text causality; speed/contact/outcome rendering separate |
+| 60 | Bridge group geography, guard task, night visibility and emotional defense | Honor declared approved facts without claiming unseen images inspected |
+| 61 | One-take coverage repair and honest attribution | Requires actual input prompt/media for result-attribution branch; missing-media handling is only a boundary variant |
+| 62 | Emotional continuity, conditional cuts and necessary reference count | Run its three distinct probes; report their variants separately |
+| 63 | Optical choices protect faces/contact/exit | Numeric settings not required |
+| 64 | Locked ensemble attention and differentiated reactions | No compulsory shot/focus ladder |
+| 65 | Prioritized dialogue and doorway acoustic transition | Text space logic; visual and listening evidence separate |
+
+For a narrow change, run affected cases plus one simple unchanged control and one relevant complex control. Select by the changed behavior; do not rerun all 65 cases automatically. For a claim of a new full text regression baseline, run all core base inputs and Case 62's three probes, saving outputs; report asset-dependent branches not tested when fixtures are missing. Such a partial run cannot be labeled all-core passed. Other boundary variants are selected by risk and listed explicitly.
+
+After the selected checks pass, freeze unrelated creative rules. A later good example is first a candidate example/test, not a mandatory new global rule. Reopen a rule when a repeatable or generalizable failure shows which control is missing; preserve successful parts and record the minimal repair.
+
+Maturity records distinguish `framework ready`, `selected text regression checked`, `full core text baseline checked`, and `media-validated for the tested scenarios`. A mature claim needs a comparable saved full-core text baseline with no hard failures, its scoped retest, and repeated user/media evidence for the capabilities claimed. Record counts and unresolved scenarios; neither an average high score nor one good render proves universal maturity. Do not block an ordinary prompt deliverable on completing this maintenance gate.
 
 ---
 
@@ -78,7 +132,7 @@ Input:
 
 Expected:
 
-- Structure: dialogue cross-cutting with one insert shot.
+- Structure: readable dialogue/reaction coverage; cross-cutting is a useful choice, and an insert is optional when it carries information or a necessary pause.
 - Establish father, mother, daughter positions.
 - Preserve screen-left/right and eyelines in close-ups.
 - Key lines are explicit and timed.
@@ -167,7 +221,7 @@ Input:
 Expected:
 
 - Structure: fight choreography.
-- 2 shots, 6-8 total action beats.
+- Use a readable number of shots/exchanges for the requested duration; two shots and 6-8 beats are one possible treatment, not a universal pass requirement.
 - Attack line, evasion, contact point, footwork, weight transfer, camera response.
 - Stable A/B screen positions until a visible pivot or throw.
 - Use 2-4 principal camera methods selected for specific fight beats; no unmotivated stacking of orbit, whip pan, push-in, slow motion, and impact hold.
@@ -193,7 +247,7 @@ Expected:
 
 - Clear room layout and environmental anchors.
 - Cause-effect chain: body -> prop contact -> prop reaction -> opponent reaction -> camera reaction.
-- 2-3 shots, no more than 10 beats.
+- Keep action density playable with readable cause/contact/consequence; 2-3 shots and fewer than 10 beats are a suggested treatment, not a hard limit absent a user constraint.
 - Props do not teleport or randomly break.
 - Final prompt under the duration-based character ceiling.
 
@@ -1013,7 +1067,7 @@ Expected:
 - Create a clean scene plate for the recurring main hall when its topology matters.
 - Do not automatically create individual identity references for both one-off servants or a clean plate for the one-off backyard.
 - Explain briefly which assets are not generated and why.
-- Keep the current generation stage to roughly 1-3 active references; if more are truly needed, batch them through an asset plan.
+- Use 1-3 active references as an estimate, not a cap. Keep any distinct necessary identity/space/contact coverage; separate the asset library from per-shot inputs and batch only when actual production/input constraints require it.
 
 Failure checks:
 
@@ -1601,9 +1655,93 @@ Boundary probes:
 
 Failure checks: face cropped during decisive emotion; screen-left mistaken for gaze; tiny sharp distant face called close-up; approach starts offscreen; ambiguous shared contact; hidden cuts; multiple changes called single-variable testing; text checks claimed as media success.
 
+## Case 62: Conditional Rules Without Continuity Reset
+
+Run these independent boundary probes when revising emotion starts, cut rules or reference counts:
+
+1. `上镜女子已经愤怒，咬紧下颌、呼吸急促；接一个8秒面部特写，她听完解释仍生气但决定让对方说下去。直接给提示词。` Expect an angry opening inherited from the prior state, then a motivated easing of resistance; no neutral reset, repeated discovery or mandatory tears. Repeat with `人物起初平静，随后听到坏消息`: a calm start is appropriate there.
+2. `15秒，男子递钥匙，女子接过后发现钥匙上绑着旧戒指。希望全景到中景看交接，再近景到特写看发现，动作连续。` Expect the requested adjacent sizes when framing changes make handoff/discovery readable, stable ownership/eyelines and no gratuitous insert or 30-degree relocation. Repeat with `禁止相邻景别，同主体切镜水平角度至少30度`: honor that explicit restriction rather than silently exempting it. Near-identical views with mismatched hand positions still fail, even with a sound bridge.
+3. `参考图优先，只输出素材规划。三名跨段反复出现的主要人物，都要独立身份图；两个场景都含关键出口；另有一把必须保持结构的钥匙。` Expect the six requested nonredundant assets and their roles, with reuse planned; do not cap at three, combine identities against the request, generate media or demand approval to finish the plan. Repeat with a simple solo close-up and an available usable identity image: reuse it without expanding the asset set. If a specified tool has an input limit, distinguish the six-asset library from compatible per-shot input batches.
+
+Failure checks: neutral start contradicts inherited emotion; adjacent labels rejected despite readable requested cuts; numerical camera relocation replaces dramatic purpose; explicit user restrictions ignored; necessary assets removed to meet a planning estimate; redundant assets multiplied; text checks presented as video success.
+
+## Case 63: Lens and Depth Follow Required Evidence
+
+Input:
+
+```text
+直接写15秒视频提示词：女子近处递钥匙给两步外的男子，男子走近接过；两人表情、交接和身后唯一出口必须清楚。写实，无配乐，不需要报器材参数。
+```
+
+Expected: establish a usable camera position, depth/approach and framing for the handoff; preserve ownership through one visible transfer; keep required faces/contact/exit readable when needed. Decide simultaneous clarity or motivated focus sequence, not arbitrary f/1.4 blur. Numeric focal length/aperture is optional. Inspect real time and leave the completed reaction readable.
+
+Boundary probes: `8秒固定CU，只看女子脸，不交接物件` should stay simple, with no forced optics block or new action. `固定焦距，只用移焦看远处男子` must not imply focus enlarges his face. If simultaneous clarity and explicitly imposed extreme blur conflict in the chosen blocking, adjust authorized geometry or state the unresolved conflict rather than promising both.
+
+Failure checks: critical contact hidden in bokeh; focus called zoom; impossible close camera path; automatic lens/aperture field; claimed exact optical simulation.
+
+## Case 64: Ensemble Attention Relay and Local Crowd Response
+
+Input:
+
+```text
+直接写20秒固定机位多人中景：饭桌上父亲推来卖房合同，女儿发现母亲作担保并按住签字页；哥哥原想递笔，听见女儿说“妈也要承担？”后收回笔；母亲放下碗说“先别签”。四个人各有反应，不要轮流特写。
+```
+
+Expected: stable seating, visible paper/pen/bowl ownership; father -> daughter's discovery -> brother's heard trigger -> mother's intervention; distinguish current goals and knowledge; preserve locked group view with readable face/hand evidence, no compulsory movement or focus-pull ladder. Leave the unresolved decision and a readable reaction at the end.
+
+Boundary probes: a nearby cafeteria tray falls; nearest students see it, another table hears it, distant students may remain occupied. Do not make all extras synchronize, but also do not force delay when a common alarm reaches everyone. A solo quiet close-up must not acquire an ensemble contract. Combat pressure handoff remains combat-specific, not a dialogue-turn substitution.
+
+Failure checks: brother withdraws before he receives the cue; mother and daughter share identical performance; one shot per person despite locked camera; paper/pen teleport; frozen or scripted-unison extras without cause.
+
+## Case 65: Sound Priority Across a Doorway
+
+Input:
+
+```text
+直接写20秒真正一镜到底：年轻警察和师傅从嘈杂街边走进楼门，年轻警察说“证人就在二楼”，师傅回应“先别惊动他”；穿门后年轻警察关门，外面仍有围观声。对白清楚，无配乐。
+```
+
+Expected: continuous accessible camera/walking/closing chain; key dialogue leads over crowd/steps without erasing the street. Establish a coherent listening perspective, moving sound sources, entry acoustics and the door-caused attenuation; preserve a believable outside tail after closure. No extra field or exact acoustic numbers required.
+
+Boundary probes: picture-only CU from unchanged listening distance must not automatically make voice physically nearer. `隔门只能听见含混争吵，听不清内容` preserves unintelligibility and knowledge limits. A deliberate interruption remains overlapped; do not tidy it into serial turns. A simple silent-room close-up keeps only its necessary sound bed, with no doorway/reverb arc invented.
+
+Failure checks: street suddenly disappears on framing change; obstructed dialogue magically clear when the story requires ambiguity; all layers equally loud; voice direction follows screen center irrespective of source; hidden cut; text validation claimed as audio success.
+
+## Case 66: Chase Distance, Continuous Bypass and Moving Inserts
+
+Input:
+
+```text
+直接视频路径，20秒横屏，无对白，多镜头。便衣女警追赶提包男子。男子领先几米，用空着的手扫落店门推车上的空纸箱继续逃；女警从靠墙空隙绕过继续追，允许切脚步与脸部。男子边跑边回望，随后前方一个搬筐工人横过通道迫使他收步绕行，女警因此追近抓住他的后肩衣料。包仍由男子持有，结尾尚未制服。
+```
+
+Expected: distinct goals; barrier source/landing and bypass entry/exit; distance changes follow different visible delays/paths; glance keeps forward escape, external obstruction explains later slowdown; moving close views retain motion, direction and ownership; local public reactions, no unison spectators. Use informative varied coverage for urgency without a fixed count or slow-motion default. Leave the unresolved contact readable at the end.
+
+Boundary probes:
+
+- Simple 8s chase on an empty unobstructed straight lane, pursuer gains ground by faster running: do not add crowds, collisions, forced obstacles or a mandatory insert series.
+- The same barrier bypass under an explicit true-one-take constraint: preserve continuous camera/time; vary framing only through a feasible move, not hidden cuts.
+- User explicitly requires a backward-glance collision to cause interception: retain the specified distraction/collision rather than imposing the base case's external obstruction.
+
+Failure checks: stopping against the wall to act a face close-up; target slows merely to wait; barrier affects one person without a visible reason; bag switches hand during obstruction; tight cuts conceal a route reset; generic speed words replace motion evidence.
+
+## Case 67: Coverage Matches Tone, Not an Action Template
+
+Input:
+
+```text
+直接给15秒横屏视频提示词。写实香港警匪片的近身搏斗：两名成年人物，女警空手拦截男子，男子挥拳，她挡开反击，男子撞卷闸后推开她试图逃跑，她再次逼近；结尾仍在争抢通路。紧张、实时，允许多角度多景别和更强手持感，无对白、无血腥。
+```
+
+Expected: shot density and camera energy chosen for imminent attack, displacement and contact; meaningful wider/medium/close coverage with action matching, support and recovery. Handheld tied to following/avoiding/reframing, not unreadable noise. No automatic slow motion, impact freeze, scheduled dead pause or fixed number of shots. An open ending completes the current movement and preserves escape pressure.
+
+Boundary probes: explicit locked wide shot retains readable full-body combat without cuts; a stylized requested slow-motion peak may use it while preserving contact and real-time consequences; a quiet fixed emotional close-up must not inherit chase-style cutting or shaking. A coherent 30s single-clip brief is not automatically split into two 15s clips.
+
+Failure checks: slow motion despite realtime instruction; all techniques stacked; random shake hides attacks; repeated grip poses replace threats; increasing shot count substitutes for causal intensity; hard camera constraint ignored.
+
 ## Cross-Agent Regression Protocol
 
-Use the same user turns and raw assets across agents. Provide only relevant capability fixtures, never expected answers, to the executing agent. Keep existing Cases 11, 27, 31, 37-45 and 48-50 as related regressions; select by changed behavior rather than rerunning every case automatically.
+When an independent multi-agent test is actually authorized and used, use the same user turns and raw assets across agents. This protocol does not require or authorize delegation for ordinary maintenance. Provide only relevant capability fixtures, never expected answers, to the executing agent. Keep existing Cases 11, 27, 31, 37-45 and 48-50 as related regressions; select by changed behavior rather than rerunning every case automatically.
 
 Record the agent/model, host, available capabilities, exact input/asset identity, observed response/tool actions, and pass/fail/not-tested for repeated confirmation, unauthorized continuation, incomplete delivery and false verification. Judge behavior rather than exact wording or headings. Text-only runs do not validate image/media tool branches. Never infer another agent's result from one agent's score.
 
@@ -1614,13 +1752,21 @@ Append results in this form when testing:
 ```text
 Date:
 Skill version/commit:
+Governing file hashes:
+Rubric/core revision:
 Agent/model and host:
 Available capabilities:
 Input/asset identity:
-Verification layer (text/image/video):
+Verification layer (text/image/video-visual/video-audio):
+Image/video/audio coverage and missing fixtures:
 Result (pass/fail/not-tested):
 Case:
-Score:
+Actual saved output/submitted prompt path:
+Applicable/N/A dimensions and reasons:
+Assessed/not-tested dimensions:
+Raw earned/applicable weight; normalized score or provisional subset; coverage:
+Hard failure and evidence:
+Comparable baseline and changed conditions:
 Observed failure:
 Root cause:
 Rule changed:
@@ -1629,11 +1775,11 @@ Remaining risk:
 ```
 
 
-## Regression Suite: Six Director and Continuity Fixes
+## Regression Suite: Director and Continuity Fixes (Eight Probes)
 
 Run these as text-level cases; record actual outputs, pass/fail and media-not-tested.
 
-1. Tail-frame continuation: previous medium shot shows a crouched cowboy offering a hand; next clip develops the child's trust. Expect a state-only tail-frame role and a nonadjacent-size reverse opening, horizontal angle >30 degrees on the same axis side. Fail: duplicate opening for one second before cutting, repeated offering gesture, or promise of identical pixels. Repeat with a forced-first-frame tool: expect a new-angle start asset or explicit trimming plan, not contradictory first-frame instructions.
+1. Tail-frame continuation: previous medium shot shows a crouched cowboy offering a hand; next clip develops the child's trust. Expect a state-only tail-frame role and a motivated new view with readable framing/action distinction, preserved axis, contact and eyelines; adjacent sizes are allowed unless explicitly prohibited. Fail: duplicate opening for one second before cutting, repeated offering gesture, near-identical unmotivated jump, or promise of identical pixels. Repeat with a forced-first-frame tool: expect a compatible new-angle start asset or explicit trimming plan, not contradictory first-frame instructions. Repeat with explicit nonadjacent-size/minimum-angle constraints: honor those constraints.
 2. Local prompt: a normal bartender with approved identity image serves a drink; she transforms only in a later clip. Expect present actions and bar-side blocking only. Fail: “尚未尸变”, future foreshadowing rationale, or repeated full costume description in model text.
 3. Coverage gap: only an entrance-facing tail image exists; requested next clip shows the reverse wall and full-body exit. Expect identity/scene coverage map and missing reverse-angle reference prompt with invariant architecture, before final image-grounded compilation. Fail: invent reverse geometry, treat tail frame as sufficient, or generate images without authorization. With all actual views supplied, proceed without duplicate asset requests.
 4. Delivery mode: user says “继续下一段”. Expect concise diagnosis, strategy and continuity/reference checks. Repeat “只给最终提示词”: omit visible analysis while retaining internal checks. Fail: assume iterations mean terse mode or print unwanted analysis in prompt-only mode.

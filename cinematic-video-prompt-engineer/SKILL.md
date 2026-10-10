@@ -19,6 +19,18 @@ Apply these rules before mode/path-specific checkpoints. They work through ordin
 4. Ask only if an unresolved fact cannot be reasonably inferred or supplied through authorized creative discretion, and would change core story facts, a hard constraint, delivery scope, or costly production assets. Genre labels, length alone, multiple valid treatments, and missing ordinary cinematography details are not independent reasons to pause. Select camera, light, performance, and pacing within the brief. Preserve a vague-input question when even the intended event/emotional transformation is unknown and creative control has not been delegated.
 5. Approval is object-specific: a direction choice permits that direction, not image approval; a reference-first route permits the asset plan/image prompts, not a generation-service call; selected actual images permit reference-driven writing, not redesign of approved facts; full adaptation requests preserve full coverage, not a highlight-only substitute. Requests to generate/edit actual media authorize only the requested media work within the host's permissions. Never infer publication or unrelated external actions.
 
+### Brief invariants and bounded discretion
+
+Before drafting, distinguish internally: (1) locked story facts, line wording/order, knowledge boundaries, ending and hard delivery/camera constraints; (2) technical design needed to make the supplied event visible and physically possible; (3) discretionary styling. Do not print this classification by default. Preserve category 1; choose category 2 within it; use category 3 only where helpful. Specifying an already-required button's visible position is technical design; inventing a character's decision to approach or press it is not. Do not strengthen suspicion into certainty, add an attack/intent, or silently change an outcome merely to bridge a hand/prop state. Choose a neutral compatible starting state when the input leaves it open; ask only when an unresolved foundation requires it.
+
+### Local state and delivery audit
+
+For a story-critical transfer, support, threshold crossing, fall, strike, door operation or gaze/evidence change, privately trace `before → visible change → after`: holder/active hand and occupied contacts; footing/weight support; world-space direction, target and clearance; resulting body/prop/knowledge state. Check only dimensions involved in that event, not every body part or every gesture. Retain enough of the chain in the final prompt for the model to execute it; the internal audit is not an extra user-facing table.
+
+- For shared support or narrow passage, state the relevant staggered entry/step and when support transfers or remains outside; do not substitute “自然跟进” for a necessary transition. Keep critical hand/foot contact visible, not merely inside the frame: account for bodies, door edges and props that can occlude it. Ordinary established contact need not be restated in every beat.
+- Test local contradictions: a hand performing incompatible concurrent tasks, a prop jumping owner/location, reversed travel or door sweep, evidence received after its reaction, or an action/dialogue/camera path with insufficient travel/reaction time. Specific checks apply only when the scene contains those risks; do not output a generic checklist.
+- Repair a found conflict before delivery by simplifying secondary movement/coverage or adding the missing causal transition. Preserve locked facts, key lines, support and ending residue; use the existing failure gate if hard constraints remain incompatible. Run this as text validation, not a claim of rendered success.
+
 ### Capability and Completion Boundaries
 
 - The baseline deliverable is text. Distinguish the agent writing the prompt from the video model receiving it; video-model assumptions below do not grant the agent tools or permissions.
@@ -49,6 +61,8 @@ For generated-video attribution, or an emotional true one-take involving near/fa
 If the user provides or describes a generated reference image and asks to fix it, use `Reference Image Result Repair` in `references/reference_first_video_workflow.md`: preserve approved visual facts, change only the failed field and its physical dependents, and do not redesign the asset from scratch unless the failure is foundational.
 
 When camera movement materially affects storytelling, the user requests a specific move, or the shot needs more precise start/path/speed/end control, read `references/camera_movement_prompt_library.md`. Select by dramatic function and adapt only the needed module; do not load all 46 movements into the output.
+
+When lens/depth choices determine whether a face, shared contact, moving action or near/far group is readable, use `Camera geometry before numeric decoration` in `references/continuity_director_contract.md`: decide required evidence, subject depths and usable camera position before focal length, focus and optional aperture. Do not add numeric optical fields to every shot.
 
 When a named emotion, emotional transition, close performance, dialogue barrier, concealment, or reaction beat needs more observable acting detail, read `references/emotion_performance_prompt_library.md`. Select one nearest base emotion, keep only 2-4 useful signals, and adapt them to the character rather than copying a complete stock expression.
 
@@ -129,7 +143,7 @@ In `参考图优先路径`, wait only when required actual images are unavailabl
    - If the user asks for both forms, label and output two distinct prompts: `参考图驱动版` and `无参考图直出版`. Do not make one ambiguous prompt serve both purposes.
    - Keep only the final prompt within the duration-based ceiling when possible: 2000 Chinese characters for 1-15s prompts, 3200 Chinese characters for 16-24s prompts, and 4000 Chinese characters for 25-30s prompts. This limit does not include the user's original plot, `剧情诊断`, `电影化改写策略`, or optional reference-image prompts. Do not treat the ceiling as a target length.
    - Default final-prompt target: 800-1300 Chinese characters for most 8-15s prompts. Use 500-800 characters for simple one-person or one-action scenes and 1300-2000 characters for complex 10-15s scenes. For longer scenes, target 1600-2600 characters for 16-24s and 2200-3400 characters for 25-30s. Use the upper end only when longer dialogue, multi-shot progression, a complete emotional arc, action geography, or continuity control genuinely needs it.
-   - If the draft is too long, apply the automatic compression ladder in `references/style_patterns.md` before recommending a split.
+   - If the draft is too long, use `Prompt Compression` in `references/style_patterns.md` under the dialogue and coverage controls in `Execution Gates and Failure Recovery`. Older instructions to shorten dialogue are not permission to edit supplied key lines: simplify decorative detail, redundant constraints and secondary camera/action first; edit such lines only within the user's authorization. A scope conflict still requires the specific choice, not silent omission.
    - Use Chinese as the default output language. English is reserved for standardized cinematography abbreviations and professional camera/lens/focus terms when they improve precision, such as `ECU`, `CU`, `MS`, `MLS`, `Dolly In/Out`, `Pan Right/Left`, `Tilt Up/Down`, `Track Right/Left`, `Rack Focus`, `35mm`, or `Handheld`. Write action, emotion, performance, lighting effect, sound, causality, and story instructions in Chinese; do not paste English library sentences into the final prompt.
    - Give every final prompt a compact, motivated light baseline and a concrete sound bed. Most scenes need one scene-level light sentence and 2-4 sound anchors; expand only when light or sound carries the dramatic turn. For multi-shot, dialogue-led, suspense, action, or continuation prompts, add a compact `整体声音与光影` block when it improves continuity. Follow the placement hierarchy in `references/style_patterns.md`.
    - Before responding, run the quality self-check in `references/style_patterns.md`. Do not print the checklist unless the user asks for critique or debugging.
@@ -183,49 +197,7 @@ Do not ask for missing technical details such as lens, lighting, camera movement
 
 ## Continuation Workflow
 
-Use this when the user says `继续`, `接着往下写`, `延续上一条`, `下一段`, `下一镜`, `用上一条尾帧继续`, `第一条满意，写第二条`, or gives a follow-up after approving the previous prompt.
-
-Continuation is not a new unrelated prompt. It must preserve continuity and move the story forward.
-
-Default continuation format; include the reference-assets block only when the chosen path or a new/updated visual anchor needs it:
-
-```text
-【剧情诊断】
-本段可见变化与时长风险：
-
-【电影化改写策略】
-表演、切点与摄影选择：
-
-【接续判断】
-上一段结尾状态：
-下一段情绪推进：
-连续性注意：
-
-【参考资产状态】
-沿用上一段人物/场景/道具参考：
-本段衔接方式：
-新增人物参考图：
-新增场景参考图：
-新增关键道具参考图：
-
-【下一段最终视频提示词】
-基础概括：
-...
-```
-
-Rules:
-
-- Continue from the previous segment's story state, not necessarily from the exact previous tail frame. Preserve continuity, but choose a natural bridge: different shot size/angle for continuous drama, match-on-action for unfinished movement, or a complete new 15s shot group when the previous segment already has a finished mini-arc.
-- Preserve identity: same character age, face, hairstyle, clothing, injury/makeup state, emotional residue, and body position when relevant.
-- Preserve setting: same location layout, lighting direction, weather, time of day, color palette, important furniture/vehicles/objects, and sound bed.
-- Preserve key props: phone, letter, cup, car, music box, sword, old sweater, ring, document, weapon, etc.
-- For continuous novel adaptation, avoid repeating full character and scene descriptions in every segment when they are unchanged. Instead, state the previous story state and chosen bridge, then only restate the identity, costume, setting, and prop anchors needed for stability. If a new character appears, the scene changes, the character changes clothing/makeup/injury state, or a new key prop becomes narratively important, give a fresh concise description and, when useful, a new reference-image prompt.
-- Emotion should progress, not restart. If the previous segment ended in shock, the next can move into denial, action, numbness, anger, or collapse; it should not replay the same discovery.
-- Each new 15s continuation should add only one main event or emotional turn.
-- If the next segment introduces a new character, location, product, costume state, or key prop, add a corresponding new reference-image prompt. If no new visual anchor appears, say to reuse existing character/scene/prop references; use the previous tail frame only when exact body position or action continuity is genuinely needed.
-- In continuous-short-film mode, maintain an internal character bible and scene continuity sheet with an anchor budget: keep 4-6 stable identity anchors for the main character, 3-5 for an important supporting character, 4-6 spatial/light anchors for each recurring scene, and 1-2 group-level anchors for background people. Track temporary story state separately, including held/placed props, missing accessories, wetness/injury, body position, travel direction, voice condition, and emotional residue. Causally necessary state overrides the numeric budget. Repeat only the anchors visible or relevant in the current shot; when the prompt becomes crowded, remove decorative identity detail before action causality, spatial direction, prop state, key dialogue, or the ending reaction. Print compact bible/sheet versions only when they help the user generate multiple segments consistently.
-- If the user provides a new direction for the continuation, follow it. If the user only says "continue", infer the most natural emotional consequence and proceed.
-- Keep the next final prompt under the normal length targets and 30s maximum.
+For continuation or continuous multi-clip stories, read `references/continuation_workflow.md` and the continuity contract before drafting. Preserve story/prop/emotional state, not an obligatory duplicate tail-frame composition. Do not load this module for unrelated first-segment work.
 
 ## Output Format
 
@@ -273,117 +245,33 @@ After the actual images are generated, selected, or supplied, use the reference-
 
 For the final prompt, include the sections that matter for the scene. Do not force every label if it makes the prompt bloated. Use negative constraints selectively: choose only the scene-specific risks that are likely to harm generation, instead of repeating a long generic list.
 
-Useful final-prompt components:
+Use a compact summary and timed shot/action beats. Choose only the scene-relevant components: composition, camera, performance, dialogue, light, sound, ending and likely failure constraints. These are a field menu, not mandatory headings; lens/aperture numbers, voice profiles and micro-expression ladders are conditional controls, not a completeness checklist.
 
-- 片长与结构
-- 基础概括
-- 关联补充
-- 镜头序号 / 时间轴
-- 景别与焦段
-- 拍摄角度与运镜
-- 画面主体与构图
-- 光影与氛围
-- 角色演绎
-- 微反应 / 生理反应
-- 台词 / 内心 OS / 画外音
-- 音效设计
-- 结尾处理
-- 负面约束, only when needed
+State stable identity, spatial layout, light, sound bed and global constraints once at scene level; shot beats describe the changes and any local state needed to understand them. Repeat a critical contact, occupied hand, support, gaze target or prop ownership when a cut or transfer would otherwise make it ambiguous. Do not remove these facts to meet a shorter target. Avoid restating the same unchanged constraint in the summary, every shot and the ending; a longer duration alone does not require more fields or padding.
 
 Do not include a separate `视频模型` line by default. If the user specifies a model, adapt the prompt to it naturally. Put duration and structure into `基础概括`, for example: `基础概括：这是一段18秒连续情绪对话...`.
 
 ## Cinematic Translation Rules
 
-- Choose structure before writing shot details. In the diagnosis, name the chosen structure and state why it fits this story. If the scene combines structures, identify the primary structure and the secondary support, such as `主结构：多人对话交叉剪辑；辅助：微表情特写`.
-- For multi-shot sequences, dialogue cross-cutting with three or more shots, large-scene compression, or continued clips, create an internal shot ledger before drafting the final prompt. For each shot, lock its story function, one primary action, audience gaze path (`entry → hold/occlusion → landing`), the necessary change from the preceding shot, and the continuity anchors that must survive the cut. Use the ledger to remove cuts that only repeat an angle or action. Do not print it as a default user-facing section, and skip it for a simple one-take, a static close-up, or a single-action scene.
-- For a plot-driven shot ledger, audit adjacent shot order before finalizing: if two shots can trade places without changing character knowledge, action causality, or reaction timing, merge, remove, or redefine one of them. Skip this order test for associative atmosphere montage, product/person texture sequences, and deliberately fragmented or nonlinear memory.
-- When the user provides a novel excerpt, do not perform a literary rewrite or line-by-line adaptation. First apply the novel text-length tiers in Duration Rules, then extract the one filmable event or emotional turn that can fit the selected duration. Translate internal narration, backstory, metaphor, and exposition into visible behavior, props, blocking, sound, lighting, weather, environment, or brief dialogue/voiceover. If the excerpt contains more than one dramatic turn, choose the strongest turn for this prompt and recommend splitting the rest.
-- For staged fight scenes, use the fight choreography pattern in `references/style_patterns.md`. Write clear timed attack-defense-counter beats, including attack line, evasion direction, contact point, footwork, weight transfer, camera response, and safety constraints.
-- For stylized 1v2 or 1v3 fights, also use `Stylized Multi-Attacker Fight Control` in `references/style_patterns.md`: give every fighter a distinct combat-function signature, transfer pressure through short threat-handoff overlaps instead of isolated 1v1 turns, isolate story-critical weapon/prop state changes, separate hard invariants and phase anchors from optional move vocabulary, and judge density by readability rather than one universal action-count limit.
-- Default to staged, non-graphic outcomes. If the user explicitly requires a death or fatal result, preserve that story outcome through readable defeat, loss of action, body position, and aftermath without gore or fetishized injury; do not silently rewrite it as non-lethal.
-- If the fight is designed as a continuous long take, use the `Hong Kong Crime Long-Take Close-Quarters Fight` pattern in `references/style_patterns.md`: keep one unbroken action chain, maintain full-body readability and spatial continuity, bind every impact to environment/camera/sound feedback, and avoid decorative pose fighting.
-- Fight prompts must follow the duration-based character ceiling for the copy-ready final prompt. Target 1300-1800 characters for a 10-15s fight, 1800-2600 for a 16-24s fight, and 2200-3400 for a 25-30s fight; keep action count readable. Use more than 3000 characters only when the extra text protects action geography, timing, continuity, or physical readability. If clarity requires more than the applicable ceiling, split the fight into consecutive clips.
-- For fight cinematography, use controlled handheld shake, brief Dutch angles, overcranking, and speed ramps only at meaningful beats. Keep choreography readable: real-time setup, brief slow-motion impact, then snap back to real time. See `Fight Scene Cinematography Rhythm` in `references/style_patterns.md`.
-- Select fight camera movement by dramatic function rather than stacking techniques. Use the `Action-Fight Camera Movement Selection System` in `references/style_patterns.md`: establish geography, follow displacement, clarify attack/defense, emphasize one impact, or bridge a motivated cut. A 10-15s fight should usually use only 2-4 principal camera methods; a 16-30s fight can use more beats only if each method is tied to a specific action beat.
-- For cinematic crowd fights or protector-entrance action scenes, use the `Epic Crowd Fight / Protector Entrance` pattern in `references/style_patterns.md`. Preserve character/scene continuity across segments, choose a natural clip bridge or use material references when provided, keep one hero as the action anchor, and explicitly ban subtitles/background music if requested.
-- Use director-level shot continuity rules from `references/style_patterns.md`: avoid adjacent shot sizes that are too similar, change camera horizontal angle by at least 30 degrees when cutting between different angles within the same scene and same subject/interaction, use insert shots when dialogue needs breathing room, leave ending breath, and use match-on-action when splitting one action across two shots. The 30-degree angle rule does not need to be forced when cutting to a new scene or new location.
-- Preserve 180-degree axis, eyeline, screen direction, handedness, prop position, costume/injury state, and entrance/exit continuity. Cross the axis only through a visible camera move, a neutral-axis shot, or a motivated re-establishing shot.
-- Convert feelings into behavior: eyes, breath, jaw, hands, posture, hesitation, stillness, impact, recovery.
-- For animals, creatures, robots, or other non-human performers, use the `Species-Appropriate Non-Human Performance System` in `references/style_patterns.md`. Translate emotion through anatomy, sensory behavior, movement, age/energy limits, contact, and recovery appropriate to that subject. Do not map human crying, smiles, brows, or gestures onto a non-human character unless its established design genuinely supports them.
-- Use the emotion-to-micro-expression map in `references/style_patterns.md` when the user names an emotion directly, such as shame, guilt, jealousy, relief, love, fear, grief, anger, revenge, numbness, or resolve. Translate the named emotion into 3-5 visible beats instead of using abstract labels.
-- Convert themes into physical motifs: wind, dust, glass reflection, streetlight stripes, rain on a window, paper trembling, cloth friction, engine vibration.
-- Before finalizing, apply the `Prompt Sampling Range Control Principles` in `references/style_patterns.md`: turn abstract intent into visible screen evidence, remove physically or narratively contradictory instructions, write the desired action path positively before adding any negative constraints, and keep only details that reduce ambiguity rather than trying to control every pixel.
-- Do not write `电影感布光` as an empty style label, but also do not over-describe lighting by default. Use lighting detail proportionally: most scenes only need one compact scene-level light phrase; expand into key light, fill light, rim/soft edge highlight, background/volumetric light, and tonal meaning only when lighting is a dramatic core, a style test, or the user specifically asks for lighting. Do not repeat a full lighting breakdown in every shot unless the light changes.
-- When color carries a story turn, period or place identity, or a product/person texture film, set one compact color premise before shot detail: two dominant color ranges, one transition range, and at most one small accent, each tied to a physical source. State what remains stable or changes across the scene and why. Do not impose a palette on a simple dialogue or action scene when color carries no dramatic information.
-- Keep light motivated by the environment. Do not force `Hard side-top Key Light` or `右上方硬质侧顶光` into small rooms, domestic interiors, or ordinary scenes unless there is a believable source such as a bare bulb, high window, table lamp, doorway slit, neon, car headlight, phone screen, or flashlight, and the story needs that hardness. If the source does not support hard top-side light, choose softer or more natural practical light.
-- For night exterior or period courtyard scenes, use the `Realistic Night Exterior and Courtyard Light` rules in `references/style_patterns.md`: moonlight should usually act as soft ambient/edge light, while readable faces should come from motivated lantern, candle, doorway/window spill, stone-floor bounce, table reflection, or weak practical fill. Keep artistic contrast believable rather than forcing hard moonlight across a face.
-- When a scene contains movement, let light interact with motion instead of staying decorative: window light, door slits, headlights, phone screens, clouds, rain, dust, grass, fabric, or breath can create moving highlights, shadows, particles, and sound/light transitions that follow the action.
-- Give the model concrete motion over abstract adjectives.
-- Use time marks for short clips, especially when the emotional beat changes.
-- Make time marks playable. Each shot should have enough duration for the described action, camera movement, line delivery, and reaction.
-- Keep camera language physically plausible. Avoid asking for too many impossible simultaneous camera moves.
-- Make the first frame reconstructable: the final prompt should clearly establish the visible subject and start state. The subject does not have to be a person; it can be an empty location, key prop, vehicle, screen, building, landscape, or aftermath state. If people are visible, include posture, screen position/depth, facing direction, gaze, and held/contacted prop. If the first frame is empty or object-led, include location layout, foreground/midground/background, key object state, weather/environment motion, sound cue, main light source when relevant, shot size, camera angle, and camera axis. Do this especially for one-take scenes, reference-image/video workflows, dialogue, action, and emotional close-ups.
-- A first-frame reference locks the opening pose, composition, screen positions, contact and visible state, not the entire clip's framing. An explicit locked-camera request preserves the specified camera constraints; a true one-take forbids cuts but still permits continuous motivated reframing, focus changes and physically possible camera movement. Otherwise choose cuts and coverage from story beats while preserving identity, space, axis, handedness, prop state and light continuity. Do not add cuts merely for variety: each new view must reveal action, information, reaction, power change or aftermath.
-- Keep one core action path and one core camera behavior per shot unless the user explicitly asks for complex continuous movement. If a shot needs several camera phases, serialize them with clear settle points; if several actions compete, split the beat or remove the weaker action.
-- For story-critical props, write physical state precisely: holder, hand, grip/support point, orientation, contact relationship, visible change, and final location. Show any change of state on screen instead of letting props jump between shots.
-- Do not leave optional branches in the copy-ready final prompt. Remove `或`, `或者`, `A/B`, `二选一`, and `可选` unless the user explicitly asks for variants; make the director choice before delivery.
-- Select camera movement by dramatic function. Use the `General Camera Movement Selection System` in `references/style_patterns.md` for the first decision; when the scene needs a less common movement or precise start/path/direction/speed/end wording, read `references/camera_movement_prompt_library.md` and choose from its 46 movement modules. Decide whether the shot needs intimacy, context reveal, gaze following, parallel movement, power shift, disorientation, urgency, stillness, scale, or a transition before naming the move. Do not add a movement only because it exists in the library.
-- When `9:16竖屏` is active, do not reuse a horizontal composition with cropped sides. Use the vertical adaptation system to protect face/hand/prop/action endpoints, layer people through depth or `OTS`, create head/foot room before full-body movement, shorten horizontal camera travel, and keep composition-controlling references in the target ratio.
-- For ordinary non-fight one-take scenes, use the `Ordinary Drama One-Take Blocking System` in `references/style_patterns.md`: design a continuous camera sentence with a clear start frame, physical camera path, blocking shift, motivated `Rack Focus` / `Focus Pull` when needed, foreground depth, stable screen direction, and a held ending. When the one-take reveals several important characters, use the `One-Take Character Reveal Ladder`: reveal identities progressively through orbit, shoulder/back foreground masking, lateral movement, and pull-back hierarchy rather than showing everyone at once.
-- For characters, write internal logic first, then external evidence. Example: because the character is suppressing panic, their jaw locks, fingers dig into fabric, and breath becomes shallow. When a named emotion or transition needs a more specific acting vocabulary, use `references/emotion_performance_prompt_library.md` as a 25-emotion source: choose one base module, take only 2-4 fitting visible/audible cues, and rewrite them around the scene trigger, onset, peak, and release/transform.
-- For close human scenes, dialogue, everyday realism, intimacy, hesitation, concealment, explanation, lying, memory, or restrained emotion, use the `Live Performance Realism System` in `references/style_patterns.md`: performance must be driven by one psychological motive; expression, eye line, voice, pauses, incidental body language, biomechanics, object contact, environment response, and camera/light/focus conditions must feel like one real person in one physical space.
-- For dialogue-led acting scenes, use the `Dialogue-Driven Performance Control System` in `references/style_patterns.md`: treat dialogue as the timeline of expression. Write the state before speaking, the exact trigger words, emphasis, pause, breath, eye/body reaction, emotional barrier, post-line state, and listener response. For high-stakes close-ups, natural-language facial actions come first; optional AU/FACS tags and intensity can be added only as auxiliary calibration.
-- For complex multi-shot dialogue, first divide the scene into shot-level blocks, then subdivide only the shot that carries the dense emotional turn into nested performance beats. Maintain separate speaker and listener acting tracks, let dialogue continue across a cut as a motivated `J-cut/L-cut` or offscreen sound bridge when useful, cut on semantic turns rather than equal time, and reserve tighter framing for the moment the character's psychological defense actually opens.
-- For performance-led dialogue, establish a compact scene-level performance contract before detailing beats: what each character wants, which protective behavior keeps them functioning, what they fear will happen if they stop speaking, and how that motive shapes voice, gaze, pauses, and distance. Treat voice identity as a continuity anchor alongside face and costume: preserve vocal age, range, texture, accent, habitual rhythm, and current temporary state such as fatigue, hoarseness, or suppressed crying.
-- For interruption, overlap, or failed speech, use the `Interrupted and Overlapping Dialogue System` in `references/style_patterns.md`. Mark the semantic entry trigger, who enters first, relative volume, brief overlap, who yields, the interrupted mouth/breath state, independent lip movement, and stable sound direction. Protect intentional disfluency such as stammering, false starts, failed inhalation, self-correction, or an unfinished phrase from being auto-smoothed, reordered, completed, or turned into comic repetition.
-- For complex prompts, set a scene-specific generation priority. In dialogue-led scenes, preserve line order, speaker identity, lip-sync, interruption/overlap logic, and vocal performance before decorative camera movement, secondary gestures, or environment detail. When two instructions compete, simplify the lower-priority instruction instead of letting the model improvise the conflict.
-- For plot-driven short drama, translate only the selected narrative functions into visible, playable beats. A cliffhanger should leave the story answer open while completing the immediate screen action and holding 1-2 seconds of reaction, sound, or visual evidence; an unanswered question is not permission to cut off a line or action abruptly.
-- An intentionally unfinished line is allowed only when speech failure, interruption, or refusal to finish is itself the completed dramatic action. Mark why the line stops, prevent automatic completion, and hold the resulting mouth, breath, gaze, listener response, or silence long enough to read; do not use an accidental mid-line cutoff as a substitute for an ending.
-- For intense emotional scenes, build a continuous director-performance chain: inner conflict -> physiological reaction -> micro-expression -> recurring action anchor -> decisive behavior. Preserve the anchor across the scene so hands and props do not reset between beats.
-- When information is discovered, use reaction-first evidence control: show the event directly only when its physical mechanics matter. If the realization is more important, keep the camera on the observer and prove the offscreen event through a precise sound, eyeline shift, object response, light change, or delayed physical reaction. Do not add an insert shot merely to illustrate every noun or action.
-- Build important emotional endings through a behavioral setup-payoff loop: establish a habit, boundary, contact attempt, waiting posture, repeated object action, or unfinished gesture; change its meaning through the scene; then complete, stop, reverse, or transfer it at the ending. The final behavior should visibly prove the relationship or internal state has changed instead of relying only on a theme line.
-- For scenes whose emotional focus narrows and then releases, use a motivated subjective sound-perspective arc: objective environment -> perceptual narrowing -> close breath/contact/object detail -> impact or silence -> environment return. Keep some believable acoustic continuity; do not mute the world completely unless an on-screen cause supports it.
-- For interactions with unequal height, body geometry, mobility, or species, preserve one readable relationship axis without forcing a conventional human shoulder-level reverse shot. Use body-appropriate foreground anchors such as hand, arm, waist, coat edge, ear, back, wheelchair, or object height. A foreground occlusion may perform a reveal, disappearance, time shift, or transition only when the before/after geography, screen direction, light, sound, and final state remain legible.
-- Keep background life autonomous in public or inhabited locations. Extras, traffic, staff, machinery, animals, and ambient routines should continue plausible independent behavior unless the story gives them a reason to react; do not let the entire background freeze, stare, gather, or mirror the protagonist's emotion.
-- Before a large body action, create enough physical screen space. Widen the framing or pull the camera back before turns, falls, embraces, throws, or other full-body movement; then let the camera follow the action.
-- When continuation, split clips, first/last-frame generation, complex blocking, product end states, or repair workflows require it, write the final visible ending state inside the prompt. The ending may be character-led or empty/object-led. For character-led endings, state pose, gaze, contact points, prop location/state, emotional residue, focus, and composition. For empty or object-led endings, state the remaining space, key prop/object state, light/sound/weather continuation, focus, and composition. Do not output a separate field by default; include it naturally in the final shot or ending treatment.
-- Let character action motivate camera, light, and sound changes. A gaze shift can trigger a small pan, an approach can trigger a push-in, a large movement can trigger a pull-back, and contact with fabric/objects should produce synchronized sound and environmental reaction.
-- Sound is part of every shot, not an optional decoration: establish a concise sound bed even in quiet scenes, then include environmental sound, breath, cloth, footsteps, machinery, silence, voiceover, or hard cuts when they shape the emotion.
-- Use the sound design library in `references/style_patterns.md` to choose scene-specific sound anchors. Default to no background music: keep only necessary dialogue/voice, ambient sound, room tone, Foley, movement, impact, object, and action sound effects. Prefer concrete diegetic sound over generic music: rain on glass, fluorescent hum, cloth friction, phone vibration, chair scraping, breath, footsteps, engine idle, distant broadcast, room tone, sudden silence.
-- If the plot implies a key spoken line, write the actual line in the final prompt. Do not hide important story beats behind vague phrases like "the doctor says the bad news" or "the caller tells her what happened." This includes phone calls, medical notices, police notices, confessions, breakups, voice messages, inner monologue, and offscreen dialogue. Keep dialogue short, natural, and timed to the shot.
-- Estimate dialogue delivery time before assigning shot duration. Use the dialogue timing budget in `references/style_patterns.md`; include pauses, breath, action, listener reaction, and 1-2s ending room rather than fitting words to the absolute limit.
-- For long head or face close-ups that carry emotion, use a micro-expression timeline: start from neutral expression, then gradually change eyes, lips, mouth corners, brow, breath, wet eyes, and tears. Avoid sudden expression jumps and exaggerated crying. See `references/style_patterns.md` for the long close-up pattern.
-- For ultra-close face long takes with dense emotion, use the `Ultra-Close Face Long Take: Emotional Arc System` in `references/style_patterns.md`. It is not only for crying scenes; adapt it to grief, shy love, guilt, fear, blackening, resolve, or other emotions. The key is a clear facial emotional waveform with stable camera, smooth transitions, and minimal body action.
-- For 20-30s emotion-led scenes, especially goodbye, confession, accusation, breakup, reunion, forgiveness, or acceptance, use the `30s Psychological Stage Timeline` pattern in `references/style_patterns.md`: split the timeline by psychological tasks such as asking, accepting, remembering, regretting, or letting go; bind each stage to visible face/eye/breath/body evidence, short dialogue or silence, and a clear difference from the previous stage. Do not print long emotional analysis inside the final prompt unless a brief note prevents ambiguity.
-- For quiet emotional exhaustion, powerless grief, downcast silent crying, or a character collapsing inward after long restraint, use the `Exhausted Silent Collapse Arc` under that system.
-- For intimate but non-explicit emotional beats such as coquettish refusal, soft protest, shy sulking, playful resistance, or saying `我不要`, use the `Coquettish Soft Refusal Arc` in `references/style_patterns.md`: the performance should read as gentle, safe, and teasing rather than real fear, coercion, or explicit seduction.
-- When writing emotional close-ups, use the micro-expression action library in `references/style_patterns.md` as modular beats. Choose only the beats that match the character's emotional arc, and keep the transition smooth.
-- For `负面约束`, choose scene-specific risks from the negative constraint library in `references/style_patterns.md`. Positive instructions should carry the desired action/content first; negative constraints are a small fallback for likely generation failures such as subtitles/watermarks, background music, face distortion, extra fingers/limbs, exaggerated performance, and style mismatch.
+Read only applicable sections of `references/director_modules.md` before drafting:
+
+| Task evidence | Section |
+|---|---|
+| Any final video prompt; structure, compression, novel or plot turn | Structure and delivery; Visible motion |
+| Multi-shot, camera movement, first-frame control, contact/route visibility or one-take | Camera and spatial evidence; use continuity_director_contract.md when its scoped controls apply |
+| Human emotional/dialogue/reaction performance | Performance and dialogue |
+| Fight/action choreography | Fight choreography, plus applicable camera/performance sections |
+| Pursuit, escape, interception or obstacle-driven distance changes | Chase and escape; read `references/chase_action_coverage.md` for causal motion and genre-matched coverage |
+| Dramatic color/light design or night/period visibility | Light and color; otherwise the compact main-file light baseline is sufficient |
+| Dialogue, offscreen evidence, sound perspective or changing acoustic space | Sound; simple scenes retain the main-file sound bed without elaborate audio fields |
+| Animals, robots, unequal height or body geometry | Non-human and unequal geometry |
+| Multiple people or inhabited public locations | Ensemble and background |
+
+These modules retain the existing director controls. They are not a reason to add ingredients, load every library, or expand the output. Locate referenced style_patterns.md headings and read the complete selected section, not the whole library. If no precise module applies, use the core workflow; do not invent a requirement from a genre label.
 
 ## Visual Reference Image Prompts
 
-Offer optional reference-image prompts when they help control identity, setting, costume, product, props, or atmosphere. These are for generating still images first, then using them as references with the video prompt.
-
-For route selection, staged delivery, reference authority, static-information deduplication, and image-to-video compilation, read `references/reference_first_video_workflow.md`. The rules below define reference content; that file defines how references and video text divide control.
-
-- Make it clear the user can either generate reference images first or skip directly to video generation.
-- Do not output a complete reference set and a complete self-contained video prompt together by default. Keep the current turn scoped to the chosen production path and stage.
-- Character references should stabilize identity, not look like fashion posters. Treat identity/role, age range, era, facial impression, body type/posture, hair, clothing/costume state, dirt/wetness/injury/makeup, emotional baseline, framing, light/background, and non-stylization as a candidate field menu, not a completeness checklist. Select 4-6 recurring identity/costume anchors plus one emotional baseline; add a field only when the current production state genuinely depends on it. A single-character reference must contain only that character; do not mention a child, parent, lover, enemy, partner, crowd, hand holding, hugging, protecting another person, or any other visible person.
-- Scene references should define usable video space with 4-6 topology/light anchors: select only the location relationships, foreground/midground/background, entrances/exits, action path, obstacles, source light, materials, era, palette, atmosphere, or action area that affect later blocking and continuity. These are candidate fields, not a checklist. Use `无人物` if the scene reference should be clean.
-- Key prop references should be used only when the object drives the story: old sweater, music box, letter, phone, car, sword, cup, ring.
-- Do not create too many references. Most scenes need 1-2. Complex historical, product, or large-scene prompts may need 2-3.
-- Keep all references consistent with the final video prompt.
-- Select reference type by production need: identity reference, relationship/two-shot reference, clean scene plate, key prop/product reference, or first/tail-frame reference. Do not output every type by default. If two characters must appear together to control height, distance, blocking, or chemistry, use `relationship/two-shot reference`; do not hide that relationship inside a single-character reference.
-- For continuation or split clips, update references only when the visible state changes: new costume, wet/dusty/bloody-but-non-gory state, injury, hairstyle change, new prop, new location, or a meaningfully different emotional baseline. Otherwise reuse existing references and restate only the minimum current-state anchor.
-
-Recommended counts:
-
-- Emotional close-up: character reference only.
-- Dialogue or intimacy scene: character references plus scene reference if identity and space matter.
-- Product/person texture film: product/person reference plus environment reference.
-- Period drama: character/costume reference plus scene reference.
-- Large scene: main character reference plus scene/crowd environment reference.
-- Object-led memory scene: key prop reference plus scene reference.
+When planning or writing reference-image prompts, read `references/reference_prompt_content.md` for identity, scene, relationship and prop controls. Read `references/reference_first_video_workflow.md` for stages and actual-image authority. Skip both for an explicit no-reference direct prompt unless a relevant image-repair dependency exists.
 
 ## Anti-Patterns and Red Flags
 
@@ -414,4 +302,8 @@ Do not:
 
 When more guidance is needed, read `references/style_patterns.md`. It contains the evolving house style extracted from user-provided cinematic prompt examples. Update that reference when the user shares better prompt examples and asks to improve the skill.
 
-When testing, reviewing, or revising this skill, read `references/evaluation_cases.md` and run the relevant cases. Do not load the evaluation set during ordinary prompt generation.
+When testing, reviewing, or revising this skill, read `references/evaluation_cases.md`. Use its applicability-aware rubric, fixed core regression selection and separate text/image/video evidence records; run the cases affected by the change and representative unchanged controls. Do not load the evaluation set or print scorecards during ordinary prompt generation.
+
+During maintenance, explicit user requirements control the task; preserve current confirmed story/asset state and applicable continuity constraints before optional treatments or examples. Scope the continuity contract's precedence to the controls it governs. Case expectations and example templates test those rules; they do not override user choices or turn sample shot counts, lens values, emotion ladders or reference budgets into universal requirements. If current governing rules conflict, reconcile their source and tests rather than leaving the conflict to the receiving model.
+
+Keep the current creative rules stable after an accepted revision. New successful samples may enter the example/test set without changing global rules. Change a rule only for a demonstrated generalizable gap or repeatable failure; preserve successful controls, make the narrow repair, and record its affected-case retest. Do not call the skill mature from one high score or a single successful render.
