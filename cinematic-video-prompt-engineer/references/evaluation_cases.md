@@ -1739,6 +1739,20 @@ Boundary probes: explicit locked wide shot retains readable full-body combat wit
 
 Failure checks: slow motion despite realtime instruction; all techniques stacked; random shake hides attacks; repeated grip poses replace threats; increasing shot count substitutes for causal intensity; hard camera constraint ignored.
 
+## Case 68: Crisp Continuous Combat Without Waiting Turns
+
+Input:
+
+```text
+直接给30秒横屏提示词。写实韩国动作悬疑片，成年女学生在日间砖墙窄巷保护一名穿米色外套的女子，对战三名成年男子。7–23秒持续近身搏斗，短促有力、实时、干净利落，男子会追击和侧面逼近，不排队挨打；女主表情冷静。结尾三人失去行动能力，女主离开。允许多镜头，无血腥。
+```
+
+Expected: distinct attack functions and reachable routes; readable attack-defense-counter chains; at least one incoming threat explicitly interrupts pursuit/forces a turn before the current exchange fully settles; retraction, landing and pivot bridge exchanges without obligatory stops. Defeat states stay visible/consistent. Calm expression does not slow bodily reactions. Coverage follows action phases rather than replaying strikes or hiding contacts. Judge playable density, not a prescribed count of strikes or cuts.
+
+Boundary probes: the same spatial problem under an explicit fixed wide camera uses full-body staging without cuts/shake; a requested brief slow-motion peak remains permitted; requested inner monologue can overlay continuing action without mouth movement, but no narration is added when not requested. Quiet fixed emotional coverage must not inherit combat cutting or rapid performance.
+
+Failure checks: `B approaches` substitutes for a reachable threat that changes a decision; complete A/B/C rounds with idle opponents; long one-strike intervals padded by reset/posing; every recovery forces neutral stance; several precise simultaneous contacts obscure causality; move-count quota or extra adjectives replace connected action; one successful render is claimed to prove universal execution or identify a sole causal factor.
+
 ## Cross-Agent Regression Protocol
 
 When an independent multi-agent test is actually authorized and used, use the same user turns and raw assets across agents. This protocol does not require or authorize delegation for ordinary maintenance. Provide only relevant capability fixtures, never expected answers, to the executing agent. Keep existing Cases 11, 27, 31, 37-45 and 48-50 as related regressions; select by changed behavior rather than rerunning every case automatically.

@@ -2394,6 +2394,21 @@ If instructions compete, preserve hard invariants and phase anchors before exact
 - High intensity is not permission for visual sameness. Change the dominant relationship or spatial problem between phases, reserve one primary emphasis device such as a near-miss speed ramp or impact hold, and leave a short readable final state.
 - Split only when simultaneous contacts, weapon paths, camera moves, and environment events can no longer be assigned a clear causal order. Do not split solely because the action-beat count exceeds one fixed number.
 
+### Continuous Combat Chains and Effective Threat Pressure
+
+Use when the requested fight should feel urgent, short, forceful and fluid. This controls causality and motor continuity, not a universal move list, shot quota or mandatory real-time style.
+
+- **Write connected functions, not isolated move appointments:** `attack misses -> attacker follows through with another reachable threat -> defender blocks/slips and counters -> returning limb or landing step meets the next threat`. A shot's one primary action may be one coherent defensive/counter chain, not only one punch. Avoid assigning a long interval to a single strike plus preparation, posing and resetting when fast combat is requested; judge playable action density rather than count moves per second.
+- **Pressure must change a decision:** `B is approaching` alone can still produce waiting. State the reachable attack/cutoff and forced response: `A is driven back; while the heroine retracts her counter, B's right punch enters from her right, forcing her to abandon pursuit of A and turn under the punch`. Presence, staring or raising a fist is not equivalent to effective pressure. Apply this to realistic limited-group fights as well as stylized action.
+- **Recovery is connective movement:** retract a kick directly into the next landing/slip; turn out of a throw into the next defense. Show balance and recovery without requiring a stop, two-foot plant or neutral guard after every hit. A missed attack may generate a follow-up; do not make every opponent wait for a complete exchange, fall and solo reaction shot before acting.
+- **One focal contact, continuing other goals:** keep the critical impact legible while another reachable threat constrains escape or changes attack direction. Avoid stacking several precise simultaneous contacts. A blocked attacker must route around the blockage; an incapacitated one stays down. Preserve functional differences and consequences rather than simply rotating names A/B/C.
+- **Confirm consequences without stopping the fight:** an opponent's collapse or inability to continue may remain readable in a wider/background view while the protagonist addresses the next threat. Preserve hard state-change isolation when weapon transfer, precise endpoints or major collapse require dedicated evidence; overlap pressure, not unrelated complex state changes.
+- **Separate expression from movement speed:** a calm, unreadable face can coexist with urgent feet, rapid defensive reactions and brief powerful strikes. For real-time crisp action, describe short travel, visible contact, prompt retraction and continued displacement; do not stretch the impact into a held leg or victory pose. Honor requested slow motion rather than banning it globally.
+- **Coverage serves the chain:** wider views prove support and routes, medium views show defense/counter, brief contact inserts continue the same action phase. Do not restart the strike after a cut or insert an unmotivated face close-up during incoming danger. Handheld and effects must not hide contact; use only the intensity and stylization appropriate to the brief.
+- **If inner monologue is requested:** a short line may run over ongoing action without stopping to speak; distinguish internal voice from lip-synced dialogue and protect action sound. Do not add narration, language choices or a fixed number of lines to unrelated fights.
+
+Internal audit: can the next threat actually reach the protagonist; what decision does it force; what movement bridges the exchanges; where is the previous opponent now; does the allotted time encourage a pause? Repair the causal clause before adding `极速`, `拳拳到肉` or a longer negative list.
+
 ### Fight Prompt Length Budget
 
 The copy-ready fight prompt must follow the duration-based ceiling: under 2000 Chinese characters for 1-15s, under 3200 Chinese characters for 16-24s, and under 4000 Chinese characters for 25-30s. This excludes `剧情诊断`, `电影化改写策略`, and optional reference-image prompts.
@@ -2401,16 +2416,14 @@ The copy-ready fight prompt must follow the duration-based ceiling: under 2000 C
 Recommended budget for a 10-15s fight:
 
 - 1300-1800 Chinese characters total.
-- 2-3 shots maximum.
-- 6-10 timed action beats total.
-- 2-4 active actions per shot.
+- Choose shot density from tone, required contact evidence and explicit camera constraints; there is no 2-3-shot maximum. A true one-take uses continuous reframing instead of cuts.
+- Organize timed beats as readable functional chains, not isolated moves. Action counts are workload signals, not quotas; retain enough attack-defense-counter development to avoid staged waiting.
 - One short line each for environment, camera, style, and constraints; merge repeated information into the opening summary.
 
 Recommended budget for a 16-24s fight:
 
 - 1800-2600 Chinese characters total.
-- 3-5 shots or one readable long-take chain with internal phases.
-- 10-16 timed action beats total.
+- Choose informative action-matched cuts or one readable long-take chain with internal phases according to the brief. Do not prescribe shot or action counts from duration alone.
 
 Recommended budget for a 25-30s fight:
 
@@ -2426,7 +2439,7 @@ Compression rules:
 - Combine attack route, defense, and contact point into one concise beat.
 - Do not repeat `真实重量感`, `手持摄影`, `无血腥`, or continuity constraints under every shot.
 - Keep only action details that affect readability, physics, continuity, camera response, or model stability.
-- For 1-15s fights, more than 10 distinct action beats normally signals overload and should be simplified or split. For 16-30s fights, do not apply a universal ten-beat cutoff: first compress named moves into functional chains and test whether each phase preserves fighter state, weapon ownership, spatial direction, contact, and recovery. Split only if those relationships remain unreadable. Choose a natural bridge such as a different angle/shot-size continuation, match-on-action, or a new completed action phase; use the first segment's tail frame only when exact body position is essential.
+- For any duration, first compress named moves into functional chains and test whether each phase preserves fighter state, weapon ownership, spatial direction, contact, recovery and playable timing. Reduce simultaneous precision demands before reducing useful connective motion. Split only if those relationships remain unreadable or cannot fit, within the user's clip/scope constraints. Choose a natural bridge such as a different angle/shot-size continuation, match-on-action, or a new completed action phase; use the first segment's tail frame only when exact body position is essential.
 
 Compact action beat example:
 
