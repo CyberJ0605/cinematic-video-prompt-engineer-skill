@@ -46,6 +46,14 @@ For continuation, multi-shot reference-driven work, or cut/geometry repairs, rea
 
 Default workshop and continuation outputs retain concise 【剧情诊断】 and 【电影化改写策略】; repeated revisions do not imply prompt-only mode. Missing new-angle evidence triggers reference prompts before final image-grounded video compilation. Explicit user scope and approval boundaries still apply.
 
+## Reading supporting sections
+
+Read this entrypoint completely, then use its existing task/stage triggers to select supporting sections. For large libraries, first list headings and read the complete named section, including descendants and ancestor introductory scope; follow any applicable cross-reference. This changes retrieval, not the governing rules or their applicability. Do not treat a keyword hit, heading list or truncated excerpt as a completed rule read.
+
+When Python is available, the optional standard-library reader provides exact sections without loading unrelated siblings: `python scripts/read_sections.py references/style_patterns.md --list --find "Output Modes"`, then `python scripts/read_sections.py references/style_patterns.md --section "Output Modes"` (repeat `--section` for other applicable headings). Resolve the script against this skill's directory, not the task working directory; the Markdown argument remains relative to the skill root. Omit `--find` for a full heading index, or use another title substring to keep discovery small. Use the same reader for director modules, camera/emotion libraries or maintenance cases. Unknown/ambiguous headings fail explicitly; use the listed qualified `path` for duplicate names rather than guessing. Read selected output to completion, using bounded pages if the host truncates it.
+
+Without Python, locate headings with the host's search/resource tools and read from the selected heading through the next heading of equal or higher level, retaining ancestor introductory scope. Read short single-purpose contracts/workflows completely when required. Never skip an applicable dependency merely to meet a reading budget; examples and evaluation files remain conditional under the existing routing. No extra output section, creative constraint or media action is introduced by this reader.
+
 ## Default Workflow
 
 Choose an output mode from the user's intent. Default to full workshop mode.

@@ -2411,25 +2411,21 @@ Internal audit: can the next threat actually reach the protagonist; what decisio
 
 ### Fight Prompt Length Budget
 
-The copy-ready fight prompt must follow the duration-based ceiling: under 2000 Chinese characters for 1-15s, under 3200 Chinese characters for 16-24s, and under 4000 Chinese characters for 25-30s. This excludes `剧情诊断`, `电影化改写策略`, and optional reference-image prompts.
+Use `SKILL.md`, final-prompt budget and Duration Rules, for the applicable ceiling and excluded sections. For fight-specific length targets, read `references/director_modules.md`, section `Fight choreography`. The following controls concern action compression, not another numeric budget.
 
 Recommended budget for a 10-15s fight:
 
-- 1300-1800 Chinese characters total.
 - Choose shot density from tone, required contact evidence and explicit camera constraints; there is no 2-3-shot maximum. A true one-take uses continuous reframing instead of cuts.
 - Organize timed beats as readable functional chains, not isolated moves. Action counts are workload signals, not quotas; retain enough attack-defense-counter development to avoid staged waiting.
 - One short line each for environment, camera, style, and constraints; merge repeated information into the opening summary.
 
 Recommended budget for a 16-24s fight:
 
-- 1800-2600 Chinese characters total.
 - Choose informative action-matched cuts or one readable long-take chain with internal phases according to the brief. Do not prescribe shot or action counts from duration alone.
 
 Recommended budget for a 25-30s fight:
 
-- 2200-3400 Chinese characters total.
-- Use more than 3000 only when the extra text protects action geography, timing, continuity, or physical readability.
-- If the fight still needs more than 4000 characters, split it into consecutive clips instead of increasing action density.
+- Apply the main-file excess-detail gate and scope-compatible split procedure instead of increasing action density to hide overload.
 - Organize dense choreography into 3-5 phase anchors. Additional connective actions may remain inside those phases when fighter states, weapon paths, and cause-effect order stay readable; otherwise split into consecutive clips.
 
 Compression rules:
@@ -2982,7 +2978,7 @@ Examples:
 Rules:
 
 - Do not assign two substantial lines plus a complex body action to a 2-3s shot.
-- If dialogue runs long, shorten the line before speeding up delivery.
+- If dialogue runs long, apply `Execution Gates and Failure Recovery` in `SKILL.md`: simplify secondary controls first; edit supplied key lines only with user authorization, or resolve the concrete timing/scope conflict. Do not force faster speech merely to fit.
 - Important lines should finish before the final 1-2s ending breath.
 - Offscreen dialogue still consumes time and must be budgeted.
 - Simultaneous overlapping lines should be short and intentionally motivated.
@@ -3503,7 +3499,7 @@ Keep this section concise. It is for adaptation clarity, not literary analysis.
 - For 3000+ character excerpts, output a scene-selection list first. Do not output a long chain of final prompts unless requested.
 - If the original has many adjectives, keep only those that change lighting, costume, texture, performance, or mood.
 - If the original contains multiple named characters, keep only the characters who affect this moment on screen.
-- If the original dialogue is too long, rewrite it into 1-2 short playable lines while preserving meaning and emotional subtext.
+- If source dialogue is too long, apply the main-file dialogue playability and scope gate. Shorten/rewrite only within the user's adaptation authorization; preserve supplied key lines otherwise and propose a compatible split or ask which constraint may change.
 - If the original depends on private thought, create an external action anchor: cup, sleeve, ring, phone, letter, door, blade, window, cigarette, bed sheet, scarf, or another story-specific object.
 
 ### Final Prompt Requirements for Novel Inputs
@@ -3535,14 +3531,7 @@ Use when the user says `继续`, `接着往下写`, `下一段`, `下一镜`, `�
 
 ### Continuation Principles
 
-- Continue from the previous story state, not necessarily from the previous final image.
-- Keep character identity, age, hairstyle, clothing, makeup, injury state, and emotional residue consistent.
-- Keep setting, lighting, weather, time of day, color palette, camera texture, and sound bed consistent unless the story intentionally changes.
-- Keep key props consistent in design, position, and narrative meaning.
-- Progress emotion instead of replaying it.
-- Add only one main new event or emotional turn per short segment; a 16-30s segment may include a fuller setup-turn-aftermath arc if it stays playable.
-- Let each segment feel like a complete small dramatic unit. Do not force a long-take continuation across clips if a shot-group structure is more natural.
-- Leave the ending as a useful next bridge: a held reaction, an unfinished action, a prop state, a sound cue, or a completed mini-arc that can lead into the next beat.
+Read `references/continuation_workflow.md` for current-state, identity, setting, prop, emotional progression and segment workload rules; read `references/continuity_director_contract.md` for tail-frame authority and cut auditing. Keep camera texture consistent unless deliberately changed, and let each segment form a playable small dramatic unit with an ending useful for the next bridge. The bridge examples below illustrate those rules, not a second source of continuity requirements.
 
 ### Clip Bridge Types
 
@@ -3552,7 +3541,7 @@ Choose one bridge before writing the next prompt:
 2. **Match-on-Action Bridge / 动作中衔接**: use when the previous clip ends on an unfinished action. End segment 1 as the hand begins to open the door, body starts to turn, sword begins to draw, person starts to fall, lips begin to speak, or fist begins to swing; start segment 2 from a new angle/shot size continuing the same action, not restarting it.
 3. **Shot-Group Bridge / 分镜组衔接**: use when each clip is a complete small scene or emotional beat. Segment 2 does not need to start from segment 1's tail frame. It should start with a strong new shot that belongs to the next mini-arc while preserving character, scene, prop, costume, light, sound, and emotional continuity.
 
-Use the previous tail frame only when exact body position, blocking, injury/damage state, or object position is critical. Otherwise, treat it as one reference asset among others, not as a required first-frame instruction.
+Apply the tail-frame versus first-frame authority in `references/continuity_director_contract.md`; these examples do not bind a previous ending as the next opening.
 
 ### Continuation Diagnosis
 
@@ -3675,16 +3664,7 @@ Method inspiration: `zy-cinematic-realism` result-repair and invariant-lock work
 
 Final prompts should be direct and proportionate to scene complexity. The character ceiling is duration-based and is not a target. It applies only to the copy-ready final prompt, not to the diagnosis or strategy sections in workshop mode.
 
-Length targets:
-
-- 500-800 Chinese characters: simple one-person, one-action, one-emotion scenes.
-- 800-1300 Chinese characters: default range for most 8-15s cinematic prompts.
-- 1300-2000 Chinese characters: complex 10-15s scenes such as multi-person dialogue, large-scene compression, montage, long-story splits, or spatial action.
-- 1600-2600 Chinese characters: recommended range for 16-24s prompts with longer dialogue, multi-shot progression, emotional development, or complex blocking.
-- 2200-3400 Chinese characters: recommended range for 25-30s prompts with a complete emotional arc, multi-character dialogue, action geography, or strict continuity control.
-- 3400-4000 Chinese characters: exceptional range for complex 25-30s prompts only; every added instruction must materially improve generation reliability.
-
-If the prompt exceeds 1300 characters for <=15s, 2400 characters for 16-24s, or 3000 characters for 25-30s, each extra detail must improve generation stability, emotional clarity, spatial continuity, sound/performance timing, or failure prevention. Treat 3000 characters as a soft threshold for 25-30s prompts and 4000 as the absolute ceiling. If an added detail does not help the render, cut it.
+Read the final-prompt budget and `Duration Rules` in `SKILL.md` for all general numeric targets, hard ceilings and excess-detail thresholds. The exceptional range above the normal target is justified only when every added instruction materially improves generation reliability. This section owns compression methods, not a duplicate budget table.
 
 - Do not include empty boilerplate such as `视频模型：通用 AI 视频模型`. If no model is specified, omit it.
 - Put duration and structure into the first summary line.
@@ -3858,13 +3838,7 @@ Reference prompts should be complete enough to generate usable production refere
 
 ### Reference Prompt Completeness Standard
 
-Use this standard whenever reference prompts are output:
-
-- **Character reference**: identity/role, age range, ethnicity/era when relevant, face shape and temperament, hairstyle, body type or posture, clothing and costume state, visible dirt/wetness/injury/makeup, emotional baseline, shot size, background/light, film texture, and constraints such as non-fashion, non-glamour, non-monsterized, natural performance.
-- **Single-character isolation**: a character reference for one person must describe only that person. Do not include other visible characters, relationship blocking, another person's hands/shoulders, hugging, holding, protecting, chasing, fighting, or looking at another named person. These details can cause image generation to create extra inconsistent characters.
-- **Scene reference**: exact location type, spatial layout, foreground/midground/background, entrances/exits, action path, obstacles, key furniture/vehicles/architecture, practical light source and color mood, materials, weather/atmosphere, era, and whether it should be `无人物`.
-- **Key prop/product reference**: object type, era, material, color, scale, wear marks, story-specific identifiers, current state, owner/placement if important, light/background, and detail clarity.
-- **Relationship/two-shot reference**: both identities, screen-left/screen-right positions, height/distance, eye lines, body tension, costume state, shared environment, and power relationship.
+Use `references/reference_prompt_content.md` for the content menu, isolation and minimum asset set, and `Reference Image Prompt Compiler` in `references/reference_first_video_workflow.md` for the type-specific information budgets and compilation order. Read those sections when producing reference prompts. The patterns below are examples; they do not create a second mandatory field inventory.
 
 Keep references complete but purposeful. Do not output long inventories of irrelevant fashion details, room objects, or texture adjectives that the current video will never use.
 
@@ -3989,22 +3963,14 @@ Template:
 
 ### Reference Image Count
 
-- A simple emotional close-up often needs one identity reference; character + scene is a useful two-image starting estimate.
-- Complex scenes may need three or more distinct assets. Counts are planning estimates, not caps: required identity, topology, contact and planned-view coverage determines the smallest sufficient set.
-- Reuse approved assets and distinguish the full series library from current-shot inputs. A real tool input limit may require compatible shot/asset batches; it does not justify omitting necessary evidence.
-- Avoid giving separate reference prompts for every minor object.
+Use the minimum-set and reuse rules in `references/reference_prompt_content.md`; numeric counts are examples, not caps. Use `references/continuity_director_contract.md` when planned-view coverage must be established.
 - In compact mode, omit reference prompts unless explicitly requested or essential for control.
 - In workshop mode, follow the chosen production path: reference recommendations are optional for direct-video work, while required assets in reference-first work remain explicit dependencies. Do not describe a required production reference as optional.
 - In continuous-short-film mode, maintain references as a reusable asset list and mark each as `沿用`, `新增`, or `更新状态`.
 
 ### Continuation References
 
-- For continuation, reuse existing character/scene/prop references and previous continuity facts by default.
-- Add new reference prompts only for new visual anchors.
-- If using a previous tail frame, treat it as optional state guidance, not a required first frame. The scene reference can be omitted unless the camera moves into a new space.
-- If a new character enters an existing scene, provide only the new character reference and state that the existing scene reference remains unchanged.
-- If a character's visible state changes in a way the next clip must preserve, output an updated character reference with the new clothing, hair, dirt, wetness, injury, makeup, carried prop, and emotional baseline.
-- If the same location changes materially, output an updated scene reference only for meaningful changes such as new damage, smoke, rain, fire, darkness, blocked exits, moved vehicles, broken furniture, or changed light source.
+Read `references/continuation_workflow.md` for carry-forward and anchor changes, `references/reference_prompt_content.md` for asset reuse/update, and `references/reference_first_video_workflow.md` for actual-image authority and stage handling. Examples of meaningful location updates include damage, smoke, rain, fire, darkness, blocked exits, moved vehicles, broken furniture and changed light sources; unchanged scenery does not warrant a new image merely because a new clip begins. An unseen angle still needs the coverage audit, even within the same location.
 
 ### Reference Consistency Check
 
