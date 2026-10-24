@@ -122,6 +122,20 @@ Choose camera movement by narrative function, not as decoration. Most 6-15s prom
 - Use `Static` deliberately. A fixed frame can make a confession, threat, micro-expression, or comedy pause more powerful than constant movement.
 - When cutting between shots, maintain the 180-degree axis and camera-angle rules elsewhere in this reference.
 
+## Visual Style Integration
+
+Use for video prompts and reference-image prompts to turn the content's visual treatment into a small, coherent set of observable qualities, not an appended list of prestige labels. Start from the brief's genre, emotional distance, period/location, production purpose and explicit look. Genre is evidence, not a preset: a crime scene need not be blue or dark, a period scene need not be sepia, and ordinary drama need not become an advertisement.
+
+Write a short phrase or one compact paragraph at scene/asset level, naturally merged with existing light and texture wording. It can establish an image-making approach and only the useful relationships among tonal contrast/highlight handling, source-related color, skin/material rendering, grain or edge/highlight treatment. These are optional dimensions, not fields to fill or a minimum count; a simple scene may need only a restrained phrase. Preserve an explicit plain, clinical, documentary or no-stylization request instead of upgrading it into glamour. Style remains subordinate to the current prompt budget.
+
+Choose mutually compatible qualities for this content. For example, highlight bloom, delicate grain or softer tonal transitions may support a luminous nostalgic treatment; a harder texture or concentrated contrast may support another scene. None is the default. Sunlight, red/cyan palettes, vintage advertising, soft focus and film-stock labels are scene-specific choices, not cross-genre defaults. Brand/camera/film names alone are not a visual specification, and `film still` must not turn a video into a static pose.
+
+Use the existing lighting, camera/depth and color rules for execution; do not duplicate their full instructions. Any glow/softness/overexposure must leave story-critical eyes, hands, markings, contact and motion readable. Distinguish gentle highlight spread from a blurred focal subject; preserve important fabric/material detail and necessary shadow separation. Do not invent fog, flare, a light source or a palette merely to decorate the style phrase. Default to concrete Chinese descriptions under the main-file language rule.
+
+For direct video, make the treatment self-contained and consistent across cuts unless a motivated timed change is part of the story. For new image assets, apply the same compatible baseline to the relevant assets while keeping clean scene plates, identity and contact evidence usable. For selected actual references and continuation, inherit their confirmed look; do not repeat full static style descriptions or replace their visible color/light/texture with a new treatment. Describe only an authorized, timed delta when it changes. If pixels are unavailable, identify the unverified dependency rather than claiming a style match.
+
+Before delivery, check internally that the treatment fits this specific content, adds visible information rather than synonyms, agrees with light/camera/material choices and any reference, and does not alter the plot, readability or stage. Do not add a separate style analysis/checklist to the user's output or imply the text guarantees a better render.
+
 ## Cinematic Lighting as Dramatic Design
 
 Do not use `电影感布光` as a vague magic phrase. Cinematic lighting should create dramatic tension, emotional direction, visual hierarchy, and story meaning. It is not only illumination.
@@ -203,6 +217,8 @@ Prompt phrases:
 ```
 
 Use dynamic light sparingly. One strong interaction is usually enough for a 15s prompt.
+
+When glass, mirrors or reflective surfaces materially shape the scene, distinguish the light source, reflecting/transmitting surface and viewing camera. State only the relevant fixed and moving elements: camera travel or a rotating door changes reflections, overlap and occlusion relative to the subjects; it does not relocate the established lights. Keep reflected imagery distinct from objects physically inside the room, and preserve readable story-critical eyes or contact. This is a conditional spatial/light control, not a reason to add glass, colored reflections or elaborate optical descriptions to ordinary scenes.
 
 ### Light as Emotional Direction
 
@@ -365,7 +381,9 @@ Avoid:
 
 ## Performance Writing
 
-For a named emotion or a performance transition that needs more concrete observable cues, read `emotion_performance_prompt_library.md`. Use one nearest base emotion and adapt 2-4 signals to the character's motive, trigger, restraint, body condition, and scene distance. The library supplements the systems below; it does not override character knowledge, dialogue timing, FACS restraint, biomechanics, or emotional causality.
+For a named emotion or a performance transition that needs more concrete observable cues, read `emotion_performance_prompt_library.md`. Use one nearest base emotion and the smallest readable signal set, adapted to the character's motive, trigger, restraint, body condition and scene distance, without a count quota. The library supplements the systems below; it does not override character knowledge, dialogue timing, FACS restraint, biomechanics, or emotional causality.
+
+When hesitation, recognition or a change of intention slows an ongoing action, distinguish performed tempo from playback speed: at normal playback, steps shorten or stop, weight settles and a held object's swing subsides. Choose only the cues relevant to the action. Decide camera speed/steadiness separately; it may respond to the performance without automatically creating slow motion, an impact hold or a speed ramp. Preserve explicitly requested slow motion or time distortion.
 
 Strong performance prompts use this sequence:
 
@@ -1753,7 +1771,7 @@ Always preserve natural transition: no sudden expression jumps, no exaggerated c
 
 ## Emotion-to-Micro-Expression Map
 
-When the user names an abstract emotion, translate it into visible beats. Choose 3-5 beats that fit the character, scene, and duration. Do not use every beat.
+When the user names an abstract emotion, translate it into the smallest set of visible signals that makes the change readable for this character, scene and duration. A held gaze or interrupted gesture can be sufficient; use a longer chain only when the emotional progression needs it. Do not use every beat or fill a quota.
 
 ### 悲伤 / Grief
 
@@ -3159,7 +3177,7 @@ Choose structure before writing shot details. Always state the chosen structure 
 | Structure | Use When | Best For | Avoid When | Prompt Strategy |
 |---|---|---|---|---|
 | **单场景一镜到底 / Single Take** | One space, one continuous emotional shift, few actions, no major time jump | restrained grief, confrontation pause, ritual, waiting, subtle intimacy | many locations, action complexity, multiple plot turns | Use the Ordinary Drama One-Take Blocking System: one camera path, start frame, blocking shift, motivated focus change, foreground depth, sound continuity, held ending |
-| **单场景连续剪辑 / Multi-Shot Sequence** | One location but several physical beats or reaction angles are needed | kitchen tension, hospital corridor, car interior conflict, interrogation | very abstract memory, large time span | Use 3-5 shots: establish space, key object/action, face reaction, ending breath |
+| **单场景连续剪辑 / Multi-Shot Sequence** | One location but several physical beats or reaction angles are needed | kitchen tension, hospital corridor, car interior conflict, interrogation | very abstract memory, large time span | Choose shot count from information changes and playable time; 3-5 shots covering space, action, reaction and aftermath are one example, not a quota |
 | **跳剪压缩 / Jump Cuts** | Time needs compression while staying in one emotional thread | preparation, decision, panic escalation, ritual, product/person process | scene requires smooth emotional realism | Use repeated visual anchor; each cut advances state clearly |
 | **蒙太奇 / Montage** | Memory, dream, symbolic contrast, parallel images, theme rather than linear action | childhood recall, grief objects, identity transformation, longing | direct dialogue scene, precise physical action | Use sound or object as transition anchor; keep fragments sensory and partial |
 | **连续动作剪辑 / Continuous Action Editing** | Character moves through space under pressure | chase, escape, crossing rooms, storm/rain movement | tiny emotional beats, complex multi-person combat without reference | Keep direction consistent; define start/end spatial goal; limit actions |
@@ -4126,6 +4144,12 @@ Minimum fallback:
 
 Run this silently before giving the final answer. Do not print it unless the user asks for a critique, debug pass, or improvement report.
 
+### Universal baseline
+
+For the requested deliverable/stage, always check: explicit user intent and locked facts preserved; actions, speech and camera travel fit the duration; necessary cause/contact/result and current states remain coherent; required evidence is readable; output is usable and proportionate under the applicable budget; verification claims match the evidence actually inspected. For a final video prompt, retain its concise motivated light and concrete sound baseline. For image-plan-only or discussion stages, do not require final-video fields.
+
+The sections below are a conditional reference menu, not a second full checklist to run for every scene. Read/check only the items activated by the input or the chosen treatment: dialogue for speech; performance for meaningful acting changes; camera/cuts for the actual framing and movement; references/continuation for those production paths; ensemble/action/non-human/vertical controls when present. Explicit exceptions and user constraints still govern. An inactive technique is not a missing ingredient: do not add a reveal ladder, insert, focus pull, emotional crack, color scheme or extra gesture merely to pass a check.
+
 ### Story and Structure
 
 - Does the diagnosis name the emotional core and visual core?
@@ -4209,7 +4233,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 - If dialogue crosses a cut, are offscreen voice direction, speaker identity, acoustic continuity, and the semantic reason for the cut clear?
 - If one sentence crosses a cut, is it divided into clear start/continuation fragments rather than accidentally repeated in full?
 - Do edit points follow trigger words, meaning shifts, voice breaks, listener impact, or withheld phrases rather than equal time slicing?
-- Does shot size tighten only when psychological access deepens, preserving visual escalation for the emotional crack or vulnerable line?
+- If tighter framing emphasizes psychological access, is that change earned? Other motivated framing choices remain valid; an emotional crack does not require a push-in or closer shot.
 - Are trigger words, emphasis, pauses, breath, gaze changes, facial/body reactions, and post-line state tied to the actual wording?
 - If a character moves from anger/sarcasm/calmness into vulnerability, is there an emotion barrier and a believable crack before crying, confession, or collapse?
 - Are tears, voice breaks, outbursts, forgiveness, or surrender delayed until the line or reaction actually earns them?
@@ -4233,7 +4257,7 @@ Run this silently before giving the final answer. Do not print it unless the use
 - For intense emotional scenes, is there a continuous chain from inner conflict to physiological reaction, micro-expression, action anchor, and decisive behavior?
 - Does the recurring hand/prop/posture anchor evolve continuously instead of resetting between beats?
 - For long close-ups, is there a smooth micro-expression timeline with no sudden jump?
-- Are 3-5 micro-expression beats chosen instead of an overloaded facial-action list?
+- If an emotional change needs detailed acting, is the smallest readable signal set chosen instead of filling a facial-beat quota?
 - If AU/FACS appears, is it only auxiliary calibration after visible natural-language facial action, with compact intensity and no long code dump?
 - Do important facial expressions have onset, peak, and release/transform rather than appearing fully formed from the first frame?
 - Is the performance natural for the character's situation, age, status, and relationship?

@@ -15,6 +15,12 @@ Do not try to make one prompt optimal for both modes.
 
 ## Stage 1: Reference Asset Plan
 
+For the selected adaptation scope, inventory before minimizing. When planning assets for a novel/screenplay, cover every principal character, main location and story-critical prop, plus necessary costume/injury variants, relationship/action states and opening frames. Full-work scope covers the selected whole work, not only its opening clip; a selected excerpt covers only that excerpt. Do not infer full-work coverage from a highlight request or invent assets beyond the requested scope.
+
+In the existing asset plan, give each necessary entity/state a concise coverage status: usable existing asset (cite its identifier), new image prompt required, or covered by a named shared reference (state which one). Ordinary background people/objects need not become separate assets. Check planned scenes/shots back against this inventory: no principal identity, critical location/contact view or plot-bearing prop may disappear merely to meet a small reference-count estimate. Complete coverage does not mean uploading the entire asset library to each clip.
+
+Deliver a prompt for every required new asset in the requested stage, or explicitly mark the remaining items and delivery scope when batching is unavoidable; never label an opening batch as a complete asset package. Do not defer a missing required asset silently to video generation. A plan or image prompt is not a generated/inspected image: asset readiness and final image-grounded compilation still follow the existing evidence and approval rules. Reuse this coverage record rather than adding a second default table.
+
 Resolve the target aspect ratio before creating composition-controlling production assets. Follow an explicit ratio, inherit an approved first frame/previous clip, and preserve a confirmed series ratio. If ratio is unspecified and would materially change costly relationship, scene, first/tail-frame, group, full-body action, or large-scale assets, combine one aspect-ratio question with any existing direction/production-path checkpoint. For vertical production, read `vertical_9x16_adaptation.md`.
 
 First classify every supplied or planned image by source and authority:
