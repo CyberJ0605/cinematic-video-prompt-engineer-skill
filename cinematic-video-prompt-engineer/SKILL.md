@@ -124,7 +124,7 @@ While this direction decision is unresolved, do not output reference prompts or 
 - Combine this choice with an existing direction-selection checkpoint when both apply. Do not create two consecutive confirmation rounds.
 - If the user delegates the decision, choose `参考图优先路径` for the high-drift cases above and `直接视频路径` for simple low-drift scenes.
 
-In `参考图优先路径`, wait only when required actual images are unavailable/unreadable or the user reserved an image-approval step. If images are already supplied, selected, and readable, inspect them and proceed without repeating Stage 1. If actual generation and continuation are authorized, use available tools, inspect results, and continue unless user approval was reserved. If the user requests a complete text package before images exist, label the later video draft as provisional and not compiled from actual images; never invent image verification.
+In `参考图优先路径`, wait only for required actual images, their readability, pending foundation-image confirmation needed by dependent combination images, or user-reserved approval. Default initial image delivery is the necessary character, unpeopled scene and key prop prompts; relationship/action keyframes and first/tail-frame prompts follow confirmed foundations under `Foundation and combination-image dependencies` in `references/reference_first_video_workflow.md`. Already selected, readable actual assets skip repeated approval after inspection. Authorized generation may create foundation candidates, but does not itself confirm them for dependent images unless selection was explicitly delegated. If the user requests a complete text package before images exist, label dependent image/video drafts provisional, not compiled from confirmed assets; never invent image verification.
 
 1. **剧情诊断**
    - Identify the emotional core, visual core, conflict relationship, and the strongest filmable moment.
@@ -151,7 +151,7 @@ In `参考图优先路径`, wait only when required actual images are unavailabl
    - Usually include only the needed anchors: character, scene, key prop, product, costume, or atmosphere. Do not force all categories.
    - Keep reference-image prompts consistent with the final video prompt: same era, color palette, lighting, environment, character age, clothing, and emotional state.
    - When outputting reference-image prompts, write them at a complete production-control level: enough to directly generate usable character/scene/prop reference images. Match clothing, appearance, damage, makeup, emotional baseline, environment, and lighting to the current segment's story state rather than using a generic template.
-   - For a single-character reference, describe only that one character. Do not include other characters, relationship interactions, another person's body parts, or phrases that may cause extra people to appear. Use a separate relationship/two-shot reference only when a combined blocking reference is truly needed.
+   - For a character reference, describe only one character identity. Principal/recurring characters default to a direct text-designed multi-view card under `references/character_card_prompts.md`; simple face-only tasks, supporting roles or usable existing assets need not get a card. Multiple isolated views of the same person are not multiple identities. Do not include other characters, relationship interactions or another person's body parts; relationship/first-frame images still follow confirmed-foundation dependencies.
 
 4. **最终视频提示词**
    - Output one directly usable prompt.

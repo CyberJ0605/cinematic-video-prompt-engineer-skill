@@ -3473,7 +3473,11 @@ When a long novel input arrives, decide the entry path before writing final prom
 
 `影视化片段拆选表` is for choosing the strongest filmable moments. It is selective and does not guarantee full coverage.
 
-`连续短片总结构表` is for full-story adaptation. It should include:
+`连续短片总结构表` is for full-story adaptation.
+
+For full-coverage long text, first organize the event structure, character/relationship roster and necessary character/location/prop asset inventory across the selected supplied scope, then draft video prompts scene by scene in manageable batches. These may be compact linked records, not duplicate tables. Inspect the available source before claiming whole-work coverage; identify missing chapters or unreadable portions rather than reconstructing them from a synopsis. Planning an asset does not require generating it on the direct-video path; reference-first still follows foundation confirmation and combination-image dependencies.
+
+It should include:
 
 - segment number and suggested duration
 - covered plot beat
@@ -3512,9 +3516,9 @@ Keep this section concise. It is for adaptation clarity, not literary analysis.
 
 ### Compression Rules for Novel Inputs
 
-- If one excerpt contains setup, reveal, argument, collapse, and aftermath, choose only the turns that can naturally play within one 30s prompt and recommend splitting the rest.
+- If one excerpt contains setup, reveal, argument, collapse and aftermath, select only playable turns for a highlight request; for full coverage, preserve required turns across a causal scene/clip sequence instead of omitting them to fit one 30s prompt.
 - For highlight adaptation, state the selected scene explicitly before the final prompt and treat other material as context. For full coverage, preserve the causal sequence regardless of source length.
-- For 3000+ character excerpts, output a scene-selection list first. Do not output a long chain of final prompts unless requested.
+- For 3000+ character excerpts, choose the planning form from the requested scope, not length: a scene-selection list for highlights, or the continuous structure plus character/asset inventory for full coverage. A full-adaptation request already authorizes its detailed prompts after planning, subject to actual assets and reserved approvals; do not ask for highlight selection again. If scope is genuinely unresolved, ask only the material scope question. Batch by filmable scenes, record completed and remaining source/segment ranges and the current continuity state, and never label a partial batch full completion. No fixed input-character ceiling or automatic approval gate follows from this workload threshold.
 - If the original has many adjectives, keep only those that change lighting, costume, texture, performance, or mood.
 - If the original contains multiple named characters, keep only the characters who affect this moment on screen.
 - If source dialogue is too long, apply the main-file dialogue playability and scope gate. Shorten/rewrite only within the user's adaptation authorization; preserve supplied key lines otherwise and propose a compatible split or ask which constraint may change.
